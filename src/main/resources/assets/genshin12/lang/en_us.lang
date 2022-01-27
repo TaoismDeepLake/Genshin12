@@ -1,41 +1,42 @@
 #PARSE_ESCAPES
 #tabs
-itemGroup.ideallandMiscTab=IDL Hall
+itemGroup.genshin12MiscTab=IDL Hall
 
 generator.TYPE_ONE=Type One;
 generator.TYPE_TWO=Type Two;
 
 #config
-configgui.idealland.category.Menu0.GeneralConf=General Config
-idealland.conf.general.welcome=Welcome Message Key
+configgui.genshin12.category.Menu0.GeneralConf=General Config
+genshin12.conf.general.welcome=Welcome Message Key
 
 #Enchantments
-enchantment.idealland.test_enchantment=Early Access
+enchantment.genshin12.test_enchantment=Early Access
 
 #Messages
-idealland.moroon_incoming_herald=[IDL][Warn] The Moroon are interested in your fights.
-idealland.msg.notice_meter_report=[IDL] Moroon notice value: %d, invasion: %d/%d, error:%d
+genshin12.moroon_incoming_herald=[IDL][Warn] The Moroon are interested in your fights.
+genshin12.msg.notice_meter_report=[IDL] Moroon notice value: %d, invasion: %d/%d, error:%d
 
 #Potions
-idealland.potion.deadly=Deadly
-idealland.potion.zen_heart=Countless Virtue
+genshin12.potion.deadly=Deadly
+genshin12.potion.zen_heart=Countless Virtue
 
 
 #Entities
 entity.moroon_tainter.name=Moroon Pathfinder
 
 #Blocks
-tile.idealland_light_basic.name=Idealland Lamp
-
-tile.test.name=Idealland Block A
+tile.zl_pillar.name=Zhongli Pillar Block
 
 #Items
-idealland.food.shared.xp_desc=Grants XP: %d
-idealland.gua_enhance_no_free.desc=Use anvil to socket Gua(Elemental)
-idealland.gua_enhance_free.desc=Free Gua Sockets(Direct craft): %d
+item.zhongli_e.name=Dominus Lapidis
+item.zhongli_e.desc=Every mountain, rock and inch of land is filled with the power of Geo, but those who can wield such powers freely are few and far between.
 
-idealland.gua_enhance_total.desc=Gua Enhance Total: %d
-idealland.shared.press_shift=Hold SHIFT to examine info.
+genshin12.food.shared.xp_desc=Grants XP: %d
+genshin12.gua_enhance_no_free.desc=Use anvil to socket Gua(Elemental)
+genshin12.gua_enhance_free.desc=Free Gua Sockets(Direct craft): %d
+
+genshin12.gua_enhance_total.desc=Gua Enhance Total: %d
+genshin12.shared.press_shift=Hold SHIFT to examine info.
 
 fading.duration.desc=Vanishes after %d seconds
 
@@ -53,22 +54,22 @@ item.p2w_goblet.contain.desc=Containing %d exp.
 item.p2w_goblet.player.desc=Owner power: Lv.%d (%d/%d exp)
 
 #Skills
-idealland.skill.shared.cool_down_desc=Cooldown: %.1fs
-idealland.skill.shared.power_desc=Damage: %.1f
-idealland.skill.shared.range_desc=Radius: %.1f block
-idealland.skill.shared.duration_desc=Duration: %.1fs
-idealland.skill.shared.error_desc=Error: +-%d
-idealland.skill.shared.level_desc=Level: %d/%d
-idealland.skill.shared.name_format=%s
-idealland.skill.shared.name_format_with_lv=%s Lv.%s %s
-idealland.skill.shared.lv_max=[MAX]
+genshin12.skill.shared.cool_down_desc=Cooldown: %.1fs
+genshin12.skill.shared.power_desc=Damage: %.1f
+genshin12.skill.shared.range_desc=Radius: %.1f block
+genshin12.skill.shared.duration_desc=Duration: %.1fs
+genshin12.skill.shared.error_desc=Error: +-%d
+genshin12.skill.shared.level_desc=Level: %d/%d
+genshin12.skill.shared.name_format=%s
+genshin12.skill.shared.name_format_with_lv=%s Lv.%s %s
+genshin12.skill.shared.lv_max=[MAX]
 
-idealland.gua_enhance_list.desc=Earth %s Thunder %s\nWater %s Mountain %s\nLake %s Fire %s\nWind%s Sky%s
-idealland.gua_not_applicable.desc=-
+genshin12.gua_enhance_list.desc=Earth %s Thunder %s\nWater %s Mountain %s\nLake %s Fire %s\nWind%s Sky%s
+genshin12.gua_not_applicable.desc=-
 
-idealland.kill_count.desc=Kills: %d
+genshin12.kill_count.desc=Kills: %d
 
-idealland.skill.msg.cool_down=Cooling Down.
+genshin12.skill.msg.cool_down=Cooling Down.
 
 #Death
 #examples

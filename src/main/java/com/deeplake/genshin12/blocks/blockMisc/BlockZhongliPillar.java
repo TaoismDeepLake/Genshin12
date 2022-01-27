@@ -10,6 +10,8 @@ import net.minecraft.world.IBlockAccess;
 
 import javax.annotation.Nullable;
 
+import static com.deeplake.genshin12.init.ModConfig.DebugConf.TEST_1;
+
 public class BlockZhongliPillar extends BlockBase {
 
     static final float UNIT = 0.31f;
@@ -26,12 +28,12 @@ public class BlockZhongliPillar extends BlockBase {
 
     @Override
     public boolean isFullCube(IBlockState state) {
-        return super.isFullCube(state);
+        return false;
     }
 
     @Override
     public boolean causesSuffocation(IBlockState state) {
-        return super.causesSuffocation(state);
+        return false;
     }
 
     @Nullable

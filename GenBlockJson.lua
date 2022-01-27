@@ -59,10 +59,10 @@ local function GenItem(_typeName, _itemName)
 	outFile:close();
 end
 
- GenItem("misc", "idl_ai_terminal");
+ GenItem("skill", "zhongli_e");
 
 
---GenBlock("idl_glass");
+--GenBlock("zl_pillar");
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");

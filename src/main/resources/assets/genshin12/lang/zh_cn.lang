@@ -1,38 +1,15 @@
 # PARSE_ESCAPES
-itemGroup.ideallandMiscTab=理境大厅
-
 generator.TYPE_ONE=Type One;
 generator.TYPE_TWO=Type Two;
 
-# config
-configgui.idealland.category.Menu0.GeneralConf=综合选项
-idealland.conf.general.welcome=欢迎词
-
-# Enchantments
-enchantment.idealland.test_enchantment=测试期
-
-idealland.moroon_incoming_herald=[IDL][注意] 摩隆密切关注着你的战斗。
-idealland.msg.notice_meter_report=[IDL]摩隆注意度： %d, 入侵准备: %d/%d, 测量误差:%d
-
-# Potions
-idealland.potion.deadly=致死
-idealland.potion.zen_heart=功德无量
-
-
 entity.moroon_tainter.name=摩隆 拓荒者
 
-tile.idealland_light_basic.name=理境灯
-
-tile.test.name=理境测试块
-
-idealland.food.shared.xp_desc=含有经验: %d
-# Items
-idealland.gua_enhance_no_free.desc=可用铁砧镶嵌卦象
-idealland.gua_enhance_free.desc=徒手卦象镶嵌槽: %d
+# Blocks
+tile.zl_pillar.name=岩脊
 
 # Items
-idealland.gua_enhance_total.desc=卦象强化: %d
-idealland.shared.press_shift=长按SHIFT查看详情
+item.zhongli_e.name=地心
+item.zhongli_e.desc=山脉中、大地上、磐石间，都遍布着岩之力。能自如驱动这股力量的人却少之又少。
 
 fading.duration.desc=%d 秒后消失。
 
@@ -49,19 +26,37 @@ item.p2w_goblet.desc=氪金让你变强，强到骨子里。（塞金子升级�
 item.p2w_goblet.contain.desc=融解 %d 金
 item.p2w_goblet.player.desc=黄金之力：等级%d （%d/%d 金）
 
-idealland.skill.shared.cool_down_desc=冷却: %.1f秒
-idealland.skill.shared.power_desc=伤害: %.1f
-idealland.skill.shared.range_desc=半径: %.1f 格
-idealland.skill.shared.duration_desc=持续: %.1f秒
-idealland.skill.shared.error_desc=误差: +-%d
-idealland.skill.shared.level_desc=等级: %d/%d
-idealland.skill.shared.name_format=%s
-idealland.skill.shared.name_format_with_lv=%s (%s级) %s
-idealland.skill.shared.lv_max=[满]
-
-idealland.gua_enhance_list.desc=地%s 雷%s 水%s 山%s \n 泽%s 火%s 风%s 天%s
-idealland.gua_not_applicable.desc=-
-
-idealland.kill_count.desc=杀敌数: %d
-
-idealland.skill.msg.cool_down=冷却中
+# config
+configgui.genshin12.category.Menu0.GeneralConf=综合选项
+# Enchantments
+enchantment.genshin12.test_enchantment=测试期
+genshin12.conf.general.welcome=欢迎词
+genshin12.food.shared.xp_desc=含有经验: %d
+genshin12.gua_enhance_free.desc=徒手卦象镶嵌槽: %d
+genshin12.gua_enhance_list.desc=地%s 雷%s 水%s 山%s \n 泽%s 火%s 风%s 天%s
+# Items
+genshin12.gua_enhance_no_free.desc=可用铁砧镶嵌卦象
+# Items
+genshin12.gua_enhance_total.desc=卦象强化: %d
+genshin12.gua_not_applicable.desc=-
+genshin12.kill_count.desc=杀敌数: %d
+genshin12.moroon_incoming_herald=[IDL][注意] 摩隆密切关注着你的战斗。
+genshin12.msg.notice_meter_report=[IDL]摩隆注意度： %d, 入侵准备: %d/%d, 测量误差:%d
+# Potions
+genshin12.potion.deadly=致死
+genshin12.potion.zen_heart=功德无量
+genshin12.shared.press_shift=长按SHIFT查看详情
+genshin12.skill.msg.cool_down=冷却中
+genshin12.skill.shared.cool_down_desc=冷却: %.1f秒
+genshin12.skill.shared.duration_desc=持续: %.1f秒
+genshin12.skill.shared.error_desc=误差: +-%d
+genshin12.skill.shared.level_desc=等级: %d/%d
+genshin12.skill.shared.lv_max=[满]
+genshin12.skill.shared.name_format=%s
+genshin12.skill.shared.name_format_with_lv=%s (%s级) %s
+genshin12.skill.shared.power_desc=伤害: %.1f
+genshin12.skill.shared.range_desc=半径: %.1f 格
+# PARSE_ESCAPES
+itemGroup.genshin12MiscTab=理境大厅
+tile.genshin12_light_basic.name=理境灯
+tile.test.name=理境测试块

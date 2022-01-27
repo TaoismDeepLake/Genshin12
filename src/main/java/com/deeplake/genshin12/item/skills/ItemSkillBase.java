@@ -121,6 +121,13 @@ public class ItemSkillBase extends ItemBase {
         return this;
     }
 
+    //starts from 1
+    public int getLevel(ItemStack stack)
+    {
+        return IDLSkillNBT.getLevel(stack);
+    }
+
+
     public float getRange(ItemStack stack)
     {
         return (IDLSkillNBT.getLevel(stack) - 1) * range_per_level + base_range;

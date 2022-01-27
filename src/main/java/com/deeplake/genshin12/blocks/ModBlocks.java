@@ -20,5 +20,5 @@ public class ModBlocks {
 	 */
 
 
-	public static final Block GRID_BLOCK_1 = new BlockZhongliPillar("test_pillar", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
+	public static final Block ZL_PILLAR = new BlockZhongliPillar("zl_pillar", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
 }

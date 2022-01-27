@@ -39,6 +39,7 @@ public class ModConfig {
     public static final DebugConf DEBUG_CONF = new DebugConf();
 
     public static class DebugConf {
+        public static boolean TEST_1 = false;
 
     }
 
