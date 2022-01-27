@@ -7,6 +7,8 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import static com.deeplake.genshin12.util.CommonDef.TICK_PER_SECOND;
+
 
 @Config(modid = Reference.MOD_ID, category = "")
 public class ModConfig {
@@ -39,7 +41,11 @@ public class ModConfig {
     public static final DebugConf DEBUG_CONF = new DebugConf();
 
     public static class DebugConf {
-        public static boolean TEST_1 = false;
+        public boolean TEST_1 = false;
+
+        public int PARTICLE_COUNT = 40;
+        public float PARTICLE_SPEED = 1f/TICK_PER_SECOND;
+        public float PILLAR_LIFE = 30f;
 
     }
 

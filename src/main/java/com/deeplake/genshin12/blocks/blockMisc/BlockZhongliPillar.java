@@ -1,18 +1,20 @@
 package com.deeplake.genshin12.blocks.blockMisc;
 
 import com.deeplake.genshin12.blocks.BlockBase;
+import com.deeplake.genshin12.blocks.tileEntity.genshin.TEZhongliPillar;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-import static com.deeplake.genshin12.init.ModConfig.DebugConf.TEST_1;
-
-public class BlockZhongliPillar extends BlockBase {
+public class BlockZhongliPillar extends BlockBase implements ITileEntityProvider {
 
     static final float UNIT = 0.31f;
     public static final AxisAlignedBB AABB_Y = new AxisAlignedBB(UNIT, 0, UNIT, 1-UNIT, 1, 1-UNIT);
@@ -50,5 +52,11 @@ public class BlockZhongliPillar extends BlockBase {
     @Override
     public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
         return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TEZhongliPillar();
     }
 }

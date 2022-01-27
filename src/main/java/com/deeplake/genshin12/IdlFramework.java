@@ -1,5 +1,6 @@
 package com.deeplake.genshin12;
 
+import com.deeplake.genshin12.blocks.tileEntity.genshin.TEZhongliPillar;
 import com.deeplake.genshin12.gui.ModGuiElementLoader;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.init.ModRecipes;
@@ -11,6 +12,7 @@ import com.deeplake.genshin12.network.NetworkHandler;
 import com.deeplake.genshin12.proxy.ProxyBase;
 import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.Reference;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -19,6 +21,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Logger;
 
 import static com.deeplake.genshin12.init.RegistryHandler.initRegistries;
@@ -106,7 +109,7 @@ public class IdlFramework {
     }
 
     private static void RegisterTileEntity() {
-//        GameRegistry.registerTileEntity(TileEntityDeBoomOrb.class, new ResourceLocation(MODID, "deboom_orb_basic"));
+        GameRegistry.registerTileEntity(TEZhongliPillar.class, new ResourceLocation(MODID, "te_zhongli_pillar"));
 
         //GameRegistry.registerTileEntity(TileEntityBuilderFarm.class, new ResourceLocation(MODID, "builder_farm_basic"));
         //GameRegistry.registerTileEntity(TileEntityBuilderOne.class, new ResourceLocation(MODID, "builder.builder_one"));

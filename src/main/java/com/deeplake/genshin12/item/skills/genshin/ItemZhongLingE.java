@@ -1,6 +1,7 @@
-package com.deeplake.genshin12.item.skills;
+package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.blocks.ModBlocks;
+import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.EntityUtil;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,7 +18,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemZhongLingE extends ItemSkillBase {
+public class ItemZhongLingE extends ItemGenshinSkillBase {
 
     float distance = 2f;
     int ySeekRange = 4;
@@ -69,7 +70,7 @@ public class ItemZhongLingE extends ItemSkillBase {
 
             dealDamage(worldIn, targetPosF, caster, stack);
 //            caster.playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2f, 0.75f);
-            worldIn.playSound(null, targetPosF.x, targetPosF.y, targetPosF.z, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 2f, 0.75f);
+            worldIn.playSound(null, targetPosF.x, targetPosF.y, targetPosF.z, SoundEvents.BLOCK_STONE_FALL, SoundCategory.BLOCKS, 8f, 0.75f);
         }
 
         return super.tryCast(worldIn, caster, handIn);

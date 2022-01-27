@@ -31,6 +31,14 @@ tile.zl_pillar.name=Zhongli Pillar Block
 item.zhongli_e.name=Dominus Lapidis
 item.zhongli_e.desc=Every mountain, rock and inch of land is filled with the power of Geo, but those who can wield such powers freely are few and far between.
 
+item.zhongli_e.speech.1=Rise!
+item.zhongli_e.speech.2=Quake!
+item.zhongli_e.speech.3=Crumble!
+
+item.zhongli_e.speech.long.1=Gather.
+item.zhongli_e.speech.long.2=Stabilize.
+item.zhongli_e.speech.long.3=Solidify.
+
 genshin12.food.shared.xp_desc=Grants XP: %d
 genshin12.gua_enhance_no_free.desc=Use anvil to socket Gua(Elemental)
 genshin12.gua_enhance_free.desc=Free Gua Sockets(Direct craft): %d
@@ -70,6 +78,8 @@ genshin12.gua_not_applicable.desc=-
 genshin12.kill_count.desc=Kills: %d
 
 genshin12.skill.msg.cool_down=Cooling Down.
+
+
 
 #Death
 #examples

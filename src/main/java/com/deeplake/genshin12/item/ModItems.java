@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item;
 
-import com.deeplake.genshin12.item.skills.ItemZhongLingE;
+import com.deeplake.genshin12.item.skills.genshin.ItemZhongLingE;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
