@@ -1,19 +1,25 @@
 package com.deeplake.genshin12.potion;
 
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.buff.BasePotion;
 import com.deeplake.genshin12.util.EntityUtil;
 import com.deeplake.genshin12.util.Reference;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Collection;
 
@@ -34,6 +40,20 @@ public class PotionEventHandler {
         }
 
         evt.setAmount(evt.getAmount() / (1 + resistance));
+    }
+
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void onRender(RenderLivingEvent.Pre event)
+    {
+        EntityLivingBase livingBase = event.getEntity();
+        if (EntityUtil.getAttr(livingBase, SharedMonsterAttributes.MOVEMENT_SPEED) < 0.0001f)
+        {
+            GlStateManager.color(ModConfig.DEBUG_CONF.PERTIFY_R,
+                    ModConfig.DEBUG_CONF.PERTIFY_G,
+                    ModConfig.DEBUG_CONF.PERTIFY_B);
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -167,17 +187,6 @@ public class PotionEventHandler {
             Entity trueSource = evt.getOriginalAttacker();
             if (trueSource instanceof EntityLivingBase){
                 EntityLivingBase sourceCreature = (EntityLivingBase)trueSource;
-                if (sourceCreature.isEntityUndead())
-                {
-//                    PotionEffect curBuff = hurtOne.getActivePotionEffect(ZEN_HEART);
-//                    if (curBuff != null) {
-//                        PotionEffect sourceBuff = sourceCreature.getActivePotionEffect(ZEN_HEART);
-//                        if (sourceBuff == null) {//prevent dead loop
-//                            sourceCreature.knockBack(hurtOne, evt.getStrength(), -evt.getRatioX(), -evt.getRatioZ());
-//                        }
-//                        evt.setCanceled(true);
-//                    }
-                }
             }
 
             //KB Reduction

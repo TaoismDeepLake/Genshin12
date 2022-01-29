@@ -4,12 +4,16 @@ import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.EntityUtil;
+import com.deeplake.genshin12.util.ModSoundHandler;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -24,12 +28,22 @@ public class ItemZhongliQ extends ItemGenshinSkillBase {
     public ItemZhongliQ(String name) {
         super(name);
         setCD(12, 0f);
-        setDura(3.1f, 0.1f);
+//        setDura(3.1f, 0.1f);
+        setDura(8, 0.1f);
     }
 
     @Override
     public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
-        dealDamage(worldIn, livingBase.getPositionVector(), livingBase, stack);
+        if (worldIn.isRemote)
+        {
+            worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, livingBase.posX, livingBase.posY, livingBase.posZ, 0,0,0);
+
+        } else {
+            dealDamage(worldIn, livingBase.getPositionVector(), livingBase, stack);
+            worldIn.playSound(null, livingBase.getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 3f, 0.6f);
+            worldIn.playSound(null, livingBase.getPosition(), ModSoundHandler.ZHONGLI_Q, SoundCategory.PLAYERS, 1f, 1f);
+
+        }
         return super.applyCast(worldIn, livingBase, stack, slot);
     }
 

@@ -5,6 +5,7 @@ import com.deeplake.genshin12.potion.buff.BaseSimplePotion;
 import com.deeplake.genshin12.potion.buff.PotionJadeShield;
 import com.deeplake.genshin12.potion.buff.PotionPetrification;
 import com.deeplake.genshin12.util.Reference;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -22,8 +23,8 @@ public class ModPotions {
 
 
     public static final PotionJadeShield JADE_SHIELD = new PotionJadeShield(false, 0x333333, "jade_shield", 0);
-    public static final Potion JADE_SHIELD_DEBUFF = new BaseSimplePotion(false, 0xcccc00, "jade_shield_debuff", 1);
-    public static final Potion ZL_PETRIFY = new PotionPetrification(false, 0x555533, "petrification", 2);
+    public static final Potion JADE_SHIELD_DEBUFF = new BaseSimplePotion(true, 0xcccc00, "jade_shield_debuff", 1);
+    public static final Potion ZL_PETRIFY = new PotionPetrification(true, 0x555533, "petrification", 2).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "0fcbf9d1-8028-4241-a38e-2fb86ebb8077", -1f, 2);
 
 
     @Nullable

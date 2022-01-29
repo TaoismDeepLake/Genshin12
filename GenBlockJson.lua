@@ -59,7 +59,7 @@ local function GenItem(_typeName, _itemName)
 	outFile:close();
 end
 
- GenItem("skill", "zhongli_e");
+ GenItem("skill", "zhongli_q");
 
 
 --GenBlock("zl_pillar");

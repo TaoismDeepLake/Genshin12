@@ -18,6 +18,7 @@ public class PotionPetrification extends BaseSimplePotion
 
     public void removeAttributesModifiersFromEntity(EntityLivingBase entityLivingBaseIn, AbstractAttributeMap attributeMapIn, int amplifier)
     {
+        super.removeAttributesModifiersFromEntity(entityLivingBaseIn, attributeMapIn, amplifier);
         if (entityLivingBaseIn instanceof EntityLiving)
         {
             EntityLiving living = (EntityLiving) entityLivingBaseIn;
@@ -32,7 +33,6 @@ public class PotionPetrification extends BaseSimplePotion
 
             ((EntityLiving) entityLivingBaseIn).tasks.addTask(0, new EntityAIPerification());
         }
-        super.removeAttributesModifiersFromEntity(entityLivingBaseIn, attributeMapIn, amplifier);
     }
 
     public void applyAttributesModifiersToEntity(EntityLivingBase entityLivingBaseIn, AbstractAttributeMap attributeMapIn, int amplifier)

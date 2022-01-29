@@ -87,7 +87,8 @@ genshin12.kill_count.desc=Kills: %d
 
 genshin12.skill.msg.cool_down=Cooling Down.
 
-
+#sound
+sound.skill.zhongli.q=[BGM:Rex Incognito]
 
 #Death
 #examples

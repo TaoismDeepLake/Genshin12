@@ -17,6 +17,7 @@ public class PotionJadeShield extends BasePotion {
     float range = 3f;
     public PotionJadeShield(boolean isBadEffectIn, int liquidColorIn, String name, int icon) {
         super(isBadEffectIn, liquidColorIn, name, icon);
+        setKBResistance(1f, 0f);
     }
 
     @Override
