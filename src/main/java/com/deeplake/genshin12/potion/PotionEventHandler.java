@@ -24,7 +24,6 @@ public class PotionEventHandler {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void handleResistance(LivingHurtEvent evt) {
-        World world = evt.getEntity().getEntityWorld();
         EntityLivingBase hurtOne = evt.getEntityLiving();
 
         float resistance = 0f;
@@ -34,7 +33,7 @@ public class PotionEventHandler {
             resistance -= 0.2f;
         }
 
-        evt.setAmount(evt.getAmount() / resistance);
+        evt.setAmount(evt.getAmount() / (1 + resistance));
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

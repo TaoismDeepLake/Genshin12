@@ -30,23 +30,25 @@ public class PotionJadeShield extends BasePotion {
         World world = living.getEntityWorld();
         if (world.isRemote)
         {
-            float theta = 0;
-            float thetaMax = (float) (Math.PI * 2);
+            float entityYaw = living.rotationYaw * CommonDef.DEG_TO_RAD;
+
+            float theta = entityYaw;
+            float thetaMax = (float) (Math.PI * 2) + entityYaw;
             float yBase = 1f;
             float yMaxDelta = 0.5f;
             float radius = 0.5f;
 
-            for (theta = living.rotationYaw * CommonDef.DEG_TO_RAD; theta < thetaMax; theta += thetaMax / 16f)
+            for (; theta < thetaMax; theta += thetaMax / 16f)
             {
                 double x = (living.posX + radius * Math.cos(theta));
-                double y = (living.posY + yBase + yMaxDelta * Math.cos(theta));
-                double y2 = (living.posY + yBase - yMaxDelta * Math.cos(theta));
+                double y = (living.posY + yBase + yMaxDelta * Math.cos(theta+entityYaw));
+                double y2 = (living.posY + yBase - yMaxDelta * Math.cos(theta+entityYaw));
                 double z = (living.posZ + radius * Math.sin(theta));
 
-                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y,z,0,0,0);
-                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y2,z,0,0,0);
-//                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y,z,1.0f,0.9f,0.6f);
-//                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y2,z,1.0f,0.9f,0.6f);
+//                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y,z,0,0,0);
+//                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y2,z,0,0,0);
+                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y,z,1.0f,0.9f,0.6f);
+                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y2,z,1.0f,0.9f,0.6f);
             }
         }
         else {

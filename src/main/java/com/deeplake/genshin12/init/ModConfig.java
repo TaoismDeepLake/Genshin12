@@ -49,6 +49,9 @@ public class ModConfig {
 
         public boolean DEBUG_MODE = false;
 
+        public float DMG_GENSHIN_TO_MC = 1f;
+        public float DMG_ATK_PERCENT_GENSHIN_TO_MC = 2f; //100% dmg
+
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")

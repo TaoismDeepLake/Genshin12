@@ -114,7 +114,6 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
             {
                 caster.setAbsorptionAmount(getShieldAmount(getLevel(stack), caster.getMaxHealth()));
                 EntityUtil.ApplyBuff(caster, ModPotions.JADE_SHIELD, 0, 20f);
-                EntityUtil.ApplyBuff(caster, MobEffects.WATER_BREATHING, 0, 3f);
             }
         }
         else {
