@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.util;
 
 import com.deeplake.genshin12.item.IGuaEnhance;
+import com.deeplake.genshin12.item.ItemAdaptingBase;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.client.resources.I18n;
@@ -54,7 +55,7 @@ public class IDLSkillNBT {
 //        }
 //    }
 
-//    public void writeToBasic(NBTTagCompound tag)
+    //    public void writeToBasic(NBTTagCompound tag)
 //    {
 //        if (tag == null)
 //        {
@@ -175,7 +176,7 @@ public class IDLSkillNBT {
 
     @SideOnly(Side.CLIENT)
     public static void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag,
-                                       boolean shiftToShowDesc, boolean showGuaSocketDesc, boolean use_flavor, String mainDescOrFlavor) {
+                                      boolean shiftToShowDesc, boolean showGuaSocketDesc, boolean use_flavor, String mainDescOrFlavor) {
 
         boolean shiftPressed = !shiftToShowDesc || CommonFunctions.isShiftPressed();
         if (shiftPressed)
@@ -191,7 +192,7 @@ public class IDLSkillNBT {
                 tooltip.add(I18n.format(GUA_TOTAL_SOCKET_DESC, IDLSkillNBT.GetGuaEnhanceTotal(stack)));
                 if (guaTotal > 0)
                 {
-                    tooltip.add(I18n.format("genshin12.gua_enhance_list.desc", GetGuaEnhanceString(stack, 0),
+                    tooltip.add(I18n.format("idealland.gua_enhance_list.desc", GetGuaEnhanceString(stack, 0),
                             GetGuaEnhanceString(stack, 1),
                             GetGuaEnhanceString(stack, 2),
                             GetGuaEnhanceString(stack, 3),
@@ -212,7 +213,7 @@ public class IDLSkillNBT {
             }
         }
         else {
-            tooltip.add(TextFormatting.AQUA +  I18n.format("genshin12.shared.press_shift"));
+            tooltip.add(TextFormatting.AQUA +  I18n.format("idealland.shared.press_shift"));
             if (use_flavor)
             {
                 tooltip.add(TextFormatting.ITALIC +  mainDescOrFlavor);
@@ -220,12 +221,22 @@ public class IDLSkillNBT {
         }
     }
 
+    public static int getXP(ItemStack stack)
+    {
+        return GetInt(stack, LV_EXP);
+    }
+
+    public static void setXP(ItemStack stack, int val)
+    {
+        SetInt(stack, LV_EXP, val);
+    }
+
     public static int getLevel(ItemStack stack)
     {
-        if (!(stack.getItem() instanceof ItemSkillBase)) {
+        if (!(stack.getItem() instanceof ItemAdaptingBase)) {
             return 0;
         }
-        ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+        ItemAdaptingBase skillBase = (ItemAdaptingBase) stack.getItem();
 
         int level = GetInt(stack, LEVEL_TAG);
 

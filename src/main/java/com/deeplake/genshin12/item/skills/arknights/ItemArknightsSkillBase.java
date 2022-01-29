@@ -7,6 +7,7 @@ import com.deeplake.genshin12.util.IDLSkillNBT;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -163,8 +164,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
     }
 
     @Override
-    public boolean canCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn) {
-        ItemStack stack = livingBase.getHeldItem(handIn);
+    public boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot handIn) {
 
         boolean casting = IDLSkillNBT.IsCasting(stack);
         if (casting)
@@ -177,7 +177,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
 
         if (charge >= curMaxCharge)
         {
-            return super.canCast(worldIn, livingBase, handIn);
+            return super.canCast(worldIn, livingBase, stack, handIn);
         }
         else {
             return false;
@@ -185,15 +185,12 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
     }
 
     @Override
-    public boolean tryCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn) {
-
-        ItemStack stack = livingBase.getHeldItem(handIn);
+    public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
         IDLSkillNBT.SetCasting(stack, true);
         IDLSkillNBT.SetCharge(stack, 0);
         IDLSkillNBT.SetDura(stack, getDurationMax(stack));
         trySayDialogue(livingBase, stack);
-
-        return true;
+        return super.applyCast(worldIn, livingBase, stack, slot);
     }
 
     @Override

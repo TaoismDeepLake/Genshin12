@@ -5,6 +5,8 @@ import com.deeplake.genshin12.util.CommonFunctions;
 import com.sun.istack.internal.NotNull;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -20,12 +22,12 @@ public class ItemGenshinSkillBase extends ItemSkillBase {
     }
 
     @Override
-    public boolean tryCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn) {
+    public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
         if (livingBase instanceof EntityPlayer)
         {
             talkShort((EntityPlayer) livingBase);
         }
-        return super.tryCast(worldIn, livingBase, handIn);
+        return super.applyCast(worldIn, livingBase, stack, slot);
     }
 
     void talkShort(@NotNull EntityPlayer player)

@@ -4,22 +4,22 @@ import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 
-public class PacketTest implements IMessage {
+public class PacketCast implements IMessage {
 
     int testVal;
 
-    public PacketTest() {
+    public PacketCast() {
     }
 
 
-    public PacketTest(int testVal) {
+    public PacketCast(int testVal) {
         this.testVal = testVal;
     }
 
@@ -39,16 +39,16 @@ public class PacketTest implements IMessage {
 
     }
 
-    public static class Handler implements IMessageHandler<PacketTest, IMessage> {
-        public IMessage onMessage(final PacketTest msg, final MessageContext ctx) {
+    public static class Handler implements IMessageHandler<PacketCast, IMessage> {
+        public IMessage onMessage(final PacketCast msg, final MessageContext ctx) {
             EntityPlayerMP player = ctx.getServerHandler().player;
 
             player.getServerWorld().addScheduledTask(() -> {
                 IdlFramework.Log("Packet:%d", msg.testVal);
 
-                EnumHand hand = EnumHand.values()[msg.testVal];
+                EntityEquipmentSlot slot = EntityEquipmentSlot.values()[msg.testVal];
 
-                ItemStack item = player.getHeldItem(hand);
+                ItemStack item = player.getItemStackFromSlot(slot);
                 if(item.isEmpty())
                 {
                     IdlFramework.LogWarning("Trying to cast an empty item");
@@ -57,9 +57,9 @@ public class PacketTest implements IMessage {
                 if(item.getItem() instanceof ItemSkillBase)
                 {
                     ItemSkillBase skill = (ItemSkillBase) item.getItem();
-                    if (skill.canCast(player.world, player, hand))
+                    if (skill.canCast(player.world, player, item, slot))
                     {
-                        skill.tryCast(player.world, player, hand);
+                        skill.applyCast(player.world, player, item, slot );
                     }
                 }
             });

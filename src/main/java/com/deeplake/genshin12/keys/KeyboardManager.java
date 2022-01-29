@@ -1,8 +1,20 @@
 package com.deeplake.genshin12.keys;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.item.ItemBase;
+import com.deeplake.genshin12.item.skills.ICastable;
+import com.deeplake.genshin12.network.NetworkHandler;
+import com.deeplake.genshin12.network.protocols.PacketCast;
+import com.deeplake.genshin12.network.protocols.PacketMouseFire;
 import com.deeplake.genshin12.proxy.ClientProxy;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -17,45 +29,84 @@ public class KeyboardManager {
 
     public static void init() {
         for (KeyBinding key:
-             ClientProxy.KEY_BINDINGS) {
+                ClientProxy.KEY_BINDINGS) {
             ClientRegistry.registerKeyBinding(key);
         }
         IdlFramework.Log("Registered %d keys", ClientProxy.KEY_BINDINGS.size());
     }
 
     @SideOnly(Side.CLIENT)
+    @SubscribeEvent(receiveCanceled = true)
+    public static void OnMouse(MouseEvent ev)
+    {
+        Minecraft mc = Minecraft.getMinecraft();
+
+        //0 = left
+        //1 = right
+
+        if (ev.getButton() != 0 || !ev.isButtonstate())
+            return;
+
+        EntityPlayerSP player = mc.player;
+        if(player == null) return;
+        if(mc.isGamePaused()) return;
+        if(!mc.inGameHasFocus) return;
+        if(mc.currentScreen != null) return;
+
+        NetworkHandler.SendToServer(new PacketMouseFire());
+
+        for (EnumHand hand:
+                EnumHand.values()
+        ) {
+            ItemStack item = player.getHeldItem(hand);
+            if(item.getItem() instanceof ItemBase) {
+                ((ItemBase) item.getItem()).onMouseFire(player);
+            }
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    static void checkCast(boolean cast, EntityEquipmentSlot slot)
+    {
+        Minecraft mc = Minecraft.getMinecraft();
+        if (cast) {
+            EntityPlayerSP player = mc.player;
+
+            IdlFramework.Log("pressed key cast :" + slot);
+
+            ItemStack item = player.getItemStackFromSlot(slot);
+            if(item.isEmpty())
+            {
+                IdlFramework.LogWarning("Trying to cast an empty item");
+            }
+
+            if(item.getItem() instanceof ICastable)
+            {
+                ICastable skill = (ICastable) item.getItem();
+                if (skill.canCast(player.world, player, item, slot))
+                {
+                    NetworkHandler.SendToServer(new PacketCast(slot.ordinal()));
+                    skill.applyCast(player.world, player, item, slot);
+                }
+                else {
+                    player.playSound(SoundEvents.UI_BUTTON_CLICK, 1f, 0.5f);
+                }
+            }
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void onKeyPressed(InputEvent.KeyInputEvent event) {
-//        if (ClientProxy.CAST_OFFHAND.isPressed() || ClientProxy.CAST_MAINHAND.isPressed()) {
-//
-//            Minecraft mc = Minecraft.getMinecraft();
-//            EntityPlayerSP player = mc.player;
-//            if(player == null) return;
-//            if(mc.isGamePaused()) return;
-//            if(!mc.inGameHasFocus) return;
-//            if(mc.currentScreen != null) return;
-//
-//            EnumHand hand = ClientProxy.CAST_OFFHAND.isKeyDown() ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
-//            IdlFramework.Log("pressed key cast :" + hand);
-//
-//            ItemStack item = player.getHeldItem(hand);
-//            if(item.isEmpty())
-//            {
-//                IdlFramework.LogWarning("Trying to cast an empty item");
-//            }
-//
-//            if(item.getItem() instanceof ItemSkillBase)
-//            {
-//                ItemSkillBase skill = (ItemSkillBase) item.getItem();
-//                if (skill.canCast(player.world, player, hand))
-//                {
-//                    NetworkHandler.SendToServer(new PacketTest(hand.ordinal()));
-//                }
-//
-//            }
-//
-//            //mc.playerController.updateController();
-//            //                    NetworkManager.channel.sendToServer(new C2SSpecialAction((byte) 1));
-//        }
+        Minecraft mc = Minecraft.getMinecraft();
+        EntityPlayerSP player = mc.player;
+        if(player == null) return;
+        if(mc.isGamePaused()) return;
+        if(!mc.inGameHasFocus) return;
+        if(mc.currentScreen != null) return;
+
+        checkCast(ClientProxy.CAST_HELMET.isPressed(), EntityEquipmentSlot.HEAD);
+        checkCast(ClientProxy.CAST_MAINHAND.isPressed(), EntityEquipmentSlot.MAINHAND);
+        checkCast(ClientProxy.CAST_OFFHAND.isPressed(), EntityEquipmentSlot.OFFHAND);
     }
 }

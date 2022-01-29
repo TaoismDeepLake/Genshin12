@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
@@ -34,11 +35,9 @@ public class ItemZhongLingE extends ItemGenshinSkillBase {
     }
 
     @Override
-    public boolean tryCast(World worldIn, EntityLivingBase caster, EnumHand handIn) {
+    public boolean applyCast(World worldIn, EntityLivingBase caster, ItemStack stack, EntityEquipmentSlot slot) {
         if (!worldIn.isRemote)
         {
-            ItemStack stack = caster.getHeldItem(handIn);
-
             Vec3d lookVecRaw = caster.getLookVec();
             Vec3d lockVecProjY = new Vec3d(lookVecRaw.x, 0, lookVecRaw.z).normalize();
             Vec3d targetPosF = caster.getPositionVector().add(lockVecProjY.scale(distance));
@@ -72,8 +71,7 @@ public class ItemZhongLingE extends ItemGenshinSkillBase {
 //            caster.playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2f, 0.75f);
             worldIn.playSound(null, targetPosF.x, targetPosF.y, targetPosF.z, SoundEvents.BLOCK_STONE_FALL, SoundCategory.BLOCKS, 8f, 0.75f);
         }
-
-        return super.tryCast(worldIn, caster, handIn);
+        return super.applyCast(worldIn, caster, stack, slot);
     }
 
     void dealDamage(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack)

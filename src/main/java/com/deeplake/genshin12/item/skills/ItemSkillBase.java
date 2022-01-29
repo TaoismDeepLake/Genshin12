@@ -2,6 +2,7 @@ package com.deeplake.genshin12.item.skills;
 
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.init.ModCreativeTab;
+import com.deeplake.genshin12.item.ItemAdaptingBase;
 import com.deeplake.genshin12.item.ItemBase;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.IDLSkillNBT;
@@ -12,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,8 +29,7 @@ import java.util.List;
 
 import static com.deeplake.genshin12.util.CommonDef.G_SKY;
 import static com.deeplake.genshin12.util.CommonDef.TICK_PER_SECOND;
-import static com.deeplake.genshin12.util.CommonFunctions.SendMsgToPlayer;
-import static com.deeplake.genshin12.util.CommonFunctions.isShiftPressed;
+import static com.deeplake.genshin12.util.CommonFunctions.*;
 import static com.deeplake.genshin12.util.MessageDef.getSkillCastKey;
 
 enum SKILL_MSG_TYPE
@@ -38,7 +39,7 @@ enum SKILL_MSG_TYPE
 }
 
 
-public class ItemSkillBase extends ItemBase {
+public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
     public boolean isMartial = false;
 
     public float cool_down = 1f;
@@ -80,11 +81,21 @@ public class ItemSkillBase extends ItemBase {
         setMaxStackSize(1);
         setNoRepair();
         setCreativeTab(ModCreativeTab.IDL_MISC);
+        offHandCast = true;
+        mainHandCast = true;
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return super.getRarity(stack);
+    }
+
+    public ItemSkillBase setPassive()
+    {
+        cannotMouseCast = true;
+        offHandCast = false;
+        mainHandCast = false;
+        return this;
     }
 
     public ItemSkillBase setMaxLevel(int maxLevel)
@@ -207,9 +218,9 @@ public class ItemSkillBase extends ItemBase {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if (isStackReady(playerIn, stack))
         {
-            if (canCast(worldIn, playerIn, handIn))
+            if (canCast(worldIn, playerIn, stack, slotFromHand(handIn), !worldIn.isRemote))
             {
-                tryCast(worldIn, playerIn, handIn);
+                applyCast(worldIn, playerIn, stack, slotFromHand(handIn));
                 activateCoolDown(playerIn, stack);
                 return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
             }
@@ -222,20 +233,46 @@ public class ItemSkillBase extends ItemBase {
         return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
     }
 
-    public boolean canCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn)
-    {
-        if (livingBase instanceof EntityPlayer)
-        {
-            isStackReady((EntityPlayer) livingBase, livingBase.getHeldItem(handIn));
-        }
-        return true;
+    //This will just check, will not give error message. use hasErrorMessage for hinting.
+    @Override
+    public boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
+        return canCast(worldIn, livingBase, stack, slot, false);
     }
 
-    public boolean tryCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn)
+    public boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot, boolean hintErrorMsg) {
+        if (livingBase instanceof EntityPlayer)
+        {
+            switch (slot)
+            {
+                case MAINHAND:
+                    if (!mainHandCast)
+                        return false;
+                    break;
+                case OFFHAND:
+                    if (!offHandCast)
+                        return false;
+                    break;
+                case FEET:
+                    break;
+                case LEGS:
+                    break;
+                case CHEST:
+                    break;
+                case HEAD:
+                    break;
+                default:
+                    IdlFramework.LogWarning("Cast error", new IllegalStateException("Unexpected value: " + slot)); ;
+            }
+            return isStackReady((EntityPlayer) livingBase, stack);
+        }
+        return false;
+    }
+
+    public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot)
     {
         if (livingBase instanceof EntityPlayer)
         {
-            activateCoolDown((EntityPlayer) livingBase, livingBase.getHeldItem(handIn));
+            activateCoolDown((EntityPlayer) livingBase, stack);
         }
         return true;
     }
@@ -245,10 +282,10 @@ public class ItemSkillBase extends ItemBase {
         World world = caster.world;
         boolean casterIsPlayer = caster instanceof EntityPlayer;
         if (!casterIsPlayer || isStackReady((EntityPlayer) caster, stack)) {
-            if (canCast(world, caster, hand)) {
+            if (canCast(world, caster, stack, slotFromHand(hand))) {
                 if (hand == EnumHand.MAIN_HAND) {
                     if (mainHandCast) {
-                        return tryCast(caster.world, caster, hand);
+                        return applyCast(caster.world, caster, stack, slotFromHand(hand));
                     } else  {
                         if (casterIsPlayer)
                         {
@@ -260,7 +297,7 @@ public class ItemSkillBase extends ItemBase {
                     }
                 } else if (hand == EnumHand.OFF_HAND)
                     if (offHandCast) {
-                        return tryCast(caster.world, caster, hand);
+                        return applyCast(caster.world, caster, stack, slotFromHand(hand));
                     }else {
                         if (casterIsPlayer)
                         {

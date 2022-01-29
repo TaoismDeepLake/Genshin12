@@ -27,7 +27,7 @@ public class ItemNanoMender extends ItemBase {
                 ItemStack itemstack1 = playerIn.getItemStackFromSlot(slot);
                 if (!itemstack1.isEmpty() && itemstack1.isItemDamaged() && !(itemstack1.getItem() instanceof ItemNanoMender)) {
                     //Fix Dura
-                    CommonFunctions.RepairItem(itemstack1, 1);
+                    CommonFunctions.repairItem(itemstack1, 1);
                     stack.damageItem(1, playerIn);
                     break;
                 }
