@@ -37,6 +37,14 @@ item.zhongli_e.speech.long.1=俱收并蓄。
 item.zhongli_e.speech.long.2=安如磐石。
 item.zhongli_e.speech.long.3=固若金汤。
 
+item.zhongli_q.name=天星
+item.zhongli_q.desc=降下巨大的星岩，对坠落范围内的敌人造成巨额岩元素伤害，并使其§b§l石化§r
+
+item.zhongli_q.speech.1=§6§l天理长驱。
+item.zhongli_q.speech.2=§6§l此乃天道。
+item.zhongli_q.speech.3=§6§l天动万象。
+
+
 genshin12.food.shared.xp_desc=含有经验: %d
 # Items
 genshin12.gua_enhance_no_free.desc=可用铁砧镶嵌卦象
@@ -77,3 +85,6 @@ genshin12.gua_not_applicable.desc=-
 genshin12.kill_count.desc=杀敌数: %d
 
 genshin12.skill.msg.cool_down=冷却中
+
+
+

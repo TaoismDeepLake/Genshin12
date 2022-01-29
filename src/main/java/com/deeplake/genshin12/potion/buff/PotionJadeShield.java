@@ -38,7 +38,7 @@ public class PotionJadeShield extends BasePotion {
             float yMaxDelta = 0.5f;
             float radius = 0.5f;
 
-            for (; theta < thetaMax; theta += thetaMax / 16f)
+            for (; theta < thetaMax; theta += Math.PI * 2 / 16f)
             {
                 double x = (living.posX + radius * Math.cos(theta));
                 double y = (living.posY + yBase + yMaxDelta * Math.cos(theta+entityYaw));
@@ -47,8 +47,10 @@ public class PotionJadeShield extends BasePotion {
 
 //                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y,z,0,0,0);
 //                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y2,z,0,0,0);
-                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y,z,1.0f,0.9f,0.6f);
-                world.spawnParticle(EnumParticleTypes.REDSTONE, x,y2,z,1.0f,0.9f,0.6f);
+                if (world.getWorldTime() % 4 == 0) {
+                    world.spawnParticle(EnumParticleTypes.REDSTONE, x, y, z, 1.0f, 0.9f, 0.6f);
+                    world.spawnParticle(EnumParticleTypes.REDSTONE, x, y2, z, 1.0f, 0.9f, 0.6f);
+                }
             }
         }
         else {

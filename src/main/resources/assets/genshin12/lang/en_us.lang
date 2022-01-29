@@ -39,6 +39,14 @@ item.zhongli_e.speech.long.1=Gather.
 item.zhongli_e.speech.long.2=Stabilize.
 item.zhongli_e.speech.long.3=Solidify.
 
+item.zhongli_q.name=Planet Befall
+item.zhongli_q.desc=Brings a falling meteor down to earth, dealing massive Geo DMG to opponents caught in its AoE and applying the §6§lPetrification§r status to them.
+
+item.zhongli_q.speech.1=§6§lOrder guide you.
+item.zhongli_q.speech.2=§6§lThis is order.
+item.zhongli_q.speech.3=§6§lI will have order!
+
+
 genshin12.food.shared.xp_desc=Grants XP: %d
 genshin12.gua_enhance_no_free.desc=Use anvil to socket Gua(Elemental)
 genshin12.gua_enhance_free.desc=Free Gua Sockets(Direct craft): %d

@@ -52,6 +52,10 @@ public class ModConfig {
         public float DMG_GENSHIN_TO_MC = 1f;
         public float DMG_ATK_PERCENT_GENSHIN_TO_MC = 2f; //100% dmg
 
+        public float PERTIFY_R = 0.313f;
+        public float PERTIFY_G = 0.313f;
+        public float PERTIFY_B = 0.2f;
+
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")
