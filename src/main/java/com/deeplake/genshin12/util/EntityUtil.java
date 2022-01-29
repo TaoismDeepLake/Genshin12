@@ -13,6 +13,8 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
@@ -590,5 +592,18 @@ public class EntityUtil {
             return false;
         }
         return entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + (double)entity.getEyeHeight(), entity.posZ));
+    }
+
+    public static EntityEquipmentSlot findSlot(ItemStack stack, EntityLivingBase livingBase)
+    {
+        EntityEquipmentSlot slot = null;
+        for (EntityEquipmentSlot _slot :
+                EntityEquipmentSlot.values()) {
+            if (stack == livingBase.getItemStackFromSlot(_slot))
+            {
+                slot = _slot;
+            }
+        }
+        return slot;
     }
 }

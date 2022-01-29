@@ -2,6 +2,7 @@ package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.blocks.ModBlocks;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
+import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.EntityUtil;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,6 +33,8 @@ public class ItemZhongLingE extends ItemGenshinSkillBase {
     public ItemZhongLingE(String name) {
         super(name);
         setCD(4f, 0f);
+        long_press_ticks = CommonDef.TICK_PER_SECOND;
+        force_release = true;
     }
 
     @Override

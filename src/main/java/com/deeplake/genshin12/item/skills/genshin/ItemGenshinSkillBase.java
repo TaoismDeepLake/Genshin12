@@ -30,6 +30,15 @@ public class ItemGenshinSkillBase extends ItemSkillBase {
         return super.applyCast(worldIn, livingBase, stack, slot);
     }
 
+    @Override
+    public boolean applyLongCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
+        if (livingBase instanceof EntityPlayer)
+        {
+            talkLong((EntityPlayer) livingBase);
+        }
+        return super.applyLongCast(worldIn, livingBase, stack, slot);
+    }
+
     void talkShort(@NotNull EntityPlayer player)
     {
         int index = player.getRNG().nextInt(speechCount) + 1;

@@ -3,7 +3,6 @@ package com.deeplake.genshin12.item.skills;
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.item.ItemAdaptingBase;
-import com.deeplake.genshin12.item.ItemBase;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.IDLSkillNBT;
 import com.deeplake.genshin12.util.MessageDef;
@@ -14,6 +13,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,6 +30,7 @@ import java.util.List;
 import static com.deeplake.genshin12.util.CommonDef.G_SKY;
 import static com.deeplake.genshin12.util.CommonDef.TICK_PER_SECOND;
 import static com.deeplake.genshin12.util.CommonFunctions.*;
+import static com.deeplake.genshin12.util.EntityUtil.findSlot;
 import static com.deeplake.genshin12.util.MessageDef.getSkillCastKey;
 
 enum SKILL_MSG_TYPE
@@ -42,39 +43,10 @@ enum SKILL_MSG_TYPE
 public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
     public boolean isMartial = false;
 
-    public float cool_down = 1f;
-    public float cool_down_reduce_per_lv = 0.2f;
-
-    public float base_range = 5f;
-    public float range_per_level = 0f;
-
-    public float basic_val = 0f;
-    public float val_per_level = 0f;
-
-    public float dura_val = 0f;
-    public float dura_per_level = 0f;
-
-    public float level_modifier = 0f;
-
-    public int maxLevel = 5;
-
-    public int gua_index = G_SKY;
-
-    public boolean showCDDesc = true;
-    public boolean showDamageDesc = true;
-    public boolean showRangeDesc = false;
-    public boolean showDuraDesc = false;
-
-    //for arknights
-    public boolean offHandCast = false;
-    public boolean mainHandCast = false;
-    public boolean cannotMouseCast = false;
+    public int long_press_ticks = -1;
+    public boolean force_release = false;
 
     protected int maxDialogues = 0;
-
-    protected int GetMaxTick(ItemStack stack) {
-        return (int) (getCoolDown(stack) * TICK_PER_SECOND);
-    }
 
     public ItemSkillBase(String name) {
         super(name);
@@ -156,6 +128,15 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
         float result = -(IDLSkillNBT.getLevel(stack) - 1) * cool_down_reduce_per_lv + cool_down;
         return result > 0.1f ? result : 0.1f; }
 
+    public float getCoolDownLong(ItemStack stack) {
+        float result = -(IDLSkillNBT.getLevel(stack) - 1) * cool_down_long_reduce_per_lv + cool_down_long;
+        return result > 0.1f ? result : 0.1f; }
+
+    protected int getCoolDownLongTicks(ItemStack stack) {
+        return (int) (getCoolDownLong(stack) * TICK_PER_SECOND);
+    }
+
+
     //leveling-------------------------------------
 
     public int GetLevelMax(ItemStack stack)
@@ -184,7 +165,16 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
         Item item = stack.getItem();
         if (item instanceof ItemSkillBase)
         {
-            player.getCooldownTracker().setCooldown(stack.getItem(), ((ItemSkillBase) item).GetMaxTick(stack));
+            player.getCooldownTracker().setCooldown(stack.getItem(), ((ItemSkillBase) item).getCoolDownTicks(stack));
+        }
+    }
+
+    public static void activateCoolDownLong(EntityPlayer player, ItemStack stack)
+    {
+        Item item = stack.getItem();
+        if (item instanceof ItemSkillBase)
+        {
+            player.getCooldownTracker().setCooldown(stack.getItem(), ((ItemSkillBase) item).getCoolDownLongTicks(stack));
         }
     }
 
@@ -204,9 +194,85 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
-        //stack.setItemDamage(stack.getItemDamage() - 1);
     }
 
+    @Override
+    public int getMaxItemUseDuration(ItemStack stack) {
+        if (isForceRelease())
+        {
+            return long_press_ticks;
+        }
+        else {
+            return super.getMaxItemUseDuration(stack);
+        }
+    }
+
+    public boolean isForceRelease() {
+        return force_release && long_press_ticks > 0;
+    }
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack stack) {
+        return long_press_ticks > 0 ? EnumAction.BOW : super.getItemUseAction(stack);
+    }
+
+
+
+    //Some skills cannot be held for too long. It will be force-released.
+    //use force_release for this.
+    @Override
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase playerIn) {
+        if (force_release)
+        {
+            if (cannotMouseCast)
+            {
+                return stack;
+            }
+
+            EntityEquipmentSlot slot = findSlot(stack, playerIn);
+            if (slot != null)
+            {
+                if (canCast(worldIn, playerIn, stack, slot, !worldIn.isRemote))
+                {
+                    applyLongCast(worldIn, playerIn, stack, slot);
+                    if (playerIn instanceof EntityPlayer)
+                    {
+                        activateCoolDownLong((EntityPlayer) playerIn, stack);
+                    }
+                    return stack;
+                }
+                else {
+                    return stack;
+                }
+            }
+        }
+
+        return super.onItemUseFinish(stack, worldIn, playerIn);
+    }
+
+    //Some skills can be held for very long, just like bow aiming.
+    @Override
+    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+        super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
+        int usedTicks = getMaxItemUseDuration(stack) - timeLeft;
+        EntityEquipmentSlot slot = findSlot(stack, entityLiving);
+        if (long_press_ticks > 0 && usedTicks >= long_press_ticks && slot != null && !force_release)
+        {
+            applyLongCast(worldIn, entityLiving, stack, slot);
+            if (entityLiving instanceof EntityPlayer)
+            {
+                activateCoolDownLong((EntityPlayer) entityLiving, stack);
+            }
+        }
+        else if (long_press_ticks < 0 || usedTicks < long_press_ticks) {
+            applyCast(worldIn, entityLiving, stack, slot);
+            if (entityLiving instanceof EntityPlayer)
+            {
+                activateCoolDown((EntityPlayer) entityLiving, stack);
+            }
+        }
+
+    }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
@@ -220,12 +286,13 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
         {
             if (canCast(worldIn, playerIn, stack, slotFromHand(handIn), !worldIn.isRemote))
             {
-                applyCast(worldIn, playerIn, stack, slotFromHand(handIn));
-                activateCoolDown(playerIn, stack);
-                return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+//                applyCast(worldIn, playerIn, stack, slotFromHand(handIn));
+//                activateCoolDown(playerIn, stack);
+                playerIn.setActiveHand(handIn);
+                return new ActionResult<>(EnumActionResult.SUCCESS, stack);
             }
             else {
-                return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
+                return new ActionResult<>(EnumActionResult.FAIL, stack);
 
             }
         }
@@ -273,6 +340,15 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
         if (livingBase instanceof EntityPlayer)
         {
             activateCoolDown((EntityPlayer) livingBase, stack);
+        }
+        return true;
+    }
+
+    public boolean applyLongCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot)
+    {
+        if (livingBase instanceof EntityPlayer)
+        {
+            activateCoolDownLong((EntityPlayer) livingBase, stack);
         }
         return true;
     }

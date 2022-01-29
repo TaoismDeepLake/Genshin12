@@ -21,6 +21,9 @@ public class ItemAdaptingBase extends ItemBase {
     public float cool_down = 1f;
     public float cool_down_reduce_per_lv = 0.2f;
 
+    public float cool_down_long = 1f;
+    public float cool_down_long_reduce_per_lv = 0.2f;
+
     public float base_range = 5f;
     public float range_per_level = 0f;
 
@@ -29,6 +32,9 @@ public class ItemAdaptingBase extends ItemBase {
 
     public float duration_val = 0f;
     public float duration_per_level = 0f;
+
+    public float dura_val = 0f;
+    public float dura_per_level = 0f;
 
     public float level_modifier = 0f;
 
