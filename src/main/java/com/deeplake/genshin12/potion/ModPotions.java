@@ -1,6 +1,8 @@
 package com.deeplake.genshin12.potion;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.potion.buff.BaseSimplePotion;
+import com.deeplake.genshin12.potion.buff.PotionJadeShield;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
@@ -17,8 +19,9 @@ public class ModPotions {
 
     public static final List<Potion> INSTANCES = new ArrayList<Potion>();
 
-//    public static final PotionDeadly DEADLY = new PotionDeadly(false, 0x333333, "deadly", 0);
-//    public static final PotionZenHeart ZEN_HEART = new PotionZenHeart(false, 0xcccc00, "zen_heart", 1);
+
+    public static final PotionJadeShield JADE_SHIELD = new PotionJadeShield(false, 0x333333, "jade_shield", 0);
+    public static final Potion JADE_SHIELD_DEBUFF = new BaseSimplePotion(false, 0xcccc00, "jade_shield_debuff", 1);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)

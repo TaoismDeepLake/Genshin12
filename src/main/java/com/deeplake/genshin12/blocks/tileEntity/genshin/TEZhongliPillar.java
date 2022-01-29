@@ -4,11 +4,13 @@ import com.deeplake.genshin12.blocks.tileEntity.builder.TileEntityBuilderBase;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.EntityUtil;
+import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -25,6 +27,11 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
     final static float RESONATE_RANGE  = 3f;
     int currentLife = MAX_LIFE;
     float damage = 1f;
+
+    public void setDamage(float value)
+    {
+        damage = value;
+    }
 
 
     @Override
@@ -92,8 +99,18 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
                     DamageSource.MAGIC,
                     damage);
 
-
         }
     }
 
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        compound.setFloat(IDLNBTDef.STATE, damage);
+        return super.writeToNBT(compound);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        damage = compound.getFloat(IDLNBTDef.STATE);
+    }
 }

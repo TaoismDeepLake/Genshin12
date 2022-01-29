@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item;
 
-import com.deeplake.genshin12.item.skills.genshin.ItemZhongLingE;
+import com.deeplake.genshin12.item.skills.genshin.ItemZhongliE;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class ModItems {
 
 	//Basic
 	//public static final Item PAPER_BLOOD = new ItemBase("paper_blood");
-	public static final Item ZHONG_LING_E = new ItemZhongLingE("zhongli_e");
+	public static final Item ZHONG_LING_E = new ItemZhongliE("zhongli_e");
 
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),

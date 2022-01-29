@@ -47,6 +47,8 @@ public class ModConfig {
         public float PARTICLE_SPEED = 1f/TICK_PER_SECOND;
         public float PILLAR_LIFE = 30f;
 
+        public boolean DEBUG_MODE = false;
+
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")

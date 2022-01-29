@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.potion.buff;
 
+import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -27,6 +28,8 @@ public class BaseSimplePotion extends Potion {
         setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
         setPotionName("genshin12.potion." + name);
         iconIndex = icon;
+
+        ModPotions.INSTANCES.add(this);
     }
 
     @SideOnly(Side.CLIENT)

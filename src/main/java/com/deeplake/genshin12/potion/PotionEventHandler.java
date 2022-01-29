@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.potion;
 
 import com.deeplake.genshin12.potion.buff.BasePotion;
+import com.deeplake.genshin12.util.EntityUtil;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,6 +21,21 @@ import static net.minecraftforge.fml.common.eventhandler.Event.Result.*;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class PotionEventHandler {
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void handleResistance(LivingHurtEvent evt) {
+        World world = evt.getEntity().getEntityWorld();
+        EntityLivingBase hurtOne = evt.getEntityLiving();
+
+        float resistance = 0f;
+
+        if (hurtOne.getActivePotionEffect(ModPotions.JADE_SHIELD_DEBUFF) != null)
+        {
+            resistance -= 0.2f;
+        }
+
+        evt.setAmount(evt.getAmount() / resistance);
+    }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onCreatureHurt(LivingHurtEvent evt) {

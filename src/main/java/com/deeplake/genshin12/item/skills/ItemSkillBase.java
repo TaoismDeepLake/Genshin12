@@ -90,6 +90,13 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
         return this;
     }
 
+    public ItemSkillBase setCDLong(float val, float val_per_level)
+    {
+        cool_down_long = val;
+        this.cool_down_long_reduce_per_lv = val_per_level;
+        return this;
+    }
+
     public ItemSkillBase setDura(float val, float val_per_level)
     {
         dura_val = val;
