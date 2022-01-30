@@ -1,10 +1,14 @@
 package com.deeplake.genshin12.proxy;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.entity.creatures.render.layer.LayerPetrify;
 import com.deeplake.genshin12.keys.ModKeyBinding;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -12,6 +16,7 @@ import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.client.settings.KeyModifier;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
@@ -53,5 +58,17 @@ public class ClientProxy extends ProxyBase {
 	@Override
 	public void registerParticles() {
 //		InitParticles.registerParticles();
+	}
+
+	public void loadComplete(FMLPostInitializationEvent evt) {
+		Minecraft.getMinecraft().getRenderManager().entityRenderMap.values().forEach(r -> {
+			if (r instanceof RenderLivingBase) {
+				attachRenderLayers((RenderLivingBase<?>) r);
+			}
+		});
+	}
+
+	private static <T extends EntityLivingBase> void attachRenderLayers(RenderLivingBase<T> renderer) {
+		renderer.addLayer(new LayerPetrify(renderer));
 	}
 }

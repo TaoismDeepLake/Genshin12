@@ -90,6 +90,8 @@ public class IdlFramework {
         TrashTalking();
 
         RegistryHandler.postInitReg();
+
+        proxy.loadComplete(event);
     }
 
     @EventHandler

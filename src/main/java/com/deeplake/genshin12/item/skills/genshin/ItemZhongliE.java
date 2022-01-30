@@ -6,7 +6,9 @@ import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.CommonDef;
+import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.EntityUtil;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -105,7 +107,6 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
                 }
             }
 
-
             dealDamage(worldIn, targetPosF, caster, stack, isHold);
 //            caster.playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2f, 0.75f);
             worldIn.playSound(null, targetPosF.x, targetPosF.y, targetPosF.z, SoundEvents.BLOCK_STONE_FALL, SoundCategory.BLOCKS, 8f, 0.75f);
@@ -117,6 +118,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
             }
         }
         else {
+            CommonFunctions.spawnDirtCircleParticles(worldIn, targetPosF, 1f, 1f);
             worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, targetPosF.x, targetPosF.y, targetPosF.z, 0,0,0);
         }
     }

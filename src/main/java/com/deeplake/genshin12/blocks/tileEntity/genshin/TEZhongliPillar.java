@@ -5,6 +5,8 @@ import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.EntityUtil;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -62,20 +64,37 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
             float angle = (float) (Math.PI * 2f / (float) count);
             float radius = 1f;
             float speed = ModConfig.DEBUG_CONF.PARTICLE_SPEED;
+
+            int stateID = Block.getStateId(CommonDef.DIRT);
+
+            double _x = getVec3d().x;
+            double _y = getVec3d().y;
+            double _z = getVec3d().z;
+
             for (int i = 0; i <= count; i++)
             {
                 final double cos = Math.cos(angle * i);
                 final double sin = Math.sin(angle * i);
 
-                float x = (float) (getPos().getX() + 0.5f + cos);
-                float y = getPos().getY() + world.rand.nextFloat();
-                float z = (float) (getPos().getZ() + 0.5f + sin);
+                float x = (float) (_x + cos);
+                float y = (float) (_y + world.rand.nextFloat());
+                float z = (float) (_z + sin);
 
                 float vx = (float) (speed * cos);
                 float vz = (float) (speed * sin);
 
                 world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, x, y, z, vx, 0, vz);
             }
+
+            for (float delta = -radius; delta <= radius; delta+=0.2f)
+            {
+                float ratio = delta / radius;
+                world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z,  speed, 0, ratio * speed, stateID);
+                world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, -speed, 0, ratio * speed, stateID);
+                world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, ratio * speed, 0,  speed, stateID);
+                world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, ratio * speed, 0, -speed, stateID);
+            }
+
         }
         else {
             dealDamage();

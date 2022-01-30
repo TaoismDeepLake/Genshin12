@@ -88,7 +88,12 @@ genshin12.kill_count.desc=Kills: %d
 genshin12.skill.msg.cool_down=Cooling Down.
 
 #sound
-sound.skill.zhongli.q=[BGM:Rex Incognito]
+subtitle.skill.zhongli.q=[BGM:Rex Incognito]
+
+#potion
+genshin12.potion.jade_shield=Jade Shield
+genshin12.potion.jade_shield_debuff=Jade Shield Debuff
+genshin12.potion.petrification=Petrification
 
 #Death
 #examples

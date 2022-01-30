@@ -31,6 +31,10 @@ public class ModConfig {
     public static final GeneralConf GeneralConf = new GeneralConf();
 
     public static class GeneralConf {
+        @Config.LangKey("genshin12.conf.general.movie_mode")
+        @Config.Comment("Movie Mode, greatly increases all kinds of effects to record videos.")
+        public boolean MOVIE_MODE = false;
+
 //        @Config.LangKey("genshin12.conf.general.welcome")
 //        @Config.Comment("The text shown when a player logs in. Can be a key or a string.")
 //        public String WELCOME_MSG = "genshin12.msg.welcome";
@@ -41,6 +45,7 @@ public class ModConfig {
     public static final DebugConf DEBUG_CONF = new DebugConf();
 
     public static class DebugConf {
+
         public boolean TEST_1 = false;
 
         public int PARTICLE_COUNT = 40;
@@ -52,9 +57,11 @@ public class ModConfig {
         public float DMG_GENSHIN_TO_MC = 1f;
         public float DMG_ATK_PERCENT_GENSHIN_TO_MC = 2f; //100% dmg
 
-        public float PERTIFY_R = 0.313f;
-        public float PERTIFY_G = 0.313f;
-        public float PERTIFY_B = 0.2f;
+//        public float PERTIFY_R = 0.313f;
+//        public float PERTIFY_G = 0.313f;
+//        public float PERTIFY_B = 0.2f;
+
+        public float METEOR_LIFE = 2f;
 
     }
 

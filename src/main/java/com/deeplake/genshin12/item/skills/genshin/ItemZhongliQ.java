@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.item.skills.genshin;
 
+import com.deeplake.genshin12.entity.EntityPlanetBefall;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.CommonDef;
@@ -42,6 +43,11 @@ public class ItemZhongliQ extends ItemGenshinSkillBase {
             dealDamage(worldIn, livingBase.getPositionVector(), livingBase, stack);
             worldIn.playSound(null, livingBase.getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 3f, 0.6f);
             worldIn.playSound(null, livingBase.getPosition(), ModSoundHandler.ZHONGLI_Q, SoundCategory.PLAYERS, 1f, 1f);
+
+            EntityPlanetBefall befall = new EntityPlanetBefall(worldIn);
+            befall.setPositionAndUpdate(livingBase.posX, livingBase.posY, livingBase.posZ);
+            befall.setShooter(livingBase);
+            worldIn.spawnEntity(befall);
 
         }
         return super.applyCast(worldIn, livingBase, stack, slot);

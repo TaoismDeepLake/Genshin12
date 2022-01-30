@@ -606,4 +606,18 @@ public class EntityUtil {
         }
         return slot;
     }
+
+    //Note: this returns 0 if no buff.
+    public static int getBuffLevelIDL(EntityLivingBase livingBase, Potion potion) {
+        if (livingBase == null || potion == null) {
+            IdlFramework.LogWarning("TRYING_TO_CHECK_ILLEGAL_POTION");
+            return 0;
+        }
+        PotionEffect effect = livingBase.getActivePotionEffect(potion);
+        if (effect == null) {
+            return 0;
+        } else {
+            return effect.getAmplifier() + 1;
+        }
+    }
 }

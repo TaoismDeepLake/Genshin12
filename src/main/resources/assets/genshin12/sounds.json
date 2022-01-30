@@ -2,7 +2,7 @@
   "skill.zhongli.q":
   {
     "category": "player",
-    "subtitle": "sound.skill.zhongli.q",
+    "subtitle": "subtitle.skill.zhongli.q",
     "sounds": [{"name":  "genshin12:skill/zhongli/zhongli_q_fade", "stream":  true}]
   }
 }

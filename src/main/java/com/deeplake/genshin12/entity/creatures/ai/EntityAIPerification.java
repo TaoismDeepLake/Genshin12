@@ -17,7 +17,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber(modid = IdlFramework.MODID)
 public class EntityAIPerification extends EntityAIBase {
-    public EntityAIPerification(){
+
+    EntityLiving living;
+    public EntityAIPerification(EntityLiving living){
+        this.living = living;
         this.setMutexBits(1|2|4);
     }
 
@@ -26,4 +29,10 @@ public class EntityAIPerification extends EntityAIBase {
         return true;
     }
 
+
+    @Override
+    public void updateTask() {
+        living.getNavigator().clearPath();
+        super.updateTask();
+    }
 }

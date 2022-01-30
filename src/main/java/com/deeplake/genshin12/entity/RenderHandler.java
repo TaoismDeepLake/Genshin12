@@ -10,9 +10,8 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 public class RenderHandler {
 
     public static void registerEntityRenders() {
-        RenderingRegistry.registerEntityRenderingHandler(EntityMoroonUnitBase.class, RenderMoroonHumanoid::new);
+//        RenderingRegistry.registerEntityRenderingHandler(EntityMoroonUnitBase.class, RenderMoroonHumanoid::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityIdlProjectile.class, renderManager -> new RenderBullet<>(renderManager, new ResourceLocation(IdlFramework.MODID,
-                "textures/entity/projectiles/bullet_norm.png")));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPlanetBefall.class, renderManager -> new RenderPlanetBefall<>(renderManager));
     }
 }

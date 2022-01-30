@@ -59,7 +59,8 @@ local function GenItem(_typeName, _itemName)
 	outFile:close();
 end
 
- GenItem("skill", "zhongli_q");
+GenBlock("petrify");
+GenBlock("petrify_light");
 
 
 --GenBlock("zl_pillar");

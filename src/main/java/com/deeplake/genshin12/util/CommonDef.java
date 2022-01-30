@@ -1,5 +1,7 @@
 package com.deeplake.genshin12.util;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.util.EnumHelper;
@@ -131,4 +133,6 @@ public class CommonDef {
         DIAMOND_P,
         DIAMOND_PP,
     }
+
+    public static final IBlockState DIRT = Blocks.DIRT.getDefaultState();
 }

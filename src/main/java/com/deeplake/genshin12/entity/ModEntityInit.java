@@ -3,6 +3,7 @@ package com.deeplake.genshin12.entity;
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -12,7 +13,7 @@ public class ModEntityInit {
     public static void registerEntities()
     {
         //Examples
-//        registerEntity("moroon_orbital_beacon", EntityMoroonBombBeacon.class);
+        registerEntity("planet_befall", EntityPlanetBefall.class);
 //        registerEntity("moroon_tainter", EntityMoroonTainter.class,0xff00ff, 0x000033);
 //        registerEntity("idealland_whitetower_core", EntityIDLWhiteTowerCore.class, ENTITY_NEXT_ID, 128, 0xeeee00, 0xffffff);
 

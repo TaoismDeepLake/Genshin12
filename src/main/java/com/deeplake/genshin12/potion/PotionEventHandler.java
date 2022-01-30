@@ -28,7 +28,68 @@ import static net.minecraftforge.fml.common.eventhandler.Event.Result.*;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class PotionEventHandler {
 
+//    @SideOnly(Side.CLIENT)
+//    @SubscribeEvent
+//    public static void onRender(RenderLivingEvent.Pre event)
+//    {
+//        EntityLivingBase livingBase = event.getEntity();
+//        if (EntityUtil.getAttr(livingBase, SharedMonsterAttributes.MOVEMENT_SPEED) < 0.0001f)
+//        {
+//            GlStateManager.color(ModConfig.DEBUG_CONF.PERTIFY_R,
+//                    ModConfig.DEBUG_CONF.PERTIFY_G,
+//                    ModConfig.DEBUG_CONF.PERTIFY_B);
+//        }
+//    }
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onCreatureHurt(LivingHurtEvent evt) {
+        handleGeneralEffects(evt);
+        handleShield(evt);
+        handleResistance(evt);
+        //special effects
+        jadeShieldFortify(evt);
+    }
+
+    public static void jadeShieldFortify(LivingHurtEvent evt) {
+        World world = evt.getEntity().getEntityWorld();
+        if (!evt.isCanceled() && !world.isRemote)
+        {
+            EntityLivingBase hurtOne = evt.getEntityLiving();
+
+            int buffLevel = EntityUtil.getBuffLevelIDL(hurtOne, ModPotions.JADE_SHIELD);
+            if (buffLevel > 0 && hurtOne.getAbsorptionAmount() > 0 && buffLevel <= 5)
+            {
+                //When the Jade Shield takes DMG, it will Fortify:
+                //Fortified characters have 5% increased Shield Strength.
+                //Can stack up to 5 times, and lasts until the Jade Shield disappears
+                //Fortify times = 0,1,2,3,4,5
+                int dura = hurtOne.getActivePotionEffect(ModPotions.JADE_SHIELD).getDuration();
+                EntityUtil.ApplyBuff(hurtOne, ModPotions.JADE_SHIELD, buffLevel, dura);//actually +1 level
+            }
+        }
+    }
+
+    public static void handleShield(LivingHurtEvent evt) {
+        World world = evt.getEntity().getEntityWorld();
+        EntityLivingBase hurtOne = evt.getEntityLiving();
+
+        float shieldFactor = 1f;
+        int buffLevel = EntityUtil.getBuffLevelIDL(hurtOne, ModPotions.JADE_SHIELD);
+        if (buffLevel > 0 && hurtOne.getAbsorptionAmount() > 0)
+        {
+            //When the Jade Shield takes DMG, it will Fortify:
+            //Fortified characters have 5% increased Shield Strength.
+            //Can stack up to 5 times, and lasts until the Jade Shield disappears
+            shieldFactor += 0.5f + (buffLevel - 1)*0.05f;
+            if (ModConfig.GeneralConf.MOVIE_MODE)
+            {
+                shieldFactor += 99f;
+            }
+        }
+
+        evt.setAmount(evt.getAmount() / shieldFactor);
+    }
+
     public static void handleResistance(LivingHurtEvent evt) {
         EntityLivingBase hurtOne = evt.getEntityLiving();
 
@@ -42,30 +103,9 @@ public class PotionEventHandler {
         evt.setAmount(evt.getAmount() / (1 + resistance));
     }
 
-
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public static void onRender(RenderLivingEvent.Pre event)
-    {
-        EntityLivingBase livingBase = event.getEntity();
-        if (EntityUtil.getAttr(livingBase, SharedMonsterAttributes.MOVEMENT_SPEED) < 0.0001f)
-        {
-            GlStateManager.color(ModConfig.DEBUG_CONF.PERTIFY_R,
-                    ModConfig.DEBUG_CONF.PERTIFY_G,
-                    ModConfig.DEBUG_CONF.PERTIFY_B);
-        }
-    }
-
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void onCreatureHurt(LivingHurtEvent evt) {
+    public static void handleGeneralEffects(LivingHurtEvent evt) {
         World world = evt.getEntity().getEntityWorld();
         EntityLivingBase hurtOne = evt.getEntityLiving();
-
-//        if (hurtOne.getActivePotionEffect(INVINCIBLE) != null)
-//        {
-//            evt.setCanceled(true);
-//            return;
-//        }
 
         //Base Damage Reduction
         Collection<PotionEffect> activePotionEffects = hurtOne.getActivePotionEffects();
@@ -85,15 +125,6 @@ public class PotionEventHandler {
         Entity trueSource = evt.getSource().getTrueSource();
         if (trueSource instanceof EntityLivingBase){
             EntityLivingBase sourceCreature = (EntityLivingBase)trueSource;
-//            if (sourceCreature.isEntityUndead())
-//            {
-//                PotionEffect curBuff = hurtOne.getActivePotionEffect(ZEN_HEART);
-//                if (curBuff != null) {
-//                    if (!world.isRemote) {
-//                        evt.setCanceled(true);
-//                    }
-//                }
-//            }
 
             //Apply damage multiplier
             Collection<PotionEffect> activePotionEffectsAttacker = sourceCreature.getActivePotionEffects();
@@ -154,15 +185,6 @@ public class PotionEventHandler {
         {
             return;
         }
-
-        //slime erosion
-//        if (trueSource instanceof EntitySlime)
-//        {
-//            if (!world.isRemote)
-//            {
-//                hurtOne.addPotionEffect(new PotionEffect(ModPotions.EROSION, (int)(TICK_PER_SECOND * (evt.getAmount() + 1f)), (int)(evt.getAmount() / 10)));
-//            }
-//        }
 
         //onHit effect
         for (int i = 0; i < activePotionEffects.size(); i++) {

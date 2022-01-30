@@ -11,14 +11,14 @@ public class ModItems {
 
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 
-	//Basic
-	//public static final Item PAPER_BLOOD = new ItemBase("paper_blood");
+	//Character
+	//https://www.minecraftskins.com/skin/18941060/zhongli--------/
 	public static final Item ZHONG_LING_E = new ItemZhongliE("zhongli_e");
 	public static final Item ZHONG_LING_Q = new ItemZhongliQ("zhongli_q");
 
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),
-    STONE(1, 131, 4.0F, 1.0F, 5),
+    OVERLAY(1, 131, 4.0F, 1.0F, 5),
     IRON(2, 250, 6.0F, 2.0F, 14),
     DIAMOND(3, 1561, 8.0F, 3.0F, 10),
     GOLD(0, 32, 12.0F, 0.0F, 22);

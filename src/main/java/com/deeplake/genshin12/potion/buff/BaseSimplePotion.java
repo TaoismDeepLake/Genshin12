@@ -41,7 +41,7 @@ public class BaseSimplePotion extends Potion {
         GlStateManager.color(1, 1, 1, alpha);
 
         int textureX = iconIndex % 14 * 18;
-        int textureY = 198 - iconIndex / 14 * 18;
+        int textureY = 234 - iconIndex / 14 * 18;
 
         buf.pos(x, y + 18, 0).tex(textureX * 0.00390625, (textureY + 18) * 0.00390625).endVertex();
         buf.pos(x + 18, y + 18, 0).tex((textureX + 18) * 0.00390625, (textureY + 18) * 0.00390625).endVertex();

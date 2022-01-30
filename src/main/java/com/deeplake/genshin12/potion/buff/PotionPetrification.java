@@ -31,7 +31,7 @@ public class PotionPetrification extends BaseSimplePotion
                 }
             }
 
-            ((EntityLiving) entityLivingBaseIn).tasks.addTask(0, new EntityAIPerification());
+            ((EntityLiving) entityLivingBaseIn).tasks.addTask(0, new EntityAIPerification((EntityLiving) entityLivingBaseIn));
         }
     }
 
@@ -48,7 +48,7 @@ public class PotionPetrification extends BaseSimplePotion
                 }
             }
 
-            ((EntityLiving) entityLivingBaseIn).tasks.addTask(0, new EntityAIPerification());
+            ((EntityLiving) entityLivingBaseIn).tasks.addTask(0, new EntityAIPerification((EntityLiving) entityLivingBaseIn));
         }
         super.applyAttributesModifiersToEntity(entityLivingBaseIn, attributeMapIn, amplifier);
     }

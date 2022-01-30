@@ -24,6 +24,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -563,5 +564,23 @@ public class CommonFunctions {
         }
 
         return prevYawOffset + partialTicks * f;
+    }
+
+    public static void spawnDirtCircleParticles(World world, Vec3d origin, float radius, float speed)
+    {
+        int stateID = Block.getStateId(CommonDef.DIRT);
+
+        double _x = origin.x;
+        double _y = origin.y;
+        double _z = origin.z;
+
+        for (float delta = -radius; delta <= radius; delta+=0.2f)
+        {
+            float ratio = delta / radius;
+            world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z,  speed, 0, ratio * speed, stateID);
+            world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, -speed, 0, ratio * speed, stateID);
+            world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, ratio * speed, 0,  speed, stateID);
+            world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, ratio * speed, 0, -speed, stateID);
+        }
     }
 }

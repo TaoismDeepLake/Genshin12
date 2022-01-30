@@ -86,5 +86,11 @@ genshin12.kill_count.desc=杀敌数: %d
 
 genshin12.skill.msg.cool_down=冷却中
 
+# sound
+subtitle.skill.zhongli.q=[BGM:尘世闲游]
 
+# potion
+genshin12.potion.jade_shield=玉璋护盾
+genshin12.potion.jade_shield_debuff=玉璋护盾减抗
+genshin12.potion.petrification=石化
 
