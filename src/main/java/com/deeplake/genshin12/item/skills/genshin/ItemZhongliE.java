@@ -167,19 +167,38 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
         float damageFactor = isHold ? getHoldDamage(getLevel(stack)) : getInitDamage(getLevel(stack));
         float damage = damageFactor / 100f * caster.getMaxHealth();
 
-        for (EntityLivingBase target :
-                list) {
-            if (caster instanceof EntityPlayer)
-            {
-                target.attackEntityFrom(
-                        DamageSource.causePlayerDamage((EntityPlayer) caster),
-                        damage);
-            }
-            else {
-                //todo
-            }
+        if (ModConfig.GeneralConf.MOVIE_MODE)
+        {
+            for (EntityLivingBase target :
+                    list) {
+                if (caster instanceof EntityPlayer)
+                {
+                    target.attackEntityFrom(
+                            DamageSource.causePlayerDamage((EntityPlayer) caster),
+                            target.getActivePotionEffect(ModPotions.ZL_PETRIFY)!=null ? damage * 100 : damage);
+                }
+                else {
+                    //todo
+                }
 
+            }
         }
+        else {
+            for (EntityLivingBase target :
+                    list) {
+                if (caster instanceof EntityPlayer)
+                {
+                    target.attackEntityFrom(
+                            DamageSource.causePlayerDamage((EntityPlayer) caster),
+                            damage);
+                }
+                else {
+                    //todo
+                }
+
+            }
+        }
+
     }
 
     float getInitDamage(int level)

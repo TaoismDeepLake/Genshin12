@@ -1,3 +1,1 @@
-{
-	"parent": "genshin12:block/primogem"
-}
+{"parent": "item/handheld","textures": {"layer0":"genshin12:items/misc/primogem"}}
