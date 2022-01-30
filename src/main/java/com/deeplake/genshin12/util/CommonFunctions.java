@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.management.PlayerInteractionManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.EnumFacing;
@@ -581,6 +582,27 @@ public class CommonFunctions {
             world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, -speed, 0, ratio * speed, stateID);
             world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, ratio * speed, 0,  speed, stateID);
             world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, _x, _y, _z, ratio * speed, 0, -speed, stateID);
+        }
+    }
+
+    public static void digOre(World world, BlockPos target, IBlockState state, EntityPlayer player, ItemStack ePickaxe) {
+        if (world.isRemote || !(player instanceof EntityPlayerMP))
+        {
+            return;
+        }
+        EntityPlayerMP playerMP = (EntityPlayerMP) player;
+
+        PlayerInteractionManager manager = playerMP.interactionManager;
+//                                manager.onBlockClicked(target, EnumFacing.UP);
+//                                manager.blockRemoving(target);
+
+        TileEntity tileentity = world.getTileEntity(target);
+        if (ePickaxe.canHarvestBlock(state))
+        {
+            int exp = net.minecraftforge.common.ForgeHooks.onBlockBreakEvent(world, manager.getGameType(), playerMP, target);
+            state.getBlock().harvestBlock(world, playerMP, target, state, tileentity, ePickaxe);
+            state.getBlock().dropXpOnBlockBreak(world, target, exp);
+            world.setBlockState(target, CommonDef.AIR);
         }
     }
 }

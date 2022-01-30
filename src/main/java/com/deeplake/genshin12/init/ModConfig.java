@@ -62,6 +62,9 @@ public class ModConfig {
 //        public float PERTIFY_B = 0.2f;
 
         public float METEOR_LIFE = 2f;
+        public float METEOR_SIZE = 9f;
+        public float METEOR_HEIGHT = 9f;
+        public float METEOR_OMEGA = 5f;
 
     }
 

@@ -54,7 +54,6 @@ public class ItemBase extends Item implements IHasModel {
 		setCreativeTab(ModCreativeTab.IDL_MISC);
 		
 		ModItems.ITEMS.add(this);
-
 		InitItem();
 	}
 

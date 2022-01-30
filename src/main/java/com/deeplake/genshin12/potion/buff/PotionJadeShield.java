@@ -35,7 +35,7 @@ public class PotionJadeShield extends BasePotion {
 
             float theta = entityYaw;
             float thetaMax = (float) (Math.PI * 2) + entityYaw;
-            float yBase = 1f;
+            float yBase = 0.5f;
             float yMaxDelta = 0.5f;
             float radius = 0.5f;
 

@@ -8,6 +8,7 @@ import com.deeplake.genshin12.util.ModSoundHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -19,24 +20,27 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-public class EntityPlanetBefall extends Entity {
+public class EntityPlanetBefall extends EntityLiving {
     int lifeMax = (int) (ModConfig.DEBUG_CONF.METEOR_LIFE * CommonDef.TICK_PER_SECOND);
     int life = lifeMax;
     float damageAmount = 5;
     float range = 10f;
     float dura = 8f;
+    float fallSpeed = ModConfig.DEBUG_CONF.METEOR_HEIGHT / lifeMax;
     EntityLivingBase shooter;
 
     public EntityPlanetBefall(World worldIn) {
         super(worldIn);
+        setNoGravity(true);
     }
 
     @Override
-    protected void entityInit() {
-
+    public void move(MoverType type, double x, double y, double z) {
+        super.move(type, 0, y, 0);
     }
 
     public void setShooter(EntityLivingBase shooter)
@@ -45,9 +49,12 @@ public class EntityPlanetBefall extends Entity {
     }
 
     @Override
-    public void onEntityUpdate() {
-        super.onEntityUpdate();
+    public void onUpdate() {
+        super.onUpdate();
         life--;
+
+        this.posY -= fallSpeed;
+        this.setPosition(this.posX, this.posY, this.posZ);
         if (life <= 0) {
             explode();
         }
@@ -63,7 +70,7 @@ public class EntityPlanetBefall extends Entity {
     {
         if (world.isRemote)
         {
-            world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 0,0,0);
+            world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY+1, posZ, 0,0,0);
 
         } else {
             dealDamage(world, getPositionVector());
@@ -107,39 +114,14 @@ public class EntityPlanetBefall extends Entity {
     }
 
 //    @Override
-//    public Iterable<ItemStack> getArmorInventoryList() {
-//        return null;
-//    }
-//
-//    @Override
-//    public ItemStack getItemStackFromSlot(EntityEquipmentSlot slotIn) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack) {
+//    protected void readEntityFromNBT(NBTTagCompound compound) {
 //
 //    }
 //
 //    @Override
-//    public EnumHandSide getPrimaryHand() {
-//        return null;
-//    }
-//
-//    @Override
-//    protected void entityInit() {
+//    protected void writeEntityToNBT(NBTTagCompound compound) {
 //
 //    }
-
-    @Override
-    protected void readEntityFromNBT(NBTTagCompound compound) {
-
-    }
-
-    @Override
-    protected void writeEntityToNBT(NBTTagCompound compound) {
-
-    }
 
 
 }

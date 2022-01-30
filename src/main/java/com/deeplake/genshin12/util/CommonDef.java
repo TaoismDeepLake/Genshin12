@@ -135,4 +135,5 @@ public class CommonDef {
     }
 
     public static final IBlockState DIRT = Blocks.DIRT.getDefaultState();
+    public static final IBlockState AIR = Blocks.AIR.getDefaultState();
 }

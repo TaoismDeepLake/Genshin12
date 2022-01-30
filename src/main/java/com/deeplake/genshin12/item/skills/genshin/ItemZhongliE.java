@@ -3,16 +3,17 @@ package com.deeplake.genshin12.item.skills.genshin;
 import com.deeplake.genshin12.blocks.ModBlocks;
 import com.deeplake.genshin12.blocks.tileEntity.genshin.TEZhongliPillar;
 import com.deeplake.genshin12.init.ModConfig;
-import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.EntityUtil;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockOre;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -25,6 +26,9 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class ItemZhongliE extends ItemGenshinSkillBase {
+
+    ItemStack ePickaxe = new ItemStack(Items.STONE_PICKAXE);
+    ItemStack holdPickaxe = new ItemStack(Items.IRON_PICKAXE);
 
     float distance = 2f;
     int ySeekRange = 4;
@@ -111,6 +115,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
 //            caster.playSound(SoundEvents.BLOCK_ANVIL_PLACE, 2f, 0.75f);
             worldIn.playSound(null, targetPosF.x, targetPosF.y, targetPosF.z, SoundEvents.BLOCK_STONE_FALL, SoundCategory.BLOCKS, 8f, 0.75f);
 
+            digBlock(worldIn, targetPosF, caster, stack, isHold);
             if (isHold)
             {
                 caster.setAbsorptionAmount(getShieldAmount(getLevel(stack), caster.getMaxHealth()));
@@ -120,6 +125,38 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
         else {
             CommonFunctions.spawnDirtCircleParticles(worldIn, targetPosF, 1f, 1f);
             worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, targetPosF.x, targetPosF.y, targetPosF.z, 0,0,0);
+        }
+    }
+
+    void digBlock(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack, boolean isHold )
+    {
+        int range = (int) aoeRange;
+        BlockPos posBase = new BlockPos(pos);
+
+        for (int x = -range; x <= range; x++)
+        {
+            for (int y = -range; y <= range; y++)
+            {
+                for (int z = -range; z <= range; z++)
+                {
+                    BlockPos target = posBase.add(x,y,z);
+                    IBlockState state = world.getBlockState(target);
+                    if (state.getBlock() instanceof BlockOre)
+                    {
+                        if (world.isRemote)
+                        {
+                            //todo: effect
+                        }
+                        else {
+                            if (caster instanceof EntityPlayerMP)
+                            {
+                                EntityPlayerMP playerMP = (EntityPlayerMP) caster;
+                                CommonFunctions.digOre(world, target, state, playerMP, isHold ? holdPickaxe : ePickaxe);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

@@ -25,6 +25,7 @@ public class ItemZhongliQ extends ItemGenshinSkillBase {
 
     final float[] skillDMG = new float[]{401.08f, 444.44f};//todo
     float range = 10f;
+    float distance = 3f;
 
     public ItemZhongliQ(String name) {
         super(name);
@@ -34,23 +35,27 @@ public class ItemZhongliQ extends ItemGenshinSkillBase {
     }
 
     @Override
-    public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
+    public boolean applyCast(World worldIn, EntityLivingBase caster, ItemStack stack, EntityEquipmentSlot slot) {
+        Vec3d lookVecRaw = caster.getLookVec();
+        Vec3d lockVecProjY = new Vec3d(lookVecRaw.x, 0, lookVecRaw.z).normalize();
+        Vec3d targetPosF = caster.getPositionVector().add(lockVecProjY.scale(distance));
+
         if (worldIn.isRemote)
         {
-            worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, livingBase.posX, livingBase.posY, livingBase.posZ, 0,0,0);
+            worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, targetPosF.x, targetPosF.y + ModConfig.DEBUG_CONF.METEOR_HEIGHT, targetPosF.z, 0,0,0);
 
         } else {
-            dealDamage(worldIn, livingBase.getPositionVector(), livingBase, stack);
-            worldIn.playSound(null, livingBase.getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 3f, 0.6f);
-            worldIn.playSound(null, livingBase.getPosition(), ModSoundHandler.ZHONGLI_Q, SoundCategory.PLAYERS, 1f, 1f);
+//            dealDamage(worldIn, caster.getPositionVector(), caster, stack);
+//            worldIn.playSound(null, caster.getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 3f, 0.6f);
+//            worldIn.playSound(null, caster.getPosition(), ModSoundHandler.ZHONGLI_Q, SoundCategory.PLAYERS, 1f, 1f);
 
             EntityPlanetBefall befall = new EntityPlanetBefall(worldIn);
-            befall.setPositionAndUpdate(livingBase.posX, livingBase.posY, livingBase.posZ);
-            befall.setShooter(livingBase);
+            befall.setPositionAndUpdate(targetPosF.x, targetPosF.y + ModConfig.DEBUG_CONF.METEOR_HEIGHT, targetPosF.z);
+            befall.setShooter(caster);
             worldIn.spawnEntity(befall);
 
         }
-        return super.applyCast(worldIn, livingBase, stack, slot);
+        return super.applyCast(worldIn, caster, stack, slot);
     }
 
     float getInitDamage(int level)
