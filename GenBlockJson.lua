@@ -59,8 +59,8 @@ local function GenItem(_typeName, _itemName)
 	outFile:close();
 end
 
-GenBlock("petrify");
-GenBlock("petrify_light");
+GenBlock("primogem");
+GenBlock("interwined_fate");
 
 
 --GenBlock("zl_pillar");

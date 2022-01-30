@@ -11,6 +11,9 @@ public class ModItems {
 
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 
+	public static final Item PRIMOGEM = new ItemBase("primogem");
+	public static final Item INTERWINED_FATE = new ItemBase("interwined_fate");
+
 	//Character
 	//https://www.minecraftskins.com/skin/18941060/zhongli--------/
 	public static final Item ZHONG_LING_E = new ItemZhongliE("zhongli_e");

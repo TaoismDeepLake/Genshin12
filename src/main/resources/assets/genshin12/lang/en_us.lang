@@ -28,6 +28,12 @@ entity.moroon_tainter.name=Moroon Pathfinder
 tile.zl_pillar.name=Zhongli Pillar Block
 
 #Items
+item.primogem.name=Primogem
+item.primogem.desc=A primordial crystalline gem that's beyond the mundane world. Shines with the condensed hopes and dreams of unviers that once were.
+
+item.interwined_fate.name=Interwined Fate
+item.interwined_fate.desc=A fateful stone that connects dreams. Its glimmers can entwine fates and connect dreams, just as how its glimmers links stars in to the shapes of a heart's desires.
+
 item.zhongli_e.name=Dominus Lapidis
 item.zhongli_e.desc=Every mountain, rock and inch of land is filled with the power of Geo, but those who can wield such powers freely are few and far between.
 

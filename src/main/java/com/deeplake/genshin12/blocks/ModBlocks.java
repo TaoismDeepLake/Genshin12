@@ -22,7 +22,7 @@ public class ModBlocks {
 
 	public static final Block ZL_PILLAR = new BlockZhongliPillar("zl_pillar", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
 
-	public static final Block ZL_PETRYFY = new BlockBase("zl_petrify", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
-	public static final Block ZL_PETRYFY_LIGHT = new BlockBase("zl_petrify_light", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
+//	public static final Block ZL_PETRYFY = new BlockBase("zl_petrify", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
+//	public static final Block ZL_PETRYFY_LIGHT = new BlockBase("zl_petrify_light", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
 
 }

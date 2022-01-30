@@ -86,8 +86,7 @@ public class EntityPlanetBefall extends EntityLiving {
     {
         List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, range, null);
 
-        float damageFactor = damageAmount;
-        float damage = damageFactor / 100f * ModConfig.DEBUG_CONF.DMG_ATK_PERCENT_GENSHIN_TO_MC;
+        float damage = damageAmount;
 
         for (EntityLivingBase target :
                 list) {

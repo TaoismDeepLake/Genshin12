@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "genshin12:blocks/primogem"
+	}
+}

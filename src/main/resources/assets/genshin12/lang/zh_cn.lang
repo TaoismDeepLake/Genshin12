@@ -26,6 +26,13 @@ entity.moroon_tainter.name=摩隆 拓荒者
 tile.zl_pillar.name=岩脊
 
 # Items
+item.primogem.name=原石
+item.primogem.desc=超出世界的原始晶石。黑暗的宇宙中，由无主的梦想与希望凝结而成的辉光。
+
+item.interwined_fate.name=纠缠之缘
+item.interwined_fate.desc=连结梦想的命运之种。缘石辉光能让本无交集的命运交错，让彼此的梦想相连，正如这种光辉讲群星连成心之所向的图形。
+
+# Items
 item.zhongli_e.name=地心
 item.zhongli_e.desc=山脉中、大地上、磐石间，都遍布着岩之力。能自如驱动这股力量的人却少之又少。
 
