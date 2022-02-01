@@ -101,3 +101,8 @@ genshin12.potion.jade_shield=玉璋护盾
 genshin12.potion.jade_shield_debuff=玉璋护盾减抗
 genshin12.potion.petrification=石化
 
+
+# msg
+genshin12.skill.msg.lack_mp=能量不足 (%d/%d)
+genshin12.skill.msg.charge_full=%s 能量已满！
+

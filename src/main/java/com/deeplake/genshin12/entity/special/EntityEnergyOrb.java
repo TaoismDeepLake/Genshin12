@@ -1,7 +1,11 @@
 package com.deeplake.genshin12.entity.special;
 
+import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.blocks.blockBasic.IdeallandLight;
+import com.deeplake.genshin12.entity.creatures.EntityModUnit;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinBurstBase;
 import com.deeplake.genshin12.util.EnumElemental;
+import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,6 +17,9 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -24,9 +31,27 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 //copied from EntityXPOrb
 public class EntityEnergyOrb extends Entity {
 
+//    public static final String KEY_HEALTH = "Health";
+//    public static final String KEY_AGE = "Age";
+//    public static final String KEY_VALUE = "Value";
     EnumElemental enumElemental = EnumElemental.NONE;
+    protected static final DataParameter<Byte> ELEMENT = EntityDataManager.createKey(EntityEnergyOrb.class, DataSerializers.BYTE);
 
-    public EntityEnergyOrb(World worldIn, double x, double y, double z, int expValue, EnumElemental elemental)   {
+    /** A constantly increasing value that RenderEnergyOrb uses to control the colour shifting (Green / yellow) */
+    public int xpColor;
+    /** The age of the XP orb in ticks. */
+    public int xpOrbAge;
+    public int delayBeforeCanPickup;
+    /** The health of this XP orb. */
+    private int xpOrbHealth = 5;
+    /** This is how much XP this orb has. */
+    public int energyVal = 1;
+    /** The closest EntityPlayer to this orb. */
+    private EntityPlayer closestPlayer;
+    /** Threshold color for tracking players */
+    private int xpTargetColor;
+
+    public EntityEnergyOrb(World worldIn, double x, double y, double z)   {
         super(worldIn);
         this.setSize(0.5F, 0.5F);
         this.setPosition(x, y, z);
@@ -34,8 +59,6 @@ public class EntityEnergyOrb extends Entity {
         this.motionX = (double)((float)(Math.random() * 0.20000000298023224D - 0.10000000149011612D) * 2.0F);
         this.motionY = (double)((float)(Math.random() * 0.2D) * 2.0F);
         this.motionZ = (double)((float)(Math.random() * 0.20000000298023224D - 0.10000000149011612D) * 2.0F);
-        this.energyVal = expValue;
-        this.enumElemental = elemental;
     }
 
     public EntityEnergyOrb(World worldIn) {
@@ -105,26 +128,29 @@ public class EntityEnergyOrb extends Entity {
     //----
 
     public EnumElemental getEnumElemental() {
-        return enumElemental;
+//        if (world.isRemote)
+//        {
+            try
+            {
+                return EnumElemental.values()[dataManager.get(ELEMENT)];
+            }
+            catch (Exception e)
+            {
+                return EnumElemental.NONE;
+            }
+//        }
+
+//        return enumElemental;
     }
 
     public void setEnumElemental(EnumElemental enumElemental) {
+        if (!world.isRemote)
+        {
+            getDataManager().set(ELEMENT, (byte)enumElemental.ordinal());
+        }
+
         this.enumElemental = enumElemental;
     }
-
-    /** A constantly increasing value that RenderEnergyOrb uses to control the colour shifting (Green / yellow) */
-    public int xpColor;
-    /** The age of the XP orb in ticks. */
-    public int xpOrbAge;
-    public int delayBeforeCanPickup;
-    /** The health of this XP orb. */
-    private int xpOrbHealth = 5;
-    /** This is how much XP this orb has. */
-    public int energyVal;
-    /** The closest EntityPlayer to this orb. */
-    private EntityPlayer closestPlayer;
-    /** Threshold color for tracking players */
-    private int xpTargetColor;
 
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
@@ -137,6 +163,7 @@ public class EntityEnergyOrb extends Entity {
 
     protected void entityInit()
     {
+        this.dataManager.register(ELEMENT, (byte)0);
     }
 
     @SideOnly(Side.CLIENT)
@@ -294,9 +321,10 @@ public class EntityEnergyOrb extends Entity {
      */
     public void writeEntityToNBT(NBTTagCompound compound)
     {
-        compound.setShort("Health", (short)this.xpOrbHealth);
-        compound.setShort("Age", (short)this.xpOrbAge);
-        compound.setShort("Value", (short)this.energyVal);
+//        compound.setShort(KEY_HEALTH, (short)this.xpOrbHealth);
+//        compound.setShort(KEY_AGE, (short)this.xpOrbAge);
+//        compound.setShort(KEY_VALUE, (short)this.energyVal);
+        compound.setByte(IDLNBTDef.ELEMENT, (byte) getEnumElemental().ordinal());
     }
 
     /**
@@ -304,9 +332,18 @@ public class EntityEnergyOrb extends Entity {
      */
     public void readEntityFromNBT(NBTTagCompound compound)
     {
-        this.xpOrbHealth = compound.getShort("Health");
-        this.xpOrbAge = compound.getShort("Age");
-        this.energyVal = compound.getShort("Value");
+//        this.xpOrbHealth = compound.getShort(KEY_HEALTH);
+//        this.xpOrbAge = compound.getShort(KEY_AGE);
+//        this.energyVal = compound.getShort(KEY_VALUE);
+        try
+        {
+            enumElemental = EnumElemental.values()[compound.getByte(IDLNBTDef.ELEMENT)];
+        }
+        catch (Exception e)
+        {
+            enumElemental = EnumElemental.NONE;
+            IdlFramework.LogWarning("Invalid element");
+        }
     }
 
     /**
@@ -338,14 +375,14 @@ public class EntityEnergyOrb extends Entity {
         drop(livingBase.world, livingBase.getPositionVector().addVector(0, livingBase.height / 2f, 0), amount, elemental);
     }
 
-
     //cool down unhandled.
     public static void drop(World world, Vec3d pos, int ball, EnumElemental elemental)
     {
         for (int i = 0; i < ball; i++)
         {
-            world.spawnEntity(new EntityEnergyOrb(world, pos.x, pos.y, pos.z, 1, elemental));
+            EntityEnergyOrb orb = new EntityEnergyOrb(world, pos.x, pos.y, pos.z);
+            orb.setEnumElemental(elemental);
+            world.spawnEntity(orb);
         }
     }
-
 }

@@ -104,7 +104,7 @@ genshin12.potion.petrification=Petrification
 
 #msg
 genshin12.skill.msg.lack_mp=Insufficient Energy (%d/%d)
-genshin12.skill.msg.skill.msg.charge_full=%s Energy Full
+genshin12.skill.msg.charge_full=%s Energy Full
 
 #Death
 #examples

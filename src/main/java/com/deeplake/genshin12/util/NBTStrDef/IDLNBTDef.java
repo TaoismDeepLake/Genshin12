@@ -275,16 +275,7 @@ public class IDLNBTDef {
 	public static final String TOOL_PICKAXE = "pickaxe";
 	public static final String NAME_INVENTORY = "inventory";
 
-	//Uprising
-	public static final String KEY_WARM_UP = "warmUp";
-	public static final String KEY_FACTION = "faction";
-	public static final String TAG_AGE = "age";
-	public static final String POS_NAME = "pos";
-	public static final String MAIN_DIR = "main_dir";
-	public static final String KEY_SIZE_XZ = "sizeXZ";
-	public static final String KEY_SIZE_Y = "sizeY";
-	public static final String KEY_DATA = "data";
-	public static final String KEY_DUMMY = "d";//used for a shortest key
+	public static final String ELEMENT = "element";
 
 	public enum SPAWNER_TYPE{
 		NONE,

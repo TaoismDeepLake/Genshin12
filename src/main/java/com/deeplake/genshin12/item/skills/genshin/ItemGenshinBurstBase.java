@@ -89,13 +89,13 @@ public class ItemGenshinBurstBase extends ItemGenshinSkillBase {
 
     @Override
     public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
-        stack.setItemDamage(maxCharge);
+        stack.setItemDamage(maxCharge * DURA_PER_ENERGY - 1);
         return super.applyCast(worldIn, livingBase, stack, slot);
     }
 
     @Override
     public boolean applyLongCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
-        stack.setItemDamage(maxCharge);
+        stack.setItemDamage(maxCharge * DURA_PER_ENERGY);
         return super.applyCast(worldIn, livingBase, stack, slot);
     }
 }

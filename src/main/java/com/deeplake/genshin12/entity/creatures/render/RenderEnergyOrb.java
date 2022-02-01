@@ -33,8 +33,8 @@ public class RenderEnergyOrb extends Render<EntityEnergyOrb>{
         {
             EnumElemental enumElemental = entity.getEnumElemental();
             int r = enumElemental.getR();
-            int g = enumElemental.getR();
-            int b = enumElemental.getR();
+            int g = enumElemental.getG();
+            int b = enumElemental.getB();
 
             GlStateManager.pushMatrix();
             GlStateManager.translate((float)x, (float)y, (float)z);

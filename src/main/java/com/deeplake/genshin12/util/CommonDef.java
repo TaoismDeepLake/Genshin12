@@ -21,7 +21,7 @@ public class CommonDef {
     public static final int STANDARD_DUNGEON_MOB_RARITY = 100;
     public static final float GENSHIN_ATK_TO_MC = 0.035f * 20;
 
-    public static final int DURA_PER_ENERGY = 10000;
+    public static final int DURA_PER_ENERGY = 100;
 
 
 
