@@ -2,11 +2,13 @@ package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.blocks.ModBlocks;
 import com.deeplake.genshin12.blocks.tileEntity.genshin.TEZhongliPillar;
+import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.EntityUtil;
+import com.deeplake.genshin12.util.EnumElemental;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -169,18 +171,24 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
 
         if (ModConfig.GeneralConf.MOVIE_MODE)
         {
-            for (EntityLivingBase target :
-                    list) {
-                if (caster instanceof EntityPlayer)
-                {
+            boolean needDrop = true;
+            if (caster instanceof EntityPlayer)
+            {
+                for (EntityLivingBase target :
+                        list) {
                     target.attackEntityFrom(
                             DamageSource.causePlayerDamage((EntityPlayer) caster),
-                            target.getActivePotionEffect(ModPotions.ZL_PETRIFY)!=null ? damage * 100 : damage);
-                }
-                else {
-                    //todo
-                }
+                            target.getActivePotionEffect(ModPotions.ZL_PETRIFY) != null ? damage * 100 : damage);
 
+                    if (needDrop && caster.getRNG().nextBoolean())
+                    {
+                        EntityEnergyOrb.drop(target, 1, EnumElemental.GEO);
+                        needDrop = false;
+                    }
+                }
+            }
+            else {
+                //cast by non-player
             }
         }
         else {

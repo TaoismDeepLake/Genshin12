@@ -101,6 +101,11 @@ genshin12.potion.jade_shield=Jade Shield
 genshin12.potion.jade_shield_debuff=Jade Shield Debuff
 genshin12.potion.petrification=Petrification
 
+
+#msg
+genshin12.skill.msg.lack_mp=Insufficient Energy (%d/%d)
+genshin12.skill.msg.skill.msg.charge_full=%s Energy Full
+
 #Death
 #examples
 #death.fell.accident.ladder=%1$s fell off a ladder

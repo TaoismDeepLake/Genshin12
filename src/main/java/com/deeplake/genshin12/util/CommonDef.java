@@ -21,6 +21,8 @@ public class CommonDef {
     public static final int STANDARD_DUNGEON_MOB_RARITY = 100;
     public static final float GENSHIN_ATK_TO_MC = 0.035f * 20;
 
+    public static final int DURA_PER_ENERGY = 10000;
+
 
 
     public static final UUID UUID_DEFAULT = UUID.fromString("3ff73966-00a0-4741-bf7e-648f92cbc82f");

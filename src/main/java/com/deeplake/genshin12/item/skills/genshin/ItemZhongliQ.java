@@ -5,6 +5,7 @@ import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.EntityUtil;
+import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.ModSoundHandler;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,14 +22,14 @@ import net.minecraft.world.World;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 
-public class ItemZhongliQ extends ItemGenshinSkillBase {
+public class ItemZhongliQ extends ItemGenshinBurstBase {
 
     final float[] skillDMG = new float[]{401.08f, 444.44f};//todo
     float range = 10f;
     float distance = 3f;
 
     public ItemZhongliQ(String name) {
-        super(name);
+        super(name, 40, EnumElemental.GEO);
         setCD(12, 0f);
 //        setDura(3.1f, 0.1f);
         setDura(8, 0.1f);
