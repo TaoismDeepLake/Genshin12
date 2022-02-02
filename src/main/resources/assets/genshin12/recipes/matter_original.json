@@ -1,31 +1,25 @@
 {
     "result": {
-        "item": "idealland:matter_original"
+        "item": "genshin12:interwined_fate"
     },
     "ingredients": [
         [
-            { "item": "idealland:gua_0" }
+            { "item": "genshin12:primogem" }
+        ],[
+            { "item": "genshin12:primogem" }
+        ],[
+            { "item": "genshin12:primogem" }
+        ],[
+            { "item": "genshin12:primogem" }
+        ],[
+            { "item": "genshin12:primogem" }
+        ],[
+            { "item": "genshin12:primogem" }
+        ],[
+            { "item": "genshin12:primogem" }
         ],
         [
-            { "item": "idealland:gua_1" }
-        ],
-        [
-            { "item": "idealland:gua_2" }
-        ],
-        [
-            { "item": "idealland:gua_3" }
-        ],
-        [
-            { "item": "idealland:gua_4" }
-        ],
-        [
-            { "item": "idealland:gua_5" }
-        ],
-        [
-            { "item": "idealland:gua_6" }
-        ],
-        [
-            { "item": "idealland:gua_7" }
+            { "item": "genshin12:primogem" }
         ]
     ],
     "type": "forge:ore_shapeless"

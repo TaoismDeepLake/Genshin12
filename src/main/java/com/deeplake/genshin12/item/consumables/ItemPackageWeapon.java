@@ -39,9 +39,20 @@ public class ItemPackageWeapon extends ItemParcel {
             case 4:
                 stack = new ItemStack(Items.DIAMOND_PICKAXE);
                 break;
-
-            default:
+            case 5:
                 stack = new ItemStack(Items.IRON_AXE);
+                break;
+            case 6:
+                stack = new ItemStack(Items.GOLDEN_AXE);
+                break;
+            case 7:
+                stack = new ItemStack(Items.DIAMOND_AXE);
+                break;
+            case 8:
+                stack = new ItemStack(Items.GOLDEN_PICKAXE);
+                break;
+            default:
+                stack = new ItemStack(Items.IRON_INGOT);
         }
         EnchantmentHelper.addRandomEnchantment(random, stack, random.nextInt(30), false);
         PlayerUtil.giveToPlayer(playerIn, stack);

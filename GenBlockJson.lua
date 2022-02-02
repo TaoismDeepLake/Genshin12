@@ -59,8 +59,10 @@ local function GenItem(_typeName, _itemName)
 	outFile:close();
 end
 
-GenItem("misc", "primogem");
-GenItem("misc", "interwined_fate");
+--for i = 1, 300 do
+--	GenItem("misc", "stella_fortuna_"..i);
+--end
+GenItem("misc", "weapon_pack");
 
 
 --GenBlock("zl_pillar");

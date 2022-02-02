@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.item.consumables;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.item.IHasVariant;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemStarFortuna extends ItemParcel {
+public class ItemStarFortuna extends ItemParcel implements IHasVariant {
     protected int typeCount = 1;
     public ItemStarFortuna(String name, int count) {
         super(name);

@@ -2,6 +2,7 @@ package com.deeplake.genshin12.proxy;
 
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.entity.creatures.render.layer.LayerPetrify;
+import com.deeplake.genshin12.item.IHasVariant;
 import com.deeplake.genshin12.keys.ModKeyBinding;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -36,13 +37,13 @@ public class ClientProxy extends ProxyBase {
 
 	public void registerItemRenderer(Item item, int meta, String id)
 	{
-//		if (item instanceof ItemVariantBase)
-//		{
-//			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName()+"_"+meta, id));
-//		}
-//		else {
+		if (item instanceof IHasVariant)
+		{
+			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName()+"_"+meta, id));
+		}
+		else {
 			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
-//		}
+		}
 	}
 
 	public void registerItemRenderer(Item item, int meta, String fileName, String id)

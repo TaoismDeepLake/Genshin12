@@ -49,6 +49,11 @@ public class ModConfig {
         @Config.Comment("The chance of getting a character for interwined fate")
         @Config.RangeDouble(min = 0, max = 1)
         public double CHARA_CHANCE = 0.1;
+
+        public int PRIMO_PER_CHEST = 1;
+
+        public int PRIMO_PER_ADVANCEMENT = 1;
+        public int PRIMO_PER_CHALLENGE = 5;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.DebugConf")
