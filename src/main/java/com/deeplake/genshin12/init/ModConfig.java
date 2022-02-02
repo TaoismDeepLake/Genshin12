@@ -34,10 +34,21 @@ public class ModConfig {
         @Config.LangKey("genshin12.conf.general.movie_mode")
         @Config.Comment("Movie Mode, greatly increases all kinds of effects to record videos.")
         public boolean MOVIE_MODE = false;
+    }
 
-//        @Config.LangKey("genshin12.conf.general.welcome")
-//        @Config.Comment("The text shown when a player logs in. Can be a key or a string.")
-//        public String WELCOME_MSG = "genshin12.msg.welcome";
+    @Config.LangKey("configgui.genshin12.category.Menu0.GachaConf")
+    @Config.Comment("IdlFramework general config.")
+    public static final GachaConf GACHA_CONF = new GachaConf();
+
+    public static class GachaConf {
+        @Config.LangKey("genshin12.conf.general.allow_treasure_enchant")
+        @Config.Comment("Twisted fate can produce treasure enchantments.")
+        public boolean ALLOW_TREASUE_ENCHANT = false;
+
+        @Config.LangKey("genshin12.conf.general.chara_chance")
+        @Config.Comment("The chance of getting a character for interwined fate")
+        @Config.RangeDouble(min = 0, max = 1)
+        public double CHARA_CHANCE = 0.1;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.DebugConf")

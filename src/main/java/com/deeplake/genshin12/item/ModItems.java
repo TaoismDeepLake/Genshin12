@@ -1,5 +1,8 @@
 package com.deeplake.genshin12.item;
 
+import com.deeplake.genshin12.item.consumables.ItemPackageWeapon;
+import com.deeplake.genshin12.item.consumables.ItemStarFortuna;
+import com.deeplake.genshin12.item.consumables.ItemInterwinedFate;
 import com.deeplake.genshin12.item.skills.genshin.ItemZhongliE;
 import com.deeplake.genshin12.item.skills.genshin.ItemZhongliQ;
 import net.minecraft.item.Item;
@@ -12,12 +15,15 @@ public class ModItems {
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 
 	public static final Item PRIMOGEM = new ItemBase("primogem");
-	public static final Item INTERWINED_FATE = new ItemBase("interwined_fate");
+	public static final Item INTERWINED_FATE = new ItemInterwinedFate("interwined_fate");
+
+	public static final Item WEAPON_PACK = new ItemPackageWeapon("weapon_pack");
+	public static final Item STELLA_FORTUNA = new ItemStarFortuna("stella_fortuna", 1);
 
 	//Character
 	//https://www.minecraftskins.com/skin/18941060/zhongli--------/
-	public static final Item ZHONG_LING_E = new ItemZhongliE("zhongli_e");
-	public static final Item ZHONG_LING_Q = new ItemZhongliQ("zhongli_q");
+	public static final ItemZhongliE ZHONG_LING_E = new ItemZhongliE("zhongli_e");
+	public static final ItemZhongliQ ZHONG_LING_Q = new ItemZhongliQ("zhongli_q");
 
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),
