@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.entity.creatures.render.layer;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.EntityUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBox;
@@ -15,6 +16,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -43,7 +46,8 @@ public class LayerPetrify implements LayerRenderer<EntityLivingBase> {
 
     public void doRenderLayerPetrify(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
-        if (EntityUtil.getAttr(entitylivingbaseIn, SharedMonsterAttributes.MOVEMENT_SPEED) > 0.0001f)
+        IAttributeInstance attribute = entitylivingbaseIn.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) ;
+        if (attribute==null || attribute.getModifier(ModPotions.UUID_PETRYFY) == null)
         {
             return;
         }

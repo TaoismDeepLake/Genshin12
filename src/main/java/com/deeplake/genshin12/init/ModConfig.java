@@ -41,18 +41,28 @@ public class ModConfig {
     public static final GachaConf GACHA_CONF = new GachaConf();
 
     public static class GachaConf {
-        @Config.LangKey("genshin12.conf.general.allow_treasure_enchant")
-        @Config.Comment("Twisted fate can produce treasure enchantments.")
+        @Config.LangKey("genshin12.conf.gacha.allow_treasure_enchant")
+        @Config.Comment("Weapon Pack can give treasure enchantments.")
         public boolean ALLOW_TREASUE_ENCHANT = false;
 
-        @Config.LangKey("genshin12.conf.general.chara_chance")
-        @Config.Comment("The chance of getting a character for interwined fate")
+        @Config.LangKey("genshin12.conf.gacha.chara_chance")
+        @Config.Comment("The chance of getting a character for interwined fate.")
         @Config.RangeDouble(min = 0, max = 1)
         public double CHARA_CHANCE = 0.1;
 
+        @Config.LangKey("genshin12.conf.gacha.primo_per_chest")
+        @Config.Comment("How many primo you get when you loot a chest.")
+        @Config.RangeInt(min = 0)
         public int PRIMO_PER_CHEST = 1;
 
+        @Config.LangKey("genshin12.conf.gacha.primo_per_advancement")
+        @Config.Comment("How many primo you get when you get a lesser advancement.")
+        @Config.RangeInt(min = 0)
         public int PRIMO_PER_ADVANCEMENT = 1;
+
+        @Config.LangKey("genshin12.conf.gacha.primo_per_challenge")
+        @Config.Comment("How many primo you get when you loot a challenge advancement.")
+        @Config.RangeInt(min = 0)
         public int PRIMO_PER_CHALLENGE = 5;
     }
 

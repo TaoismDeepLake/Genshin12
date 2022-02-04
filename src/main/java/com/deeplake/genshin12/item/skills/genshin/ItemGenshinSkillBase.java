@@ -2,7 +2,7 @@ package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.CommonFunctions;
-import com.sun.istack.internal.NotNull;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -39,13 +39,13 @@ public class ItemGenshinSkillBase extends ItemSkillBase {
         return super.applyLongCast(worldIn, livingBase, stack, slot);
     }
 
-    void talkShort(@NotNull EntityPlayer player)
+    void talkShort(EntityPlayer player)
     {
         int index = player.getRNG().nextInt(speechCount) + 1;
         CommonFunctions.SafeSendMsgToPlayer(TextFormatting.ITALIC, player, String.format("%s.%s.%d", getUnlocalizedName(), SPEECH_KEY, index));
     }
 
-    void talkLong(@NotNull EntityPlayer player)
+    void talkLong(EntityPlayer player)
     {
         int index = player.getRNG().nextInt(speechCount) + 1;
         CommonFunctions.SafeSendMsgToPlayer(TextFormatting.ITALIC, player, String.format("%s.%s.%d", getUnlocalizedName(), SPEECH_KEY_LONG, index));

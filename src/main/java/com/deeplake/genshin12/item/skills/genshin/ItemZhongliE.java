@@ -35,6 +35,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
     float distance = 2f;
     int ySeekRange = 4;
     float aoeRange = 3f;
+    float aoeRangeHold = 5f;
 
     float zhongliHP90 = 14695;
     float shieldHPRatio = 20;
@@ -164,14 +165,14 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
 
     void dealDamage(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack, boolean isHold)
     {
-        List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, aoeRange, null);
+        List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, isHold ? aoeRange : (ModConfig.GeneralConf.MOVIE_MODE ? aoeRangeHold * 10 : aoeRangeHold), null);
 
         float damageFactor = isHold ? getHoldDamage(getLevel(stack)) : getInitDamage(getLevel(stack));
         float damage = damageFactor / 100f * caster.getMaxHealth();
 
+        boolean needDrop = true;
         if (ModConfig.GeneralConf.MOVIE_MODE)
         {
-            boolean needDrop = true;
             if (caster instanceof EntityPlayer)
             {
                 for (EntityLivingBase target :
@@ -199,6 +200,11 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
                     target.attackEntityFrom(
                             DamageSource.causePlayerDamage((EntityPlayer) caster),
                             damage);
+                    if (needDrop && caster.getRNG().nextBoolean())
+                    {
+                        EntityEnergyOrb.drop(target, 1, EnumElemental.GEO);
+                        needDrop = false;
+                    }
                 }
                 else {
                     //todo

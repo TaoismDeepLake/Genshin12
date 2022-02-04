@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 import static com.deeplake.genshin12.util.CommonDef.DURA_PER_ENERGY;
+import static com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef.NAME_POSTFIX;
 
 public class ItemGenshinBurstBase extends ItemGenshinSkillBase {
     protected int maxCharge = 40;
@@ -54,7 +55,7 @@ public class ItemGenshinBurstBase extends ItemGenshinSkillBase {
             if (livingBase != null && !livingBase.world.isRemote)
             {
                 //notify player
-                CommonFunctions.SafeSendMsgToPlayer(TextFormatting.AQUA, livingBase, MessageDef.CHARGE_FULL, new TextComponentTranslation(getUnlocalizedName(stack)));
+                CommonFunctions.SafeSendMsgToPlayer(TextFormatting.AQUA, livingBase, MessageDef.CHARGE_FULL, new TextComponentTranslation(getUnlocalizedName(stack) + NAME_POSTFIX));
             }
         }
         else {

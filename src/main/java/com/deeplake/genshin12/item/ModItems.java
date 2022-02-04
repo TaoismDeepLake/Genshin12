@@ -20,6 +20,9 @@ public class ModItems {
 	public static final Item WEAPON_PACK = new ItemPackageWeapon("weapon_pack");
 	public static final Item STELLA_FORTUNA = new ItemStarFortuna("stella_fortuna", 1);
 
+	public static final Item SKILL_UPGRADE = new ItemVariantBase("skill_upgrade", 9);
+	public static final Item COR_LAPIS = new ItemBase("cor_lapis");
+
 	//Character
 	//https://www.minecraftskins.com/skin/18941060/zhongli--------/
 	public static final ItemZhongliE ZHONG_LING_E = new ItemZhongliE("zhongli_e");

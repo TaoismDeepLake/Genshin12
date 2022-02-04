@@ -81,6 +81,7 @@ public class RegistryHandler {
 
 	public static void postInitReg()
 	{
+		ModBlocks.init();
 		//WorldType TYPE_ONE = new WorldTypeOne();
 	}
 

@@ -120,7 +120,7 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
 
             target.attackEntityFrom(
                     DamageSource.MAGIC,
-                    damage);
+                    ModConfig.GeneralConf.MOVIE_MODE ? damage : damage * 100);
 
             if (needDrop && target.getRNG().nextBoolean())
             {
