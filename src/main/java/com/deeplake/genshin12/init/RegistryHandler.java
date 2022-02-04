@@ -8,6 +8,7 @@ import com.deeplake.genshin12.item.ModItems;
 
 import com.deeplake.genshin12.util.IHasModel;
 import com.deeplake.genshin12.util.ModSoundHandler;
+import com.deeplake.genshin12.worldgen.InitWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -70,19 +71,16 @@ public class RegistryHandler {
 
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
-		//GameRegistry.registerWorldGenerator(new ModWorldGenOld(), 100);
-		//GameRegistry.registerWorldGenerator(new ModWorldGenNew(), 120);
-
 		InitBiome.registerBiomes();
 		InitDimension.registerDimensions();
 
 		ModEntityInit.registerEntities();
+		InitWorldGen.registerWorldGen();
 	}
 
 	public static void postInitReg()
 	{
 		ModBlocks.init();
-		//WorldType TYPE_ONE = new WorldTypeOne();
 	}
 
 	public static void initRegistries(FMLInitializationEvent event)

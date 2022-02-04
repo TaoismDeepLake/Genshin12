@@ -28,6 +28,7 @@ public class ModBlocks {
 	public static final Block ZL_PILLAR = new BlockZhongliPillar("zl_pillar", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
 
 	public static final BlockOreBase COR_LAPIS_ORE = (BlockOreBase) new BlockOreBase("cor_lapis_ore").setHardness(10f);
+	public static final Block COR_LAPIS_BLOCK =  new BlockOreBase("cor_lapis_block").setHardness(10f);
 
 	public static void init() {
 		COR_LAPIS_ORE.setHarvestLevel(IDLNBTDef.TOOL_PICKAXE, 2);

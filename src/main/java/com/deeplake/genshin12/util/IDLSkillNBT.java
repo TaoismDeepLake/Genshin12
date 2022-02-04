@@ -255,7 +255,7 @@ public class IDLSkillNBT {
         return level;
     }
 
-    public static void SetLevel(ItemStack stack, int count)
+    public static void setLevel(ItemStack stack, int count)
     {
         if (!(stack.getItem() instanceof ItemSkillBase)) {
             return;

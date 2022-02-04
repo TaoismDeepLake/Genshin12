@@ -50,7 +50,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
     public static final int PILLAR_HEIGHT = 4;
 
     public ItemZhongliE(String name) {
-        super(name);
+        super(name, EnumElemental.GEO);
         setCD(4f, 0f);
         setCDLong(12f, 0f);
         if (ModConfig.DEBUG_CONF.DEBUG_MODE)

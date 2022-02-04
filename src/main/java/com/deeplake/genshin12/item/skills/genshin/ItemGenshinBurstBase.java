@@ -22,17 +22,10 @@ import static com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef.NAME_POSTFIX;
 public class ItemGenshinBurstBase extends ItemGenshinSkillBase {
     protected int maxCharge = 40;
 
-    EnumElemental elemental;
-
     public ItemGenshinBurstBase(String name, int maxCharge, EnumElemental elemental) {
-        super(name);
+        super(name, elemental);
         this.maxCharge = maxCharge;
         setMaxDamage(maxCharge * DURA_PER_ENERGY);
-        this.elemental = elemental;
-    }
-
-    public EnumElemental getElemental() {
-        return elemental;
     }
 
     public void chargeEnergy(ItemStack stack, @Nullable EntityLivingBase livingBase, float val)

@@ -59,13 +59,13 @@ local function GenItem(_typeName, _itemName)
 	outFile:close();
 end
 
-for i = 0, 8 do
-	GenItem("misc", "skill_upgrade_"..i);
-end
-GenItem("misc", "cor_lapis");
+--for i = 0, 8 do
+--	GenItem("misc", "skill_upgrade_"..i);
+--end
+--GenItem("misc", "cor_lapis");
 
 
-GenBlock("cor_lapis_ore");
+GenBlock("cor_lapis_block");
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");

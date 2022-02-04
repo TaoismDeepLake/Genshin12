@@ -142,7 +142,7 @@ public class ItemAdaptingBase extends ItemBase {
         }
 
         ItemStack result = old.copy();
-        IDLSkillNBT.SetLevel(old, newLv);
+        IDLSkillNBT.setLevel(old, newLv);
         IDLSkillNBT.setXP(old, curXP);
         return result;
     }

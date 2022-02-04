@@ -3,6 +3,7 @@ package com.deeplake.genshin12.item.skills.genshin;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.CommonFunctions;
 
+import com.deeplake.genshin12.util.EnumElemental;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -17,8 +18,16 @@ public class ItemGenshinSkillBase extends ItemSkillBase {
     public static final String SPEECH_KEY = "speech";
     public static final String SPEECH_KEY_LONG = "speech.long";
 
-    public ItemGenshinSkillBase(String name) {
+    EnumElemental elemental;
+
+    public ItemGenshinSkillBase(String name, EnumElemental elemental) {
         super(name);
+        setMaxLevel(13);
+        this.elemental = elemental;
+    }
+
+    public EnumElemental getElemental() {
+        return elemental;
     }
 
     @Override

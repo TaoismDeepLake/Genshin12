@@ -9,7 +9,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
 
-import static com.deeplake.genshin12.util.IDLSkillNBT.SetLevel;
+import static com.deeplake.genshin12.util.IDLSkillNBT.setLevel;
 import static com.deeplake.genshin12.util.IDLSkillNBT.getLevel;
 
 public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
@@ -87,7 +87,7 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 						stack1 = stack;
 						lv1 = getLevel(stack);
 						stackResult = stack1.copy();
-						SetLevel(stackResult, lv1 + 1);
+						setLevel(stackResult, lv1 + 1);
 					}
 				}
 				else

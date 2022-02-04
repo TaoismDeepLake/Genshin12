@@ -1,0 +1,24 @@
+{
+    "result": {
+        "item": "genshin12:skill_uprade",
+        "data": 2
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:book" }
+        ],[
+            { "item": "genshin12:cor_lapis" }
+        ],[
+            { "item": "genshin12:cor_lapis" }
+        ],[
+            { "item": "genshin12:cor_lapis" }
+        ],[
+            { "item": "genshin12:bone" }
+        ],[
+            { "item": "genshin12:bone" }
+        ],[
+            { "item": "genshin12:bone" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

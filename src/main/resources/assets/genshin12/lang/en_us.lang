@@ -34,8 +34,40 @@ entity.moroon_tainter.name=Moroon Pathfinder
 
 #Blocks
 tile.zl_pillar.name=Zhongli Pillar Block
+tile.cor_lapis_ore.name=Cor Lapis Ore
+tile.cor_lapis_block.name=Cor Lapis Block
 
 #Items
+item.skill_upgrade_0.name=Skill Upgrade [Void]
+item.skill_upgrade_0.desc=Use this at an anvil to upgrade skills.
+
+item.skill_upgrade_1.name=Skill Upgrade [Anemo]
+item.skill_upgrade_1.desc=Use this at an anvil to upgrade Anemo skills.
+
+item.skill_upgrade_2.name=Skill Upgrade [Geo]
+item.skill_upgrade_2.desc=Use this at an anvil to upgrade Geo skills.
+
+item.skill_upgrade_3.name=Skill Upgrade [Electro]
+item.skill_upgrade_3.desc=Use this at an anvil to upgrade Electro skills.
+
+item.skill_upgrade_4.name=Skill Upgrade [Dendro]
+item.skill_upgrade_4.desc=Use this at an anvil to upgrade Dendro skills.
+
+item.skill_upgrade_5.name=Skill Upgrade [Hydro]
+item.skill_upgrade_5.desc=Use this at an anvil to upgrade Hydro skills.
+
+item.skill_upgrade_6.name=Skill Upgrade [Pyro]
+item.skill_upgrade_6.desc=Use this at an anvil to upgrade Pyro skills.
+
+item.skill_upgrade_7.name=Skill Upgrade [Cyro]
+item.skill_upgrade_7.desc=Use this at an anvil to upgrade Cyro skills.
+
+item.skill_upgrade_8.name=Skill Upgrade [Chrono]
+item.skill_upgrade_8.desc=Use this at an anvil to upgrade Chrono skills.
+
+item.cor_lapis.name=Cor Lapis
+item.cor_lapis.desc=Used for crafting Skill Uprade [Geo]
+
 item.primogem.name=Primogem
 item.primogem.desc=[8 to craft into Interwined Fate]A primordial crystalline gem that's beyond the mundane world. Shines with the condensed hopes and dreams of unviers that once were.
 

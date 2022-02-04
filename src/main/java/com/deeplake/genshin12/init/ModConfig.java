@@ -66,6 +66,24 @@ public class ModConfig {
         public int PRIMO_PER_CHALLENGE = 5;
     }
 
+    @Config.LangKey("configgui.genshin12.category.Menu0.WorldGenConf")
+    @Config.Comment("IdlFramework general config.")
+    public static final WorldGenConf WorldGenConf = new WorldGenConf();
+
+    public static class WorldGenConf {
+        @Config.LangKey("genshin12.conf.worldgen.cor_lapis_count")
+        @Config.Comment("Min count of Cor Lapis generation per chunk.")
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int COR_LAPIS = 2;
+
+        @Config.LangKey("genshin12.conf.worldgen.cor_lapis_count")
+        @Config.Comment("Max extra count of Cor Lapis generation per chunk.")
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int COR_LAPIS_DELTA = 3;
+    }
+
     @Config.LangKey("configgui.genshin12.category.Menu0.DebugConf")
     @Config.Comment("Config for developers")
     public static final DebugConf DEBUG_CONF = new DebugConf();
