@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.potion;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.potion.buff.BasePotion;
 import com.deeplake.genshin12.potion.buff.BaseSimplePotion;
 import com.deeplake.genshin12.potion.buff.PotionJadeShield;
 import com.deeplake.genshin12.potion.buff.PotionPetrification;
@@ -23,10 +24,14 @@ public class ModPotions {
     public static final List<Potion> INSTANCES = new ArrayList<Potion>();
 
     public static UUID UUID_PETRYFY = UUID.fromString("0fcbf9d1-8028-4241-a38e-2fb86ebb8077");
+    public static UUID UUID_CYRO = UUID.fromString("66c81232-b1c7-4b53-8b29-f1c3910a7422");
+    public static UUID UUID_FREEZE = UUID.fromString("6470364b-d96e-43e5-911d-22b5e083849f");
     public static final PotionJadeShield JADE_SHIELD = new PotionJadeShield(false, 0x333333, "jade_shield", 0);
     public static final Potion JADE_SHIELD_DEBUFF = new BaseSimplePotion(true, 0xcccc00, "jade_shield_debuff", 1);
     public static final Potion ZL_PETRIFY = new PotionPetrification(true, 0x555533, "petrification", 2).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_PETRYFY.toString(), -1f, 2);
 
+    public static final Potion CYRO = new BasePotion(true, 0x9dd3e0, "cyro", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_CYRO.toString(), -0.15f, 2);
+    public static final Potion FREEZE = new BasePotion(true, 0x9dd3e0, "freeze", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_FREEZE.toString(), -1f, 2);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)
