@@ -13,13 +13,11 @@ public class ModEntityInit {
     private static int ENTITY_NEXT_ID = 1;
     public static void registerEntities()
     {
-        registerEntity("planet_befall", EntityPlanetBefall.class);
-        registerEntity("energy_orb", EntityEnergyOrb.class);
+        registerEntityNoEgg("planet_befall", EntityPlanetBefall.class);
+        registerEntityNoEgg("energy_orb", EntityEnergyOrb.class);
+        registerEntityNoEgg("glacial_waltz", EntityGlacialWaltz.class);
 //        registerEntity("moroon_tainter", EntityMoroonTainter.class,0xff00ff, 0x000033);
 //        registerEntity("idealland_whitetower_core", EntityIDLWhiteTowerCore.class, ENTITY_NEXT_ID, 128, 0xeeee00, 0xffffff);
-
-        //the bullet
-        //registerEntity("bullet", EntityIdlProjectile.class);
 
         //Assign Dungeons
         //DungeonHooks.addDungeonMob(EntityList.getKey(EntityMoroonTainter.class), STANDARD_DUNGEON_MOB_RARITY);
@@ -48,6 +46,24 @@ public class ModEntityInit {
                 true,
                 color1, color2
                 );
+        ENTITY_NEXT_ID++;
+    }
+
+    private  static  void registerEntityNoEgg(String name, Class<? extends Entity> entity)
+    {
+        registerEntityNoEgg(name, entity, ENTITY_NEXT_ID, 50);
+    }
+
+    private  static  void registerEntityNoEgg(String name, Class<? extends Entity> entity, int id, int range){
+        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + name),
+                entity,
+                name,
+                id,
+                IdlFramework.instance,
+                range,
+                1,
+                true
+        );
         ENTITY_NEXT_ID++;
     }
 }

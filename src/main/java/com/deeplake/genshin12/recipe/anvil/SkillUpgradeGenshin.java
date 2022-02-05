@@ -38,6 +38,7 @@ public class SkillUpgradeGenshin {
 
                     ItemStack result = leftIn.copy();
                     IDLSkillNBT.setLevel(result, nextLevel);
+                    event.setOutput(result);
                 }
             }
         }

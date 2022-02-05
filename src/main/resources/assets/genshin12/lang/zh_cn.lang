@@ -1,13 +1,13 @@
 # PARSE_ESCAPES
-itemGroup.genshin12MiscTab=理境大厅
+itemGroup.genshin12MiscTab=原神12
 
-# PARSE_ESCAPES
 generator.TYPE_ONE=Type One;
 generator.TYPE_TWO=Type Two;
 
 # config
 configgui.genshin12.category.Menu0.GeneralConf=综合选项
 genshin12.conf.general.movie_mode=电影模式
+genshin12.conf.general.burst_req_shift=Bust Req. Sneaking
 
 configgui.genshin12.category.Menu0.gachaconf=抽卡配置
 genshin12.conf.gacha.allow_treasure_enchant=允许宝藏附魔
@@ -33,6 +33,7 @@ entity.moroon_tainter.name=摩隆 拓荒者
 # Blocks
 tile.zl_pillar.name=岩脊
 tile.cor_lapis_ore.name=石珀矿
+tile.cor_lapis_block.name=石珀块
 
 item.skill_upgrade_0.name=技能强化包·虚空
 item.skill_upgrade_0.desc=……
@@ -61,8 +62,8 @@ item.skill_upgrade_7.desc=在铁砧上使用以强化对应元素的技能
 item.skill_upgrade_8.name=技能强化包·时
 item.skill_upgrade_8.desc=……
 
-item.cor_lapis.name=Cor Lapis
-item.cor_lapis.desc=Used for crafting Skill Uprade [Geo]
+item.cor_lapis.name=石珀
+item.cor_lapis.desc=用于合成岩系技能强化包
 
 # Items
 item.primogem.name=原石
@@ -71,15 +72,15 @@ item.primogem.desc=超出世界的原始晶石。黑暗的宇宙中，由无主�
 item.interwined_fate.name=纠缠之缘
 item.interwined_fate.desc=连结梦想的命运之种。缘石辉光能让本无交集的命运交错，让彼此的梦想相连，正如这种光辉将群星连成心之所向的图形。
 
-item.zhongli_e.name=地心
-item.zhongli_e.desc=山脉中、大地上、磐石间，都遍布着岩之力。能自如驱动这股力量的人却少之又少。
-
 # Items
 item.stella_fortuna_0.name=钟离的命之座
 item.stella_fortuna_0.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）。
 
 item.weapon_pack.name=武器包
 item.weapon_pack.desc=呃，又没出货……右键拆开，万一拆出个时运镐呢？
+
+item.zhongli_e.name=地心
+item.zhongli_e.desc=山脉中、大地上、磐石间，都遍布着岩之力。能自如驱动这股力量的人却少之又少。
 
 item.zhongli_e.speech.1=壁立千仞。
 item.zhongli_e.speech.2=震天撼地。
@@ -90,12 +91,26 @@ item.zhongli_e.speech.long.2=安如磐石。
 item.zhongli_e.speech.long.3=固若金汤。
 
 item.zhongli_q.name=天星
-item.zhongli_q.desc=降下巨大的星岩，对坠落范围内的敌人造成巨额岩元素伤害，并使其§b§l石化§r
+item.zhongli_q.desc=降下巨大的星岩，对坠落范围内的敌人造成巨额岩元素伤害，并使其§6§l石化§r
 
 item.zhongli_q.speech.1=§6§l天理长驱。
 item.zhongli_q.speech.2=§6§l此乃天道。
 item.zhongli_q.speech.3=§6§l天动万象。
 
+# Kaeya
+item.kaeya_e.name=霜袭
+item.kaeya_e.desc=瞬间放出急冻的寒气，对前方的敌人造成§b冰元素§r伤害。
+
+item.kaeya_e.speech.1=老实点！
+item.kaeya_e.speech.2=冻结吧！
+item.kaeya_e.speech.3=这个如何？
+
+item.kaeya_q.name=凛冽轮舞
+item.kaeya_q.desc=凝聚空气中的寒霜，召唤3枚围绕自身旋转的寒冰之棱。存在期间内，对路径上的敌人造成§b§r冰元素伤害。
+
+item.kaeya_q.speech.1=§b§l小心着凉。
+item.kaeya_q.speech.2=§b§l抱歉哦。
+item.kaeya_q.speech.3=§b§l…这刹那，将是你的永恒。
 
 genshin12.food.shared.xp_desc=含有经验: %d
 # Items

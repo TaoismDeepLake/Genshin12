@@ -34,6 +34,14 @@ public class ModConfig {
         @Config.LangKey("genshin12.conf.general.movie_mode")
         @Config.Comment("Movie Mode, greatly increases all kinds of effects to record videos.")
         public boolean MOVIE_MODE = false;
+
+        @Config.LangKey("genshin12.conf.general.burst_req_shift")
+        @Config.Comment("Elemental burst can only be cast while sneaking(hold shift).")
+        public boolean BURST_REQ_SHIFT = false;
+
+        @Config.LangKey("genshin12.conf.general.dmg_atk_percent_genshin_to_mc")
+        @Config.Comment("100% skill damage = ? damage in Minecraft?")
+        public float DMG_ATK_PERCENT_GENSHIN_TO_MC = 2f; //100% dmg
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GachaConf")
@@ -99,7 +107,7 @@ public class ModConfig {
         public boolean DEBUG_MODE = false;
 
         public float DMG_GENSHIN_TO_MC = 1f;
-        public float DMG_ATK_PERCENT_GENSHIN_TO_MC = 2f; //100% dmg
+
 
 //        public float PERTIFY_R = 0.313f;
 //        public float PERTIFY_G = 0.313f;
@@ -109,6 +117,8 @@ public class ModConfig {
         public float METEOR_SIZE = 9f;
         public float METEOR_HEIGHT = 9f;
         public float METEOR_OMEGA = 5f;
+
+        public float KAEYA_OMEGA = 0.3f;//rad / tick
 
     }
 

@@ -2,6 +2,8 @@ package com.deeplake.genshin12.events;
 
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.ModItems;
+import com.deeplake.genshin12.util.CommonFunctions;
+import com.deeplake.genshin12.util.MessageDef;
 import com.deeplake.genshin12.util.PlayerUtil;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +27,6 @@ public class EventsAdvancements {
             return;
         }
 
-//        task\ chall \ goal. which is which
         int count = 0;
         switch (event.getAdvancement().getDisplay().getFrame())
         {
@@ -40,6 +41,6 @@ public class EventsAdvancements {
                 throw new IllegalStateException("Unexpected value: " + event.getAdvancement().getDisplay().getFrame());
         }
         PlayerUtil.giveToPlayer(player, new ItemStack(ModItems.PRIMOGEM, count));
-
+        CommonFunctions.SafeSendMsgToPlayer(player, MessageDef.OBTAIN_PRIMO, count);
     }
 }

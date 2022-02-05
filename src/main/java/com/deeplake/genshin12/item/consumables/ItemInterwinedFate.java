@@ -21,7 +21,9 @@ public class ItemInterwinedFate extends ItemParcel {
         Random random = playerIn.getRNG();
         if (random.nextFloat() < ModConfig.GACHA_CONF.CHARA_CHANCE)
         {
-            PlayerUtil.giveToPlayer(playerIn, new ItemStack(ModItems.STELLA_FORTUNA));
+            PlayerUtil.giveToPlayer(playerIn,
+                    new ItemStack(ModItems.STELLA_FORTUNA, 1,
+                            playerIn.getRNG().nextInt(ModItems.STELLA_FORTUNA.getMaxDamage() + 1)));
         }
         else {
             PlayerUtil.giveToPlayer(playerIn, new ItemStack(ModItems.WEAPON_PACK));

@@ -8,6 +8,7 @@ generator.TYPE_TWO=Type Two;
 #config
 configgui.genshin12.category.Menu0.GeneralConf=General Config
 genshin12.conf.general.movie_mode=Movie Mode
+genshin12.conf.general.burst_req_shift=Bust Req. Sneaking
 
 configgui.genshin12.category.Menu0.gachaconf=Gacha Config
 genshin12.conf.gacha.allow_treasure_enchant=Allow Treasure Enchantments
@@ -74,14 +75,15 @@ item.primogem.desc=[8 to craft into Interwined Fate]A primordial crystalline gem
 item.interwined_fate.name=Interwined Fate
 item.interwined_fate.desc=[Right Click To Open]A fateful stone that connects dreams. Its glimmers can entwine fates and connect dreams, just as how its glimmers links stars in to the shapes of a heart's desires.
 
-item.zhongli_e.name=Dominus Lapidis
-item.zhongli_e.desc=Every mountain, rock and inch of land is filled with the power of Geo, but those who can wield such powers freely are few and far between.
-
 item.stella_fortuna_0.name=Zhongli's Stella Fortuna
 item.stella_fortuna_0.desc=Open to get a set of skills. Constellation system is still WIP.
 
 item.weapon_pack.name=Weapon Pack
 item.weapon_pack.desc=[Right Click To Open]Open to get a random enchanted pickaxe, axe or sword.
+
+#Zhongli
+item.zhongli_e.name=Dominus Lapidis
+item.zhongli_e.desc=Every mountain, rock and inch of land is filled with the power of Geo, but those who can wield such powers freely are few and far between.
 
 item.zhongli_e.speech.1=Rise!
 item.zhongli_e.speech.2=Quake!
@@ -98,6 +100,20 @@ item.zhongli_q.speech.1=§6§lOrder guide you.
 item.zhongli_q.speech.2=§6§lThis is order.
 item.zhongli_q.speech.3=§6§lI will have order!
 
+#Kaeya
+item.kaeya_e.name=Frostgnaw
+item.kaeya_e.desc=Unleashes a frigid blast, dealing §bCryo DMG§r to opponents in front of Kaeya.
+
+item.kaeya_e.speech.1=Cool it!
+item.kaeya_e.speech.2=Freeze!
+item.kaeya_e.speech.3=Dodge this!
+
+item.kaeya_q.name=Glacial Waltz
+item.kaeya_q.desc=Coalescing the frost in the air, Kaeya summons 3 icicles that revolve around him. These icicles will follow the character around and deal §bCryo DMG§r to opponents in their path for the ability's duration.
+
+item.kaeya_q.speech.1=§b§lDon't get frostbite.
+item.kaeya_q.speech.2=§b§lOh, so sorry!
+item.kaeya_q.speech.3=§b§lThis moment will be frozen in time.
 
 genshin12.food.shared.xp_desc=Grants XP: %d
 genshin12.gua_enhance_no_free.desc=Use anvil to socket Gua(Elemental)
@@ -151,6 +167,7 @@ genshin12.potion.petrification=Petrification
 #msg
 genshin12.skill.msg.lack_mp=Insufficient Energy (%s/%s)
 genshin12.skill.msg.charge_full=%s Energy Full!
+genshin12.msg.obtain_primo=$b$6Obtained %s Primogem
 
 #Death
 #examples

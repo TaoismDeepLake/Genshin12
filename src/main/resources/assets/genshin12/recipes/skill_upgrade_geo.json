@@ -13,11 +13,11 @@
         ],[
             { "item": "genshin12:cor_lapis" }
         ],[
-            { "item": "genshin12:bone" }
+            { "item": "minecraft:bone" }
         ],[
-            { "item": "genshin12:bone" }
+            { "item": "minecraft:bone" }
         ],[
-            { "item": "genshin12:bone" }
+            { "item": "minecraft:bone" }
         ]
     ],
     "type": "forge:ore_shapeless"

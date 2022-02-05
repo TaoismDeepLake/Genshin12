@@ -67,6 +67,14 @@ public class ItemGenshinBurstBase extends ItemGenshinSkillBase {
 
     @Override
     public boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot, boolean hintErrorMsg) {
+        if (ModConfig.GeneralConf.BURST_REQ_SHIFT)
+        {
+            if (!livingBase.isSneaking())
+            {
+                return false;
+            }
+        }
+
         int lack_mp = stack.getItemDamage();
         if (lack_mp > 0)
         {

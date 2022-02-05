@@ -1,10 +1,9 @@
 package com.deeplake.genshin12.item;
 
 import com.deeplake.genshin12.item.consumables.ItemPackageWeapon;
-import com.deeplake.genshin12.item.consumables.ItemStarFortuna;
+import com.deeplake.genshin12.item.consumables.ItemStellaFortuna;
 import com.deeplake.genshin12.item.consumables.ItemInterwinedFate;
-import com.deeplake.genshin12.item.skills.genshin.ItemZhongliE;
-import com.deeplake.genshin12.item.skills.genshin.ItemZhongliQ;
+import com.deeplake.genshin12.item.skills.genshin.*;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
@@ -18,15 +17,18 @@ public class ModItems {
 	public static final Item INTERWINED_FATE = new ItemInterwinedFate("interwined_fate");
 
 	public static final Item WEAPON_PACK = new ItemPackageWeapon("weapon_pack");
-	public static final Item STELLA_FORTUNA = new ItemStarFortuna("stella_fortuna", 1);
+	public static final Item STELLA_FORTUNA = new ItemStellaFortuna("stella_fortuna", 2);
 
 	public static final Item SKILL_UPGRADE = new ItemVariantBase("skill_upgrade", 9);
 	public static final Item COR_LAPIS = new ItemBase("cor_lapis");
 
 	//Character
 	//https://www.minecraftskins.com/skin/18941060/zhongli--------/
-	public static final ItemZhongliE ZHONG_LING_E = new ItemZhongliE("zhongli_e");
-	public static final ItemZhongliQ ZHONG_LING_Q = new ItemZhongliQ("zhongli_q");
+	public static final ItemZhongliE ZHONGLI_E = new ItemZhongliE("zhongli_e");
+	public static final ItemZhongliQ ZHONGLI_Q = new ItemZhongliQ("zhongli_q");
+
+	public static final ItemKaeyaE KAEYA_E = new ItemKaeyaE("kaeya_e");
+	public static final ItemGenshinBurstBase KAEYA_Q = new ItemKaeyaQ("kaeya_q");
 
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),

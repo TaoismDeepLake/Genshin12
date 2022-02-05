@@ -14,9 +14,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemStarFortuna extends ItemParcel implements IHasVariant {
+public class ItemStellaFortuna extends ItemParcel implements IHasVariant {
     protected int typeCount = 1;
-    public ItemStarFortuna(String name, int count) {
+    public ItemStellaFortuna(String name, int count) {
         super(name);
         if (count < 1)
         {

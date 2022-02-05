@@ -38,6 +38,10 @@ public class EntityPlanetBefall extends EntityLiving {
         setNoGravity(true);
     }
 
+    public void setDamageAmount(float damageAmount) {
+        this.damageAmount = damageAmount;
+    }
+
     @Override
     public void move(MoverType type, double x, double y, double z) {
         super.move(type, 0, y, 0);

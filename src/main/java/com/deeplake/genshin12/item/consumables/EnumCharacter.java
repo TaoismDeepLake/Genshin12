@@ -8,7 +8,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public enum EnumCharacter {
-    ZHONG_LI(ModItems.ZHONG_LING_E, ModItems.ZHONG_LING_Q);
+    ZHONGLI(ModItems.ZHONGLI_E, ModItems.ZHONGLI_Q),
+    KAEYA(ModItems.KAEYA_E, ModItems.KAEYA_Q);
 
     ItemGenshinSkillBase elemSkill;
     ItemGenshinBurstBase burst;

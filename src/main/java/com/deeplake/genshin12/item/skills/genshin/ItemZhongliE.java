@@ -168,7 +168,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
         List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, isHold ? aoeRange : (ModConfig.GeneralConf.MOVIE_MODE ? aoeRangeHold * 10 : aoeRangeHold), null);
 
         float damageFactor = isHold ? getHoldDamage(getLevel(stack)) : getInitDamage(getLevel(stack));
-        float damage = damageFactor / 100f * caster.getMaxHealth();
+        float damage = damageFactor / 100f * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC;
 
         boolean needDrop = true;
         if (ModConfig.GeneralConf.MOVIE_MODE)

@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "genshin12:skill_uprade",
+        "data": 7
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:book" }
+        ],[
+            { "item": "minecraft:snow" }
+        ],[
+            { "item": "minecraft:snow" }
+        ],[
+            { "item": "minecraft:snow" }
+        ],[
+            { "item": "minecraft:diamond" }
+        ],[
+            { "item": "minecraft:diamond" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

@@ -372,6 +372,18 @@ public class EntityEnergyOrb extends Entity {
 
     public static void drop(EntityLivingBase livingBase, int amount, EnumElemental elemental)
     {
+        //-3 means 2.5
+        if (amount < 0)
+        {
+            if (livingBase.getRNG().nextBoolean())
+            {
+                drop(livingBase.world, livingBase.getPositionVector().addVector(0, livingBase.height / 2f, 0), 1, elemental);
+            }
+        }
+
+        amount = -amount;
+
+        if (amount > 0)
         drop(livingBase.world, livingBase.getPositionVector().addVector(0, livingBase.height / 2f, 0), amount, elemental);
     }
 

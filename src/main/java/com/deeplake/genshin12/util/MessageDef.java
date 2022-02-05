@@ -11,6 +11,7 @@ public class MessageDef {
     public static final String NOT_CASTABLE_OFFHAND = "genshin12.skill.msg.not_castable_offhand";
     public static final String LACK_MP = IdlFramework.MODID + ".skill.msg.lack_mp";
     public static final String CHARGE_FULL = IdlFramework.MODID + ".skill.msg.charge_full";
+    public static final String OBTAIN_PRIMO = IdlFramework.MODID + "genshin12.msg.obtain_primo";
 
     public static String getSkillCastKey(ItemStack stack, int index)
     {

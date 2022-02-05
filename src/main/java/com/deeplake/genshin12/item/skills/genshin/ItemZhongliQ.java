@@ -46,15 +46,11 @@ public class ItemZhongliQ extends ItemGenshinBurstBase {
             worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, targetPosF.x, targetPosF.y + ModConfig.DEBUG_CONF.METEOR_HEIGHT, targetPosF.z, 0,0,0);
 
         } else {
-//            dealDamage(worldIn, caster.getPositionVector(), caster, stack);
-//            worldIn.playSound(null, caster.getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 3f, 0.6f);
-//            worldIn.playSound(null, caster.getPosition(), ModSoundHandler.ZHONGLI_Q, SoundCategory.PLAYERS, 1f, 1f);
-
             EntityPlanetBefall befall = new EntityPlanetBefall(worldIn);
             befall.setPositionAndUpdate(targetPosF.x, targetPosF.y + ModConfig.DEBUG_CONF.METEOR_HEIGHT, targetPosF.z);
             befall.setShooter(caster);
+            befall.setDamageAmount(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC);
             worldIn.spawnEntity(befall);
-
         }
         return super.applyCast(worldIn, caster, stack, slot);
     }
@@ -66,29 +62,6 @@ public class ItemZhongliQ extends ItemGenshinBurstBase {
         }
         catch (ArrayIndexOutOfBoundsException e){
             return skillDMG[0];
-        }
-    }
-
-    void dealDamage(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack)
-    {
-        List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, range, null);
-
-        float damageFactor = getInitDamage(getLevel(stack));
-        float damage = damageFactor / 100f * ModConfig.DEBUG_CONF.DMG_ATK_PERCENT_GENSHIN_TO_MC;
-
-        for (EntityLivingBase target :
-                list) {
-            if (caster instanceof EntityPlayer)
-            {
-                target.attackEntityFrom(
-                        DamageSource.causePlayerDamage((EntityPlayer) caster),
-                        damage);
-                EntityUtil.ApplyBuff(target, ModPotions.ZL_PETRIFY, 0, getDura(stack));
-            }
-            else {
-                //todo
-            }
-
         }
     }
 }

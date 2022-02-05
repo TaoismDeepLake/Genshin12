@@ -62,10 +62,11 @@ end
 --for i = 0, 8 do
 --	GenItem("misc", "skill_upgrade_"..i);
 --end
---GenItem("misc", "cor_lapis");
+GenItem("skill", "kaeya_e");
+GenItem("skill", "kaeya_q");
 
 
-GenBlock("cor_lapis_block");
+--GenBlock("cor_lapis_block");
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");

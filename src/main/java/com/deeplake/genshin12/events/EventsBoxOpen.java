@@ -43,7 +43,9 @@ public class EventsBoxOpen {
                 //first time to open
                 if (container instanceof ILootContainer && ((ILootContainer)container).getLootTable() != null)
                 {
-                    PlayerUtil.giveToPlayer(player, new ItemStack(ModItems.PRIMOGEM, ModConfig.GACHA_CONF.PRIMO_PER_CHEST));
+                    int count = ModConfig.GACHA_CONF.PRIMO_PER_CHEST;
+                    PlayerUtil.giveToPlayer(player, new ItemStack(ModItems.PRIMOGEM, count));
+                    CommonFunctions.SafeSendMsgToPlayer(player, MessageDef.OBTAIN_PRIMO, count);
                 }
             }
         }

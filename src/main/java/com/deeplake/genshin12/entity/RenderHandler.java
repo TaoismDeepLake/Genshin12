@@ -13,6 +13,7 @@ public class RenderHandler {
     public static void registerEntityRenders() {
         RenderingRegistry.registerEntityRenderingHandler(EntityPlanetBefall.class, RenderPlanetBefallLiving::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityEnergyOrb.class, RenderEnergyOrb::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityGlacialWaltz.class, RenderNone::new);
 
 //        RenderingRegistry.registerEntityRenderingHandler(EntityPlanetBefall.class, renderManager -> new RenderPlanetBefall<>(renderManager));
     }
