@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.proxy;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.entity.creatures.render.layer.LayerFrozen;
 import com.deeplake.genshin12.entity.creatures.render.layer.LayerPetrify;
 import com.deeplake.genshin12.item.IHasVariant;
 import com.deeplake.genshin12.keys.ModKeyBinding;
@@ -26,9 +27,9 @@ import java.util.List;
 public class ClientProxy extends ProxyBase {
 	public static final List<KeyBinding> KEY_BINDINGS = new ArrayList<KeyBinding>();
 
-	public static final KeyBinding CAST_MAINHAND = new ModKeyBinding("activate_skill_mainhand", KeyConflictContext.IN_GAME, KeyModifier.NONE, Keyboard.KEY_R, "key.category.idealland");
-	public static final KeyBinding CAST_OFFHAND = new ModKeyBinding("activate_skill_offhand", KeyConflictContext.IN_GAME, KeyModifier.NONE, Keyboard.KEY_GRAVE, "key.category.idealland");
-	public static final KeyBinding CAST_HELMET = new ModKeyBinding("activate_skill_helmet", KeyConflictContext.IN_GAME, KeyModifier.ALT, Keyboard.KEY_GRAVE, "key.category.idealland");
+	public static final KeyBinding CAST_MAINHAND = new ModKeyBinding("activate_skill_mainhand", KeyConflictContext.IN_GAME, KeyModifier.NONE, Keyboard.KEY_R, "key.category.genshin12");
+	public static final KeyBinding CAST_OFFHAND = new ModKeyBinding("activate_skill_offhand", KeyConflictContext.IN_GAME, KeyModifier.NONE, Keyboard.KEY_GRAVE, "key.category.genshin12");
+	public static final KeyBinding CAST_HELMET = new ModKeyBinding("activate_skill_helmet", KeyConflictContext.IN_GAME, KeyModifier.ALT, Keyboard.KEY_GRAVE, "key.category.genshin12");
 
 	public boolean isServer()
 	{
@@ -71,5 +72,6 @@ public class ClientProxy extends ProxyBase {
 
 	private static <T extends EntityLivingBase> void attachRenderLayers(RenderLivingBase<T> renderer) {
 		renderer.addLayer(new LayerPetrify(renderer));
+		renderer.addLayer(new LayerFrozen(renderer));
 	}
 }

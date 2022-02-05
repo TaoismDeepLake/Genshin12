@@ -31,7 +31,8 @@ public class ModPotions {
     public static final Potion ZL_PETRIFY = new PotionPetrification(true, 0x555533, "petrification", 2).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_PETRYFY.toString(), -1f, 2);
 
     public static final Potion CYRO = new BasePotion(true, 0x9dd3e0, "cyro", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_CYRO.toString(), -0.15f, 2);
-    public static final Potion FREEZE = new BasePotion(true, 0x9dd3e0, "freeze", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_FREEZE.toString(), -1f, 2);
+    public static final Potion FREEZE = new PotionPetrification(true, 0x9dd3e0, "freeze", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_FREEZE.toString(), -1f, 2);
+    public static final Potion WATER = new BasePotion(true, 0x4bc3f1, "hydro", 5);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)

@@ -32,6 +32,7 @@ public class LayerPetrify implements LayerRenderer<EntityLivingBase> {
     public static ResourceLocation OVERLAY = new ResourceLocation("textures/blocks/dirt.png");
     public static ResourceLocation OVERLAY_ROCK = new ResourceLocation(IdlFramework.MODID,"textures/blocks/petrify.png");
     public static ResourceLocation OVERLAY_LIGHT = new ResourceLocation(IdlFramework.MODID,"textures/blocks/petrify_light.png");
+    public static ResourceLocation OVERLAY_ICE = new ResourceLocation("textures/blocks/ice.png");
 
     public LayerPetrify(RenderLivingBase<?> rendererIn)
     {
@@ -73,9 +74,9 @@ public class LayerPetrify implements LayerRenderer<EntityLivingBase> {
         {
             ((RenderLiving)renderer).setLightmap((EntityLiving) entitylivingbaseIn);
         }
-//        GlStateManager.depthMask(true);
-//        GlStateManager.disableBlend();
-//        GlStateManager.enableAlpha();
+        GlStateManager.depthMask(true);
+        GlStateManager.disableBlend();
+        GlStateManager.enableAlpha();
     }
 
     @Override
