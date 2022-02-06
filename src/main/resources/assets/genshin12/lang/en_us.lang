@@ -5,10 +5,20 @@ itemGroup.genshin12MiscTab=Genshin 12
 generator.TYPE_ONE=Type One;
 generator.TYPE_TWO=Type Two;
 
+genshin12.shared.wip.desc=WIP
+
 #config
 configgui.genshin12.category.Menu0.GeneralConf=General Config
 genshin12.conf.general.movie_mode=Movie Mode
 genshin12.conf.general.burst_req_shift=Bust Req. Sneaking
+genshin12.conf.general.can_plunge_client=[Client]Can accelerate fall
+genshin12.conf.general.can_plunge_server=[Server]Enable plunge AoE
+genshin12.conf.general.dmg_atk_percent_genshin_to_mc=Skill Damage Base Factor
+
+configgui.genshin12.category.Menu0.WorldGenConf=World Gen Config
+genshin12.conf.worldgen.cor_lapis_count=Cor Lapis Density
+genshin12.conf.worldgen.cor_lapis_count_delta=Cor Lapis Density Extras
+
 
 configgui.genshin12.category.Menu0.gachaconf=Gacha Config
 genshin12.conf.gacha.allow_treasure_enchant=Allow Treasure Enchantments
@@ -17,6 +27,8 @@ genshin12.conf.gacha.primo_per_chest=Primogem Per Chest
 genshin12.conf.gacha.primo_per_advancement=Primogem Per Advancement
 genshin12.conf.gacha.primo_per_challenge=Primogem Per Challenge
 
+configgui.genshin12.category.Menu0.DebugConf=Debug Config, Be Careful.
+genshin12.conf.worldgen.enable_xiao_jump_boost=Enable Xiao Jump Boost[Client]
 
 #Enchantments
 enchantment.genshin12.test_enchantment=Early Access
@@ -24,11 +36,6 @@ enchantment.genshin12.test_enchantment=Early Access
 #Messages
 genshin12.moroon_incoming_herald=[IDL][Warn] The Moroon are interested in your fights.
 genshin12.msg.notice_meter_report=[IDL] Moroon notice value: %d, invasion: %d/%d, error:%d
-
-#Potions
-genshin12.potion.deadly=Deadly
-genshin12.potion.zen_heart=Countless Virtue
-
 
 #Entities
 entity.moroon_tainter.name=Moroon Pathfinder
@@ -78,6 +85,12 @@ item.interwined_fate.desc=[Right Click To Open]A fateful stone that connects dre
 item.stella_fortuna_0.name=Zhongli's Stella Fortuna
 item.stella_fortuna_0.desc=Open to get a set of skills. Constellation system is still WIP.
 
+item.stella_fortuna_1.name=Kaeya's Stella Fortuna
+item.stella_fortuna_1.desc=Open to get a set of skills. Constellation system is still WIP.
+
+item.stella_fortuna_2.name=Xiao's Stella Fortuna
+item.stella_fortuna_2.desc=Open to get a set of skills. Constellation system is still WIP.
+
 item.weapon_pack.name=Weapon Pack
 item.weapon_pack.desc=[Right Click To Open]Open to get a random enchanted pickaxe, axe or sword.
 
@@ -114,6 +127,24 @@ item.kaeya_q.desc=Coalescing the frost in the air, Kaeya summons 3 icicles that 
 item.kaeya_q.speech.1=§b§lDon't get frostbite.
 item.kaeya_q.speech.2=§b§lOh, so sorry!
 item.kaeya_q.speech.3=§b§lThis moment will be frozen in time.
+
+#Xiao
+item.xiao_e.name=Lemniscatic Wind Cycling
+item.xiao_e.desc=Xiao lunges forward, dealing Anemo DMG to opponents in his path.
+
+item.xiao_e.speech.1=Hmph.
+item.xiao_e.speech.2=Boring.
+item.xiao_e.speech.3=Useless.
+
+item.xiao_q.name=Bane of All Evil
+item.xiao_q.desc=Xiao dons the Yaksha Mask that set gods and demons trembling millennia ago. Greatly increases Xiao's jumping ability. Increases his attack AoE and attack DMG. Drains HP.
+
+item.xiao_q.speech.1=§b§lDisappear!
+item.xiao_q.speech.2=§b§lEvil conquering!
+item.xiao_q.speech.3=§b§lLament!
+
+genshin12.msg.xiao.plunge.speech.0=Here!
+genshin12.msg.xiao.plunge.speech.1=Worthless!
 
 genshin12.food.shared.xp_desc=Grants XP: %d
 genshin12.gua_enhance_no_free.desc=Use anvil to socket Gua(Elemental)
@@ -162,6 +193,8 @@ subtitle.skill.zhongli.q=[BGM:Rex Incognito]
 genshin12.potion.jade_shield=Jade Shield
 genshin12.potion.jade_shield_debuff=Jade Shield Debuff
 genshin12.potion.petrification=Petrification
+genshin12.potion.xiao_dash=Wind Cycling
+genshin12.potion.yaksha_mask=Yaksha Mask
 
 
 #msg

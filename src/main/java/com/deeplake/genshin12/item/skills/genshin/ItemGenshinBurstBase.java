@@ -10,6 +10,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -63,6 +64,12 @@ public class ItemGenshinBurstBase extends ItemGenshinSkillBase {
             chargeEnergy(stack, (EntityLivingBase) entityIn, 3);
         }
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+    }
+
+    //burst normally will not drop
+    @Override
+    int getDropAmount(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack) {
+        return 0;
     }
 
     @Override

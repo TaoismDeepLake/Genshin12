@@ -1,0 +1,24 @@
+{
+    "result": {
+        "item": "genshin12:skill_upgrade",
+        "data": 2
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:book" }
+        ],[
+            { "item": "minecraft:yellow_flower", "data": 0 }
+        ],[
+            { "item": "minecraft:yellow_flower", "data": 0 }
+        ],[
+            { "item": "minecraft:yellow_flower", "data": 0 }
+        ],[
+            { "item": "minecraft:feather" }
+        ],[
+            { "item": "minecraft:feather" }
+        ],[
+            { "item": "minecraft:feather" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

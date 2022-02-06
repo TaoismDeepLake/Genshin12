@@ -24,8 +24,6 @@ import java.util.List;
 
 public class ItemZhongliQ extends ItemGenshinBurstBase {
 
-    final float[] skillDMG = new float[]{401.08f, 444.44f};//todo
-    float range = 10f;
     float distance = 3f;
 
     public ItemZhongliQ(String name) {
@@ -33,6 +31,7 @@ public class ItemZhongliQ extends ItemGenshinBurstBase {
         setCD(12, 0f);
 //        setDura(3.1f, 0.1f);
         setDura(8, 0.1f);
+        initDamageRatio = new float[]{401.08f, 444.44f, 487.8f, 542f, 590.78f, 639.56f, 704.6f, 769.64f, 834.68f, 899.72f, 964.76f, 1029.8f, 1084f, 1138f};
     }
 
     @Override
@@ -53,15 +52,5 @@ public class ItemZhongliQ extends ItemGenshinBurstBase {
             worldIn.spawnEntity(befall);
         }
         return super.applyCast(worldIn, caster, stack, slot);
-    }
-
-    float getInitDamage(int level)
-    {
-        try {
-            return skillDMG[level - 1];
-        }
-        catch (ArrayIndexOutOfBoundsException e){
-            return skillDMG[0];
-        }
     }
 }

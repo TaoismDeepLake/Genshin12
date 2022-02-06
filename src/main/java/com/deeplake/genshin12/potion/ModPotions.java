@@ -1,10 +1,8 @@
 package com.deeplake.genshin12.potion;
 
 import com.deeplake.genshin12.IdlFramework;
-import com.deeplake.genshin12.potion.buff.BasePotion;
-import com.deeplake.genshin12.potion.buff.BaseSimplePotion;
-import com.deeplake.genshin12.potion.buff.PotionJadeShield;
-import com.deeplake.genshin12.potion.buff.PotionPetrification;
+import com.deeplake.genshin12.potion.buff.*;
+import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
@@ -26,13 +24,30 @@ public class ModPotions {
     public static UUID UUID_PETRYFY = UUID.fromString("0fcbf9d1-8028-4241-a38e-2fb86ebb8077");
     public static UUID UUID_CYRO = UUID.fromString("66c81232-b1c7-4b53-8b29-f1c3910a7422");
     public static UUID UUID_FREEZE = UUID.fromString("6470364b-d96e-43e5-911d-22b5e083849f");
+    public static UUID UUID_XIAO_MASK = UUID.fromString("51319831-13c4-4b35-9632-d926c041bdae");
     public static final PotionJadeShield JADE_SHIELD = new PotionJadeShield(false, 0x333333, "jade_shield", 0);
     public static final Potion JADE_SHIELD_DEBUFF = new BaseSimplePotion(true, 0xcccc00, "jade_shield_debuff", 1);
     public static final Potion ZL_PETRIFY = new PotionPetrification(true, 0x555533, "petrification", 2).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_PETRYFY.toString(), -1f, 2);
 
     public static final Potion CYRO = new BasePotion(true, 0x9dd3e0, "cyro", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_CYRO.toString(), -0.15f, 2);
     public static final Potion FREEZE = new PotionPetrification(true, 0x9dd3e0, "freeze", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_FREEZE.toString(), -1f, 2);
-    public static final Potion WATER = new BasePotion(true, 0x4bc3f1, "hydro", 5);
+    public static final Potion HYDRO = new BasePotion(true, EnumElemental.HYDRO.getColor(), "hydro", 4);
+
+    public static final Potion ANEMO = new BasePotion(true, EnumElemental.ANEMO.getColor(), "anemo", 5);
+
+    public static final Potion GEO = new BasePotion(true, EnumElemental.GEO.getColor(), "geo", 6);
+
+    public static final Potion ELECTRO = new BasePotion(true, EnumElemental.ELECTRO.getColor(), "electro", 7);
+
+    public static final Potion DENDRO = new BasePotion(true, EnumElemental.DENDRO.getColor(), "dendro", 8);
+
+    public static final Potion PYRO = new BasePotion(true, EnumElemental.PYRO.getColor(), "pyro", 9);
+
+    public static final Potion CHRONO = new BasePotion(true, EnumElemental.CHRONO.getColor(), "chrono", 10);
+
+    public static final Potion XIAO_DASH = new PotionXiaoDash(false, EnumElemental.ANEMO.getColor(), "xiao_dash", 11);
+
+    public static final Potion YAKSHA_MASK = new PotionXiaoMask(false, EnumElemental.ANEMO.getColor(), "yaksha_mask", 12).registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, UUID_XIAO_MASK.toString(), 0f, 1);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)
@@ -52,9 +67,20 @@ public class ModPotions {
     @SubscribeEvent
     public static void registerPotions(RegistryEvent.Register<Potion> evt)
     {
-        //VIRUS_ONE.tuples.add(new EffectTuple(0.2f, MobEffects.NAUSEA, 100));
-
         evt.getRegistry().registerAll(INSTANCES.toArray(new Potion[0]));
-        IdlFramework.LogWarning("registered %d potion", INSTANCES.size());
+        IdlFramework.Log("registered %d potion", INSTANCES.size());
     }
+
+    public static void postInit()
+    {
+        EnumElemental.ANEMO.setPotion(ANEMO);
+        EnumElemental.GEO.setPotion(GEO);
+        EnumElemental.ELECTRO.setPotion(ELECTRO);
+        EnumElemental.DENDRO.setPotion(DENDRO);
+        EnumElemental.HYDRO.setPotion(HYDRO);
+        EnumElemental.PYRO.setPotion(PYRO);
+        EnumElemental.CYRO.setPotion(CYRO);
+        EnumElemental.CHRONO.setPotion(CHRONO);
+    }
+
 }

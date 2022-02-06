@@ -3,9 +3,7 @@ package com.deeplake.genshin12.blocks.tileEntity.genshin;
 import com.deeplake.genshin12.blocks.tileEntity.builder.TileEntityBuilderBase;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
-import com.deeplake.genshin12.util.CommonDef;
-import com.deeplake.genshin12.util.EntityUtil;
-import com.deeplake.genshin12.util.EnumElemental;
+import com.deeplake.genshin12.util.*;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -118,6 +116,7 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
         for (EntityLivingBase target :
                 list) {
 
+            ElementalUtil.applyElemental(target, damage, EnumElemental.GEO, EnumAmount.SMALL);
             target.attackEntityFrom(
                     DamageSource.MAGIC,
                     ModConfig.GeneralConf.MOVIE_MODE ? damage : damage * 100);

@@ -2,10 +2,7 @@ package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
-import com.deeplake.genshin12.util.CommonDef;
-import com.deeplake.genshin12.util.CommonFunctions;
-import com.deeplake.genshin12.util.EntityUtil;
-import com.deeplake.genshin12.util.EnumElemental;
+import com.deeplake.genshin12.util.*;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -25,12 +22,13 @@ import java.util.List;
 
 public class ItemKaeyaE extends ItemGenshinSkillBase {
     public float aoeRange = 3f;
-    final float[] initDamageRatio = new float[]{191.2f,205.54f,219.8f,239f,253.34f,267.68f,30.92f,325.04f,344.16f,363.28f,382.4f,406.3f};
 
     public ItemKaeyaE(String name) {
         super(name, EnumElemental.CYRO);
         //Frostgnaw freezes water for 9 seconds.
         setCD(6f, 0f);//
+        initDamageRatio = new float[]{191.2f,205.54f,219.8f,239f,253.34f,267.68f,30.92f,325.04f,344.16f,363.28f,382.4f,406.3f};
+        setAmount(EnumAmount.MEDIUM);
     }
 
     @Override
@@ -44,7 +42,6 @@ public class ItemKaeyaE extends ItemGenshinSkillBase {
         Vec3d lockVecProjY = new Vec3d(lookVecRaw.x, 0, lookVecRaw.z).normalize();
         Vec3d targetPosF = caster.getPositionVector().add(lockVecProjY.scale(aoeRange));
 
-        //todo: consider freezing water here
         freezeWater(worldIn, targetPosF);
 
         if (!worldIn.isRemote)
@@ -61,40 +58,9 @@ public class ItemKaeyaE extends ItemGenshinSkillBase {
         }
     }
 
-    void dealDamage(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack)
-    {
-        List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos,aoeRange, null);
-
-        float damageFactor = getInitDamage(getLevel(stack));
-        float damage = damageFactor / 100f * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC;
-
-        boolean needDrop = true;
-        if (caster instanceof EntityPlayer)
-        {
-            for (EntityLivingBase target :
-                    list) {
-                target.attackEntityFrom(
-                        DamageSource.causePlayerDamage((EntityPlayer) caster),
-                        damage);
-
-                if (needDrop)
-                {
-                    //2.5 orbs
-                    EntityEnergyOrb.drop(caster, -3, EnumElemental.CYRO);
-                    needDrop = false;
-                }
-            }
-        }
-    }
-
-    float getInitDamage(int level)
-    {
-        try {
-            return initDamageRatio[level - 1];
-        }
-        catch (ArrayIndexOutOfBoundsException e){
-            return initDamageRatio[0];
-        }
+    @Override
+    int getDropAmount(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack) {
+        return -3;
     }
 
     void freezeWater(World world, Vec3d pos)

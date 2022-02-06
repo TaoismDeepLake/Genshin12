@@ -17,12 +17,6 @@ public class BaseSimplePotion extends Potion {
     protected static final ResourceLocation resource = new ResourceLocation("genshin12","textures/misc/potions.png");
     protected final int iconIndex;
 
-//    if (!this.world.isRemote)
-//    {
-//        layer.getPotion().applyAttributesModifiersToEntity(this, this.getAttributeMap(), layer.getAmplifier());
-//    }
-
-
     public BaseSimplePotion(boolean isBadEffectIn, int liquidColorIn, String name, int icon) {
         super(isBadEffectIn, liquidColorIn);
         setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
@@ -33,11 +27,19 @@ public class BaseSimplePotion extends Potion {
     }
 
     @SideOnly(Side.CLIENT)
+    public boolean hasStatusIcon()
+    {
+        return this.iconIndex >= 0;
+    }
+
+    @SideOnly(Side.CLIENT)
     protected void render(int x, int y, float alpha) {
         Minecraft.getMinecraft().renderEngine.bindTexture(resource);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder buf = tessellator.getBuffer();
         buf.begin(7, DefaultVertexFormats.POSITION_TEX);
+        GlStateManager.enableBlend();
+        GlStateManager.enableAlpha();
         GlStateManager.color(1, 1, 1, alpha);
 
         int textureX = iconIndex % 14 * 18;

@@ -75,6 +75,8 @@ public class IDLNBTDef {
 	public static final String CUR_CHARGE = "cur_charge";//x100
 	public static final String CUR_TIME_LEFT = "time_left";//x100,please note that two may be the same
 
+	public static final String RECHARGE_TIMESTAMP = "recharge_time";//x100,please note that two may be the same
+
 
 	public static final String EDICT_REPEATABLE = "is_repeatable";
 
@@ -246,7 +248,7 @@ public class IDLNBTDef {
 	public static final String MAX = "idealland.shared.skill.desc.max";
 	public static final String CUSTOM_NAME = "CustomName";
 
-	public static final String WIP_DESC = "idealland.shared.wip.desc";
+	public static final String WIP_DESC = "genshin12.shared.wip.desc";
 
 	//Spawner
 	public static final String VINDICATOR_STRING = "{RequiredPlayerRange:8,SpawnRange:8,SpawnCount:1,MaxNearbyEntities:5,SpawnData:{CustomName:\"V\",CanPickUpLoot:1b,HandItems:[{id:\"minecraft:diamond_axe\",Count:1b,Damage:0s,tag:{ench:[{id:32,lvl:3}]}},{id:\"minecraft:shield\",Count:1b,Damage:0s,tag:{BlockEntityTag:{Base:7,Patterns:[{Pattern:bri,Color:13},{Pattern:sku,Color:15},{Pattern:bts,Color:1},{Pattern:tts,Color:1}]}}}],ArmorItems:[{id:\"minecraft:leather_boots\",Count:1b,Damage:0s,tag:{Unbreakable:1,display:{color:13369530}}},{},{},{}],id:\"minecraft:vindication_illager\"},SpawnPotentials:[{Weight:1,Entity:{CustomName:\"V\",CanPickUpLoot:1b,HandItems:[{id:\"minecraft:diamond_axe\",Count:1b,Damage:0s,tag:{ench:[{id:32,lvl:3}]}},{id:\"minecraft:shield\",Count:1b,Damage:0s,tag:{BlockEntityTag:{Base:7,Patterns:[{Pattern:bri,Color:13},{Pattern:sku,Color:15},{Pattern:bts,Color:1},{Pattern:tts,Color:1}]}}}],ArmorItems:[{id:\"minecraft:leather_boots\",Count:1b,Damage:0s,tag:{Unbreakable:1,display:{color:13369530}}},{},{},{}],id:\"minecraft:vindication_illager\"}}]}";

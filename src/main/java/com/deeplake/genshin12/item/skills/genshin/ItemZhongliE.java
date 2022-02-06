@@ -5,10 +5,7 @@ import com.deeplake.genshin12.blocks.tileEntity.genshin.TEZhongliPillar;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
-import com.deeplake.genshin12.util.CommonDef;
-import com.deeplake.genshin12.util.CommonFunctions;
-import com.deeplake.genshin12.util.EntityUtil;
-import com.deeplake.genshin12.util.EnumElemental;
+import com.deeplake.genshin12.util.*;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -42,9 +39,6 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
     final float[] shieldAmount1 = new float[]{1232,1355,1489,1633,1787,1951,2126,2310,2506,2711,2927,3153,3389};
     final float[] shieldAmount2 = new float[]{12.8f,13.76f,14.72f,16.00f,16.96f,17.92f,19.20f,20.48f,21.76f,23.04f,24.32f,25.60f,27.20f};
 
-
-    final float[] initDamageRatio = new float[]{16f, 17.2f, 18.4f, 20.0f, 21.2f, 22.4f, 25.6f, 27.2f, 28.8f, 30.4f, 32f, 34f};
-
     final float[] initDamageRatioHold = new float[]{80f, 86f, 92f, 100f, 106f, 112f, 120f, 128, 136f, 144f, 152f, 160f, 170f};
 
     public static final int PILLAR_HEIGHT = 4;
@@ -53,14 +47,16 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
         super(name, EnumElemental.GEO);
         setCD(4f, 0f);
         setCDLong(12f, 0f);
-        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
-        {
-            setCD(1f, 0f);
-            setCDLong(2f, 0f);
-        }
+//        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
+//        {
+//            setCD(1f, 0f);
+//            setCDLong(2f, 0f);
+//        }
 
         long_press_ticks = CommonDef.TICK_PER_SECOND;
         force_release = true;
+        initDamageRatio = new float[]{16f, 17.2f, 18.4f, 20.0f, 21.2f, 22.4f, 25.6f, 27.2f, 28.8f, 30.4f, 32f, 34f};
+        setAmount(EnumAmount.MEDIUM);
     }
 
     @Override
@@ -213,16 +209,6 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
             }
         }
 
-    }
-
-    float getInitDamage(int level)
-    {
-        try {
-            return initDamageRatio[level - 1];
-        }
-        catch (ArrayIndexOutOfBoundsException e){
-            return initDamageRatio[0];
-        }
     }
 
     float getHoldDamage(int level)

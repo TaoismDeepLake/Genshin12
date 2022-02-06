@@ -39,6 +39,14 @@ public class ModConfig {
         @Config.Comment("Elemental burst can only be cast while sneaking(hold shift).")
         public boolean BURST_REQ_SHIFT = false;
 
+        @Config.LangKey("genshin12.conf.general.can_plunge_client")
+        @Config.Comment("(ClientSide) Mid air attacks will cause you to plunge down. ")
+        public boolean ENABLE_PLUNGE_CLIENT = true;
+
+        @Config.LangKey("genshin12.conf.general.can_plunge_server")
+        @Config.Comment("(ServerSide) Falling long launches a plunge attack automatically. Xiao Req this to work, so best not turn off.")
+        public boolean ENABLE_PLUNGE_ATTACK = true;
+
         @Config.LangKey("genshin12.conf.general.dmg_atk_percent_genshin_to_mc")
         @Config.Comment("100% skill damage = ? damage in Minecraft?")
         public float DMG_ATK_PERCENT_GENSHIN_TO_MC = 2f; //100% dmg
@@ -85,7 +93,7 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public int COR_LAPIS = 2;
 
-        @Config.LangKey("genshin12.conf.worldgen.cor_lapis_count")
+        @Config.LangKey("genshin12.conf.worldgen.cor_lapis_count_delta")
         @Config.Comment("Max extra count of Cor Lapis generation per chunk.")
         @Config.RangeInt(min = 0)
         @Config.RequiresMcRestart
@@ -106,13 +114,6 @@ public class ModConfig {
 
         public boolean DEBUG_MODE = false;
 
-        public float DMG_GENSHIN_TO_MC = 1f;
-
-
-//        public float PERTIFY_R = 0.313f;
-//        public float PERTIFY_G = 0.313f;
-//        public float PERTIFY_B = 0.2f;
-
         public float METEOR_LIFE = 2f;
         public float METEOR_SIZE = 9f;
         public float METEOR_HEIGHT = 9f;
@@ -120,6 +121,21 @@ public class ModConfig {
 
         public float KAEYA_OMEGA = 0.3f;//rad / tick
 
+        public float XIAO_DASH_SPEED = 1f;// m/tick
+        public int XIAO_DASH_DURA = 10;//tick
+        public double XIAO_JUMP_FACTOR = Math.sqrt(6);//jump speed, meter per tick
+
+        public float PLUNGE_MIN_HEIGHT = 1.5f;//m
+        public float PLUNGE_MAX_HEIGHT = 2.4f;//m
+
+        public float PLUNGE_MIN_DAMAGE_FACTOR = 1.3f;//m
+        public float PLUNGE_MAX_DAMAGE_FACTOR = 3.2f;//m
+
+        public float PLUNGE_SPEED = 3;
+
+        @Config.LangKey("genshin12.conf.worldgen.enable_xiao_jump_boost")
+        @Config.Comment("(Client side)Xiao's jump height alter may confict with other jump-adjusting modes. If you are not playing xiao and have compatibility issues, turn this off client side.")
+        public boolean ENABLE_XIAO_JUMP_BOOST = true;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")

@@ -2,9 +2,7 @@ package com.deeplake.genshin12.entity;
 
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
-import com.deeplake.genshin12.util.CommonDef;
-import com.deeplake.genshin12.util.EntityUtil;
-import com.deeplake.genshin12.util.ModSoundHandler;
+import com.deeplake.genshin12.util.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -96,18 +94,16 @@ public class EntityPlanetBefall extends EntityLiving {
                 list) {
             if (shooter instanceof EntityPlayer)
             {
-                target.attackEntityFrom(
-                        DamageSource.causePlayerDamage((EntityPlayer) shooter),
-                        damage);
-                EntityUtil.ApplyBuff(target, ModPotions.ZL_PETRIFY, 0, dura);
+                ElementalUtil.applyElementalDamage((EntityPlayer) shooter, target, damage, EnumElemental.GEO, EnumAmount.LARGE);
             }
             else { //including null
                 target.attackEntityFrom(
                         DamageSource.ANVIL,
                         damage);
-                EntityUtil.ApplyBuff(target, ModPotions.ZL_PETRIFY, 0, dura);
+
             }
 
+            EntityUtil.ApplyBuff(target, ModPotions.ZL_PETRIFY, 0, dura);
         }
     }
 

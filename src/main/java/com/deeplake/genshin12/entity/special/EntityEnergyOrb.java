@@ -1,8 +1,6 @@
 package com.deeplake.genshin12.entity.special;
 
 import com.deeplake.genshin12.IdlFramework;
-import com.deeplake.genshin12.blocks.blockBasic.IdeallandLight;
-import com.deeplake.genshin12.entity.creatures.EntityModUnit;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinBurstBase;
 import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
@@ -10,7 +8,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.SoundEvents;
@@ -34,7 +31,7 @@ public class EntityEnergyOrb extends Entity {
 //    public static final String KEY_HEALTH = "Health";
 //    public static final String KEY_AGE = "Age";
 //    public static final String KEY_VALUE = "Value";
-    EnumElemental enumElemental = EnumElemental.NONE;
+    EnumElemental enumElemental = EnumElemental.PHYSICAL;
     protected static final DataParameter<Byte> ELEMENT = EntityDataManager.createKey(EntityEnergyOrb.class, DataSerializers.BYTE);
 
     /** A constantly increasing value that RenderEnergyOrb uses to control the colour shifting (Green / yellow) */
@@ -81,7 +78,7 @@ public class EntityEnergyOrb extends Entity {
 
         float valAllInventory = energyVal * NOT_OFFHAND;
 
-        if (enumElemental == EnumElemental.NONE)
+        if (enumElemental == EnumElemental.PHYSICAL)
         {
             valAllInventory *= NONE_ELEMENT;
 
@@ -136,7 +133,7 @@ public class EntityEnergyOrb extends Entity {
             }
             catch (Exception e)
             {
-                return EnumElemental.NONE;
+                return EnumElemental.PHYSICAL;
             }
 //        }
 
@@ -341,7 +338,7 @@ public class EntityEnergyOrb extends Entity {
         }
         catch (Exception e)
         {
-            enumElemental = EnumElemental.NONE;
+            enumElemental = EnumElemental.PHYSICAL;
             IdlFramework.LogWarning("Invalid element");
         }
     }
@@ -379,9 +376,8 @@ public class EntityEnergyOrb extends Entity {
             {
                 drop(livingBase.world, livingBase.getPositionVector().addVector(0, livingBase.height / 2f, 0), 1, elemental);
             }
+            amount = -amount;
         }
-
-        amount = -amount;
 
         if (amount > 0)
         drop(livingBase.world, livingBase.getPositionVector().addVector(0, livingBase.height / 2f, 0), amount, elemental);

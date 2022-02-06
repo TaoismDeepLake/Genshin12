@@ -17,7 +17,7 @@ public class ModItems {
 	public static final Item INTERWINED_FATE = new ItemInterwinedFate("interwined_fate");
 
 	public static final Item WEAPON_PACK = new ItemPackageWeapon("weapon_pack");
-	public static final Item STELLA_FORTUNA = new ItemStellaFortuna("stella_fortuna", 2);
+	public static final Item STELLA_FORTUNA = new ItemStellaFortuna("stella_fortuna", 3);
 
 	public static final Item SKILL_UPGRADE = new ItemVariantBase("skill_upgrade", 9);
 	public static final Item COR_LAPIS = new ItemBase("cor_lapis");
@@ -28,7 +28,10 @@ public class ModItems {
 	public static final ItemZhongliQ ZHONGLI_Q = new ItemZhongliQ("zhongli_q");
 
 	public static final ItemKaeyaE KAEYA_E = new ItemKaeyaE("kaeya_e");
-	public static final ItemGenshinBurstBase KAEYA_Q = new ItemKaeyaQ("kaeya_q");
+	public static final ItemKaeyaQ KAEYA_Q = new ItemKaeyaQ("kaeya_q");
+
+	public static final ItemXiaoE XIAO_E = new ItemXiaoE("xiao_e");
+	public static final ItemXiaoQ XIAO_Q = new ItemXiaoQ("xiao_q");
 
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),

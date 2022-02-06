@@ -62,8 +62,8 @@ end
 --for i = 0, 8 do
 --	GenItem("misc", "skill_upgrade_"..i);
 --end
-GenItem("skill", "kaeya_e");
-GenItem("skill", "kaeya_q");
+GenItem("skill", "xiao_e");
+GenItem("skill", "xiao_q");
 
 
 --GenBlock("cor_lapis_block");

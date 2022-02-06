@@ -263,19 +263,25 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
         super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
         int usedTicks = getMaxItemUseDuration(stack) - timeLeft;
         EntityEquipmentSlot slot = findSlot(stack, entityLiving);
+
+        if (!canCast(worldIn, entityLiving, stack, slot))
+        {
+            return;
+        }
+
         if (long_press_ticks > 0 && usedTicks >= long_press_ticks && slot != null && !force_release)
         {
             applyLongCast(worldIn, entityLiving, stack, slot);
             if (entityLiving instanceof EntityPlayer)
             {
-                activateCoolDownLong((EntityPlayer) entityLiving, stack);
+//                activateCoolDownLong((EntityPlayer) entityLiving, stack);
             }
         }
         else if (long_press_ticks < 0 || usedTicks < long_press_ticks) {
             applyCast(worldIn, entityLiving, stack, slot);
             if (entityLiving instanceof EntityPlayer)
             {
-                activateCoolDown((EntityPlayer) entityLiving, stack);
+//                activateCoolDown((EntityPlayer) entityLiving, stack);
             }
         }
 
