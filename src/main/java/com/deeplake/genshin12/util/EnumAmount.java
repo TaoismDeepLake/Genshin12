@@ -11,7 +11,7 @@ public enum EnumAmount
     MEDIUM(2, 1 / 6f, 1),
     LARGE(4, 1 / 4.25f, 2);
 
-    final float gauge;
+    public final float gauge;
     final float decayRate;
     final int level;
     final float defaultDura;

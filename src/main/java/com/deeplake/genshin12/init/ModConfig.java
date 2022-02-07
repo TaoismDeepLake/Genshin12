@@ -153,4 +153,24 @@ public class ModConfig {
 //        @Config.RequiresMcRestart
 //        public int SPAWN_TAINTER = 100;
     }
+
+    @Config.LangKey("configgui.genshin12.category.Menu0.ElemConf")
+    @Config.Comment("Elemental")
+    public static final ElemConf ELEMCONF = new ElemConf();
+
+    public static class ElemConf {
+        public double R_STRONG_MELT = 2.5;
+        public double R_STRONG_VAPORIZE = 2.5;
+        public double R_WEAK_MELT = 0.625;
+        public double R_WEAK_VAPORIZE = 0.625;
+        public double R_OVERLOAD = 1.25;
+        public double R_SUPERCONDUCT = 1.25;
+        public double R_CRYTALLIZE = 0.625;
+        public double R_SWIRL = 0.625;
+
+        public double R_SHOCK = 0.625;
+
+        public double GAUGE_PER_SHOCK = 0.4;
+
+    }
 }
