@@ -40,7 +40,7 @@ public class RenderEnergyOrb extends Render<EntityEnergyOrb>{
             GlStateManager.translate((float)x, (float)y, (float)z);
             this.bindEntityTexture(entity);
             RenderHelper.enableStandardItemLighting();
-            int i = 0;//entity.getTextureByXP();
+            int i = 2;//entity.getTextureByXP();
             float f = (float)(i % 4 * 16 + 0) / 64.0F;
             float f1 = (float)(i % 4 * 16 + 16) / 64.0F;
             float f2 = (float)(i / 4 * 16 + 0) / 64.0F;

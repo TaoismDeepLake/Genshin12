@@ -386,6 +386,11 @@ public class EntityEnergyOrb extends Entity {
     //cool down unhandled.
     public static void drop(World world, Vec3d pos, int ball, EnumElemental elemental)
     {
+        if (world.isRemote)
+        {
+            return;
+        }
+
         for (int i = 0; i < ball; i++)
         {
             EntityEnergyOrb orb = new EntityEnergyOrb(world, pos.x, pos.y, pos.z);
