@@ -128,8 +128,8 @@ public class ModConfig {
         public float PLUNGE_MIN_HEIGHT = 1.5f;//m
         public float PLUNGE_MAX_HEIGHT = 2.4f;//m
 
-        public float PLUNGE_MIN_DAMAGE_FACTOR = 1.3f;//m
-        public float PLUNGE_MAX_DAMAGE_FACTOR = 3.2f;//m
+        public float PLUNGE_MIN_DAMAGE_FACTOR = 1.3f;//100%atk
+        public float PLUNGE_MAX_DAMAGE_FACTOR = 3.2f;//100%atk
 
         public float PLUNGE_SPEED = 3;
 

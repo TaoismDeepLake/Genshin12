@@ -85,10 +85,11 @@ public class EventsPlungedAttack {
                 float basicDamage = ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * getDamageFactorFromHeight(distance);
                 float range = getRangeFromHeight(distance);
 
-                if (EntityUtil.getBuffLevelIDL(livingBase, ModPotions.YAKSHA_MASK) > 0)
+                int maskLevel = EntityUtil.getBuffLevelIDL(livingBase, ModPotions.YAKSHA_MASK);
+                if (maskLevel > 0)
                 {
                     //xiao mask plunge, 1U element attaching
-                    GenshinUtil.dealAoEDamage(livingBase.getPositionVector(), livingBase, basicDamage, XIAO_Q_PLUNGE_RANGE, EnumElemental.ANEMO, EnumAmount.SMALL);
+                    GenshinUtil.dealAoEDamage(livingBase.getPositionVector(), livingBase, (float) (basicDamage * (1f + ModPotions.YAKSHA_MASK.getAtkBonus(maskLevel) / 100f)), XIAO_Q_PLUNGE_RANGE, EnumElemental.ANEMO, EnumAmount.SMALL);
                     CommonFunctions.SafeSendMsgToPlayer(TextFormatting.GREEN, livingBase, MessageDef.getXiaoPlungeKey(livingBase.getRNG().nextInt(2)));
                 }
                 else {

@@ -47,7 +47,7 @@ public class ModPotions {
 
     public static final Potion XIAO_DASH = new PotionXiaoDash(false, EnumElemental.ANEMO.getColor(), "xiao_dash", 11);
 
-    public static final Potion YAKSHA_MASK = new PotionXiaoMask(false, EnumElemental.ANEMO.getColor(), "yaksha_mask", 12).registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, UUID_XIAO_MASK.toString(), 0f, 1);
+    public static final PotionXiaoMask YAKSHA_MASK = (PotionXiaoMask) new PotionXiaoMask(false, EnumElemental.ANEMO.getColor(), "yaksha_mask", 12).registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, UUID_XIAO_MASK.toString(), 0f, 1);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)

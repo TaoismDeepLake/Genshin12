@@ -83,6 +83,12 @@ item.interwined_fate.desc=连结梦想的命运之种。缘石辉光能让本无
 item.stella_fortuna_0.name=钟离的命之座
 item.stella_fortuna_0.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）。
 
+item.stella_fortuna_1.name=凯亚的命之座
+item.stella_fortuna_1.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）。
+
+item.stella_fortuna_2.name=魈的命之座
+item.stella_fortuna_2.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）。
+
 item.weapon_pack.name=武器包
 item.weapon_pack.desc=呃，又没出货……右键拆开，万一拆出个时运镐呢？
 
@@ -193,3 +199,4 @@ genshin12.potion.yaksha_mask=夜叉傩面
 genshin12.skill.msg.lack_mp=能量不足 (%d/%d)
 genshin12.skill.msg.charge_full=%s 能量已满！
 genshin12.msg.obtain_primo=$b$6获得 %s 原石
+

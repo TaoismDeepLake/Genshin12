@@ -70,13 +70,13 @@ public class PotionXiaoMask extends BasePotion {
         return getAtkBonus(amplifier + 1);
     }
 
-    double getAtkBonus(int level)
+    public double getAtkBonus(int level)
     {
         try {
-            return dmgBonus[level - 1];
+            return dmgBonus[level - 1] / 100f;
         }
         catch (ArrayIndexOutOfBoundsException e){
-            return dmgBonus[0];
+            return dmgBonus[0] / 100f;
         }
     }
 
