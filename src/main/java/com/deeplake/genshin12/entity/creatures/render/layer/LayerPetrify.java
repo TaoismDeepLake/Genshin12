@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.entity.creatures.render.layer;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.EntityUtil;
 import net.minecraft.client.Minecraft;
@@ -29,10 +30,9 @@ import java.util.Random;
 @SideOnly(Side.CLIENT)
 public class LayerPetrify implements LayerRenderer<EntityLivingBase> {
     private final RenderLivingBase<?> renderer;
-    public static ResourceLocation OVERLAY = new ResourceLocation("textures/blocks/dirt.png");
+    public static ResourceLocation OVERLAY = new ResourceLocation(IdlFramework.MODID,  "textures/misc/test_petry.png");
     public static ResourceLocation OVERLAY_ROCK = new ResourceLocation(IdlFramework.MODID,"textures/blocks/petrify.png");
     public static ResourceLocation OVERLAY_LIGHT = new ResourceLocation(IdlFramework.MODID,"textures/blocks/petrify_light.png");
-    public static ResourceLocation OVERLAY_ICE = new ResourceLocation("textures/blocks/ice.png");
 
     public LayerPetrify(RenderLivingBase<?> rendererIn)
     {
@@ -54,7 +54,14 @@ public class LayerPetrify implements LayerRenderer<EntityLivingBase> {
         }
 
         //bg
-        this.renderer.bindTexture(OVERLAY_ROCK);
+//        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
+//        {
+//            this.renderer.bindTexture(OVERLAY);
+//        }
+//        else {
+            this.renderer.bindTexture(OVERLAY_ROCK);
+//        }
+
         this.renderer.getMainModel().render(entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
         //light
         GlStateManager.enableBlend();
