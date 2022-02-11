@@ -172,5 +172,7 @@ public class ModConfig {
 
         public double GAUGE_PER_SHOCK = 0.4;
 
+        public double AURA_TAX = 0.2;//20%will be removed
+
     }
 }

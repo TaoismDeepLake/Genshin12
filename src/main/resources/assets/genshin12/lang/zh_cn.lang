@@ -143,6 +143,22 @@ item.xiao_q.speech.3=§a§l悲鸣吧。
 genshin12.msg.xiao.plunge.speech.0=这里！
 genshin12.msg.xiao.plunge.speech.1=无能。
 
+# HuTao
+item.hu_tao_e.name=§cGuide to Afterlife
+item.hu_tao_e.desc=Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the §cParamita Papilio§l state.
+
+item.hu_tao_e.speech.1=喝！
+item.hu_tao_e.speech.2=起！
+item.hu_tao_e.speech.3=散！
+
+item.hu_tao_q.name=§cSpirit Soother
+item.hu_tao_q.desc=Commands a blazing spirit to attack, dealing §cPyro DMG§l in a large AoE. Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP.
+
+item.hu_tao_q.speech.1=§c§l吃饱喝饱，一路走好！
+item.hu_tao_q.speech.2=§c§l再会啦！
+item.hu_tao_q.speech.3=§c§l蝶火燎原！
+
+
 genshin12.food.shared.xp_desc=含有经验: %d
 # Items
 genshin12.gua_enhance_no_free.desc=可用铁砧镶嵌卦象
@@ -193,6 +209,15 @@ genshin12.potion.jade_shield_debuff=玉璋护盾减抗
 genshin12.potion.petrification=石化
 genshin12.potion.xiao_dash=疾速突进
 genshin12.potion.yaksha_mask=夜叉傩面
+genshin12.potion.cyro=Cyro
+genshin12.potion.freeze=Freeze
+genshin12.potion.hydro=Wet
+genshin12.potion.anemo=Anemo
+genshin12.potion.geo=Geo
+genshin12.potion.electro=Electro
+genshin12.potion.dendro=Dendro
+genshin12.potion.pyro=Pyro
+genshin12.potion.chrono=Chrono
 
 
 # msg
