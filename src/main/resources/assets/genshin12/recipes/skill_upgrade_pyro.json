@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "genshin12:skill_upgrade",
+        "data": 6
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:book" },
+            { "item": "minecraft:coal", "data": 32767 },
+            { "item": "minecraft:coal", "data": 32767 },
+            { "item": "minecraft:coal", "data": 32767 },
+            { "item": "minecraft:coal", "data": 32767 },
+            { "item": "minecraft:coal", "data": 32767 },
+            { "item": "minecraft:gunpowder"},
+            { "item": "minecraft:gunpowder"},
+            { "item": "minecraft:gunpowder"}
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}
