@@ -158,6 +158,10 @@ public class ItemGenshinSkillBase extends ItemSkillBase{
         CommonFunctions.SafeSendMsgToPlayer(TextFormatting.ITALIC, player, String.format("%s.%s.%d", getUnlocalizedName(), SPEECH_KEY_LONG, index));
     }
 
+    float getInitDamage(int level, EntityLivingBase caster)
+    {
+        return getInitDamage(level);
+    }
 
     float getInitDamage(int level)
     {
@@ -174,22 +178,40 @@ public class ItemGenshinSkillBase extends ItemSkillBase{
         dealDamage(world, pos, caster, stack, true);
     }
 
+    public int calcStatus(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack)
+    {
+        return 0;
+    }
+
+    public void onHit(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack, int index, int status)
+    {
+
+    }
+
     void dealDamage(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack, boolean dropBalls)
     {
         List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos,aoeRange, null);
 
-        float damageFactor = getInitDamage(getLevel(stack));
-        float damage = damageFactor * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC;
+                float damageFactor = getInitDamage(getLevel(stack), caster);
+                float damage = damageFactor * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC;
 
-        boolean needDrop = dropBalls;
-        if (caster instanceof EntityPlayer)
-        {
-            for (EntityLivingBase target :
-                    list) {
-                if (target.getIsInvulnerable() || target.hurtResistantTime > 0)
+                boolean needDrop = dropBalls;
+                int index = 0;
+                if (caster instanceof EntityPlayer)
                 {
-                    continue;
-                }
+                    int status = calcStatus(world, pos, caster, stack);
+                    for (EntityLivingBase target :
+                            list) {
+                        if (target.getIsInvulnerable())
+                        {
+                            continue;
+                        }
+                        onHit(world, pos, caster, stack, index, status);
+                        index++;
+                        if (target.hurtResistantTime > 0)
+                        {
+                            continue;
+                        }
 
                 ElementalUtil.applyElementalDamage((EntityPlayer) caster, target, damage, elemental, amount);
 

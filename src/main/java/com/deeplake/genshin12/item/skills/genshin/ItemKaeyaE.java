@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class ItemKaeyaE extends ItemGenshinSkillBase {
-    public float aoeRange = 3f;
+    public float aoeRange = 4f;//Can hit enemies 8m in front of Kaeya, hitbox is 4m x 2.2m x 8m
 
     public ItemKaeyaE(String name) {
         super(name, EnumElemental.CYRO);

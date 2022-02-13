@@ -21,7 +21,7 @@ import java.util.List;
 
 public class EntityGlacialWaltz extends Entity {
     float damage = 2f;
-    float aoeRange = 2f;
+    float aoeRange = 2f;//confirmed
     int lifeTicks = 8 * CommonDef.TICK_PER_SECOND;
     Entity owner;
     public EntityGlacialWaltz(World worldIn) {

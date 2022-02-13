@@ -26,7 +26,7 @@ public class EntityPlanetBefall extends EntityLiving {
     int lifeMax = (int) (ModConfig.DEBUG_CONF.METEOR_LIFE * CommonDef.TICK_PER_SECOND);
     int life = lifeMax;
     float damageAmount = 5;
-    float range = 10f;
+    float range = 7.5f;//confirmed
     float dura = 8f;
     float fallSpeed = ModConfig.DEBUG_CONF.METEOR_HEIGHT / lifeMax;
     EntityLivingBase shooter;

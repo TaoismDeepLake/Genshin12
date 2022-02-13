@@ -144,14 +144,14 @@ genshin12.msg.xiao.plunge.speech.0=这里！
 genshin12.msg.xiao.plunge.speech.1=无能。
 
 # HuTao
-item.hu_tao_e.name=§cGuide to Afterlife
+item.hu_tao_e.name=§c蝶引来生
 item.hu_tao_e.desc=Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the §cParamita Papilio§l state.
 
 item.hu_tao_e.speech.1=喝！
 item.hu_tao_e.speech.2=起！
 item.hu_tao_e.speech.3=散！
 
-item.hu_tao_q.name=§cSpirit Soother
+item.hu_tao_q.name=§c安神秘法
 item.hu_tao_q.desc=Commands a blazing spirit to attack, dealing §cPyro DMG§l in a large AoE. Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP.
 
 item.hu_tao_q.speech.1=§c§l吃饱喝饱，一路走好！

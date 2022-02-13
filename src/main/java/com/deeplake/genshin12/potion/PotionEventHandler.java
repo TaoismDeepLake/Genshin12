@@ -3,6 +3,8 @@ package com.deeplake.genshin12.potion;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.buff.BasePotion;
 import com.deeplake.genshin12.util.EntityUtil;
+import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
+import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -12,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
@@ -40,6 +43,22 @@ public class PotionEventHandler {
 //                    ModConfig.DEBUG_CONF.PERTIFY_B);
 //        }
 //    }
+
+    @SubscribeEvent
+    public static void onUpdate(LivingEvent.LivingUpdateEvent evt) {
+        EntityLivingBase livingBase = evt.getEntityLiving();
+        if (!livingBase.world.isRemote)
+        {
+            if (livingBase.getActivePotionEffect(ModPotions.HUTAO_DEBUFF) == null)
+            {
+                if (IDLNBTUtil.GetIntAuto(livingBase, IDLNBTDef.HU_TAO_TICK, -1) >= 0)
+                {
+                    //clear ticker
+                    IDLNBTUtil.SetInt(livingBase, IDLNBTDef.HU_TAO_TICK, -1);
+                }
+            }
+        }
+    }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onCreatureHurt(LivingHurtEvent evt) {

@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ItemZhongliQ extends ItemGenshinBurstBase {
 
-    float distance = 3f;
+    float distance = 5f;//confirmed approx. by wiki
 
     public ItemZhongliQ(String name) {
         super(name, 40, EnumElemental.GEO);

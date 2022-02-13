@@ -67,4 +67,21 @@ public class GenshinUtil {
     {
         return dealAoEDamage(pos, caster, damage, aoeRange, EnumElemental.PHYSICAL, EnumAmount.NONE);
     }
+
+    public static boolean dealAoEKnockBack(Vec3d pos, EntityLivingBase caster, float power, float aoeRange)
+    {
+        List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(caster.getEntityWorld(), EntityLiving.class, pos,aoeRange, null);
+
+        boolean onHit = false;
+        if (caster instanceof EntityPlayer)
+        {
+            for (EntityLivingBase target :
+                    list) {
+                EntityUtil.simpleKnockBack(power, caster, target);
+                onHit = true;
+            }
+        }
+
+        return onHit;
+    }
 }

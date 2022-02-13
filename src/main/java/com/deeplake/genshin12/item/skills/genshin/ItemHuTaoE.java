@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
+import com.deeplake.genshin12.item.IWIP;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.potion.buff.PotionHuTaoDebuff;
 import com.deeplake.genshin12.util.*;
@@ -35,7 +36,7 @@ public class ItemHuTaoE extends ItemGenshinSkillBase {
     public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
         if (!worldIn.isRemote)
         {
-            //todo: knockback surrounding
+            GenshinUtil.dealAoEKnockBack(livingBase.getPositionVector(), livingBase, 0.4f, 3f);
 
             livingBase.setHealth(Math.max(0.1f, livingBase.getHealth() - livingBase.getMaxHealth() * 0.3f));
             livingBase.addPotionEffect(new PotionEffect(ModPotions.HUTAO_BUFF, buff_ticks, getLevel(stack) - 1));
@@ -54,21 +55,26 @@ public class ItemHuTaoE extends ItemGenshinSkillBase {
         if (source.getTrueSource() instanceof EntityPlayer)
         {
             EntityPlayer attacker = (EntityPlayer) source.getTrueSource();
-            if (attacker.isPotionActive(ModPotions.HUTAO_BUFF) && attacker.getCooledAttackStrength(0f) > 0.99f)
+            if (attacker.isPotionActive(ModPotions.HUTAO_BUFF))
+//                && attacker.getCooledAttackStrength(0f) > 0.99f)
             {
-                PotionEffect debuff = attacker.getActivePotionEffect(ModPotions.HUTAO_BUFF);
+                PotionEffect buff = attacker.getActivePotionEffect(ModPotions.HUTAO_BUFF);
 
-                //replace the damage with fire-magic
-                if (!(source.isFireDamage() && source.isMagicDamage()))
+                if (!world.isRemote)
                 {
-                    event.setCanceled(true);
-                    ElementalUtil.applyElementalDamage(attacker, hurtOne, event.getAmount(), EnumElemental.PYRO, EnumAmount.SMALL);
-                }
-
-                if (debuff != null)
-                {
-                    //it's ok to repeat apply.
-                    applyBloodBlossom(hurtOne, world, attacker, debuff.getAmplifier());
+                    //replace the damage with fire-magic
+                    if (!(source.isFireDamage() && source.isMagicDamage()))
+                    {
+                        event.setCanceled(true);
+                        hurtOne.hurtResistantTime = 0;
+                        ElementalUtil.applyElementalDamage(attacker, hurtOne, event.getAmount(), EnumElemental.PYRO, EnumAmount.SMALL);
+                        //note that blood blossom will also trigger this, hence dura will be constantly refreshed.
+                        if (buff != null)
+                        {
+                            //it's ok to repeat apply.
+                            applyBloodBlossom(hurtOne, world, attacker, buff.getAmplifier());
+                        }
+                    }
                 }
             }
         }
@@ -80,7 +86,7 @@ public class ItemHuTaoE extends ItemGenshinSkillBase {
         //don't interrupt existing tick
         if (IDLNBTUtil.GetIntAuto(hurtOne, IDLNBTDef.HU_TAO_TICK, -1) < 0)
         {
-            IDLNBTUtil.SetInt(hurtOne, IDLNBTDef.HU_TAO_TICK, (int) ((world.getWorldTime() - 1) % PotionHuTaoDebuff.PERIOD));
+            IDLNBTUtil.SetInt(hurtOne, IDLNBTDef.HU_TAO_TICK, (int) ((world.getTotalWorldTime() - 1) % PotionHuTaoDebuff.PERIOD));
         }
 
         hurtOne.addPotionEffect(new PotionEffect(ModPotions.HUTAO_DEBUFF, debuff_ticks, level));

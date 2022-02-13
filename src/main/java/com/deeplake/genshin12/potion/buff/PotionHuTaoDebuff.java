@@ -41,7 +41,9 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
         //potion class does not know dura.
         try {
             int dura = entityLivingBaseIn.getActivePotionEffect(this).getDuration();
-            if (dura % getTargetTick == 0)
+
+            IdlFramework.Log("dura = %s", dura);
+            if (dura % PERIOD == getTargetTick)
             {
                 World world = entityLivingBaseIn.getEntityWorld();
                 if (!world.isRemote)
@@ -84,10 +86,10 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
         }
     }
 
+    //Note that the first tick will call this. So this must not contradict as a Init
     @Override
     public void removeAttributesModifiersFromEntity(EntityLivingBase entityLivingBaseIn, AbstractAttributeMap attributeMapIn, int amplifier) {
-        //clear ticker
-        IDLNBTUtil.SetInt(entityLivingBaseIn, IDLNBTDef.HU_TAO_TICK, -1);
+
         super.removeAttributesModifiersFromEntity(entityLivingBaseIn, attributeMapIn, amplifier);
     }
 
