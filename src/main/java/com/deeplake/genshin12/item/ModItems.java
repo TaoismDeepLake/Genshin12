@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.item;
 
+import com.deeplake.genshin12.item.consumables.EnumCharacter;
 import com.deeplake.genshin12.item.consumables.ItemPackageWeapon;
 import com.deeplake.genshin12.item.consumables.ItemStellaFortuna;
 import com.deeplake.genshin12.item.consumables.ItemInterwinedFate;
@@ -17,7 +18,7 @@ public class ModItems {
 	public static final Item INTERWINED_FATE = new ItemInterwinedFate("interwined_fate");
 
 	public static final Item WEAPON_PACK = new ItemPackageWeapon("weapon_pack");
-	public static final Item STELLA_FORTUNA = new ItemStellaFortuna("stella_fortuna", 3);
+	public static final Item STELLA_FORTUNA = new ItemStellaFortuna("stella_fortuna", EnumCharacter.values().length);
 
 	public static final Item SKILL_UPGRADE = new ItemVariantBase("skill_upgrade", 9);
 	public static final Item COR_LAPIS = new ItemBase("cor_lapis");
@@ -33,6 +34,8 @@ public class ModItems {
 	public static final ItemXiaoE XIAO_E = new ItemXiaoE("xiao_e");
 	public static final ItemXiaoQ XIAO_Q = new ItemXiaoQ("xiao_q");
 
+	public static final ItemHuTaoE HU_TAO_E = new ItemHuTaoE("hu_tao_e");
+	public static final ItemHuTaoQ HU_TAO_Q = new ItemHuTaoQ("hu_tao_q");
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),
     OVERLAY(1, 131, 4.0F, 1.0F, 5),

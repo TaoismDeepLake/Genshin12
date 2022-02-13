@@ -279,6 +279,9 @@ public class IDLNBTDef {
 
 	public static final String ELEMENT = "element";
 
+	public static final String HU_TAO_TICK = "hutao_tick";
+	public static final String HU_TAO_CASTER = "hutao_caster";
+
 	public enum SPAWNER_TYPE{
 		NONE,
 		ZOMBIE_BABY,

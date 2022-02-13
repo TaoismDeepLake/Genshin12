@@ -145,14 +145,14 @@ item.xiao_q.speech.3=§b§lLament!
 
 #HuTao
 item.hu_tao_e.name=§cGuide to Afterlife
-item.hu_tao_e.desc=Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the §cParamita Papilio§l state.
+item.hu_tao_e.desc=Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the §c§lParamita§r Papilio state.
 
 item.hu_tao_e.speech.1=Huh!
 item.hu_tao_e.speech.2=Chi!
 item.hu_tao_e.speech.3=Suh!
 
 item.hu_tao_q.name=§cSpirit Soother
-item.hu_tao_q.desc=Commands a blazing spirit to attack, dealing §cPyro DMG§l in a large AoE. Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP.
+item.hu_tao_q.desc=Commands a blazing spirit to attack, dealing §c§lPyro DMG§r in a large AoE. Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP.
 
 item.hu_tao_q.speech.1=§c§lTime to go!
 item.hu_tao_q.speech.2=§c§lCross over!

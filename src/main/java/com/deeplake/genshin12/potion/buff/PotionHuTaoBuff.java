@@ -23,7 +23,7 @@ public class PotionHuTaoBuff extends BaseSimplePotion {
     double getAtkBuffRatio(int level)
     {
         try {
-            return atkRatio[level - 1];
+            return atkRatio[level - 1] / 100f;
         }
         catch (ArrayIndexOutOfBoundsException e){
             return 1f;

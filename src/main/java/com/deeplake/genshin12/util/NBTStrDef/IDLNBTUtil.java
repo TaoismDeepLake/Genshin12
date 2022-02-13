@@ -265,6 +265,24 @@ public class IDLNBTUtil {
 		}
 	}
 
+	public static String getStringAuto(Entity entity, String key, String defaultVal)
+	{
+		if (entity instanceof EntityPlayer)
+		{
+			return getPlayerIdeallandStrSafe((EntityPlayer) entity, key);
+		}
+
+		if (EntityHasKey(entity, key))
+		{
+			NBTTagCompound nbt = getNBT(entity);
+			return nbt.getString(key);
+		}
+		else
+		{
+			return defaultVal;
+		}
+	}
+
 	public static boolean SetString(ItemStack stack, String key, String value)
 	{
 		NBTTagCompound nbt = getNBT(stack);

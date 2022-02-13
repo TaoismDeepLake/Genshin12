@@ -52,7 +52,7 @@ public class ModPotions {
 
     public static final Potion HUTAO_BUFF = new PotionHuTaoBuff(false, EnumElemental.PYRO.getColor(), "hutao_buff", 13);
 
-    public static final Potion HUTAO_DEBUFF = new BasePotion(false, EnumElemental.PYRO.getColor(), "hutao_debuff", 14);
+    public static final Potion HUTAO_DEBUFF = new PotionHuTaoDebuff(true, EnumElemental.PYRO.getColor(), "hutao_debuff", 14);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)

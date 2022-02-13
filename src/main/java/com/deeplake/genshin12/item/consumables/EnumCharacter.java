@@ -10,7 +10,8 @@ import net.minecraft.item.ItemStack;
 public enum EnumCharacter {
     ZHONGLI(ModItems.ZHONGLI_E, ModItems.ZHONGLI_Q),
     KAEYA(ModItems.KAEYA_E, ModItems.KAEYA_Q),
-    XIAO(ModItems.XIAO_E, ModItems.XIAO_Q);
+    XIAO(ModItems.XIAO_E, ModItems.XIAO_Q),
+    HU_TAO(ModItems.HU_TAO_E, ModItems.HU_TAO_Q);
 
     ItemGenshinSkillBase elemSkill;
     ItemGenshinBurstBase burst;

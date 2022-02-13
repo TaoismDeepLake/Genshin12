@@ -54,12 +54,28 @@ public class ElementalUtil {
         return 0;
     }
 
+    public static void applyElementalDamage(EntityPlayer player, EntityLivingBase target, double damage, EnumElemental elemental, EnumAmount amount)
+    {
+        applyElementalDamage(player, target, (float) damage, elemental, amount);
+    }
+
     public static void applyElementalDamage(EntityPlayer player, EntityLivingBase target, float damage, EnumElemental elemental, EnumAmount amount)
     {
         applyElemental(target, damage, elemental, amount);
 
+        DamageSource source = DamageSource.causePlayerDamage(player);
+        if (elemental == EnumElemental.PYRO)
+        {
+            source.setFireDamage();
+            source.setMagicDamage();
+        }
+        else if (elemental != EnumElemental.PHYSICAL)
+        {
+            source.setMagicDamage();
+        }
+
         target.attackEntityFrom(
-                DamageSource.causePlayerDamage(player),
+                source,
                 damage);
     }
 
