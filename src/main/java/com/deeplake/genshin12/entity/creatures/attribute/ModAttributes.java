@@ -2,8 +2,14 @@ package com.deeplake.genshin12.entity.creatures.attribute;
 
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.util.EnumElemental;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
+
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.List;
 
 public class ModAttributes {
     static final double MIN = -9999999;
@@ -78,5 +84,93 @@ public class ModAttributes {
     static final String MID_NAME = ".attr.";
     static String getAttrName(String name){
         return IdlFramework.MODID + MID_NAME + name;
+    }
+
+
+    static Dictionary<EnumElemental, EnumAttr> resDict = new Hashtable<>();
+    static Dictionary<EnumElemental, EnumAttr> dmgDict = new Hashtable<>();
+
+    public EnumAttr getResistance(EnumElemental elemental)
+    {
+        return resDict.get(elemental);
+    }
+
+    public EnumAttr getDamage(EnumElemental elemental)
+    {
+        return dmgDict.get(elemental);
+    }
+
+    static final int BASE_1 = 1000;
+    static final int BASE_2 = 2000;
+    static final int BASE_3 = 3000;
+
+    public enum EnumAttr{
+        NONE(SharedMonsterAttributes.FLYING_SPEED, 0),
+
+        HP(SharedMonsterAttributes.MAX_HEALTH, 1),
+        DEF(ModAttributes.DEFENSE, 2),
+        ATK(SharedMonsterAttributes.ATTACK_DAMAGE, 3),
+
+        ELEM_MASTERY(ModAttributes.ELEM_MASTERY, 4),
+        RECHARGE(ModAttributes.ENERGY_RECHARGE, 5),
+        CRIT(ModAttributes.CRIT_RATE, 6),
+        CRIT_DMG(ModAttributes.CRIT_DMG, 7),
+        HEAL(ModAttributes.HEAL_BONUS, 8),
+
+
+        HP_P(SharedMonsterAttributes.MAX_HEALTH, BASE_1+HP.id, 1),
+        DEF_P(ModAttributes.DEFENSE, BASE_1+DEF.id, 1),
+        ATK_P(SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK.id, 1),
+
+        PHYSICAL(EnumElemental.PHYSICAL, false),
+        ANEMO(EnumElemental.ANEMO, false),
+        GEO(EnumElemental.GEO, false),
+        ELECTRO(EnumElemental.ELECTRO, false),
+        DENDRO(EnumElemental.DENDRO, false),
+        HYDRO(EnumElemental.HYDRO, false),
+        PYRO(EnumElemental.PYRO, false),
+        CYRO(EnumElemental.CYRO, false),
+        CHRONO(EnumElemental.CHRONO, false),
+
+        RES_PHYSICAL(EnumElemental.PHYSICAL, true),
+        RES_ANEMO(EnumElemental.ANEMO, true),
+        RES_GEO(EnumElemental.GEO, true),
+        RES_ELECTRO(EnumElemental.ELECTRO, true),
+        RES_DENDRO(EnumElemental.DENDRO, true),
+        RES_HYDRO(EnumElemental.HYDRO, true),
+        RES_PYRO(EnumElemental.PYRO, true),
+        RES_CYRO(EnumElemental.CYRO, true),
+        RES_CHRONO(EnumElemental.CHRONO, true),
+        ;
+
+        IAttribute attr;
+        int id;
+        int type;
+
+
+        EnumAttr(IAttribute attr, int id) {
+            this.attr = attr;
+            this.id = id;
+            this.type = 0;
+        }
+
+        EnumAttr(EnumElemental elemental, boolean resitance) {
+            this.attr = resitance ? getElemRes(elemental) : getElemBonus(elemental);
+            this.id = elemental.ordinal() + (resitance ? BASE_2 : BASE_3);
+            this.type = 0;
+            if (resitance)
+            {
+                resDict.put(elemental, this);
+            }
+            else {
+                dmgDict.put(elemental, this);
+            }
+        }
+
+        EnumAttr(IAttribute attr, int id, int type) {
+            this.attr = attr;
+            this.id = id;
+            this.type = type;
+        }
     }
 }
