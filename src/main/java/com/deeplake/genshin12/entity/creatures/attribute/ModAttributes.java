@@ -90,12 +90,12 @@ public class ModAttributes {
     static Dictionary<EnumElemental, EnumAttr> resDict = new Hashtable<>();
     static Dictionary<EnumElemental, EnumAttr> dmgDict = new Hashtable<>();
 
-    public EnumAttr getResistance(EnumElemental elemental)
+    public static EnumAttr getEnumResistance(EnumElemental elemental)
     {
         return resDict.get(elemental);
     }
 
-    public EnumAttr getDamage(EnumElemental elemental)
+    public static EnumAttr getEnumDamage(EnumElemental elemental)
     {
         return dmgDict.get(elemental);
     }

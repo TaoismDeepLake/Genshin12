@@ -3,6 +3,7 @@ package com.deeplake.genshin12.item.artifact;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.item.ItemBase;
 import com.deeplake.genshin12.item.ItemVariantBase;
+import com.deeplake.genshin12.util.EnumElemental;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
@@ -33,10 +34,20 @@ public class ItemArtifactBase extends ItemVariantBase {
         listMain3.add(ModAttributes.EnumAttr.DEF_P);
 
         listMain4.add(ModAttributes.EnumAttr.ATK_P);
+        for (EnumElemental elemental :
+                EnumElemental.values()) {
+            if (elemental != EnumElemental.CHRONO)
+            {
+                listMain4.add(ModAttributes.getEnumDamage(elemental));
+            }
+        }
         listMain4.add(ModAttributes.EnumAttr.ATK_P);
         listMain4.add(ModAttributes.EnumAttr.HP_P);
         listMain4.add(ModAttributes.EnumAttr.DEF_P);
 
+        listMain5.add(ModAttributes.EnumAttr.HEAL);
+        listMain5.add(ModAttributes.EnumAttr.CRIT);
+        listMain5.add(ModAttributes.EnumAttr.CRIT_DMG);
         listMain5.add(ModAttributes.EnumAttr.ATK_P);
         listMain5.add(ModAttributes.EnumAttr.HP_P);
         listMain5.add(ModAttributes.EnumAttr.DEF_P);
