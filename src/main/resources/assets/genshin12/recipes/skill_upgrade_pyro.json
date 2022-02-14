@@ -5,14 +5,14 @@
     },
     "ingredients": [
         [
-            { "item": "minecraft:book" },
-            { "item": "minecraft:coal", "data": 32767 },
-            { "item": "minecraft:coal", "data": 32767 },
-            { "item": "minecraft:coal", "data": 32767 },
-            { "item": "minecraft:coal", "data": 32767 },
-            { "item": "minecraft:coal", "data": 32767 },
-            { "item": "minecraft:gunpowder"},
-            { "item": "minecraft:gunpowder"},
+            { "item": "minecraft:book" }],[
+            { "item": "minecraft:coal", "data": 32767 }],[
+            { "item": "minecraft:coal", "data": 32767 }],[
+            { "item": "minecraft:coal", "data": 32767 }],[
+            { "item": "minecraft:coal", "data": 32767 }],[
+            { "item": "minecraft:coal", "data": 32767 }],[
+            { "item": "minecraft:gunpowder"}],[
+            { "item": "minecraft:gunpowder"}],[
             { "item": "minecraft:gunpowder"}
         ]
     ],

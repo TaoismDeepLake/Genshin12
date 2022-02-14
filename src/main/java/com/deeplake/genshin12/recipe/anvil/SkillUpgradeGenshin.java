@@ -12,6 +12,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class SkillUpgradeGenshin {
+
+    static final int MAX_LV = 10;
+
     @SubscribeEvent
     public static void onAnvil(AnvilUpdateEvent event)
     {
@@ -22,7 +25,7 @@ public class SkillUpgradeGenshin {
         if (leftIn.getItem() instanceof ItemGenshinSkillBase && rightIn.getItem() == ModItems.SKILL_UPGRADE)
         {
             ItemGenshinSkillBase skillBase = (ItemGenshinSkillBase) leftIn.getItem();
-            int maxLevel = skillBase.maxLevel;
+            int maxLevel = Math.min(MAX_LV, skillBase.maxLevel);
             int curLevel = skillBase.getLevel(leftIn);
 
             if (curLevel < maxLevel)

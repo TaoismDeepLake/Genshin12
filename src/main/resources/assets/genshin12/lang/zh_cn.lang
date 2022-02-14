@@ -42,7 +42,7 @@ tile.zl_pillar.name=岩脊
 tile.cor_lapis_ore.name=石珀矿
 tile.cor_lapis_block.name=石珀块
 
-item.skill_upgrade_0.name=技能强化包·虚空
+item.skill_upgrade_0.name=技能强化包·物理
 item.skill_upgrade_0.desc=……
 
 item.skill_upgrade_1.name=技能强化包·风
@@ -80,14 +80,17 @@ item.interwined_fate.name=纠缠之缘
 item.interwined_fate.desc=连结梦想的命运之种。缘石辉光能让本无交集的命运交错，让彼此的梦想相连，正如这种光辉将群星连成心之所向的图形。
 
 # Items
-item.stella_fortuna_0.name=钟离的命之座
-item.stella_fortuna_0.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）。
+item.stella_fortuna_0.name=钟离的命星
+item.stella_fortuna_0.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）
 
-item.stella_fortuna_1.name=凯亚的命之座
-item.stella_fortuna_1.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）。
+item.stella_fortuna_1.name=凯亚的命星
+item.stella_fortuna_1.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）
 
-item.stella_fortuna_2.name=魈的命之座
-item.stella_fortuna_2.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）。
+item.stella_fortuna_2.name=魈的命星
+item.stella_fortuna_2.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）
+
+item.stella_fortuna_3.name=胡桃的命星
+item.stella_fortuna_3.desc=右键拆开可获得技能一套。（命座系统开发中，暂时只能零命）
 
 item.weapon_pack.name=武器包
 item.weapon_pack.desc=呃，又没出货……右键拆开，万一拆出个时运镐呢？
@@ -140,24 +143,24 @@ item.xiao_q.speech.1=§a§l就此消失。
 item.xiao_q.speech.2=§a§l靖妖傩舞……
 item.xiao_q.speech.3=§a§l悲鸣吧。
 
-genshin12.msg.xiao.plunge.speech.0=这里！
-genshin12.msg.xiao.plunge.speech.1=无能。
-
 # HuTao
 item.hu_tao_e.name=§c蝶引来生
-item.hu_tao_e.desc=Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the §cParamita Papilio§l state.
+item.hu_tao_e.desc=消耗一部分生命值，进入彼岸蝶舞状态
 
 item.hu_tao_e.speech.1=喝！
 item.hu_tao_e.speech.2=起！
 item.hu_tao_e.speech.3=散！
 
 item.hu_tao_q.name=§c安神秘法
-item.hu_tao_q.desc=Commands a blazing spirit to attack, dealing §cPyro DMG§l in a large AoE. Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP.
+item.hu_tao_q.desc=对周围的目标造成伤害，每命中一个目标恢复自身生命值（至多5次）。自身生命值在50%以下时效果加强。
 
 item.hu_tao_q.speech.1=§c§l吃饱喝饱，一路走好！
 item.hu_tao_q.speech.2=§c§l再会啦！
 item.hu_tao_q.speech.3=§c§l蝶火燎原！
 
+
+genshin12.msg.xiao.plunge.speech.0=这里！
+genshin12.msg.xiao.plunge.speech.1=无能。
 
 genshin12.food.shared.xp_desc=含有经验: %d
 # Items
