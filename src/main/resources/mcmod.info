@@ -5,7 +5,7 @@
   "description": "A Genshin Impact Mod for 1.12.2.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://www.mcmod.cn/class/2421.html",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/genshin-12",
   "updateUrl": "",
   "authorList": ["Taoism DeepLake"],
   "credits": "Idealland - they provided this framework.",
