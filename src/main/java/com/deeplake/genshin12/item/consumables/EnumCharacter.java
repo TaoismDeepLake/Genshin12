@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.item.consumables;
 
+import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinBurstBase;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinSkillBase;
@@ -17,6 +18,21 @@ public enum EnumCharacter {
     ItemGenshinBurstBase burst;
     EnumCharacter(ItemGenshinSkillBase elemSkill, ItemGenshinBurstBase burstBase)
     {
+        this.elemSkill = elemSkill;
+        this.burst = burstBase;
+    }
+
+    EnumCharacter(){}
+
+    public static void initSkills()
+    {
+        ZHONGLI.initSkill(ModItems.ZHONGLI_E, ModItems.ZHONGLI_Q);
+        KAEYA.initSkill(ModItems.KAEYA_E, ModItems.KAEYA_Q);
+        XIAO.initSkill(ModItems.XIAO_E, ModItems.XIAO_Q);
+        HU_TAO.initSkill(ModItems.HU_TAO_E, ModItems.HU_TAO_Q);
+    }
+
+    public void initSkill(ItemGenshinSkillBase elemSkill, ItemGenshinBurstBase burstBase){
         this.elemSkill = elemSkill;
         this.burst = burstBase;
     }

@@ -18,7 +18,7 @@ public class ModItems {
 	public static final Item INTERWINED_FATE = new ItemInterwinedFate("interwined_fate");
 
 	public static final Item WEAPON_PACK = new ItemPackageWeapon("weapon_pack");
-	public static final Item STELLA_FORTUNA = new ItemStellaFortuna("stella_fortuna", EnumCharacter.values().length);
+	public static final ItemStellaFortuna STELLA_FORTUNA = new ItemStellaFortuna("stella_fortuna", EnumCharacter.values().length);
 
 	public static final Item SKILL_UPGRADE = new ItemVariantBase("skill_upgrade", 9);
 	public static final Item COR_LAPIS = new ItemBase("cor_lapis");

@@ -6,6 +6,7 @@ import com.deeplake.genshin12.blocks.ModBlocks;
 import com.deeplake.genshin12.entity.ModEntityInit;
 import com.deeplake.genshin12.item.ModItems;
 
+import com.deeplake.genshin12.item.consumables.EnumCharacter;
 import com.deeplake.genshin12.util.IHasModel;
 import com.deeplake.genshin12.util.ModSoundHandler;
 import com.deeplake.genshin12.worldgen.InitWorldGen;
@@ -81,6 +82,7 @@ public class RegistryHandler {
 	public static void postInitReg()
 	{
 		ModBlocks.init();
+		EnumCharacter.initSkills();
 	}
 
 	public static void initRegistries(FMLInitializationEvent event)

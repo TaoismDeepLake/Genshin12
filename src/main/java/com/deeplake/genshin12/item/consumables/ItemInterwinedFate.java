@@ -23,7 +23,7 @@ public class ItemInterwinedFate extends ItemParcel {
         {
             PlayerUtil.giveToPlayer(playerIn,
                     new ItemStack(ModItems.STELLA_FORTUNA, 1,
-                            playerIn.getRNG().nextInt(ModItems.STELLA_FORTUNA.getMaxDamage() + 1)));
+                            playerIn.getRNG().nextInt(ModItems.STELLA_FORTUNA.getTypeCount() + 1)));
         }
         else {
             PlayerUtil.giveToPlayer(playerIn, new ItemStack(ModItems.WEAPON_PACK));

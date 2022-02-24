@@ -53,6 +53,8 @@ public class ItemArtifactBase extends ItemVariantBase {
         listMain5.add(ModAttributes.EnumAttr.DEF_P);
     }
 
+    static final String KEY_LEVEL = "artlvl";
+
     @Nullable
     @Override
     public EntityEquipmentSlot getEquipmentSlot(ItemStack stack) {

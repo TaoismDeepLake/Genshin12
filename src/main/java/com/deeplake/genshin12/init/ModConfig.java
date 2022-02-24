@@ -100,6 +100,25 @@ public class ModConfig {
         public int COR_LAPIS_DELTA = 3;
     }
 
+    @Config.LangKey("configgui.genshin12.category.Menu0.GuiConf")
+    @Config.Comment("Genshin12 GUI config.")
+    public static final GuiConf GUI_CONF = new GuiConf();
+
+    public static class GuiConf {
+        @Config.LangKey("genshin12.conf.worldgen.max_render_lv_distance")
+        @Config.Comment("If the creature is farther than this, don't render it's lv.")
+        @Config.RangeDouble(min = 0)
+        public double MAX_RENDER_LV_DISTANCE = 32;
+
+        @Config.LangKey("genshin12.conf.worldgen.render_lv_y_offset")
+        @Config.Comment("Where is the lv rendered")
+        public double RENDER_LV_Y_OFFSET = 1f;
+
+        @Config.LangKey("genshin12.conf.worldgen.render_lv_y_offset")
+        @Config.Comment("Where is the lv rendered")
+        public double RENDER_LV_SIZE = 1f;
+    }
+
     @Config.LangKey("configgui.genshin12.category.Menu0.DebugConf")
     @Config.Comment("Config for developers")
     public static final DebugConf DEBUG_CONF = new DebugConf();

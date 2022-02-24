@@ -26,6 +26,10 @@ public class ItemStellaFortuna extends ItemParcel implements IHasVariant {
         this.setHasSubtypes(true);
     }
 
+    public int getTypeCount() {
+        return typeCount;
+    }
+
     @Override
     public void registerModels()
     {

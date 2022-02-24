@@ -228,8 +228,10 @@ genshin12.potion.chrono=Chrono
 #msg
 genshin12.skill.msg.lack_mp=Insufficient Energy (%s/%s)
 genshin12.skill.msg.charge_full=%s Energy Full!
-genshin12.msg.obtain_primo=$b$6Obtained %s Primogem
+genshin12.msg.obtain_primo=§b§6Obtained %s Primogem
 
+#hud
+genshin12.hud.lvl=§l§7Lv. %d
 #Death
 #examples
 #death.fell.accident.ladder=%1$s fell off a ladder

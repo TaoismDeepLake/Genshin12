@@ -1,10 +1,12 @@
 package com.deeplake.genshin12.proxy;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.designs.client.RenderCreatureLevelNumber;
 import com.deeplake.genshin12.entity.creatures.render.layer.LayerFrozen;
 import com.deeplake.genshin12.entity.creatures.render.layer.LayerPetrify;
 import com.deeplake.genshin12.item.IHasVariant;
 import com.deeplake.genshin12.keys.ModKeyBinding;
+import com.deeplake.genshin12.util.CommonFunctions;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -68,6 +70,7 @@ public class ClientProxy extends ProxyBase {
 				attachRenderLayers((RenderLivingBase<?>) r);
 			}
 		});
+		CommonFunctions.addToEventBus(new RenderCreatureLevelNumber());
 	}
 
 	private static <T extends EntityLivingBase> void attachRenderLayers(RenderLivingBase<T> renderer) {
