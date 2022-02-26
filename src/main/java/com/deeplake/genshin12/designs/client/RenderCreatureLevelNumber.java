@@ -268,17 +268,18 @@ public class RenderCreatureLevelNumber
 //                    mc.fontRendererObj.drawString("ID: \"" + entityID + "\"", 0, h + 16, 0xFFFFFFFF);
 //                GlStateManager.popMatrix();
 
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                int off = 0;
-
-//                s1 = 0.5F;
+//                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+//                int off = 0;
+//
+//                float s1 = 0.5F;
 //                GlStateManager.scale(s1, s1, s1);
 //                GlStateManager.translate(size / (half * s1) * 2 - 16, 0F, 0F);
 //                mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-//                if(stack != null && NeatConfig.showAttributes) {
+//
+//
 //                    renderIcon(off, 0, stack, 16, 16);
 //                    off -= 16;
-//                }
+
 
 //                if(armor > 0 && NeatConfig.showArmor) {
 //                    int ironArmor = armor % 5;

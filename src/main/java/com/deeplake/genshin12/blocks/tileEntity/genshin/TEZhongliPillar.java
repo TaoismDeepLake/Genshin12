@@ -7,6 +7,7 @@ import com.deeplake.genshin12.util.*;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,6 +30,9 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
     final static float RESONATE_RANGE  = 3f;
     int currentLife = MAX_LIFE;
     float damage = 1f;
+
+    //todo : make this persistent
+    EntityLivingBase owner;
 
     public void setDamage(float value)
     {
@@ -108,7 +112,6 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
 
     void dealDamage()
     {
-
         List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, getVec3d(), RESONATE_RANGE, null);
 
         boolean needDrop = true;
@@ -116,17 +119,17 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
         for (EntityLivingBase target :
                 list) {
 
-            ElementalUtil.applyElemental(target, damage, EnumElemental.GEO, EnumAmount.SMALL);
-            target.attackEntityFrom(
-                    DamageSource.MAGIC,
-                    ModConfig.GeneralConf.MOVIE_MODE ? damage : damage * 100);
+            damage = ModConfig.GeneralConf.MOVIE_MODE ? damage : damage * 100;
+            if (owner != null)
+            {
+                ElementalUtil.applyElementalDamage(owner, target, damage, EnumElemental.GEO, EnumAmount.SMALL);
+            }
 
             if (needDrop && target.getRNG().nextBoolean())
             {
                 EntityEnergyOrb.drop(target, 1, EnumElemental.GEO);
                 needDrop = false;
             }
-
         }
     }
 
@@ -140,5 +143,9 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         damage = compound.getFloat(IDLNBTDef.STATE);
+    }
+
+    public void setOwner(EntityLivingBase owner) {
+        this.owner = owner;
     }
 }

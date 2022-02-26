@@ -2,10 +2,7 @@ package com.deeplake.genshin12.entity;
 
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
-import com.deeplake.genshin12.util.CommonDef;
-import com.deeplake.genshin12.util.CommonFunctions;
-import com.deeplake.genshin12.util.EntityUtil;
-import com.deeplake.genshin12.util.EnumElemental;
+import com.deeplake.genshin12.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -23,6 +20,8 @@ public class EntityGlacialWaltz extends Entity {
     float damage = 2f;
     float aoeRange = 2f;//confirmed
     int lifeTicks = 8 * CommonDef.TICK_PER_SECOND;
+
+    //todo : make this persistent
     Entity owner;
     public EntityGlacialWaltz(World worldIn) {
         super(worldIn);
@@ -64,9 +63,10 @@ public class EntityGlacialWaltz extends Entity {
         for (EntityLivingBase target :
                 list) {
 
-            target.attackEntityFrom(
-                    DamageSource.causeIndirectMagicDamage(this, owner),
-                    damage);
+            if (owner instanceof EntityLivingBase)
+            {
+                ElementalUtil.applyElementalDamage((EntityLivingBase) owner, target, damage, EnumElemental.CYRO, EnumAmount.SMALL);
+            }
         }
     }
 

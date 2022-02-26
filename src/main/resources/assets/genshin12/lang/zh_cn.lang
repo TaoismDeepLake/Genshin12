@@ -152,7 +152,7 @@ item.hu_tao_e.speech.2=起！
 item.hu_tao_e.speech.3=散！
 
 item.hu_tao_q.name=§c安神秘法
-item.hu_tao_q.desc=对周围的目标造成伤害，每命中一个目标恢复自身生命值（至多5次）。自身生命值在50%以下时效果加强。
+item.hu_tao_q.desc=对周围的目标造成伤害，每命中一个目标恢复自身生命值（至多5次）。自身生命值在50%%以下时效果加强。
 
 item.hu_tao_q.speech.1=§c§l吃饱喝饱，一路走好！
 item.hu_tao_q.speech.2=§c§l再会啦！
@@ -212,15 +212,15 @@ genshin12.potion.jade_shield_debuff=玉璋护盾减抗
 genshin12.potion.petrification=石化
 genshin12.potion.xiao_dash=疾速突进
 genshin12.potion.yaksha_mask=夜叉傩面
-genshin12.potion.cyro=Cyro
-genshin12.potion.freeze=Freeze
-genshin12.potion.hydro=Wet
-genshin12.potion.anemo=Anemo
-genshin12.potion.geo=Geo
-genshin12.potion.electro=Electro
-genshin12.potion.dendro=Dendro
-genshin12.potion.pyro=Pyro
-genshin12.potion.chrono=Chrono
+genshin12.potion.cyro=冰
+genshin12.potion.freeze=冻结
+genshin12.potion.hydro=潮湿
+genshin12.potion.anemo=风
+genshin12.potion.geo=岩
+genshin12.potion.electro=雷
+genshin12.potion.dendro=草
+genshin12.potion.pyro=火
+genshin12.potion.chrono=时
 
 
 # msg
@@ -228,3 +228,5 @@ genshin12.skill.msg.lack_mp=能量不足 (%d/%d)
 genshin12.skill.msg.charge_full=%s 能量已满！
 genshin12.msg.obtain_primo=$b$6获得 %s 原石
 
+# hud
+genshin12.hud.lvl=§l§7Lv. %d

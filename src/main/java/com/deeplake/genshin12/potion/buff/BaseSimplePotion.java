@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.UUID;
 
 public class BaseSimplePotion extends Potion {
-    protected static final ResourceLocation resource = new ResourceLocation("genshin12","textures/misc/potions.png");
+    public static final ResourceLocation resource = new ResourceLocation("genshin12","textures/misc/potions.png");
     protected final int iconIndex;
     public UUID UUID_CLIENT = null;
 
@@ -45,7 +45,7 @@ public class BaseSimplePotion extends Potion {
         {
             if (livingBase.getEntityWorld().isRemote)
             {
-                IAttributeInstance attribute = livingBase.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) ;
+                IAttributeInstance attribute = livingBase.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH) ;
                 if (attribute==null || attribute.getModifier(UUID_CLIENT) == null)
                 {
                     return false;
@@ -88,6 +88,9 @@ public class BaseSimplePotion extends Potion {
 
         tessellator.draw();
     }
+
+
+
 
     @Override
     @SideOnly(Side.CLIENT)

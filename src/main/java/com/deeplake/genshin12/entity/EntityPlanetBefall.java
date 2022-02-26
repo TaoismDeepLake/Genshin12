@@ -94,7 +94,7 @@ public class EntityPlanetBefall extends EntityLiving {
                 list) {
             if (shooter instanceof EntityPlayer)
             {
-                ElementalUtil.applyElementalDamage((EntityPlayer) shooter, target, damage, EnumElemental.GEO, EnumAmount.LARGE);
+                ElementalUtil.applyElementalDamage(shooter, target, damage, EnumElemental.GEO, EnumAmount.LARGE);
             }
             else { //including null
                 target.attackEntityFrom(

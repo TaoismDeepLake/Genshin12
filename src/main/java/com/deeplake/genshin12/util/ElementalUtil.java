@@ -54,16 +54,16 @@ public class ElementalUtil {
         return 0;
     }
 
-    public static void applyElementalDamage(EntityPlayer player, EntityLivingBase target, double damage, EnumElemental elemental, EnumAmount amount)
+    public static void applyElementalDamage(EntityLivingBase player, EntityLivingBase target, double damage, EnumElemental elemental, EnumAmount amount)
     {
         applyElementalDamage(player, target, (float) damage, elemental, amount);
     }
 
-    public static void applyElementalDamage(EntityPlayer player, EntityLivingBase target, float damage, EnumElemental elemental, EnumAmount amount)
+    public static void applyElementalDamage(EntityLivingBase player, EntityLivingBase target, float damage, EnumElemental elemental, EnumAmount amount)
     {
         applyElemental(target, damage, elemental, amount);
 
-        DamageSource source = DamageSource.causePlayerDamage(player);
+        DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
         if (elemental == EnumElemental.PYRO)
         {
             source.setFireDamage();

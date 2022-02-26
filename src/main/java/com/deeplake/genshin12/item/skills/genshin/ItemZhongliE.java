@@ -106,6 +106,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
                     {
                         TEZhongliPillar teZhongliPillar = (TEZhongliPillar) te;
                         teZhongliPillar.setDamage(getInitDamage(getLevel(stack)) * 2f);
+                        teZhongliPillar.setOwner(caster);
                     }
                 }
             }
@@ -169,45 +170,27 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
         boolean needDrop = true;
         if (ModConfig.GeneralConf.MOVIE_MODE)
         {
-            if (caster instanceof EntityPlayer)
-            {
-                for (EntityLivingBase target :
-                        list) {
-                    //todo : fix it, into elem damage
-                    target.attackEntityFrom(
-                            DamageSource.causePlayerDamage((EntityPlayer) caster),
-                            target.getActivePotionEffect(ModPotions.ZL_PETRIFY) != null ? damage * 100 : damage);
+            for (EntityLivingBase target :
+                    list) {
+                damage = target.getActivePotionEffect(ModPotions.ZL_PETRIFY) != null ? damage * 100 : damage;
+                ElementalUtil.applyElementalDamage(caster, target, damage, EnumElemental.GEO, EnumAmount.MEDIUM);
 
-                    if (needDrop && caster.getRNG().nextBoolean())
-                    {
-                        EntityEnergyOrb.drop(target, 1, EnumElemental.GEO);
-                        needDrop = false;
-                    }
+                if (needDrop && caster.getRNG().nextBoolean())
+                {
+                    EntityEnergyOrb.drop(target, 1, EnumElemental.GEO);
+                    needDrop = false;
                 }
-            }
-            else {
-                //cast by non-player
             }
         }
         else {
             for (EntityLivingBase target :
                     list) {
-                if (caster instanceof EntityPlayer)
+                ElementalUtil.applyElementalDamage(caster, target, damage, EnumElemental.GEO, EnumAmount.MEDIUM);
+                if (needDrop && caster.getRNG().nextBoolean())
                 {
-                    //todo : fix it, into elem damage
-                    target.attackEntityFrom(
-                            DamageSource.causePlayerDamage((EntityPlayer) caster),
-                            damage);
-                    if (needDrop && caster.getRNG().nextBoolean())
-                    {
-                        EntityEnergyOrb.drop(target, 1, EnumElemental.GEO);
-                        needDrop = false;
-                    }
+                    EntityEnergyOrb.drop(target, 1, EnumElemental.GEO);
+                    needDrop = false;
                 }
-                else {
-                    //todo
-                }
-
             }
         }
 

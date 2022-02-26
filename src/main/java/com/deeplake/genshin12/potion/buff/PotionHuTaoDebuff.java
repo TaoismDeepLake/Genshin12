@@ -42,7 +42,7 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
         try {
             int dura = entityLivingBaseIn.getActivePotionEffect(this).getDuration();
 
-            IdlFramework.Log("dura = %s", dura);
+//            IdlFramework.Log("dura = %s", dura);
             if (dura % PERIOD == getTargetTick)
             {
                 World world = entityLivingBaseIn.getEntityWorld();
