@@ -28,7 +28,7 @@ import java.util.List;
 @SideOnly(Side.CLIENT)
 public class RenderElementalIcon {
 
-    static HashMap<BaseSimplePotion, ResourceLocation> map = new HashMap<>();
+    public static HashMap<BaseSimplePotion, ResourceLocation> map = new HashMap<>();
 
     static ResourceLocation location(String name)
     {

@@ -189,6 +189,12 @@ public class EntityUtil {
         return new Vec3d(pos.x + Math.sin(angle), pos.y, pos.z + Math.cos(angle));
     }
 
+    public static void spawnParticleOver(EntityLivingBase entity, EnumParticleTypes particleTypes)
+    {
+        Vec3d pos = GetRandomAroundPos(entity.getPositionVector().addVector(0, entity.getRNG().nextFloat() * entity.height, 0), entity.width, entity.getRNG());
+        entity.world.spawnParticle(particleTypes, pos.x, pos.y, pos.z, 0,0,0);
+    }
+
     public static void SpawnParticleAround(EntityLivingBase entity, EnumParticleTypes particleTypes)
     {
         Vec3d pos = GetRandomAroundUnderfoot(entity,1f);

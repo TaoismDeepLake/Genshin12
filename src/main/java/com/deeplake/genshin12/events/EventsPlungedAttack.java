@@ -75,10 +75,10 @@ public class EventsPlungedAttack {
             {
                 if (distance > ModConfig.DEBUG_CONF.PLUNGE_MAX_DAMAGE_FACTOR)
                 {
-                    world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, livingBase.posX, livingBase.posY, livingBase.posZ, 0,0,0);
+                    world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, livingBase.posX, livingBase.posY+0.5f, livingBase.posZ, 0,0,0);
                 }
                 else {
-                    world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, livingBase.posX, livingBase.posY, livingBase.posZ, 0,0,0);
+                    world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, livingBase.posX, livingBase.posY+0.5f, livingBase.posZ, 0,0,0);
                 }
 
             } else {
