@@ -1,9 +1,6 @@
 package com.deeplake.genshin12.designs.client;
 
-import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.Stack;
 
 import com.deeplake.genshin12.designs.level.LevelSystem;
@@ -13,36 +10,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.renderer.vertex.VertexBuffer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 
 //https://github.com/VazkiiMods/Neat
@@ -56,7 +33,7 @@ public class RenderCreatureLevelNumber
     public void onRenderWorldLast(RenderWorldLastEvent event) {
         Minecraft mc = Minecraft.getMinecraft();
 
-        if(!Minecraft.isGuiEnabled())//no config here.
+        if(!Minecraft.isGuiEnabled() || !ModConfig.GUI_CONF.RENDER_LV)
             return;
 
         Entity cameraEntity = mc.getRenderViewEntity();
@@ -76,11 +53,11 @@ public class RenderCreatureLevelNumber
 
         for(Entity entity : entities)
             if(entity != null && entity instanceof EntityLivingBase && entity != mc.player && entity.isInRangeToRender3d(renderingVector.getX(), renderingVector.getY(), renderingVector.getZ()) && (entity.ignoreFrustumCheck || frustum.isBoundingBoxInFrustum(entity.getEntityBoundingBox())) && entity.isEntityAlive() && entity.getRecursivePassengers().isEmpty())
-                renderHealthBar((EntityLivingBase) entity, partialTicks, cameraEntity);
+                renderLV((EntityLivingBase) entity, partialTicks, cameraEntity);
     }
 
 
-    public void renderHealthBar(EntityLivingBase passedEntity, float partialTicks, Entity viewPoint) {
+    public void renderLV(EntityLivingBase passedEntity, float partialTicks, Entity viewPoint) {
         Stack<EntityLivingBase> ridingStack = new Stack();
 
         EntityLivingBase entity = passedEntity;

@@ -213,7 +213,7 @@ public class ItemGenshinSkillBase extends ItemSkillBase{
                             continue;
                         }
 
-                ElementalUtil.applyElementalDamage((EntityPlayer) caster, target, damage, elemental, amount);
+                ElementalUtil.applyElementalDamage(caster, target, damage, elemental, amount);
 
                 if (needDrop)
                 {

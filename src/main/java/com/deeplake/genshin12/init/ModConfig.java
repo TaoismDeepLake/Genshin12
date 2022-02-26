@@ -105,6 +105,10 @@ public class ModConfig {
     public static final GuiConf GUI_CONF = new GuiConf();
 
     public static class GuiConf {
+        @Config.LangKey("genshin12.conf.gui.render_lv")
+        @Config.Comment("Render Lv")
+        public boolean RENDER_LV = true;
+
         @Config.LangKey("genshin12.conf.gui.max_render_lv_distance")
         @Config.Comment("If the creature is farther than this, don't render it's lv.")
         @Config.RangeDouble(min = 0)
@@ -155,6 +159,11 @@ public class ModConfig {
         public float PLUNGE_MAX_DAMAGE_FACTOR = 3.2f;//100%atk
 
         public float PLUNGE_SPEED = 3;
+
+        @Config.Comment("Picking up orbs will cause players within this range to recharge.")
+        public float RECHARGE_RADIUS = 16;
+
+        public float ORB_SPAWN_RADIUS = 3;
 
         @Config.LangKey("genshin12.conf.worldgen.enable_xiao_jump_boost")
         @Config.Comment("(Client side)Xiao's jump height alter may confict with other jump-adjusting modes. If you are not playing xiao and have compatibility issues, turn this off client side.")

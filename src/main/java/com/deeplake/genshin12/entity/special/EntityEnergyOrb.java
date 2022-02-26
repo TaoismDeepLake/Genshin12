@@ -1,11 +1,15 @@
 package com.deeplake.genshin12.entity.special;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinBurstBase;
+import com.deeplake.genshin12.util.CommonDef;
+import com.deeplake.genshin12.util.EntityUtil;
 import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,6 +28,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 //copied from EntityXPOrb
 public class EntityEnergyOrb extends Entity {
@@ -71,32 +77,39 @@ public class EntityEnergyOrb extends Entity {
     static float WRONG_ELEMENT = 1.0f;
 
     //has optimization here.
-    public void handlePlayer(EntityPlayer player)
+    public void handlePlayer(EntityPlayer mainPlayer)
     {
-        int maxSize = player.inventory.getSizeInventory();
-        InventoryPlayer inventoryPlayer = player.inventory;
+        List<EntityPlayer> list = EntityUtil.getEntitiesWithinAABB(world, EntityPlayer.class, mainPlayer.getPositionVector(), ModConfig.DEBUG_CONF.RECHARGE_RADIUS, null);
 
-        float valAllInventory = energyVal * NOT_OFFHAND;
+        for (EntityPlayer player :
+                list) {
 
-        if (enumElemental == EnumElemental.PHYSICAL)
-        {
-            valAllInventory *= NONE_ELEMENT;
+            int maxSize = player.inventory.getSizeInventory();
+            InventoryPlayer inventoryPlayer = player.inventory;
 
-            for (int i = 0; i < maxSize; i++) {
-                applyEnergyToSkillNoElement(inventoryPlayer.getStackInSlot(i), player, valAllInventory);
+            float valAllInventory = energyVal * NOT_OFFHAND;
+
+            if (enumElemental == EnumElemental.PHYSICAL)
+            {
+                valAllInventory *= NONE_ELEMENT;
+
+                for (int i = 0; i < maxSize; i++) {
+                    applyEnergyToSkillNoElement(inventoryPlayer.getStackInSlot(i), player, valAllInventory);
+                }
+
+                applyEnergyToSkillNoElement(player.getHeldItemOffhand(), player, energyVal * OFFHAND_EXTRA * NONE_ELEMENT);
             }
+            else {
+                //orb has a element
 
-            applyEnergyToSkillNoElement(player.getHeldItemOffhand(), player, energyVal * OFFHAND_EXTRA * NONE_ELEMENT);
-        }
-        else {
-            //orb has a element
+                for (int i = 0; i < maxSize; i++) {
+                    applyEnergyToSkillWithElement(inventoryPlayer.getStackInSlot(i), player, valAllInventory);
+                }
 
-            for (int i = 0; i < maxSize; i++) {
-                applyEnergyToSkillWithElement(inventoryPlayer.getStackInSlot(i), player, valAllInventory);
+                applyEnergyToSkillWithElement(player.getHeldItemOffhand(), player, energyVal * OFFHAND_EXTRA);
             }
-
-            applyEnergyToSkillWithElement(player.getHeldItemOffhand(), player, energyVal * OFFHAND_EXTRA);
         }
+
     }
 
     //prevent repeat calculation.
@@ -369,18 +382,23 @@ public class EntityEnergyOrb extends Entity {
 
     public static void drop(EntityLivingBase livingBase, int amount, EnumElemental elemental)
     {
+        double theta = livingBase.getRNG().nextFloat() * Math.PI + livingBase.rotationYaw * CommonDef.DEG_TO_RAD - Math.PI / 2f;
+        double range = ModConfig.DEBUG_CONF.ORB_SPAWN_RADIUS;
+        double dx = range * Math.cos(theta);
+        double dz = range * Math.sin(theta);
+
         //-3 means 2.5
         if (amount < 0)
         {
             if (livingBase.getRNG().nextBoolean())
             {
-                drop(livingBase.world, livingBase.getPositionVector().addVector(0, livingBase.height / 2f, 0), 1, elemental);
+                drop(livingBase.world, livingBase.getPositionVector().addVector(dx, livingBase.height / 2f, dz), 1, elemental);
             }
             amount = -amount;
         }
 
         if (amount > 0)
-        drop(livingBase.world, livingBase.getPositionVector().addVector(0, livingBase.height / 2f, 0), amount, elemental);
+        drop(livingBase.world, livingBase.getPositionVector().addVector(dx, livingBase.height / 2f, dz), amount, elemental);
     }
 
     //cool down unhandled.
