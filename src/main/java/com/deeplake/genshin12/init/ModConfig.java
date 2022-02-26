@@ -140,7 +140,7 @@ public class ModConfig {
 
         public float KAEYA_OMEGA = 0.3f;//rad / tick
 
-        public float XIAO_DASH_SPEED = 1f;// m/tick
+        public float XIAO_DASH_SPEED = 2f;// m/tick
         public int XIAO_DASH_DURA = 10;//tick
         public double XIAO_JUMP_FACTOR = Math.sqrt(6);//jump speed, meter per tick
 

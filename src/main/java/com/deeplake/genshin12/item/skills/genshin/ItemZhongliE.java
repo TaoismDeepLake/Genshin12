@@ -161,7 +161,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
 
     void dealDamage(World world, Vec3d pos, EntityLivingBase caster, ItemStack stack, boolean isHold)
     {
-        List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, isHold ? aoeRange : (ModConfig.GeneralConf.MOVIE_MODE ? aoeRangeHold * 10 : aoeRangeHold), null);
+        List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, isHold ?  (ModConfig.GeneralConf.MOVIE_MODE ? aoeRangeHold * 10 : aoeRangeHold) : aoeRange, null);
 
         float damageFactor = isHold ? getHoldDamage(getLevel(stack)) : getInitDamage(getLevel(stack));
         float damage = damageFactor / 100f * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC;
@@ -173,6 +173,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
             {
                 for (EntityLivingBase target :
                         list) {
+                    //todo : fix it, into elem damage
                     target.attackEntityFrom(
                             DamageSource.causePlayerDamage((EntityPlayer) caster),
                             target.getActivePotionEffect(ModPotions.ZL_PETRIFY) != null ? damage * 100 : damage);
@@ -193,6 +194,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
                     list) {
                 if (caster instanceof EntityPlayer)
                 {
+                    //todo : fix it, into elem damage
                     target.attackEntityFrom(
                             DamageSource.causePlayerDamage((EntityPlayer) caster),
                             damage);

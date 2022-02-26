@@ -30,21 +30,21 @@ public class ModPotions {
     public static final Potion JADE_SHIELD_DEBUFF = new BaseSimplePotion(true, 0xcccc00, "jade_shield_debuff", 1);
     public static final Potion ZL_PETRIFY = new PotionPetrification(true, 0x555533, "petrification", 2).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_PETRYFY.toString(), -1f, 2);
 
-    public static final Potion CYRO = new BasePotion(true, 0x9dd3e0, "cyro", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_CYRO.toString(), -0.15f, 2);
-    public static final Potion FREEZE = new PotionPetrification(true, 0x9dd3e0, "freeze", 3).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_FREEZE.toString(), -1f, 2);
-    public static final Potion HYDRO = new BasePotion(true, EnumElemental.HYDRO.getColor(), "hydro", 4);
+    public static final Potion CYRO = new BasePotion(true, 0x9dd3e0, "cyro", 3).setUUID_CLIENT("a9abeb50-f9e1-44fd-b82e-fce73a071fbf").registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_CYRO.toString(), -0.15f, 2);
+    public static final Potion FREEZE = new PotionPetrification(true, 0x9dd3e0, "freeze", 3).setUUID_CLIENT("b0d94296-6366-42c3-879d-5450efa6e1ed").registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_FREEZE.toString(), -1f, 2);
+    public static final Potion HYDRO = new BasePotion(true, EnumElemental.HYDRO.getColor(), "hydro", 4).setUUID_CLIENT("4a583711-8043-4b03-9974-7e1590818ba9");
 
-    public static final Potion ANEMO = new BasePotion(true, EnumElemental.ANEMO.getColor(), "anemo", 5);
+    public static final Potion ANEMO = new BasePotion(true, EnumElemental.ANEMO.getColor(), "anemo", 5).setUUID_CLIENT("382e7fdd-f68b-4a65-af87-09b3328b4763");
 
-    public static final Potion GEO = new BasePotion(true, EnumElemental.GEO.getColor(), "geo", 6);
+    public static final Potion GEO = new BasePotion(true, EnumElemental.GEO.getColor(), "geo", 6).setUUID_CLIENT("e6e1ef34-516a-4b87-bb2f-9055c0a9e523");
 
-    public static final Potion ELECTRO = new BasePotion(true, EnumElemental.ELECTRO.getColor(), "electro", 7);
+    public static final Potion ELECTRO = new BasePotion(true, EnumElemental.ELECTRO.getColor(), "electro", 7).setUUID_CLIENT("fb521d4f-c203-4609-aba5-82721d6ff634");
 
-    public static final Potion DENDRO = new BasePotion(true, EnumElemental.DENDRO.getColor(), "dendro", 8);
+    public static final Potion DENDRO = new BasePotion(true, EnumElemental.DENDRO.getColor(), "dendro", 8).setUUID_CLIENT("3facd155-5b9d-428b-9b4e-cd21232d00d4");
 
-    public static final Potion PYRO = new BasePotion(true, EnumElemental.PYRO.getColor(), "pyro", 9);
+    public static final Potion PYRO = new BasePotion(true, EnumElemental.PYRO.getColor(), "pyro", 9).setUUID_CLIENT("f82fd4d6-3172-4596-af0f-096b04845578");
 
-    public static final Potion CHRONO = new BasePotion(true, EnumElemental.CHRONO.getColor(), "chrono", 10);
+    public static final Potion CHRONO = new BasePotion(true, EnumElemental.CHRONO.getColor(), "chrono", 10).setUUID_CLIENT("c8725744-4929-46dc-bbf4-090c54d695df");
 
     public static final Potion XIAO_DASH = new PotionXiaoDash(false, EnumElemental.ANEMO.getColor(), "xiao_dash", 11);
 

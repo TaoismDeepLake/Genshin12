@@ -7,15 +7,21 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.UUID;
+
 public class BaseSimplePotion extends Potion {
     protected static final ResourceLocation resource = new ResourceLocation("genshin12","textures/misc/potions.png");
     protected final int iconIndex;
+    public UUID UUID_CLIENT = null;
 
     public BaseSimplePotion(boolean isBadEffectIn, int liquidColorIn, String name, int icon) {
         super(isBadEffectIn, liquidColorIn);
@@ -24,6 +30,36 @@ public class BaseSimplePotion extends Potion {
         iconIndex = icon;
 
         ModPotions.INSTANCES.add(this);
+    }
+
+    public BaseSimplePotion setUUID_CLIENT(String s)
+    {
+        UUID_CLIENT = UUID.fromString(s);
+        registerPotionAttributeModifier(SharedMonsterAttributes.MAX_HEALTH, s, 0f, 0);
+        return this;
+    }
+
+    public boolean hasPotion(EntityLivingBase livingBase)
+    {
+        if (livingBase.getEntityWorld() != null)
+        {
+            if (livingBase.getEntityWorld().isRemote)
+            {
+                IAttributeInstance attribute = livingBase.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) ;
+                if (attribute==null || attribute.getModifier(UUID_CLIENT) == null)
+                {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            } else {
+                return livingBase.isPotionActive(this);
+            }
+        }
+        else {
+            return false;
+        }
     }
 
     @SideOnly(Side.CLIENT)

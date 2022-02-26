@@ -3,6 +3,7 @@ package com.deeplake.genshin12.util;
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.entity.creatures.EntityModUnit;
 import com.deeplake.genshin12.meta.MetaUtil;
+import com.deeplake.genshin12.potion.buff.BaseSimplePotion;
 import com.google.common.base.Predicate;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -613,6 +614,11 @@ public class EntityUtil {
             IdlFramework.LogWarning("TRYING_TO_CHECK_ILLEGAL_POTION");
             return 0;
         }
+        if (livingBase.getEntityWorld().isRemote && potion instanceof BaseSimplePotion)
+        {
+            return ((BaseSimplePotion) potion).hasPotion(livingBase) ? 1 : 0;
+        }
+
         PotionEffect effect = livingBase.getActivePotionEffect(potion);
         if (effect == null) {
             return 0;
