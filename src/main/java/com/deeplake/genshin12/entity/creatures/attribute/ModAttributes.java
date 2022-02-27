@@ -2,8 +2,10 @@ package com.deeplake.genshin12.entity.creatures.attribute;
 
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.util.EnumElemental;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 
 import java.util.ArrayList;
@@ -16,17 +18,17 @@ public class ModAttributes {
     static final double MAX = 999999f;
 
     //Elemental Mastery
-    public static final IAttribute DEFENSE = getNewAttr( "defense");
+    public static final IAttribute DEFENSE = getNewAttrNonpercent( "defense");
     //reduct = DEF / (Def + 5x Lv Atk + 500)
 
     //Elemental Mastery
-    public static final IAttribute ELEM_MASTERY = getNewAttr("elem_mastery");
+    public static final IAttribute ELEM_MASTERY = getNewAttrNonpercent("elem_mastery");
 
     //Critical Rate
     public static final IAttribute CRIT_RATE = getNewAttr("crit_rate");
 
     //Critical Damage
-    public static final IAttribute CRIT_DMG = new RangedAttribute(null, getAttrName("elem_mastery"), 0, MIN, MAX).setShouldWatch(false);// get 1+damage
+    public static final IAttribute CRIT_DMG = new RangedAttribute(null, getAttrName("crit_dmg"), 0, MIN, MAX).setShouldWatch(false);// get 1+damage
 
     //Healing Bonus
     public static final IAttribute HEAL_BONUS = getNewAttr("heal_bonus");// get 1+damage
@@ -47,6 +49,11 @@ public class ModAttributes {
     public static final IAttribute DMG_REDUCT = getNewAttr("dmg_reduct");
 
     public static IAttribute getNewAttr(String name)
+    {
+        return new RangedAttribute(null, getAttrName(name), 1, MIN, MAX).setShouldWatch(false);
+    }
+
+    public static IAttribute getNewAttrNonpercent(String name)
     {
         return new RangedAttribute(null, getAttrName(name), 0, MIN, MAX).setShouldWatch(false);
     }
@@ -98,6 +105,26 @@ public class ModAttributes {
     public static EnumAttr getEnumDamage(EnumElemental elemental)
     {
         return dmgDict.get(elemental);
+    }
+
+    public static double getActualPercentRate(EntityLivingBase livingBase, IAttribute attribute)
+    {
+        IAttributeInstance attributeInstance = livingBase.getEntityAttribute(attribute);
+        if (attributeInstance != null)
+        {
+            return attributeInstance.getAttributeValue() - 1f;
+        }
+        return 0;
+    }
+
+    public static double getCritRate(EntityLivingBase livingBase)
+    {
+        return getActualPercentRate(livingBase, CRIT_RATE);
+    }
+
+    public static boolean getCritCheck(EntityLivingBase livingBase)
+    {
+        return livingBase.getRNG().nextDouble() < getCritRate(livingBase);
     }
 
     static final int BASE_1 = 1000;

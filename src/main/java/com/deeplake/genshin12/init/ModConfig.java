@@ -50,6 +50,14 @@ public class ModConfig {
         @Config.LangKey("genshin12.conf.general.dmg_atk_percent_genshin_to_mc")
         @Config.Comment("100% skill damage = ? damage in Minecraft?")
         public float DMG_ATK_PERCENT_GENSHIN_TO_MC = 2f; //100% dmg
+
+        @Config.LangKey("genshin12.conf.general.disable_vanilla_crit")
+        @Config.Comment("Disables the vanilla critical strike system.")
+        public boolean DISABLE_VANILLA_CRIT = false;
+
+        @Config.LangKey("genshin12.conf.general.override_crit_dmg")
+        @Config.Comment("If critical, the damage is merely calculated by this mod")
+        public boolean OVERRIDE_CRIT_DMG = false;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GachaConf")
@@ -191,6 +199,10 @@ public class ModConfig {
     public static final ElemConf ELEMCONF = new ElemConf();
 
     public static class ElemConf {
+        @Config.LangKey("conf.elem.death_drop_orb")
+        @Config.Comment("Creatures drop energy when killed. Only those with Atk Attr.")
+        public boolean DEATH_DROP_ORB = true;
+
         public double R_STRONG_MELT = 2.5;
         public double R_STRONG_VAPORIZE = 2.5;
         public double R_WEAK_MELT = 0.625;
