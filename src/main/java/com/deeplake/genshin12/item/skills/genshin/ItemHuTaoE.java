@@ -38,7 +38,7 @@ public class ItemHuTaoE extends ItemGenshinSkillBase {
         {
             GenshinUtil.dealAoEKnockBack(livingBase.getPositionVector(), livingBase, 0.4f, 3f);
 
-            livingBase.setHealth(Math.max(0.1f, livingBase.getHealth() - livingBase.getMaxHealth() * 0.3f));
+            livingBase.setHealth(Math.max(0.1f, livingBase.getHealth() - livingBase.getHealth() * 0.3f));
             livingBase.addPotionEffect(new PotionEffect(ModPotions.HUTAO_BUFF, buff_ticks, getLevel(stack) - 1));
             //drop immediately. otherwise too complicated!
             EntityEnergyOrb.drop(livingBase, -3, EnumElemental.PYRO);
