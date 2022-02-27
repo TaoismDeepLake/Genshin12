@@ -62,8 +62,9 @@ end
 --for i = 0, 8 do
 --	GenItem("misc", "skill_upgrade_"..i);
 --end
-GenItem("skill", "hu_tao_e");
-GenItem("skill", "hu_tao_q");
+GenItem("misc", "debug_item");
+GenItem("misc", "debug_item_2");
+--GenItem("skill", "hu_tao_q");
 
 
 --GenBlock("cor_lapis_block");

@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.item.skills.genshin;
 
+import com.deeplake.genshin12.entity.creatures.attribute.HandleHeal;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.IWIP;
 import com.deeplake.genshin12.util.CommonDef;
@@ -51,7 +52,7 @@ public class ItemHuTaoQ extends ItemGenshinBurstBase{
         if (index < maxCount)
         {
             int level = getLevel(stack);
-            caster.heal(getHeal(level, caster, status));
+            HandleHeal.genshinHeal(caster, caster, getHeal(level, caster, status));
         }
         super.onHit(world, pos, caster, stack, index, status);
     }

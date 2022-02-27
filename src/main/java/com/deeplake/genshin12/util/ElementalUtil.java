@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.util;
 
+import com.deeplake.genshin12.entity.creatures.attribute.HandleResistance;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
@@ -72,6 +73,12 @@ public class ElementalUtil {
         else if (elemental != EnumElemental.PHYSICAL)
         {
             source.setMagicDamage();
+        }
+
+        //physical damage is handled elsewhere
+        if (elemental != EnumElemental.PHYSICAL)
+        {
+            damage *= HandleResistance.handleResistance(player, target, elemental);
         }
 
         target.attackEntityFrom(

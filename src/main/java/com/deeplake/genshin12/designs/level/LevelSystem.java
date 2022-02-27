@@ -5,6 +5,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 
+import javax.annotation.Nullable;
 import java.util.UUID;
 
 public class LevelSystem {
@@ -14,8 +15,13 @@ public class LevelSystem {
 
     //Level 0 means no HP.
     //Level 1 means level is not specifically set.
-    public static int getLevel(EntityLivingBase livingBase)
+    public static int getLevel(@Nullable EntityLivingBase livingBase)
     {
+        if (livingBase == null)
+        {
+            return 1;
+        }
+
         IAttributeInstance hp_instance = livingBase.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
         if (hp_instance != null)
         {

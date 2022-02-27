@@ -173,6 +173,9 @@ public class ModConfig {
 
         public float ORB_SPAWN_RADIUS = 3;
 
+        public float DEF_LEVEL_FACTOR = 5;
+        public float DEF_STATIC_PLUS = 500;
+
         @Config.LangKey("genshin12.conf.worldgen.enable_xiao_jump_boost")
         @Config.Comment("(Client side)Xiao's jump height alter may confict with other jump-adjusting modes. If you are not playing xiao and have compatibility issues, turn this off client side.")
         public boolean ENABLE_XIAO_JUMP_BOOST = true;

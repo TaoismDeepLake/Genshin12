@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.potion;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.potion.buff.*;
 import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.Reference;
@@ -26,6 +27,9 @@ public class ModPotions {
     public static UUID UUID_FREEZE = UUID.fromString("6470364b-d96e-43e5-911d-22b5e083849f");
     public static UUID UUID_XIAO_MASK = UUID.fromString("51319831-13c4-4b35-9632-d926c041bdae");
     public static UUID UUID_HUTAO_BUFF = UUID.fromString("2cf4ab68-2c9a-4738-9715-b71f95a287f5");
+    public static UUID UUID_JADE_SHIELD_DEBUFF = UUID.fromString("dd40342b-5cfc-4e2a-914f-360cf3c052e1");
+    public static UUID UUID_JADE_SHIELD = UUID.fromString("b5b45eb7-afec-4399-a80b-fa4318a08741");
+
     public static final PotionJadeShield JADE_SHIELD = new PotionJadeShield(false, 0x333333, "jade_shield", 0);
     public static final Potion JADE_SHIELD_DEBUFF = new BaseSimplePotion(true, 0xcccc00, "jade_shield_debuff", 1);
     public static final Potion ZL_PETRIFY = new PotionPetrification(true, 0x555533, "petrification", 2).registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_PETRYFY.toString(), -1f, 2);
@@ -74,6 +78,15 @@ public class ModPotions {
     {
         evt.getRegistry().registerAll(INSTANCES.toArray(new Potion[0]));
         IdlFramework.Log("registered %d potion", INSTANCES.size());
+
+        for (EnumElemental elemental :
+                EnumElemental.values()) {
+            JADE_SHIELD_DEBUFF.registerPotionAttributeModifier(
+                    ModAttributes.getElemRes(elemental),
+                    UUID_JADE_SHIELD_DEBUFF.toString(),
+                    ModAttributes.convert(-0.2),
+                    0);
+        }
     }
 
     public static void postInit()

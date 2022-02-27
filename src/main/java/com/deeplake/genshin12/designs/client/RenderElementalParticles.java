@@ -14,8 +14,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.HashSet;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+
 @SideOnly(Side.CLIENT)
+@Mod.EventBusSubscriber(modid = IdlFramework.MODID, value = Side.CLIENT)
 public class RenderElementalParticles {
 
     @SideOnly(Side.CLIENT)

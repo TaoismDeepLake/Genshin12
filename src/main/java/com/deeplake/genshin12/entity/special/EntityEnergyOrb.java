@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.entity.special;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinBurstBase;
 import com.deeplake.genshin12.util.CommonDef;
@@ -87,7 +88,8 @@ public class EntityEnergyOrb extends Entity {
             int maxSize = player.inventory.getSizeInventory();
             InventoryPlayer inventoryPlayer = player.inventory;
 
-            float valAllInventory = energyVal * NOT_OFFHAND;
+            float rechargeFactor = (float) (1 + ModAttributes.getActualPercentRate(player, ModAttributes.ENERGY_RECHARGE));
+            float valAllInventory = energyVal * NOT_OFFHAND * rechargeFactor;
 
             if (enumElemental == EnumElemental.PHYSICAL)
             {
@@ -347,7 +349,7 @@ public class EntityEnergyOrb extends Entity {
 //        this.energyVal = compound.getShort(KEY_VALUE);
         try
         {
-            enumElemental = EnumElemental.values()[compound.getByte(IDLNBTDef.ELEMENT)];
+            setEnumElemental(EnumElemental.values()[compound.getByte(IDLNBTDef.ELEMENT)]);
         }
         catch (Exception e)
         {

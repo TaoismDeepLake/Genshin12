@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = IdlFramework.MODID, value = Side.CLIENT)
 @SideOnly(Side.CLIENT)
 public class RenderElementalIcon {
 

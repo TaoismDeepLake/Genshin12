@@ -1,19 +1,16 @@
 package com.deeplake.genshin12.potion;
 
-import com.deeplake.genshin12.init.ModConfig;
+import com.deeplake.genshin12.entity.creatures.attribute.EventsHandleShield;
 import com.deeplake.genshin12.potion.buff.BasePotion;
 import com.deeplake.genshin12.util.EntityUtil;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import com.deeplake.genshin12.util.Reference;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
@@ -21,8 +18,6 @@ import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Collection;
 
@@ -63,8 +58,6 @@ public class PotionEventHandler {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onCreatureHurt(LivingHurtEvent evt) {
         handleGeneralEffects(evt);
-        handleShield(evt);
-        handleResistance(evt);
         //special effects
         jadeShieldFortify(evt);
     }
@@ -86,40 +79,6 @@ public class PotionEventHandler {
                 EntityUtil.ApplyBuff(hurtOne, ModPotions.JADE_SHIELD, buffLevel, dura);//actually +1 level
             }
         }
-    }
-
-    public static void handleShield(LivingHurtEvent evt) {
-        World world = evt.getEntity().getEntityWorld();
-        EntityLivingBase hurtOne = evt.getEntityLiving();
-
-        float shieldFactor = 1f;
-        int buffLevel = EntityUtil.getBuffLevelIDL(hurtOne, ModPotions.JADE_SHIELD);
-        if (buffLevel > 0 && hurtOne.getAbsorptionAmount() > 0)
-        {
-            //When the Jade Shield takes DMG, it will Fortify:
-            //Fortified characters have 5% increased Shield Strength.
-            //Can stack up to 5 times, and lasts until the Jade Shield disappears
-            shieldFactor += 0.5f + (buffLevel - 1)*0.05f;
-            if (ModConfig.GeneralConf.MOVIE_MODE)
-            {
-                shieldFactor += 99f;
-            }
-        }
-
-        evt.setAmount(evt.getAmount() / shieldFactor);
-    }
-
-    public static void handleResistance(LivingHurtEvent evt) {
-        EntityLivingBase hurtOne = evt.getEntityLiving();
-
-        float resistance = 0f;
-
-        if (hurtOne.getActivePotionEffect(ModPotions.JADE_SHIELD_DEBUFF) != null)
-        {
-            resistance -= 0.2f;
-        }
-
-        evt.setAmount(evt.getAmount() / (1 + resistance));
     }
 
     public static void handleGeneralEffects(LivingHurtEvent evt) {
@@ -159,45 +118,46 @@ public class PotionEventHandler {
                 }
             }
 
-            //Critical Judgement
-            if (!(trueSource instanceof EntityPlayer)) {//Players have their own critical judgement system. Now we add the non-player system.
-                float critRate = 0.1f;
-                boolean isCritical = false;
-
-                //Critical chance buff
-                activePotionEffects = ((EntityLivingBase) trueSource).getActivePotionEffects();
-                for (int i = 0; i < activePotionEffects.size(); i++) {
-                    PotionEffect buff = (PotionEffect) activePotionEffects.toArray()[i];
-                    if (buff.getPotion() instanceof BasePotion) {
-                        BasePotion modBuff = (BasePotion) buff.getPotion();
-
-                        critRate += modBuff.getCritRate(buff.getAmplifier());
-                    }
-                }
-
-                if (critRate > 0 && ((EntityLivingBase) trueSource).getRNG().nextFloat() < critRate) {
-                    isCritical = true;
-                }
-
-                //Critical damage multiplier buff
-                if (isCritical) {
-                    float critDmg = 1.5f;//vanilla
-
-                    activePotionEffects = ((EntityLivingBase) trueSource).getActivePotionEffects();
-                    for (int i = 0; i < activePotionEffects.size(); i++) {
-                        PotionEffect buff = (PotionEffect) activePotionEffects.toArray()[i];
-                        if (buff.getPotion() instanceof BasePotion) {
-                            BasePotion modBuff = (BasePotion) buff.getPotion();
-
-                            critDmg += modBuff.getCritDmgModifier(buff.getAmplifier());
-                        }
-                    }
-
-                    evt.setAmount((critDmg) * evt.getAmount());
-                    //IdlFramework.Log(String.format("%s:isCrit = %s, x%s =%s, ", trueSource.getName(), isCritical, critDmg, evt.getAmount()));
-                }
-                //IdlFramework.Log(String.format("%s:isCrit = %s, x1f =%s, ", trueSource.getName(), isCritical, evt.getAmount()));
-            }
+            //give up idl critical system
+//            //Critical Judgement
+//            if (!(trueSource instanceof EntityPlayer)) {//Players have their own critical judgement system. Now we add the non-player system.
+//                float critRate = 0.1f;
+//                boolean isCritical = false;
+//
+//                //Critical chance buff
+//                activePotionEffects = ((EntityLivingBase) trueSource).getActivePotionEffects();
+//                for (int i = 0; i < activePotionEffects.size(); i++) {
+//                    PotionEffect buff = (PotionEffect) activePotionEffects.toArray()[i];
+//                    if (buff.getPotion() instanceof BasePotion) {
+//                        BasePotion modBuff = (BasePotion) buff.getPotion();
+//
+//                        critRate += modBuff.getCritRate(buff.getAmplifier());
+//                    }
+//                }
+//
+//                if (critRate > 0 && ((EntityLivingBase) trueSource).getRNG().nextFloat() < critRate) {
+//                    isCritical = true;
+//                }
+//
+//                //Critical damage multiplier buff
+//                if (isCritical) {
+//                    float critDmg = 1.5f;//vanilla
+//
+//                    activePotionEffects = ((EntityLivingBase) trueSource).getActivePotionEffects();
+//                    for (int i = 0; i < activePotionEffects.size(); i++) {
+//                        PotionEffect buff = (PotionEffect) activePotionEffects.toArray()[i];
+//                        if (buff.getPotion() instanceof BasePotion) {
+//                            BasePotion modBuff = (BasePotion) buff.getPotion();
+//
+//                            critDmg += modBuff.getCritDmgModifier(buff.getAmplifier());
+//                        }
+//                    }
+//
+//                    evt.setAmount((critDmg) * evt.getAmount());
+//                    //IdlFramework.Log(String.format("%s:isCrit = %s, x%s =%s, ", trueSource.getName(), isCritical, critDmg, evt.getAmount()));
+//                }
+//                //IdlFramework.Log(String.format("%s:isCrit = %s, x1f =%s, ", trueSource.getName(), isCritical, evt.getAmount()));
+//            }
         }
 
         if (evt.isCanceled())

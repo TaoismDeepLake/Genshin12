@@ -14,7 +14,7 @@ import static com.deeplake.genshin12.potion.ModPotions.UUID_HUTAO_BUFF;
 public class PotionHuTaoBuff extends BaseSimplePotion {
     double[] atkRatio = {3.84,4.07,4.3,4.6,4.83,5.06,5.36,5.66,5.96,6.26,6.55,6.85,7.15};
 
-    AttributeModifier modifier = new AttributeModifier(UUID_HUTAO_BUFF, "1", 0, 0);
+    AttributeModifier modifier = new AttributeModifier(UUID_HUTAO_BUFF, "Hu Tao", 0, 0);
 
     public PotionHuTaoBuff(boolean isBadEffectIn, int liquidColorIn, String name, int icon) {
         super(isBadEffectIn, liquidColorIn, name, icon);

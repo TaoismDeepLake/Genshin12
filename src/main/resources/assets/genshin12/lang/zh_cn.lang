@@ -222,11 +222,49 @@ genshin12.potion.dendro=草
 genshin12.potion.pyro=火
 genshin12.potion.chrono=时
 
+item.debug_item.name=调试物品
+item.debug_item.desc=[不是用来玩的]
+
+item.debug_item_2.name=调试物品2
+item.debug_item_2.desc=[不是用来玩的]
 
 # msg
 genshin12.skill.msg.lack_mp=能量不足 (%d/%d)
 genshin12.skill.msg.charge_full=%s 能量已满！
 genshin12.msg.obtain_primo=$b$6获得 %s 原石
+
+# attrCritical RateCrit Rate
+attribute.name.genshin12.attr.defense=防御
+attribute.name.genshin12.attr.elem_mastery=元素精通 (%)
+attribute.name.genshin12.attr.stamina=耐力
+attribute.name.genshin12.attr.crit_rate=暴击率 (%)
+attribute.name.genshin12.attr.crit_dmg=暴击伤害 (%)
+attribute.name.genshin12.attr.heal_bonus=治疗加成 (%)
+attribute.name.genshin12.attr.in_heal_bonus=受疗加成 (%)
+attribute.name.genshin12.attr.e_recharge=元素充能效率 (%)
+attribute.name.genshin12.attr.cd_reduct=冷却减少 (%)
+attribute.name.genshin12.attr.shield_str=护盾强效 (%)
+attribute.name.genshin12.attr.dmg_reduct=伤害减免 (%)
+
+attribute.name.genshin12.attr.physical_bonus=物理伤害加成 (%)
+attribute.name.genshin12.attr.anemo_bonus=风元素伤害加成 (%)
+attribute.name.genshin12.attr.geo_bonus=岩元素伤害加成 (%)
+attribute.name.genshin12.attr.electro_bonus=雷元素伤害加成 (%)
+attribute.name.genshin12.attr.dendro_bonus=草元素伤害加成 (%)
+attribute.name.genshin12.attr.hydro_bonus=水元素伤害加成 (%)
+attribute.name.genshin12.attr.pyro_bonus=火元素伤害加成 (%)
+attribute.name.genshin12.attr.cyro_bonus=冰元素伤害加成 (%)
+attribute.name.genshin12.attr.chrono_bonus=时元素伤害加成 (%)
+
+attribute.name.genshin12.attr.physical_res=物理抗性 (%)
+attribute.name.genshin12.attr.anemo_res=风元素抗性 (%)
+attribute.name.genshin12.attr.geo_res=岩元素抗性 (%)
+attribute.name.genshin12.attr.electro_res=雷元素抗性 (%)
+attribute.name.genshin12.attr.dendro_res=草元素抗性 (%)
+attribute.name.genshin12.attr.hydro_res=水元素抗性 (%)
+attribute.name.genshin12.attr.pyro_res=火元素抗性 (%)
+attribute.name.genshin12.attr.cyro_res=冰元素抗性 (%)
+attribute.name.genshin12.attr.chrono_res=时元素抗性 (%)
 
 # hud
 genshin12.hud.lvl=§l§7Lv. %d

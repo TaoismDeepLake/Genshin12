@@ -8,14 +8,14 @@ import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 public class ModAttributes {
     static final double MIN = -9999999;
     static final double MAX = 999999f;
+    public static float BASE_CRIT_DMG = 50;
+
+    public static final HashSet<IAttribute> allNewAttrs = new HashSet<>();
 
     //Elemental Mastery
     public static final IAttribute DEFENSE = getNewAttrNonpercent( "defense");
@@ -28,7 +28,7 @@ public class ModAttributes {
     public static final IAttribute CRIT_RATE = getNewAttr("crit_rate");
 
     //Critical Damage
-    public static final IAttribute CRIT_DMG = new RangedAttribute(null, getAttrName("crit_dmg"), 0, MIN, MAX).setShouldWatch(false);// get 1+damage
+    public static final IAttribute CRIT_DMG = new RangedAttribute(null, getAttrName("crit_dmg"), BASE_CRIT_DMG, MIN, MAX).setShouldWatch(false);// get 1+damage
 
     //Healing Bonus
     public static final IAttribute HEAL_BONUS = getNewAttr("heal_bonus");// get 1+damage
@@ -48,14 +48,21 @@ public class ModAttributes {
     //Damage Reduction
     public static final IAttribute DMG_REDUCT = getNewAttr("dmg_reduct");
 
+    //"description" is merely another matching name.
+    //used by net.minecraft.entity.ai.attributes.AttributeMap::getAttributeInstanceByName
+    //which is used in some places. It is not intended for human reading nor translation, more like a key.
     public static IAttribute getNewAttr(String name)
     {
-        return new RangedAttribute(null, getAttrName(name), 1, MIN, MAX).setShouldWatch(false);
+        IAttribute attribute = new RangedAttribute(null, getAttrName(name), 0, MIN, MAX).setDescription(name).setShouldWatch(false);
+        allNewAttrs.add(attribute);
+        return attribute;
     }
 
     public static IAttribute getNewAttrNonpercent(String name)
     {
-        return new RangedAttribute(null, getAttrName(name), 0, MIN, MAX).setShouldWatch(false);
+        IAttribute attribute = new RangedAttribute(null, getAttrName(name), 0, MIN, MAX).setDescription(name).setShouldWatch(false);
+        allNewAttrs.add(attribute);
+        return attribute;
     }
 
 
@@ -72,8 +79,8 @@ public class ModAttributes {
         int count = EnumElemental.values().length;
         for (int i = 0; i < count; i++)
         {
-            ELEM_DMG_BONUS[i] = getNewAttr(EnumElemental.values()[i].name()+NAME_DMG_BONUS);
-            ELEM_RES[i] = getNewAttr(EnumElemental.values()[i].name()+NAME_DMG_RES);
+            ELEM_DMG_BONUS[i] = getNewAttr(EnumElemental.values()[i].name().toLowerCase()+NAME_DMG_BONUS);
+            ELEM_RES[i] = getNewAttr(EnumElemental.values()[i].name().toLowerCase()+NAME_DMG_RES);
         }
     }
 
@@ -112,9 +119,26 @@ public class ModAttributes {
         IAttributeInstance attributeInstance = livingBase.getEntityAttribute(attribute);
         if (attributeInstance != null)
         {
-            return attributeInstance.getAttributeValue() - 1f;
+            return attributeInstance.getAttributeValue() / 100f;
         }
         return 0;
+    }
+
+    public static double getDirectValue(EntityLivingBase livingBase, IAttribute attribute)
+    {
+        IAttributeInstance attributeInstance = livingBase.getEntityAttribute(attribute);
+        if (attributeInstance != null)
+        {
+            return attributeInstance.getAttributeValue();
+        }
+        return 0;
+    }
+
+    //for percentage ones
+    //100% is stored as 100
+    public static double convert(double val)
+    {
+        return val * 100;
     }
 
     public static double getCritRate(EntityLivingBase livingBase)

@@ -23,8 +23,8 @@ public class EventsAttrCrit {
         boolean disable_vanilla_crit = ModConfig.GeneralConf.DISABLE_VANILLA_CRIT;
         double crit_dmg_bonus = ModAttributes.getActualPercentRate(attacker, ModAttributes.CRIT_DMG);
         float modifier = (float) (ModConfig.GeneralConf.OVERRIDE_CRIT_DMG ?
-                        (1.5f + crit_dmg_bonus) :
-                        (event.getDamageModifier() + crit_dmg_bonus));
+                        (1f + crit_dmg_bonus) :
+                        (event.getDamageModifier() + crit_dmg_bonus - 0.5f));
 
         if (event.getResult() == Event.Result.ALLOW) {
             //critical!

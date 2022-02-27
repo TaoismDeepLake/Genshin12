@@ -224,11 +224,49 @@ genshin12.potion.dendro=Dendro
 genshin12.potion.pyro=Pyro
 genshin12.potion.chrono=Chrono
 
+item.debug_item.name=Debug Item
+item.debug_item.desc=[Not For Playing]
+
+item.debug_item_2.name=Debug Item
+item.debug_item_2.desc=[Not For Playing]
 
 #msg
 genshin12.skill.msg.lack_mp=Insufficient Energy (%s/%s)
 genshin12.skill.msg.charge_full=%s Energy Full!
 genshin12.msg.obtain_primo=§b§6Obtained %s Primogem
+
+#attrCritical RateCrit Rate
+attribute.name.genshin12.attr.defense=Defense
+attribute.name.genshin12.attr.elem_mastery=Elemental Mastery (%)
+attribute.name.genshin12.attr.stamina=Stamina (%)
+attribute.name.genshin12.attr.crit_rate=Crit Rate (%)
+attribute.name.genshin12.attr.crit_dmg=Critical Damage (%)
+attribute.name.genshin12.attr.heal_bonus=Healing Bonus (%)
+attribute.name.genshin12.attr.in_heal_bonus=Incoming Healing Bonus (%)
+attribute.name.genshin12.attr.e_recharge=Energy Recharge (%)
+attribute.name.genshin12.attr.cd_reduct=Cooldown Reduction (%)
+attribute.name.genshin12.attr.shield_str=Shield Strength (%)
+attribute.name.genshin12.attr.dmg_reduct=Damage Reduction (%)
+
+attribute.name.genshin12.attr.physical_bonus=PHYSICAL Damage Bonus (%)
+attribute.name.genshin12.attr.anemo_bonus=ANEMO Damage Bonus (%)
+attribute.name.genshin12.attr.geo_bonus=GEO Damage Bonus (%)
+attribute.name.genshin12.attr.electro_bonus=ELECTRO Damage Bonus (%)
+attribute.name.genshin12.attr.dendro_bonus=DENDRO Damage Bonus (%)
+attribute.name.genshin12.attr.hydro_bonus=HYDRO Damage Bonus (%)
+attribute.name.genshin12.attr.pyro_bonus=PYRO Damage Bonus (%)
+attribute.name.genshin12.attr.cyro_bonus=CYRO Damage Bonus (%)
+attribute.name.genshin12.attr.chrono_bonus=CHRONO Damage Bonus (%)
+
+attribute.name.genshin12.attr.physical_res=PHYSICAL Resistance (%)
+attribute.name.genshin12.attr.anemo_res=ANEMO Resistance (%)
+attribute.name.genshin12.attr.geo_res=GEO Resistance (%)
+attribute.name.genshin12.attr.electro_res=ELECTRO Resistance (%)
+attribute.name.genshin12.attr.dendro_res=DENDRO Resistance (%)
+attribute.name.genshin12.attr.hydro_res=HYDRO Resistance (%)
+attribute.name.genshin12.attr.pyro_res=PYRO Resistance (%)
+attribute.name.genshin12.attr.cyro_res=CYRO Resistance (%)
+attribute.name.genshin12.attr.chrono_res=CHRONO Resistance (%)
 
 #hud
 genshin12.hud.lvl=§l§7Lv. %d
