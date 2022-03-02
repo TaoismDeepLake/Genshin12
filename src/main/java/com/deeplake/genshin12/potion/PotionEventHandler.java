@@ -31,7 +31,7 @@ public class PotionEventHandler {
 //    public static void onRender(RenderLivingEvent.Pre event)
 //    {
 //        EntityLivingBase livingBase = event.getEntity();
-//        if (EntityUtil.getAttr(livingBase, SharedMonsterAttributes.MOVEMENT_SPEED) < 0.0001f)
+//        if (EntityUtil.getID(livingBase, SharedMonsterAttributes.MOVEMENT_SPEED) < 0.0001f)
 //        {
 //            GlStateManager.color(ModConfig.DEBUG_CONF.PERTIFY_R,
 //                    ModConfig.DEBUG_CONF.PERTIFY_G,

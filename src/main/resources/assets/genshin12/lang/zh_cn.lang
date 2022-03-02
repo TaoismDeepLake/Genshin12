@@ -235,7 +235,7 @@ genshin12.msg.obtain_primo=$b$6获得 %s 原石
 
 # attrCritical RateCrit Rate
 attribute.name.genshin12.attr.defense=防御
-attribute.name.genshin12.attr.elem_mastery=元素精通 (%)
+attribute.name.genshin12.attr.elem_mastery=元素精通
 attribute.name.genshin12.attr.stamina=耐力
 attribute.name.genshin12.attr.crit_rate=暴击率 (%)
 attribute.name.genshin12.attr.crit_dmg=暴击伤害 (%)

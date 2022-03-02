@@ -6,6 +6,7 @@ import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.init.ModRecipes;
 import com.deeplake.genshin12.init.ModSpawn;
 import com.deeplake.genshin12.init.RegistryHandler;
+import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
 import com.deeplake.genshin12.keys.KeyboardManager;
 import com.deeplake.genshin12.meta.MetaUtil;
 import com.deeplake.genshin12.network.NetworkHandler;
@@ -92,6 +93,8 @@ public class IdlFramework {
 
         RegistryHandler.postInitReg();
         ModPotions.postInit();
+
+        ItemArtifactBase.initValues();
 
         proxy.loadComplete(event);
     }

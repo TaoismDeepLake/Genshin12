@@ -237,7 +237,7 @@ genshin12.msg.obtain_primo=§b§6Obtained %s Primogem
 
 #attrCritical RateCrit Rate
 attribute.name.genshin12.attr.defense=Defense
-attribute.name.genshin12.attr.elem_mastery=Elemental Mastery (%)
+attribute.name.genshin12.attr.elem_mastery=Elemental Mastery
 attribute.name.genshin12.attr.stamina=Stamina (%)
 attribute.name.genshin12.attr.crit_rate=Crit Rate (%)
 attribute.name.genshin12.attr.crit_dmg=Critical Damage (%)

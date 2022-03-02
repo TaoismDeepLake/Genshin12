@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.init;
 
+import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -22,6 +23,7 @@ public class ModConfig {
         public static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent event) {
             if (event.getModID().equals(Reference.MOD_ID)) {
                 ConfigManager.sync(Reference.MOD_ID, Config.Type.INSTANCE);
+                ItemArtifactBase.initValues();
             }
         }
     }
@@ -173,8 +175,15 @@ public class ModConfig {
 
         public float ORB_SPAWN_RADIUS = 3;
 
+        @Config.Comment("Level factor in the defense formula")
         public float DEF_LEVEL_FACTOR = 5;
         public float DEF_STATIC_PLUS = 500;
+
+        @Config.Comment("1HP in MC = ?HP in Genshin?")
+        public float HP_CONVERT_RATIO = 100;
+
+        @Config.Comment("1ATK in MC = ?ATK in Genshin?")
+        public float ATK_CONVERT_RATIO = 100;
 
         @Config.LangKey("genshin12.conf.worldgen.enable_xiao_jump_boost")
         @Config.Comment("(Client side)Xiao's jump height alter may confict with other jump-adjusting modes. If you are not playing xiao and have compatibility issues, turn this off client side.")

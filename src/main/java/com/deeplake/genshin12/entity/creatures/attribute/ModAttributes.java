@@ -155,6 +155,9 @@ public class ModAttributes {
     static final int BASE_2 = 2000;
     static final int BASE_3 = 3000;
 
+    static HashMap<Integer, EnumAttr> ID_TO_ENUM = new HashMap<>();
+    static HashMap<IAttribute, EnumAttr> ATTR_TO_ENUM = new HashMap<>();
+
     public enum EnumAttr{
         NONE(SharedMonsterAttributes.FLYING_SPEED, 0),
 
@@ -164,9 +167,10 @@ public class ModAttributes {
 
         ELEM_MASTERY(ModAttributes.ELEM_MASTERY, 4),
         RECHARGE(ModAttributes.ENERGY_RECHARGE, 5),
-        CRIT(ModAttributes.CRIT_RATE, 6),
-        CRIT_DMG(ModAttributes.CRIT_DMG, 7),
-        HEAL(ModAttributes.HEAL_BONUS, 8),
+
+        CRIT(ModAttributes.CRIT_RATE, 6, 1),
+        CRIT_DMG(ModAttributes.CRIT_DMG, 7, 1),
+        HEAL(ModAttributes.HEAL_BONUS, 8, 1),
 
 
         HP_P(SharedMonsterAttributes.MAX_HEALTH, BASE_1+HP.id, 1),
@@ -194,15 +198,12 @@ public class ModAttributes {
         RES_CHRONO(EnumElemental.CHRONO, true),
         ;
 
-        IAttribute attr;
-        int id;
-        int type;
-
+        public final IAttribute attr;
+        public final int id;
+        public final int type;
 
         EnumAttr(IAttribute attr, int id) {
-            this.attr = attr;
-            this.id = id;
-            this.type = 0;
+            this(attr, id, 0);
         }
 
         EnumAttr(EnumElemental elemental, boolean resitance) {
@@ -216,12 +217,54 @@ public class ModAttributes {
             else {
                 dmgDict.put(elemental, this);
             }
+            ID_TO_ENUM.put(id, this);
+            ATTR_TO_ENUM.put(attr, this);
         }
 
         EnumAttr(IAttribute attr, int id, int type) {
             this.attr = attr;
             this.id = id;
             this.type = type;
+            ID_TO_ENUM.put(id, this);
+            ATTR_TO_ENUM.put(attr, this);
+        }
+
+        public static IAttribute getAttr(int id)
+        {
+            EnumAttr type = ID_TO_ENUM.get(id);
+            if (type != null)
+            {
+                return type.attr;
+            }
+            return SharedMonsterAttributes.MAX_HEALTH;
+        }
+
+        public static int getID(IAttribute iAttribute, int type)
+        {
+            //
+            for (EnumAttr attr :
+                    EnumAttr.values()) {
+                if (attr.attr == iAttribute && attr.type == type)
+                {
+                    return attr.id;
+                }
+            }
+            return 1;
+        }
+
+        public static EnumAttr getEnum(int id)
+        {
+            EnumAttr type = ID_TO_ENUM.get(id);
+            if (type != null)
+            {
+                return type;
+            }
+            return EnumAttr.HP;
+        }
+
+        public boolean isPercent()
+        {
+            return type != 0;
         }
     }
 }
