@@ -5,6 +5,7 @@ import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.ItemVariantBase;
 import com.deeplake.genshin12.util.EnumElemental;
+import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import com.google.common.collect.Multimap;
 import net.minecraft.creativetab.CreativeTabs;
@@ -109,6 +110,7 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
     public AttributeModifier getAttrMainModifier(ItemStack stack)
     {
         int rarity = getRarityArtifact(stack);
+        int level = IDLNBTUtil.GetInt(stack, KEY_LEVEL);
         ModAttributes.EnumAttr attr;
         try {
             attr = ModAttributes.EnumAttr.getEnum(IDLNBTUtil.GetInt(stack, KEY_MAIN_ATTR));
@@ -118,12 +120,11 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
             attr = ModAttributes.EnumAttr.HP;
         }
 
-        //todo: exact value from level
         double totalModifier;
-        float ratioTo5star = attr.isPercent() ? main_attr_5star_percent[rarity - 1] : main_attr_5star_flat[rarity - 1];
+        float ratioTo5star = attr.isSpecialRarirtyRateMainAttr() ? main_attr_5star_percent[rarity - 1] : main_attr_5star_flat[rarity - 1];
         //Shouldn't be null when it gets.
         try {
-            totalModifier = mainAttr5Star.get(attr) * ratioTo5star;
+            totalModifier = mainAttr5Star.get(attr) * ratioTo5star * getLevelRatio(rarity, level);//mistakes were made when recording a
         }
         catch (NullPointerException e)
         {
@@ -273,7 +274,7 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
             if (num / 100 - 1 == index)
             {
                 int quality = num % 100;
-                float ratioTo5star = attr.isPercent() ? sub_attr_5star_percent[rarity - 1] : sub_attr_5star_flat[rarity - 1];
+                float ratioTo5star = attr.isSpecialRarirtyRateSubAttr() ? sub_attr_5star_percent[rarity - 1] : sub_attr_5star_flat[rarity - 1];
                 //Shouldn't be null when it gets.
                 totalModifier = subAttr5Star.get(attr) * getRatioToFullQuality(rarity, quality) * ratioTo5star;
             }
@@ -351,6 +352,25 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
 
     static float[] main_attr_5star_percent = {1f, 0.9f, 0.6f, 0.36f, 0.18f};
     static float[] main_attr_5star_flat = {1f, 0.9f, 0.75f, 0.6f, 0.45f};
+
+    static float[] main_min_by_rarity = {0.4f, 0.46f, 0.22f, 0.18f, 0.15f};
+    static int[] main_max_upgrade_by_rarity = {4,4,12,16,20};
+
+    //level starts from +0
+    public static float getLevelRatio(int rarity, int level)
+    {
+        try {
+            float min = main_min_by_rarity[rarity - 1];
+            int maxLevel = getMaxLevel(rarity);
+            return ((1f - min) / maxLevel * (float) level + min) / min;
+
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+            return 1f;
+        }
+    }
+
 
     static HashMap<ModAttributes.EnumAttr, Double> subAttr5Star;
     static HashMap<ModAttributes.EnumAttr, Double> mainAttr5Star;

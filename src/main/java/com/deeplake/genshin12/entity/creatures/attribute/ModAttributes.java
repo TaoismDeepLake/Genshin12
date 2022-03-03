@@ -166,7 +166,7 @@ public class ModAttributes {
         ATK(SharedMonsterAttributes.ATTACK_DAMAGE, 3),
 
         ELEM_MASTERY(ModAttributes.ELEM_MASTERY, 4),
-        RECHARGE(ModAttributes.ENERGY_RECHARGE, 5),
+        RECHARGE(ModAttributes.ENERGY_RECHARGE, 5, 1),
 
         CRIT(ModAttributes.CRIT_RATE, 6, 1),
         CRIT_DMG(ModAttributes.CRIT_DMG, 7, 1),
@@ -262,9 +262,14 @@ public class ModAttributes {
             return EnumAttr.HP;
         }
 
-        public boolean isPercent()
+        public boolean isSpecialRarirtyRateSubAttr()
         {
-            return type != 0;
+            return this== EnumAttr.HP || this == EnumAttr.ATK || this == EnumAttr.DEF;
+        }
+
+        public boolean isSpecialRarirtyRateMainAttr()
+        {
+            return this== EnumAttr.HP_P || this == EnumAttr.ATK_P || this == EnumAttr.DEF_P;
         }
     }
 }
