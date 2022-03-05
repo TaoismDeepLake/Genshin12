@@ -284,6 +284,11 @@ genshin12.artifact.slot.3=§oGoblet of Eonothem
 genshin12.artifact.slot.4=§oSands of Eon
 genshin12.artifact.slot.5=§oPlume of Death
 
+genshin12.artifact.suit.count=§o(%s/%s)
+genshin12.artifact.suit.sDefault.name=Default artifact set.
+genshin12.artifact.suit.sDefault.2=Said to have 2-item effect.
+genshin12.artifact.suit.sDefault.4=Said to have 4-item effect.
+
 genshin12.artifact.upgrade=§lNew Sub Attr x%s!
 
 #hud

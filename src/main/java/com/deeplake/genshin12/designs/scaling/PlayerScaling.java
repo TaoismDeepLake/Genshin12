@@ -76,8 +76,9 @@ public class PlayerScaling {
                 IAttributeInstance def = player.getEntityAttribute(ModAttributes.DEFENSE);
                 if (def != null)
                 {
-                    double atkMod = getDefModifierFromLevel(level);
-                    def.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, atkMod, 1));
+                    double defModifierFromLevel = getDefModifierFromLevel(level);
+                    def.removeModifier(LEVEL_SCALE);
+                    def.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, defModifierFromLevel, 1));
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {
 //                            IdlFramework.Log("ATK: Lv%d, modifier = %s", level, atkMod);
@@ -88,6 +89,7 @@ public class PlayerScaling {
                 if (atk != null)
                 {
                     double atkMod = getATKModifierFromLevel(level);
+                    atk.removeModifier(LEVEL_SCALE);
                     atk.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, atkMod, 1));
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {
@@ -100,6 +102,7 @@ public class PlayerScaling {
                 IAttributeInstance hp = player.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
                 if (hp != null) {
                     double hpMod = getHPModifierFromLevel(level);
+                    hp.removeModifier(LEVEL_SCALE);
                     hp.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, hpMod, 1));
 
                     player.setHealth(ratio * player.getMaxHealth());

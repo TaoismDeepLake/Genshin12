@@ -96,6 +96,7 @@ public class VanillaScaling {
                     if (atk != null)
                     {
                         double atkMod = getATKModifierFromLevel(level);
+                        atk.removeModifier(LEVEL_SCALE);
                         atk.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, atkMod, 1));
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {
@@ -108,6 +109,7 @@ public class VanillaScaling {
                     IAttributeInstance hp = livingBase.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
                     if (hp != null) {
                         double hpMod = getHPModifierFromLevel(level);
+                        hp.removeModifier(LEVEL_SCALE);
                         hp.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, hpMod, 1));
 
                         livingBase.setHealth(ratio * livingBase.getMaxHealth());

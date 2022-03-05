@@ -4,74 +4,17 @@ import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.EnumModRarity;
 import com.deeplake.genshin12.util.EnumElemental;
-import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.*;
 
-import static com.deeplake.genshin12.item.artifact.ItemArtifactBase.getRarityArtifact;
-
-@Mod.EventBusSubscriber
 public class ArtifactUtil {
 
     public static final EnumRarity LEGEND = EnumHelper.addRarity("legend", TextFormatting.GOLD, "Legendary");
     public static final int INT_SCALER = 1;
     public static HashMap<EnumRarity, EnumModRarity> QUALITY_MAP = new HashMap<>();
-
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public static void onToolTip(ItemTooltipEvent event)
-    {
-        ItemStack stack = event.getItemStack();
-        if (stack.getItem() instanceof ItemArtifactBase)
-        {
-            ItemArtifactBase artifactBase = (ItemArtifactBase) stack.getItem();
-            int rarity = getRarityArtifact(stack);
-            int level = IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_LEVEL);
-            int maxLevel = getMaxLevel(rarity);
-
-            List<String> strings = event.getToolTip();
-            strings.add(1, I18n.format("genshin12.artifact.rarity." + rarity));
-
-            if (level == maxLevel)
-            {
-                strings.add(1, I18n.format("genshin12.artifact.level.max"));
-            }
-            else if (level != 0) {
-                strings.add(1, I18n.format("genshin12.artifact.level", level));
-            }
-
-            strings.add(1, I18n.format("genshin12.artifact.slot." + (IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_SLOT, 0)+1)));
-
-            int ready = IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_READY_ATTR);
-            if (ready > 0)
-            {
-                strings.add(1, I18n.format("genshin12.artifact.upgrade", ready));
-            }
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public static void onToolTipColor(RenderTooltipEvent.Color event) {
-        if (event.getStack().getItem() instanceof ItemArtifactBase) {
-            int rarity = getRarityArtifact(event.getStack());
-
-//            event.setBackground(0xf0330000);
-            event.setBorderStart(0xf0000000 | EnumModRarity.getColor(rarity));
-//            event.setBorderEnd(0xf0cc0000);
-        }
-    }
 
     public static final String KEY_LEVEL = "artlvl";
     public static final String KEY_RARITY = "rarity";

@@ -5,6 +5,8 @@ import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.EnumModRarity;
 import com.deeplake.genshin12.item.ItemVariantBase;
+import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
+import com.deeplake.genshin12.item.artifact.set.ArtifactSetBase;
 import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import com.google.common.collect.Multimap;
@@ -14,18 +16,43 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.*;
 
 public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
+    final ArtifactSetBase set;
+
     public ItemArtifactBase(String name) {
-        super(name, 8);
+        this(name, ArtifactSetManager.DEFAULT);
+    }
+
+    static final String PROPERTY_SLOT = "slot";
+    public ItemArtifactBase(String name, ArtifactSetBase set) {
+        super(name, 1);
+        this.set = set;
+        this.addPropertyOverride(new ResourceLocation(PROPERTY_SLOT), new IItemPropertyGetter()
+        {
+            @SideOnly(Side.CLIENT)
+            public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
+            {
+                return IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_SLOT);
+            }
+        });
+    }
+
+    public ArtifactSetBase getSet() {
+        return set;
     }
 
     static {
@@ -127,8 +154,6 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
             return SharedMonsterAttributes.MAX_HEALTH;
         }
     }
-
-    //    final static int SUB_QUALITY_COUNT = 4;
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
@@ -269,8 +294,6 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
                         }
                     }
                 }
-//            }
-
             }
         }
         else {
