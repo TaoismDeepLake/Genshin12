@@ -40,8 +40,10 @@ public class ModItems {
 	public static final ItemHuTaoE HU_TAO_E = new ItemHuTaoE("hu_tao_e");
 	public static final ItemHuTaoQ HU_TAO_Q = new ItemHuTaoQ("hu_tao_q");
 
+	public static final ItemArtifactBase AR_DEFAULT = new ItemArtifactBase("artifact_default");
+
 //	public static final ItemDebugSword DEBUG = new ItemDebugSword("debug_item", Item.ToolMaterial.DIAMOND);
-	public static final ItemArtifactBase DEBUG = new ItemArtifactBase("debug_item");
+	public static final ItemBase DEBUG = new ItemBase("debug_item");
 	public static final ItemArmorDebug DEBUG_2 = new ItemArmorDebug("debug_item_2", ItemArmor.ArmorMaterial.GOLD, 1, EntityEquipmentSlot.HEAD);
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),

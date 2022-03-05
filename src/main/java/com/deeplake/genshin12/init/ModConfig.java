@@ -189,6 +189,10 @@ public class ModConfig {
         @Config.Comment("(Client side)Xiao's jump height alter may confict with other jump-adjusting modes. If you are not playing xiao and have compatibility issues, turn this off client side.")
         public boolean ENABLE_XIAO_JUMP_BOOST = true;
 
+        @Config.LangKey("genshin12.conf.debug.player_atk_scale_factor")
+        @Config.Comment("Whether player scales with vanilla level.")
+        public boolean PLAYER_LEVEL_SCALE_ENABLED = false;
+
         @Config.LangKey("genshin12.conf.debug.player_hp_scale_factor")
         @Config.Comment("Slows down or speeds up HP scaling of player")
         @Config.RangeDouble(min=0)

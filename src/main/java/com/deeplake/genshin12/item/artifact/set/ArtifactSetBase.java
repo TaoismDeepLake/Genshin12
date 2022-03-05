@@ -75,19 +75,36 @@ public class ArtifactSetBase {
 
     public void updateSetCount(EntityPlayer player, int old, int now)
     {
-        for (int count = 0; count <= MAX_SET_COUNT; count++) {
-            if (count >= old && count < now) {
-                updateSetBonus(count, player, true);
+        for (int setCount = 0; setCount <= MAX_SET_COUNT; setCount++) {
+            if (old < setCount && now >= setCount) {
+                updateSetBonus(setCount, player, false);
             }
-            else if (count >= now && count < old)
+            else if (now < setCount && old >= setCount)
             {
-                updateSetBonus(count, player, false);
+                updateSetBonus(setCount, player, true);
+            }
+        }
+    }
+
+    public void updateSetCountUnconditional(EntityPlayer player, int now)
+    {
+        for (int setCount = 0; setCount <= MAX_SET_COUNT; setCount++) {
+            if (now >= setCount) {
+                updateSetBonus(setCount, player, false);
+            }
+            else {
+                updateSetBonus(setCount, player, true);
             }
         }
     }
 
     //can be overrided, but usually not.
     public void updateSetBonus(int count, EntityPlayer player, boolean remove)
+    {
+        updateSetBonusAttr(count, player, remove);
+    }
+
+    public void updateSetBonusUnconditional(int count, EntityPlayer player, boolean remove)
     {
         updateSetBonusAttr(count, player, remove);
     }
@@ -137,7 +154,16 @@ public class ArtifactSetBase {
         if (nowCount != lastCount)
         {
             updateSetCount(player, lastCount, nowCount);
+            IDLNBTUtil.setPlayerIdeallandTagSafe(player, key, nowCount);
         }
+    }
+
+    public void initSetCount(EntityPlayer player) {
+        int nowCount = getNowCount(player);
+
+        updateSetCountUnconditional(player, nowCount);
+        IDLNBTUtil.setPlayerIdeallandTagSafe(player, key, nowCount);
+
     }
 
     public int getNowCount(EntityPlayer player) {

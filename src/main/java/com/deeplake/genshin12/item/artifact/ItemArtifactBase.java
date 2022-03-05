@@ -3,13 +3,16 @@ package com.deeplake.genshin12.item.artifact;
 import com.deeplake.genshin12.ILogNBT;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
+import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.item.EnumModRarity;
+import com.deeplake.genshin12.item.ItemBase;
 import com.deeplake.genshin12.item.ItemVariantBase;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetBase;
 import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.*;
 
-public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
+public class ItemArtifactBase extends ItemBase implements ILogNBT {
     final ArtifactSetBase set;
 
     public ItemArtifactBase(String name) {
@@ -39,8 +42,10 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
 
     static final String PROPERTY_SLOT = "slot";
     public ItemArtifactBase(String name, ArtifactSetBase set) {
-        super(name, 1);
+        super(name);
         this.set = set;
+        this.setHasSubtypes(true);
+        setCreativeTab(ModCreativeTab.ARTIFACTS);
         this.addPropertyOverride(new ResourceLocation(PROPERTY_SLOT), new IItemPropertyGetter()
         {
             @SideOnly(Side.CLIENT)
@@ -134,8 +139,6 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
         {
             totalModifier = 1f;
         }
-
-        //+0
 
         return new AttributeModifier(
                 ArtifactUtil.UUID_ARTIFACT,
@@ -273,29 +276,35 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
+        if (this.isInCreativeTab(tab))
         {
-            if (this.isInCreativeTab(tab))
-            {
-                for (int slot = 0; slot <= 3; slot++) {
-                    for (int rarity = 1; rarity <= 5; rarity++) {
-                        for (int level = 1; level <= ArtifactUtil.getMaxLevel(rarity); level++) {
-                            for (ModAttributes.EnumAttr attr : ArtifactUtil.getMainAttrListFromSlot(slot)) {
-                                ItemStack stack = new ItemStack(this);
-                                IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_LEVEL, level);
-                                IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_MAIN_ATTR, attr.id);
-                                IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_RARITY, rarity);
-                                IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_SLOT, slot);
-
-                                IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_READY_ATTR, ArtifactUtil.initAttrCount(rarity) + level / 4);
-
-                                items.add(stack);
+            for (int slot = 0; slot <= 3; slot++) {
+                for (int rarity = set.minRarity; rarity <= set.maxRarity; rarity++) {
+                    for (int level = 0; level <= ArtifactUtil.getMaxLevel(rarity); level++) {
+                        if (level != 0 && level != ArtifactUtil.getMaxLevel(rarity))
+                        {
+                            if (!ModConfig.DEBUG_CONF.DEBUG_MODE)
+                            {
+                                continue;
                             }
+                        }
+
+                        for (ModAttributes.EnumAttr attr : ArtifactUtil.getMainAttrListFromSlot(slot))                           {
+                            ItemStack stack = new ItemStack(this);
+                            IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_LEVEL, level);
+                            IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_MAIN_ATTR, attr.id);
+                            IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_RARITY, rarity);
+                            IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_SLOT, slot);
+
+                            IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_READY_ATTR, ArtifactUtil.initAttrCount(rarity) + level / 4);
+
+                            items.add(stack);
                         }
                     }
                 }
             }
         }
+
         else {
             super.getSubItems(tab, items);
         }
@@ -333,5 +342,12 @@ public class ItemArtifactBase extends ItemVariantBase implements ILogNBT {
                 return EntityEquipmentSlot.FEET;
         }
         return super.getEquipmentSlot(stack);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        int slot = IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_SLOT);
+        return I18n.format(String.format("genshin12.artifact.%s.%s", getSet().key, slot)).trim();
     }
 }

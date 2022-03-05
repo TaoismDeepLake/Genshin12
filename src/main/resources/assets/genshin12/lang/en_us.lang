@@ -1,6 +1,8 @@
 #PARSE_ESCAPES
 #tabs
 itemGroup.genshin12MiscTab=Genshin 12
+itemGroup.genshin12ArtifactTab=Genshin 12 Artifacts
+
 
 generator.TYPE_ONE=Type One;
 generator.TYPE_TWO=Type Two;
@@ -285,9 +287,22 @@ genshin12.artifact.slot.4=§oSands of Eon
 genshin12.artifact.slot.5=§oPlume of Death
 
 genshin12.artifact.suit.count=§o(%s/%s)
-genshin12.artifact.suit.sDefault.name=Default artifact set.
+genshin12.artifact.suit.count.single=§o(%s)
+genshin12.artifact.suit.sDefault.name=Default
 genshin12.artifact.suit.sDefault.2=Said to have 2-item effect.
 genshin12.artifact.suit.sDefault.4=Said to have 4-item effect.
+genshin12.artifact.sDefault.0=Crown of Designs
+genshin12.artifact.sDefault.1=Flower of Codes
+genshin12.artifact.sDefault.2=Goblet of Arts
+genshin12.artifact.sDefault.3=Sands of Tests
+
+genshin12.artifact.suit.sLumber.name=Lumberjack
+genshin12.artifact.suit.sLumber.2=Wood cutting rate + 15%.
+genshin12.artifact.suit.sLumber.4=Breaking wood has 15% chance to recover hunger.
+genshin12.artifact.sLumber.0=Crown of Axe
+genshin12.artifact.sLumber.1=Flower of Planks
+genshin12.artifact.sLumber.2=Goblet of Logs
+genshin12.artifact.sLumber.3=Sands of Saw
 
 genshin12.artifact.upgrade=§lNew Sub Attr x%s!
 

@@ -67,7 +67,7 @@ public class PlayerScaling {
         EntityPlayer player = event.player;
         World world = player.world;
 
-        if (!world.isRemote)
+        if (!world.isRemote && ModConfig.DEBUG_CONF.PLAYER_LEVEL_SCALE_ENABLED)
         {
             int level = player.experienceLevel;
 
@@ -88,7 +88,7 @@ public class PlayerScaling {
                 IAttributeInstance atk = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
                 if (atk != null)
                 {
-                    double atkMod = getATKModifierFromLevel(level);
+                    double atkMod = getATKModifierFromLevel(level) * ModConfig.DEBUG_CONF.PLAYER_ATK_SCALE_FACTOR;
                     atk.removeModifier(LEVEL_SCALE);
                     atk.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, atkMod, 1));
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
@@ -101,7 +101,7 @@ public class PlayerScaling {
 
                 IAttributeInstance hp = player.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
                 if (hp != null) {
-                    double hpMod = getHPModifierFromLevel(level);
+                    double hpMod = getHPModifierFromLevel(level)* ModConfig.DEBUG_CONF.PLAYER_HP_SCALE_FACTOR;
                     hp.removeModifier(LEVEL_SCALE);
                     hp.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, hpMod, 1));
 

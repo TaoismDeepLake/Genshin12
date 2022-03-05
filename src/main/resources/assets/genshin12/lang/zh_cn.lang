@@ -1,5 +1,7 @@
 # PARSE_ESCAPES
 itemGroup.genshin12MiscTab=原神12
+itemGroup.genshin12ArtifactTab=原神12·圣遗物
+
 
 generator.TYPE_ONE=Type One;
 generator.TYPE_TWO=Type Two;
@@ -281,6 +283,15 @@ genshin12.artifact.slot.2=§o生之花
 genshin12.artifact.slot.3=§o空之杯
 genshin12.artifact.slot.4=§o时之沙
 genshin12.artifact.slot.5=§oPlume of Death
+
+genshin12.artifact.suit.count=§o(%s/%s)
+genshin12.artifact.suit.sDefault.name=调试套装
+genshin12.artifact.suit.sDefault.2=据说有2件套效果。
+genshin12.artifact.suit.sDefault.4=可能有4件套效果。
+genshin12.artifact.sDefault.0=策划之冠
+genshin12.artifact.sDefault.1=代码之花
+genshin12.artifact.sDefault.2=艺术之杯
+genshin12.artifact.sDefault.3=测试之沙
 
 genshin12.artifact.upgrade=§l获得副属性提升 x%s!
 

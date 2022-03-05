@@ -68,6 +68,8 @@ public class ArtifactToolTip {
         }
     }
 
+    static final String SINGLE_COUNT = "genshin12.artifact.suit.count.single";
+
     @SideOnly(Side.CLIENT)
     public static void descArtifactSet(ItemTooltipEvent event, ItemArtifactBase artifactBase, int level, List<String> strings) {
         ArtifactSetBase setBase = artifactBase.set;
@@ -84,7 +86,7 @@ public class ArtifactToolTip {
                 inverseCount++;
             }
 
-            strings.add(1, I18n.format(setBase.getSuitNameKey()));
+            strings.add(1, I18n.format(setBase.getSuitNameKey()) + I18n.format(SINGLE_COUNT, now));
         }
     }
 }

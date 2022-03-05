@@ -9,6 +9,10 @@ public class ArtifactSetManager {
 
     public static List<ArtifactSetBase> list = new ArrayList<>();
 
-    public static ArtifactSetBase DEFAULT = new ArtifactSetBase("sDefault",1,1,"054b9ebc-56fb-49a0-a224-d744f9d5f455").addSetEffectMark(4).setAttrSet(2, SharedMonsterAttributes.MAX_HEALTH, 0.3, 1);
+    public static ArtifactSetBase DEFAULT = new ArtifactSetBase("sDefault",1,5,"054b9ebc-56fb-49a0-a224-d744f9d5f455").addSetEffectMark(4).setAttrSet(2, SharedMonsterAttributes.MAX_HEALTH, 0.3, 1);
+
+    public static ArtifactSetBase LUMBER = new ArtifactSetBase("sLumber",2,3,"b2e29d67-76b1-4ce2-a356-b88c6ee0035f").addSetEffectMark(4).addSetEffectMark(2);
+
+    public static ArtifactSetBase MINER = new ArtifactSetBase("sMiner",2,3,"c38a9af1-291f-4cbd-8fa0-bedacc24f780").addSetEffectMark(4).addSetEffectMark(2);
 
 }
