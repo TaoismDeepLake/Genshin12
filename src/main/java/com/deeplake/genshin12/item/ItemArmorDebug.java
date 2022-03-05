@@ -13,7 +13,7 @@ public class ItemArmorDebug extends ItemArmorBase implements IWIP {
     }
 
     /**
-     * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
+     * Gets a QUALITY_MAP of item attribute modifiers, used by ItemSword to increase hit damage.
      */
     public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
     {

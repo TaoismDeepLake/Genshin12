@@ -2,14 +2,20 @@ package com.deeplake.genshin12.entity.creatures.attribute;
 
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.util.EnumElemental;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.EntityEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.*;
 
+@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
 public class ModAttributes {
     static final double MIN = -9999999;
     static final double MAX = 999999f;
@@ -158,6 +164,9 @@ public class ModAttributes {
     static HashMap<Integer, EnumAttr> ID_TO_ENUM = new HashMap<>();
     static HashMap<IAttribute, EnumAttr> ATTR_TO_ENUM = new HashMap<>();
 
+    static final int REAL_PERCENT = 1;
+    static final int FAKE_PERCENT = 0;
+
     public enum EnumAttr{
         NONE(SharedMonsterAttributes.FLYING_SPEED, 0),
 
@@ -166,16 +175,16 @@ public class ModAttributes {
         ATK(SharedMonsterAttributes.ATTACK_DAMAGE, 3),
 
         ELEM_MASTERY(ModAttributes.ELEM_MASTERY, 4),
-        RECHARGE(ModAttributes.ENERGY_RECHARGE, 5, 1),
+        RECHARGE(ModAttributes.ENERGY_RECHARGE, 5, FAKE_PERCENT),
 
-        CRIT(ModAttributes.CRIT_RATE, 6, 1),
-        CRIT_DMG(ModAttributes.CRIT_DMG, 7, 1),
-        HEAL(ModAttributes.HEAL_BONUS, 8, 1),
+        CRIT(ModAttributes.CRIT_RATE, 6, FAKE_PERCENT),
+        CRIT_DMG(ModAttributes.CRIT_DMG, 7, FAKE_PERCENT),
+        HEAL(ModAttributes.HEAL_BONUS, 8, FAKE_PERCENT),
 
 
-        HP_P(SharedMonsterAttributes.MAX_HEALTH, BASE_1+HP.id, 1),
+        HP_P(SharedMonsterAttributes.MAX_HEALTH, BASE_1+HP.id, REAL_PERCENT),
         DEF_P(ModAttributes.DEFENSE, BASE_1+DEF.id, 1),
-        ATK_P(SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK.id, 1),
+        ATK_P(SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK.id, REAL_PERCENT),
 
         PHYSICAL(EnumElemental.PHYSICAL, false),
         ANEMO(EnumElemental.ANEMO, false),
@@ -209,7 +218,7 @@ public class ModAttributes {
         EnumAttr(EnumElemental elemental, boolean resitance) {
             this.attr = resitance ? getElemRes(elemental) : getElemBonus(elemental);
             this.id = elemental.ordinal() + (resitance ? BASE_2 : BASE_3);
-            this.type = 0;
+            this.type = FAKE_PERCENT;
             if (resitance)
             {
                 resDict.put(elemental, this);
@@ -272,4 +281,25 @@ public class ModAttributes {
             return this== EnumAttr.HP_P || this == EnumAttr.ATK_P || this == EnumAttr.DEF_P;
         }
     }
+
+    @SubscribeEvent
+    public static void onConstruct(EntityEvent.EntityConstructing entityConstructing)
+    {
+        Entity entity = entityConstructing.getEntity();
+        if (entity instanceof EntityLivingBase)
+        {
+            EntityLivingBase livingBase = (EntityLivingBase) entity;
+            for (IAttribute attr:
+                 allNewAttrs) {
+                livingBase.getAttributeMap().registerAttribute(attr);
+            }
+
+            if (entity instanceof EntityPlayer)
+            {
+                livingBase.getEntityAttribute(DEFENSE).setBaseValue(60);
+            }
+        }
+
+    }
+
 }

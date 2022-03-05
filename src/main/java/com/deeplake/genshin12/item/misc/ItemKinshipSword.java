@@ -206,7 +206,7 @@ public class ItemKinshipSword extends ItemSwordBase implements IGuaEnhance {
 //    }
 
     /**
-     * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
+     * Gets a QUALITY_MAP of item attribute modifiers, used by ItemSword to increase hit damage.
      */
     public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
     {

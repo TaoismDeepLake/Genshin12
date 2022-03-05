@@ -266,5 +266,23 @@ attribute.name.genshin12.attr.pyro_res=火元素抗性 (%)
 attribute.name.genshin12.attr.cyro_res=冰元素抗性 (%)
 attribute.name.genshin12.attr.chrono_res=时元素抗性 (%)
 
+# artifact
+genshin12.artifact.rarity.1=§l§e★
+genshin12.artifact.rarity.2=§l§e★★
+genshin12.artifact.rarity.3=§l§e★★★
+genshin12.artifact.rarity.4=§l§e★★★★
+genshin12.artifact.rarity.5=§l§e★★★★★
+
+genshin12.artifact.level=§l+%s
+genshin12.artifact.level.max=§l+MAX
+
+genshin12.artifact.slot.1=§o理之冠
+genshin12.artifact.slot.2=§o生之花
+genshin12.artifact.slot.3=§o空之杯
+genshin12.artifact.slot.4=§o时之沙
+genshin12.artifact.slot.5=§oPlume of Death
+
+genshin12.artifact.upgrade=§l获得副属性提升 x%s!
+
 # hud
 genshin12.hud.lvl=§l§7Lv. %d

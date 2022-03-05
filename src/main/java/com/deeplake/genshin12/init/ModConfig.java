@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.init;
 
-import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
+import com.deeplake.genshin12.item.artifact.ArtifactUtil;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -23,7 +23,7 @@ public class ModConfig {
         public static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent event) {
             if (event.getModID().equals(Reference.MOD_ID)) {
                 ConfigManager.sync(Reference.MOD_ID, Config.Type.INSTANCE);
-                ItemArtifactBase.initValues();
+                ArtifactUtil.initValues();
             }
         }
     }
@@ -188,6 +188,16 @@ public class ModConfig {
         @Config.LangKey("genshin12.conf.worldgen.enable_xiao_jump_boost")
         @Config.Comment("(Client side)Xiao's jump height alter may confict with other jump-adjusting modes. If you are not playing xiao and have compatibility issues, turn this off client side.")
         public boolean ENABLE_XIAO_JUMP_BOOST = true;
+
+        @Config.LangKey("genshin12.conf.debug.player_hp_scale_factor")
+        @Config.Comment("Slows down or speeds up HP scaling of player")
+        @Config.RangeDouble(min=0)
+        public float PLAYER_HP_SCALE_FACTOR = 1f;
+
+        @Config.LangKey("genshin12.conf.debug.player_atk_scale_factor")
+        @Config.Comment("Slows down or speeds up ATK scaling of player")
+        @Config.RangeDouble(min=0)
+        public float PLAYER_ATK_SCALE_FACTOR = 1f;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")
@@ -200,6 +210,29 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public boolean SPAWN = true;
 
+        @Config.LangKey("conf.spawn.auto_level_vanilla_dim")
+        @Config.Comment("Overworld, nether and the end uses auto leveling across X")
+        public boolean AUTO_LEVEL = true;
+
+        @Config.LangKey("conf.spawn.auto_level_block")
+        @Config.Comment("Block per level")
+        @Config.RangeDouble(min=1)
+        public float BLOCK_PER_LEVEL = 64f;
+
+        @Config.LangKey("conf.spawn.enemy_hp_scale_factor")
+        @Config.Comment("Slows down or speeds up HP scaling of enemy")
+        @Config.RangeDouble(min=0)
+        public float ENEMY_HP_SCALE_FACTOR = 1f;
+
+        @Config.LangKey("conf.spawn.enemy_atk_scale_factor")
+        @Config.Comment("Slows down or speeds up ATK scaling of enemy")
+        @Config.RangeDouble(min=0)
+        public float ENEMY_ATK_SCALE_FACTOR = 1f;
+
+        @Config.LangKey("conf.spawn.enemy_drop_scale_factor")
+        @Config.Comment("Slows down or speeds up drop scaling of enemy")
+        @Config.RangeDouble(min=0.000001f, max=10f)
+        public float ENEMY_DROP_SCALE_FACTOR = 1f;
 //        @Config.LangKey("entity.moroon_tainter.name")
 //        @Config.Comment("Spawn Moroon Tainter")
 //        @Config.RequiresMcRestart

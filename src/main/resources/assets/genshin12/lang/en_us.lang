@@ -268,6 +268,24 @@ attribute.name.genshin12.attr.pyro_res=PYRO Resistance (%)
 attribute.name.genshin12.attr.cyro_res=CYRO Resistance (%)
 attribute.name.genshin12.attr.chrono_res=CHRONO Resistance (%)
 
+#artifact
+genshin12.artifact.rarity.1=§l§e★
+genshin12.artifact.rarity.2=§l§e★★
+genshin12.artifact.rarity.3=§l§e★★★
+genshin12.artifact.rarity.4=§l§e★★★★
+genshin12.artifact.rarity.5=§l§e★★★★★
+
+genshin12.artifact.level=§l+%s
+genshin12.artifact.level.max=§l+MAX
+
+genshin12.artifact.slot.1=§oCirclet of Logos
+genshin12.artifact.slot.2=§oFlower of Life
+genshin12.artifact.slot.3=§oGoblet of Eonothem
+genshin12.artifact.slot.4=§oSands of Eon
+genshin12.artifact.slot.5=§oPlume of Death
+
+genshin12.artifact.upgrade=§lNew Sub Attr x%s!
+
 #hud
 genshin12.hud.lvl=§l§7Lv. %d
 #Death
