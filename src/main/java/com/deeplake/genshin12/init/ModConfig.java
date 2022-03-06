@@ -223,6 +223,11 @@ public class ModConfig {
         @Config.RangeDouble(min=1)
         public float BLOCK_PER_LEVEL = 64f;
 
+        @Config.LangKey("conf.spawn.max_auto_level, 0 = unlimited")
+        @Config.Comment("Max level")
+        @Config.RangeInt(min=0)
+        public int MAX_AUTO_LEVEL = 100;
+
         @Config.LangKey("conf.spawn.enemy_hp_scale_factor")
         @Config.Comment("Slows down or speeds up HP scaling of enemy")
         @Config.RangeDouble(min=0)

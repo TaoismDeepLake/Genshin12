@@ -38,7 +38,7 @@ public class GenCubeSoilRoom extends GenCubeBase {
                 if ((x > min && x < max) || (z > minZ && z < maxZ))
                 {
                     if (worldIn.getBlockState(pos).getBlock() != Blocks.AIR) {
-                        //if there is a light placed, keep it
+                        //if there is a light placed, onSpawn it
                         continue;
                     }
                 }

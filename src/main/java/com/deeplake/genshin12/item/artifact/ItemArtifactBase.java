@@ -273,6 +273,19 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT {
                 attr.type);
     }
 
+    public ItemStack getRandomBlankInstance(int slot, int rarity)
+    {
+        List<ModAttributes.EnumAttr> attrList = ArtifactUtil.getMainAttrListFromSlot(slot);
+
+        ItemStack stack = new ItemStack(this);
+        IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_LEVEL, 0);
+        IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_MAIN_ATTR, attrList.get(itemRand.nextInt(attrList.size())).id);
+        IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_RARITY, rarity);
+        IDLNBTUtil.SetInt(stack, ArtifactUtil.KEY_SLOT, slot);
+
+        return stack;
+    }
+
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {

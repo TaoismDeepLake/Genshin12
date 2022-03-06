@@ -287,7 +287,7 @@ genshin12.artifact.slot.4=§oSands of Eon
 genshin12.artifact.slot.5=§oPlume of Death
 
 genshin12.artifact.suit.count=§o(%s/%s)
-genshin12.artifact.suit.count.single=§o(%s)
+genshin12.artifact.suit.count.single= (%s)
 genshin12.artifact.suit.sDefault.name=Default
 genshin12.artifact.suit.sDefault.2=Said to have 2-item effect.
 genshin12.artifact.suit.sDefault.4=Said to have 4-item effect.
@@ -297,12 +297,20 @@ genshin12.artifact.sDefault.2=Goblet of Arts
 genshin12.artifact.sDefault.3=Sands of Tests
 
 genshin12.artifact.suit.sLumber.name=Lumberjack
-genshin12.artifact.suit.sLumber.2=Wood cutting rate + 15%.
-genshin12.artifact.suit.sLumber.4=Breaking wood has 15% chance to recover hunger.
+genshin12.artifact.suit.sLumber.2=Cut wood faster.
+genshin12.artifact.suit.sLumber.4=Breaking wood has 15%% chance to recover hunger value.
 genshin12.artifact.sLumber.0=Crown of Axe
 genshin12.artifact.sLumber.1=Flower of Planks
 genshin12.artifact.sLumber.2=Goblet of Logs
 genshin12.artifact.sLumber.3=Sands of Saw
+
+genshin12.artifact.suit.sMiner.name=Miner
+genshin12.artifact.suit.sMiner.2=Break stone faster.
+genshin12.artifact.suit.sMiner.4=Crafting torches have 12%% rate to double the result.
+genshin12.artifact.sMiner.0=Headlight
+genshin12.artifact.sMiner.1=Flower of Fossil
+genshin12.artifact.sMiner.2=Durable Container
+genshin12.artifact.sMiner.3=Cage of Canary
 
 genshin12.artifact.upgrade=§lNew Sub Attr x%s!
 

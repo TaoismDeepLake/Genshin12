@@ -75,7 +75,7 @@ public class VanillaScaling {
     static final String LEVEL_NAME = "Genshin12 Leveling";
 
     @SubscribeEvent
-    public static void keep(LivingSpawnEvent.CheckSpawn event)
+    public static void onSpawn(LivingSpawnEvent.SpecialSpawn event)
     {
         World world = event.getWorld();
         EntityLivingBase livingBase = event.getEntityLiving();
@@ -87,6 +87,12 @@ public class VanillaScaling {
             if (useAutoScaling.contains(dimensionType))
             {
                 int level = (int) (Math.abs(event.getX()) / ModConfig.SPAWN_CONF.BLOCK_PER_LEVEL);
+                int maxLevel = ModConfig.SPAWN_CONF.MAX_AUTO_LEVEL;
+                if (maxLevel > 0 && level > maxLevel)
+                {
+                    level = maxLevel;
+                }
+
                 LevelSystem.setLevel(livingBase, level);
 
                 try
@@ -112,7 +118,8 @@ public class VanillaScaling {
                         hp.removeModifier(LEVEL_SCALE);
                         hp.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, hpMod, 1));
 
-                        livingBase.setHealth(ratio * livingBase.getMaxHealth());
+//                        livingBase.setHealth(ratio * livingBase.getMaxHealth());
+                        livingBase.setHealth(livingBase.getMaxHealth());
 
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {

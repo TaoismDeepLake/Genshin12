@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 public class EntityIdeallandUnitBase extends EntityModUnit {
     public EntityIdeallandUnitBase(World worldIn) {
         super(worldIn);
-        setCanPickUpLoot(false);//prevent pick up player things. keep until gui done
+        setCanPickUpLoot(false);//prevent pick up player things. onSpawn until gui done
         isMoroon = false;
         isIdealland = true;
         dontDespawn = true;

@@ -285,6 +285,7 @@ genshin12.artifact.slot.4=§o时之沙
 genshin12.artifact.slot.5=§oPlume of Death
 
 genshin12.artifact.suit.count=§o(%s/%s)
+genshin12.artifact.suit.count.single= (%s)
 genshin12.artifact.suit.sDefault.name=调试套装
 genshin12.artifact.suit.sDefault.2=据说有2件套效果。
 genshin12.artifact.suit.sDefault.4=可能有4件套效果。
@@ -292,6 +293,22 @@ genshin12.artifact.sDefault.0=策划之冠
 genshin12.artifact.sDefault.1=代码之花
 genshin12.artifact.sDefault.2=艺术之杯
 genshin12.artifact.sDefault.3=测试之沙
+
+genshin12.artifact.suit.sLumber.name=伐木工
+genshin12.artifact.suit.sLumber.2=砍树变快。
+genshin12.artifact.suit.sLumber.4=伐木时有 15%% 概率恢复饥饿值。
+genshin12.artifact.sLumber.0=伐木帽
+genshin12.artifact.sLumber.1=板花
+genshin12.artifact.sLumber.2=原木杯
+genshin12.artifact.sLumber.3=锯之沙
+
+genshin12.artifact.suit.sMiner.name=矿工
+genshin12.artifact.suit.sMiner.2=挖石头变快。
+genshin12.artifact.suit.sMiner.4=合成火把时，有 12%% 获得双倍产出
+genshin12.artifact.sMiner.0=头灯
+genshin12.artifact.sMiner.1=化石饰花
+genshin12.artifact.sMiner.2=坚固水壶
+genshin12.artifact.sMiner.3=金丝雀之笼
 
 genshin12.artifact.upgrade=§l获得副属性提升 x%s!
 

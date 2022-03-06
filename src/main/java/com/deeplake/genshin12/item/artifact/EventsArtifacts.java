@@ -77,7 +77,9 @@ public class EventsArtifacts {
 
     @SubscribeEvent
     public static void onHurt(LivingHurtEvent event)
-    {}
+    {
+
+    }
 
 
 }

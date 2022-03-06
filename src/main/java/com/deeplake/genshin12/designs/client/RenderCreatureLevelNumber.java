@@ -80,7 +80,7 @@ public class RenderCreatureLevelNumber
 //                continue;
             //todo: check whether it has level here.
             int level = LevelSystem.getLevel(entity);
-            if (level <= 0)
+            if (level <= 1)//ignore Lv1
             {
                 continue;
             }

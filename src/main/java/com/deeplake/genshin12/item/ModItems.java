@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.item;
 
 import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
+import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
 import com.deeplake.genshin12.item.consumables.EnumCharacter;
 import com.deeplake.genshin12.item.consumables.ItemPackageWeapon;
 import com.deeplake.genshin12.item.consumables.ItemStellaFortuna;
@@ -41,6 +42,8 @@ public class ModItems {
 	public static final ItemHuTaoQ HU_TAO_Q = new ItemHuTaoQ("hu_tao_q");
 
 	public static final ItemArtifactBase AR_DEFAULT = new ItemArtifactBase("artifact_default");
+	public static final ItemArtifactBase AR_LUMBER = new ItemArtifactBase("artifact_lumber", ArtifactSetManager.LUMBER);
+	public static final ItemArtifactBase AR_MINER = new ItemArtifactBase("artifact_miner", ArtifactSetManager.MINER);
 
 //	public static final ItemDebugSword DEBUG = new ItemDebugSword("debug_item", Item.ToolMaterial.DIAMOND);
 	public static final ItemBase DEBUG = new ItemBase("debug_item");

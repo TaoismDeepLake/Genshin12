@@ -104,7 +104,7 @@ public class ItemGenshinSkillBase extends ItemSkillBase{
         long lastMark = IDLNBTUtil.GetLong(stack, RECHARGE_TIMESTAMP, -1);
         if (lastMark > 0 & lastMark > cur)
         {
-            return;//keep the older mark
+            return;//onSpawn the older mark
         }
         IDLNBTUtil.SetLong(stack, RECHARGE_TIMESTAMP, cur + getCoolDownTicks(stack));
     }
