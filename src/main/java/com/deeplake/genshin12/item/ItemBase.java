@@ -232,4 +232,8 @@ public class ItemBase extends Item implements IHasModel {
 
 	}
 
+	@Override
+	public int getItemBurnTime(ItemStack itemStack) {
+		return super.getItemBurnTime(itemStack);
+	}
 }

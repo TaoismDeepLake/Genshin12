@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.util;
 
 import com.deeplake.genshin12.item.IGuaEnhance;
+import com.deeplake.genshin12.item.ILeveler;
 import com.deeplake.genshin12.item.ItemAdaptingBase;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
@@ -257,14 +258,27 @@ public class IDLSkillNBT {
 
     public static void setLevel(ItemStack stack, int count)
     {
-        if (!(stack.getItem() instanceof ItemSkillBase)) {
+        Item item = stack.getItem();
+        if (!(item instanceof ItemSkillBase) && !(item instanceof ILeveler)) {
             return;
         }
-        ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+        if (item instanceof ItemSkillBase)
+        {
+            ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
 
-        if (count <= skillBase.GetLevelMax(stack)) {
-            SetInt(stack, LEVEL_TAG, count);
+            if (count <= skillBase.GetLevelMax(stack)) {
+                SetInt(stack, LEVEL_TAG, count);
+            }
         }
+        else if (item instanceof ILeveler)
+        {
+            ILeveler skillBase = (ILeveler) stack.getItem();
+
+            if (count <= skillBase.getMaxLevel(stack)) {
+                SetInt(stack, LEVEL_TAG, count);
+            }
+        }
+
     }
 
     public static boolean IsCasting(ItemStack stack)

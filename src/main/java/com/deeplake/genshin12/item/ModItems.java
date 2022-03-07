@@ -45,6 +45,8 @@ public class ModItems {
 	public static final ItemArtifactBase AR_LUMBER = new ItemArtifactBase("artifact_lumber", ArtifactSetManager.LUMBER);
 	public static final ItemArtifactBase AR_MINER = new ItemArtifactBase("artifact_miner", ArtifactSetManager.MINER);
 
+    public static final ItemBase ARTIFACT_XP_BOTTLE = new ItemVariantBase("artf_xp_bottle", 6);
+
 //	public static final ItemDebugSword DEBUG = new ItemDebugSword("debug_item", Item.ToolMaterial.DIAMOND);
 	public static final ItemBase DEBUG = new ItemBase("debug_item");
 	public static final ItemArmorDebug DEBUG_2 = new ItemArmorDebug("debug_item_2", ItemArmor.ArmorMaterial.GOLD, 1, EntityEquipmentSlot.HEAD);

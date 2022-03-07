@@ -1,14 +1,20 @@
 package com.deeplake.genshin12.item.artifact;
 
+import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.EnumModRarity;
+import com.deeplake.genshin12.item.ILeveler;
 import com.deeplake.genshin12.util.EnumElemental;
+import com.deeplake.genshin12.util.IDLSkillNBT;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.*;
+
+import static com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef.LEVEL_TAG;
 
 public class ArtifactUtil {
 
@@ -16,7 +22,7 @@ public class ArtifactUtil {
     public static final int INT_SCALER = 1;
     public static HashMap<EnumRarity, EnumModRarity> QUALITY_MAP = new HashMap<>();
 
-    public static final String KEY_LEVEL = "artlvl";
+    public static final String KEY_LEVEL = LEVEL_TAG;
     public static final String KEY_RARITY = "rarity";
     public static final String KEY_READY_ATTR = "ready";//the random attrs that will be given soon
     public static final String KEY_SLOT = "slot";
@@ -188,5 +194,32 @@ public class ArtifactUtil {
             mainAttr5Star.put(ModAttributes.getEnumDamage(elem), 7d/ INT_SCALER);
         }
         mainAttr5Star.put(ModAttributes.EnumAttr.PHYSICAL, 8.7d/ INT_SCALER);
+    }
+
+    public static ItemStack getXPUpdateResult(ItemStack old) {
+        if (!(old.getItem() instanceof ILeveler)) {
+            return old;
+        }
+
+        ILeveler leveler = (ILeveler) old.getItem();
+
+        int curLv = IDLSkillNBT.getLevel(old);
+        int curXP = IDLSkillNBT.getXP(old);
+        int newLv = curLv;
+        try{
+            while (newLv < leveler.levelup_need_xp(old).length && curXP >= leveler.levelup_need_xp(old)[newLv]) {
+                curXP -= leveler.levelup_need_xp(old)[newLv];
+                newLv++;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+            IdlFramework.LogWarning(e.toString());
+        }
+
+        ItemStack result = old.copy();
+        IDLSkillNBT.setLevel(result, newLv);
+        IDLSkillNBT.setXP(result, curXP);
+        return result;
     }
 }

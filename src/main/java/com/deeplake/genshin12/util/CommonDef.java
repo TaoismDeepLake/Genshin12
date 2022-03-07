@@ -138,4 +138,28 @@ public class CommonDef {
 
     public static final IBlockState DIRT = Blocks.DIRT.getDefaultState();
     public static final IBlockState AIR = Blocks.AIR.getDefaultState();
+
+    int[] levelup_need_xp = new int[]
+            {
+                    1000,
+                    1325,
+                    1700,
+                    2150,
+                    2625,
+                    3150,
+                    3725,
+                    4350,
+                    5000,
+                    5700,
+                    6450,
+                    7225,
+                    8050,
+                    8925,
+                    9825,
+                    10750,
+                    11725,
+                    12725,
+                    13775,
+            };
+
 }

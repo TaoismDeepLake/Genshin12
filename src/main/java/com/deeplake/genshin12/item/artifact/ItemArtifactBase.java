@@ -1,15 +1,16 @@
 package com.deeplake.genshin12.item.artifact;
 
 import com.deeplake.genshin12.ILogNBT;
+import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.init.ModCreativeTab;
-import com.deeplake.genshin12.item.EnumModRarity;
-import com.deeplake.genshin12.item.ItemBase;
-import com.deeplake.genshin12.item.ItemVariantBase;
+import com.deeplake.genshin12.item.*;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetBase;
 import com.deeplake.genshin12.util.EnumElemental;
+import com.deeplake.genshin12.util.IDLSkillNBT;
+import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
@@ -33,7 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.*;
 
-public class ItemArtifactBase extends ItemBase implements ILogNBT {
+public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
     final ArtifactSetBase set;
 
     public ItemArtifactBase(String name) {
@@ -119,7 +120,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT {
     public AttributeModifier getAttrMainModifier(ItemStack stack)
     {
         int rarity = getRarityArtifact(stack);
-        int level = IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_LEVEL);
+        int level = getLevelArtifact(stack);
         ModAttributes.EnumAttr attr;
         try {
             attr = ModAttributes.EnumAttr.getEnum(IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_MAIN_ATTR));
@@ -225,7 +226,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT {
     }
 
     //returns 1,2,3,4,5,6
-    static int getRarityArtifact(ItemStack stack)
+    public static int getRarityArtifact(ItemStack stack)
     {
         int rarity = IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_RARITY);
         if (rarity <= 0)
@@ -362,5 +363,140 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT {
     public String getItemStackDisplayName(ItemStack stack) {
         int slot = IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_SLOT);
         return I18n.format(String.format("genshin12.artifact.%s.%s", getSet().key, slot)).trim();
+    }
+
+    public static int getXPWorth(ItemStack stack)
+    {
+        if (stack.getItem() instanceof ItemArtifactBase)
+        {
+            ItemArtifactBase artifactBase = (ItemArtifactBase) stack.getItem();
+            int rarity = getRarityArtifact(stack);
+            int level = getLevelArtifact(stack);
+            int base = 100;
+            try {
+                base = xp_worth[rarity - 1];
+            }
+            catch (ArrayIndexOutOfBoundsException e)
+            {
+                IdlFramework.LogWarning("Wrong rarity for artifact: %s", rarity);
+            }
+
+            return (int) (base + getTotalXP(rarity, level) * 0.8f + IDLSkillNBT.getXP(stack));
+        }
+        else if (stack.getItem() == ModItems.ARTIFACT_XP_BOTTLE)
+        {
+            int meta = stack.getItemDamage();
+            if (meta == 0)
+            {
+                return IDLSkillNBT.getXP(stack);
+            }
+            else {
+                try {
+                    return xp_worth[meta - 1];
+                }
+                catch (ArrayIndexOutOfBoundsException e)
+                {
+                    IdlFramework.LogWarning(e.toString());
+                    return -1;
+                }
+            }
+        }
+        else {
+            return -1;
+        }
+
+    }
+
+    public static int getLevelArtifact(ItemStack stack) {
+        return IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_LEVEL);
+    }
+
+    public static int[] xp_worth = {420,840,1260,2520,3780};
+
+    //level 2 = +2, the first 2 items in the array.
+    public static int getTotalXP(int rarity, int level)
+    {
+        int[] table = getXPTable(rarity);
+        int total = 0;
+        for (int i = 0; i < level; i++)
+        {
+            try {
+                total += table[i];
+            }
+            catch (ArrayIndexOutOfBoundsException e)
+            {
+                IdlFramework.LogWarning("Wrong level %s for rarity %s", level, rarity);
+            }
+        }
+        return total;
+    }
+
+    public static int[] getXPTable(int rarity)
+    {
+        switch (rarity)
+        {
+            case 1:
+                return exp_artifact_1;
+                case 2:
+                return exp_artifact_2;
+                case 3:
+                return exp_artifact_3;
+                case 4:
+                return exp_artifact_4;
+                case 5:
+                return exp_artifact_5;
+            default:
+                IdlFramework.LogWarning("unexpected rarity %s", rarity);
+                return exp_artifact_5;
+        }
+    }
+
+    public static int[] exp_artifact_1 = {
+            600,750,874,1025
+    };
+
+    public static int[] exp_artifact_2 = {
+            1200,1500,1775,2050
+    };
+
+    public static int[] exp_artifact_3 = {
+            1800,2225,2650,3100,3550,4000,4500,5000,5525,6075,6625,7225
+    };
+
+    public static int[] exp_artifact_4 = {
+            2400,2975,3550,4125,4725,5350,6000,6675,7375,8100,8850,9625,10425,16300
+    };
+
+    public static int[] exp_artifact_5 = {
+            3000,
+            3725,
+            4425,
+            5150,
+            5900,
+            6675,
+            7500,
+            8350,
+            9225,
+            10125,
+            11050,
+            12025,
+            13025,
+            15150,
+            17600,
+            20375,
+            23500,
+            27050,
+            31050,
+            35575
+    };
+
+    @Override
+    public int[] levelup_need_xp(ItemStack stack) {
+        return getXPTable(getRarityArtifact(stack));
+    }
+
+    @Override
+    public int getMaxLevel(ItemStack stack) {
+        return ArtifactUtil.getMaxLevel(getRarityArtifact(stack));
     }
 }

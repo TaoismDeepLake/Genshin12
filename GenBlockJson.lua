@@ -62,10 +62,10 @@ end
 --for i = 0, 8 do
 --	GenItem("misc", "skill_upgrade_"..i);
 --end
-GenItem("artifact", "symbol_chest");
-GenItem("artifact", "symbol_foot");
-GenItem("artifact", "symbol_head");
-GenItem("artifact", "symbol_leg");
+GenItem("artifact", "lumber_chest");
+GenItem("artifact", "lumber_foot");
+GenItem("artifact", "lumber_head");
+GenItem("artifact", "lumber_leg");
 
 --GenItem("skill", "hu_tao_q");
 
