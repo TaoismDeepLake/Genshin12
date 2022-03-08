@@ -15,4 +15,6 @@ public class ArtifactSetManager {
 
     public static ArtifactSetBase MINER = new ArtifactSetBase("sMiner",2,3,"c38a9af1-291f-4cbd-8fa0-bedacc24f780").addSetEffectMark(4).addSetEffectMark(2);
 
+    public static ArtifactSetBase GLADIATOR = new ArtifactSetBase("sGladiator",4,5,"93736326-b036-42e5-b64c-b9ea5239ad76").addSetEffectMark(4).setAttrSet(2, SharedMonsterAttributes.ATTACK_DAMAGE, 0.18, 1);
+
 }

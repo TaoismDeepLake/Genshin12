@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.item.artifact.set;
 
+import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
@@ -194,4 +195,6 @@ public class ArtifactSetBase {
     {
         return String.format(SUIT_DESC, key, NAME_KEY);
     }
+
+
 }
