@@ -1,9 +1,12 @@
 package com.deeplake.genshin12.item.artifact;
 
+import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.item.EnumModRarity;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetBase;
+import com.deeplake.genshin12.util.IDLSkillNBT;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -20,6 +23,12 @@ import static com.deeplake.genshin12.item.artifact.ItemArtifactBase.getRarityArt
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ArtifactToolTip {
+
+    public static final String GENSHIN_12_ARTIFACT_RARITY = "genshin12.artifact.rarity.";
+    public static final String GENSHIN_12_ARTIFACT_LEVEL_MAX = "genshin12.artifact.level.max";
+    public static final String GENSHIN_12_ARTIFACT_LEVEL = "genshin12.artifact.level";
+    public static final String GENSHIN_12_ARTIFACT_SLOT = "genshin12.artifact.slot.";
+    public static final String GENSHIN_12_ARTIFACT_UPGRADE = "genshin12.artifact.upgrade";
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -48,22 +57,40 @@ public class ArtifactToolTip {
 
             descArtifactSet(event, artifactBase, level, strings);
 
-            strings.add(1, I18n.format("genshin12.artifact.rarity." + rarity));
+            strings.add(1, I18n.format(GENSHIN_12_ARTIFACT_RARITY + rarity));
+
+            try
+            {
+                if (level != maxLevel)
+                {
+                    strings.add(1, I18n.format("genshin12.artifact.xp", IDLSkillNBT.getXP(stack), artifactBase.levelupNeedXp(stack)[level]));
+                }
+            }
+            catch (ArrayIndexOutOfBoundsException e)
+            {
+                IdlFramework.LogWarning(e.toString());
+            }
+
 
             if (level == maxLevel)
             {
-                strings.add(1, I18n.format("genshin12.artifact.level.max"));
+                strings.add(1, I18n.format(GENSHIN_12_ARTIFACT_LEVEL_MAX));
             }
             else if (level != 0) {
-                strings.add(1, I18n.format("genshin12.artifact.level", level));
+                strings.add(1, I18n.format(GENSHIN_12_ARTIFACT_LEVEL, level));
             }
 
-            strings.add(1, I18n.format("genshin12.artifact.slot." + (IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_SLOT, 0)+1)));
+            IAttribute mainAttr = ItemArtifactBase.getAttrMain(stack);
+            strings.add(1, net.minecraft.util.text.translation.I18n.translateToLocal("attribute.name." + mainAttr.getName()));
+
+            strings.add(1, I18n.format(GENSHIN_12_ARTIFACT_SLOT + (IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_SLOT, 0)+1)));
+
+
 
             int ready = IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_READY_ATTR);
             if (ready > 0)
             {
-                strings.add(1, I18n.format("genshin12.artifact.upgrade", ready));
+                strings.add(1, I18n.format(GENSHIN_12_ARTIFACT_UPGRADE, ready));
             }
         }
     }

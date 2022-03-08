@@ -60,6 +60,10 @@ public class ModConfig {
         @Config.LangKey("genshin12.conf.general.override_crit_dmg")
         @Config.Comment("If critical, the damage is merely calculated by this mod")
         public boolean OVERRIDE_CRIT_DMG = false;
+
+        @Config.LangKey("genshin12.conf.general.artifact_enhance_must_first_slot")
+        @Config.Comment("When enhancing, the first slot must be the artifact, and destructing not.")
+        public boolean ARTIFACT_ENHANCE_MUST_FIRST_SLOT = true;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GachaConf")

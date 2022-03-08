@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.recipe.special;
 
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.item.artifact.ArtifactUtil;
 import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
@@ -35,10 +36,22 @@ public class ArtifactEnhance extends IForgeRegistryEntry.Impl<IRecipe> implement
 			if(!stack.isEmpty()) {
 				if(stack.getItem() instanceof ItemArtifactBase)
 				{
+					if (i != 0 && ModConfig.GeneralConf.ARTIFACT_ENHANCE_MUST_FIRST_SLOT)
+					{
+						return false;
+					}
+
 					if (mainArtifact) {
 						return false;//only one sword at a time
 					}
 					mainArtifact = true;
+
+					//maxed-out
+					if (ItemArtifactBase.getLevelArtifact(stack) >= ArtifactUtil.getMaxLevel(ItemArtifactBase.getRarityArtifact(stack)))
+					{
+						return false;
+					}
+
 				}
 				else if (stack.getItem() == ModItems.ARTIFACT_XP_BOTTLE)
 				{//found a xp item

@@ -59,13 +59,13 @@ local function GenItem(_typeName, _itemName)
 	outFile:close();
 end
 
---for i = 0, 8 do
---	GenItem("misc", "skill_upgrade_"..i);
---end
-GenItem("artifact", "lumber_chest");
-GenItem("artifact", "lumber_foot");
-GenItem("artifact", "lumber_head");
-GenItem("artifact", "lumber_leg");
+for i = 0, 8 do
+	GenItem("artifact", "artf_xp_bottle_"..i);
+end
+--GenItem("artifact", "lumber_chest");
+--GenItem("artifact", "lumber_foot");
+--GenItem("artifact", "lumber_head");
+--GenItem("artifact", "lumber_leg");
 
 --GenItem("skill", "hu_tao_q");
 

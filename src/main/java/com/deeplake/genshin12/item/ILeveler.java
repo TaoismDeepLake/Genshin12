@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public interface ILeveler {
 
-    int[] levelup_need_xp(ItemStack stack);
+    int[] levelupNeedXp(ItemStack stack);
 
 
 

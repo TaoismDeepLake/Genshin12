@@ -107,7 +107,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
 
     }
 
-    public IAttribute getAttrMain(ItemStack stack)
+    public static IAttribute getAttrMain(ItemStack stack)
     {
         return ModAttributes.EnumAttr.getAttr(IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_MAIN_ATTR));
     }
@@ -491,7 +491,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
     };
 
     @Override
-    public int[] levelup_need_xp(ItemStack stack) {
+    public int[] levelupNeedXp(ItemStack stack) {
         return getXPTable(getRarityArtifact(stack));
     }
 

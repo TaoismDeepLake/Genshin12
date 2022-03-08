@@ -163,6 +163,18 @@ item.hu_tao_q.speech.1=§c§lTime to go!
 item.hu_tao_q.speech.2=§c§lCross over!
 item.hu_tao_q.speech.3=§c§lPyre, pyre, pants on fire!
 
+item.artf_xp_bottle_0.name=Artifact XP Bottle [SP]
+item.artf_xp_bottle_0.desc=Extracted from artifacts. Crafting this into artifacts uprades them.
+item.artf_xp_bottle_1.name=Artifact XP Bottle
+item.artf_xp_bottle_1.desc=Extracted from artifacts. Crafting this into artifacts uprades them.
+item.artf_xp_bottle_2.name=Artifact XP Bottle
+item.artf_xp_bottle_2.desc=Extracted from artifacts. Crafting this into artifacts uprades them.
+item.artf_xp_bottle_3.name=Artifact XP Bottle
+item.artf_xp_bottle_3.desc=Extracted from artifacts. Crafting this into artifacts uprades them.
+item.artf_xp_bottle_4.name=Artifact XP Bottle
+item.artf_xp_bottle_4.desc=Extracted from artifacts. Crafting this into artifacts uprades them.
+item.artf_xp_bottle_5.name=Artifact XP Bottle
+item.artf_xp_bottle_5.desc=Extracted from artifacts. Crafting this into artifacts uprades them.
 
 genshin12.msg.xiao.plunge.speech.0=Here!
 genshin12.msg.xiao.plunge.speech.1=Worthless!
@@ -286,6 +298,7 @@ genshin12.artifact.slot.3=§oGoblet of Eonothem
 genshin12.artifact.slot.4=§oSands of Eon
 genshin12.artifact.slot.5=§oPlume of Death
 
+genshin12.artifact.xp=XP:(%s/%s)
 genshin12.artifact.suit.count=§o(%s/%s)
 genshin12.artifact.suit.count.single= (%s)
 genshin12.artifact.suit.sDefault.name=Default

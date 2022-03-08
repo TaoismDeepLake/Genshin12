@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.recipe.special;
 
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.IGuaEnhance;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.item.artifact.ArtifactUtil;
@@ -10,6 +11,7 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
@@ -26,6 +28,10 @@ public class RecycleArtifact extends IForgeRegistryEntry.Impl<IRecipe> implement
             if(!stack.isEmpty()) {
                 if(stack.getItem() instanceof ItemArtifactBase)
                 {
+                    if (i == 0 && ModConfig.GeneralConf.ARTIFACT_ENHANCE_MUST_FIRST_SLOT)
+                    {
+                        return false;
+                    }
                     if (foundMainItem) {
                         return false;
                     }

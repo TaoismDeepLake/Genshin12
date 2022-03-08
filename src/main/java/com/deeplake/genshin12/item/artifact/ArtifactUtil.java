@@ -117,7 +117,7 @@ public class ArtifactUtil {
     }
 
     //start from +0
-    static int getMaxLevel(int rarity)
+    public static int getMaxLevel(int rarity)
     {
         switch (rarity)
         {
@@ -207,8 +207,8 @@ public class ArtifactUtil {
         int curXP = IDLSkillNBT.getXP(old);
         int newLv = curLv;
         try{
-            while (newLv < leveler.levelup_need_xp(old).length && curXP >= leveler.levelup_need_xp(old)[newLv]) {
-                curXP -= leveler.levelup_need_xp(old)[newLv];
+            while (newLv < leveler.levelupNeedXp(old).length && curXP >= leveler.levelupNeedXp(old)[newLv]) {
+                curXP -= leveler.levelupNeedXp(old)[newLv];
                 newLv++;
             }
         }
