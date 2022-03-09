@@ -206,6 +206,12 @@ public class ModConfig {
         @Config.Comment("Slows down or speeds up ATK scaling of player")
         @Config.RangeDouble(min=0)
         public float PLAYER_ATK_SCALE_FACTOR = 1f;
+
+        @Config.RangeDouble(min=1f)
+        public float PLAYER_DETECT_RANGE = 256f;
+
+        @Config.RangeDouble(min=0f, max =1f)
+        public float LUMBER_CHANCE = 0.05f;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")

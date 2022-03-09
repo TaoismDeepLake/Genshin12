@@ -287,6 +287,23 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
         return stack;
     }
 
+    public ItemStack getRandomBlankInstance(int rarity)
+    {
+        int slot = itemRand.nextInt(4);
+        return getRandomBlankInstance(slot, rarity);
+    }
+
+    public ItemStack getRandomBlankInstance()
+    {
+        int slot = itemRand.nextInt(4);
+        int rarity = set.minRarity;
+        if (set.maxRarity != set.minRarity)
+        {
+            rarity += itemRand.nextInt(set.maxRarity - set.minRarity + 1);
+        }
+
+        return getRandomBlankInstance(slot, rarity);
+    }
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {

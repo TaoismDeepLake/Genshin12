@@ -45,6 +45,8 @@ public class ModItems {
 	public static final ItemArtifactBase AR_LUMBER = new ItemArtifactBase("artifact_lumber", ArtifactSetManager.LUMBER);
 	public static final ItemArtifactBase AR_MINER = new ItemArtifactBase("artifact_miner", ArtifactSetManager.MINER);
 	public static final ItemArtifactBase AR_GLADIATOR = new ItemArtifactBase("artifact_gladiator", ArtifactSetManager.GLADIATOR);
+//	public static final ItemArtifactBase AR_WANDERER = new ItemArtifactBase("artifact_wanderer", ArtifactSetManager.WANDERER);
+	public static final ItemArtifactBase AR_BLANK = new ItemArtifactBase("artifact_blank", ArtifactSetManager.BLANK);
 
     public static final ItemBase ARTIFACT_XP_BOTTLE = new ItemVariantBase("artf_xp_bottle", 6);
 
