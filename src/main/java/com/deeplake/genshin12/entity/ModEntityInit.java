@@ -2,6 +2,7 @@ package com.deeplake.genshin12.entity;
 
 import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,7 +17,11 @@ public class ModEntityInit {
         registerEntityNoEgg("planet_befall", EntityPlanetBefall.class);
         registerEntityNoEgg("energy_orb", EntityEnergyOrb.class);
         registerEntityNoEgg("glacial_waltz", EntityGlacialWaltz.class);
-//        registerEntity("moroon_tainter", EntityMoroonTainter.class,0xff00ff, 0x000033);
+        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
+        {
+            registerEntity("test_boss", EntityTestBoss.class,0xff00ff, 0x000033);
+        }
+
 //        registerEntity("idealland_whitetower_core", EntityIDLWhiteTowerCore.class, ENTITY_NEXT_ID, 128, 0xeeee00, 0xffffff);
 
         //Assign Dungeons

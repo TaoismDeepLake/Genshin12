@@ -153,6 +153,11 @@ public class VanillaScaling {
     @SubscribeEvent
     public static void onDrop(LivingDropsEvent event)
     {
+        if (!event.getEntityLiving().isNonBoss())
+        {
+            return;
+        }
+
         int level = LevelSystem.getLevel(event.getEntityLiving());
         List<EntityItem> oriList = new ArrayList<>(event.getDrops());
         List<EntityItem> totalList = new ArrayList<>(event.getDrops());
@@ -167,6 +172,11 @@ public class VanillaScaling {
                 totalList.add(copy);
             }
             level -= dropFactor;
+        }
+
+        for (EntityItem item :
+                totalList) {
+
         }
     }
 }

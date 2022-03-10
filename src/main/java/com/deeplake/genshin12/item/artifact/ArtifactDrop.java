@@ -5,6 +5,7 @@ import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.util.EntityUtil;
+import com.deeplake.genshin12.util.PlayerUtil;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
@@ -16,7 +17,6 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.List;
 import java.util.Random;
@@ -34,6 +34,10 @@ public class ArtifactDrop {
 
         try
         {
+            if (event.getHarvester() == null)
+            {
+                return;
+            }
             if (event.getHarvester().getRNG().nextFloat() <= ModConfig.DEBUG_CONF.LUMBER_CHANCE)
             {
                 if (event.getState().getBlock() instanceof BlockLeaves)
@@ -50,6 +54,7 @@ public class ArtifactDrop {
 
     }
 
+    //Server only
     @SubscribeEvent
     public static void onDrop(LivingDropsEvent event)
     {
@@ -57,30 +62,29 @@ public class ArtifactDrop {
 
         EntityLivingBase livingBase = event.getEntityLiving();
         List<EntityItem> stacks = event.getDrops();
-        if (livingBase instanceof EntityDragon)
+        if (livingBase instanceof EntityDragon || livingBase instanceof EntityWither)
         {
-            int count = EntityUtil.getEntitiesWithinAABB(livingBase.getEntityWorld(), EntityPlayer.class, livingBase.getPositionVector(), playerRange, null).size();
-            for (int i = 0; i < count; i++)
-            {
-                bossDrop(stacks,livingBase, livingBase.getRNG());
+            List<EntityPlayer> players = EntityUtil.getEntitiesWithinAABB(livingBase.getEntityWorld(), EntityPlayer.class, livingBase.getPositionVector(), playerRange, null);
+            int count = players.size();
+            for (EntityPlayer player :
+                    players) {
+
+                bossDrop(stacks, player, livingBase);
+
             }
-        }
-        else if (livingBase instanceof EntityWither)
-        {
-            bossDrop(stacks,livingBase, livingBase.getRNG());
         }
     }
 
-    static void bossDrop(List<EntityItem> stacks, EntityLivingBase livingBase, Random random)
+    static void bossDrop(List<EntityItem> stacks, EntityPlayer player, EntityLivingBase livingBase)
     {
         for(int i = 0; i <= 3; i++)
         {
             ItemStack stack = ModItems.AR_GLADIATOR.getRandomBlankInstance(4);
-            stacks.add(livingBase.entityDropItem(stack,1f));
+            PlayerUtil.giveDrop(stacks, player, livingBase, stack);
         }
 
         ItemStack stack = ModItems.AR_GLADIATOR.getRandomBlankInstance( 5);
-        stacks.add(livingBase.entityDropItem(stack,1f));
+        PlayerUtil.giveDrop(stacks, player, livingBase, stack);
     }
 
 

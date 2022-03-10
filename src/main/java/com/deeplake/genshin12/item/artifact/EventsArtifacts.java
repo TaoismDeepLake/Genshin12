@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.item.artifact;
 
 import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
 
 import com.deeplake.genshin12.util.CommonFunctions;
@@ -24,21 +25,24 @@ public class EventsArtifacts {
     @SubscribeEvent
     public static void onDig(PlayerEvent.BreakSpeed event)
     {
+        float bonus = ModConfig.DEBUG_CONF.MINER_BONUS;
+
         final EntityPlayer player = event.getEntityPlayer();
         IBlockState state = event.getState();
         if (ArtifactSetManager.LUMBER.getNowCount(player) >= 2) {
             if (state.getMaterial() == Material.WOOD) {
-                event.setNewSpeed(event.getNewSpeed() + event.getNewSpeed() * 0.20f);
+                event.setNewSpeed(event.getNewSpeed() + event.getOriginalSpeed() * bonus);
             }
         }
 
         if (ArtifactSetManager.MINER.getNowCount(player) >= 2) {
             if (state.getMaterial() == Material.ROCK) {
-                event.setNewSpeed(event.getNewSpeed() + event.getNewSpeed() * 0.20f);
+                event.setNewSpeed(event.getNewSpeed() + event.getOriginalSpeed() * bonus);
             }
         }
     }
 
+    //pure server side
     @SubscribeEvent
     public static void onBreak(BlockEvent.BreakEvent event)
     {

@@ -64,6 +64,10 @@ public class ModConfig {
         @Config.LangKey("genshin12.conf.general.artifact_enhance_must_first_slot")
         @Config.Comment("When enhancing, the first slot must be the artifact, and destructing not.")
         public boolean ARTIFACT_ENHANCE_MUST_FIRST_SLOT = true;
+
+        @Config.LangKey("genshin12.conf.general.safe_drop")
+        @Config.Comment("Loot is directly given to players.")
+        public boolean SAFE_DROP = true;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GachaConf")
@@ -212,6 +216,8 @@ public class ModConfig {
 
         @Config.RangeDouble(min=0f, max =1f)
         public float LUMBER_CHANCE = 0.05f;
+
+        public float MINER_BONUS = 0.2f;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")

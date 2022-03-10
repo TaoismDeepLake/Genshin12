@@ -1,8 +1,13 @@
 package com.deeplake.genshin12.util;
 
+import com.deeplake.genshin12.init.ModConfig;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
 
 public class PlayerUtil {
     public static int FindItemInIvtrGeneralized(EntityPlayer player, Class<? extends Item> itemClass)
@@ -76,5 +81,15 @@ public class PlayerUtil {
             player.dropItem(stack, false);
         }
         return result;
+    }
+
+    public static void giveDrop(List<EntityItem> stacks, EntityPlayer player, EntityLivingBase livingBase, ItemStack stack) {
+        if (ModConfig.GeneralConf.SAFE_DROP)
+        {
+            giveToPlayer(player, stack);
+        }
+        else {
+            stacks.add(livingBase.entityDropItem(stack, 1f));
+        }
     }
 }

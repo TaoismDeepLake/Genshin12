@@ -114,7 +114,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumModRarity.getQuality(IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_RARITY)).rarity;
+        return EnumModRarity.getQuality(IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_RARITY, 1)).rarity;
     }
 
     public AttributeModifier getAttrMainModifier(ItemStack stack)
@@ -481,7 +481,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
     };
 
     public static int[] exp_artifact_4 = {
-            2400,2975,3550,4125,4725,5350,6000,6675,7375,8100,8850,9625,10425,16300
+            2400,2975,3550,4125,4725,5350,6000,6675,7375,8100,8850,9625,10425,12125,14075,16300
     };
 
     public static int[] exp_artifact_5 = {

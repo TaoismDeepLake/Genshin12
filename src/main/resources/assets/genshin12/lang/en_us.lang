@@ -326,21 +326,19 @@ genshin12.artifact.sMiner.2=Durable Container
 genshin12.artifact.sMiner.3=Cage of Canary
 
 genshin12.artifact.suit.sGladiator.name=Gladiator's Finale
-genshin12.artifact.suit.sGladiator.2=ATK +18%.
-genshin12.artifact.suit.sGladiator.4=Crit Rate + 20%.
+genshin12.artifact.suit.sGladiator.2=ATK +18%%.
+genshin12.artifact.suit.sGladiator.4=Crit Rate + 20%%.
 #genshin12.artifact.suit.sGladiator.4=If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.
-genshin12.artifact.sGladiator.0=Headlight
-genshin12.artifact.sGladiator.1=Flower of Fossil
-genshin12.artifact.sGladiator.2=Durable Container
-genshin12.artifact.sGladiator.3=Cage of Canary
+genshin12.artifact.sGladiator.0=Gladiator's Triumphus
+genshin12.artifact.sGladiator.1=Gladiator's Nostalgia
+genshin12.artifact.sGladiator.2=Gladiator's Intoxication
+genshin12.artifact.sGladiator.3=Gladiator's Longing
 
-genshin12.artifact.suit.sBlank.name=Miner
-genshin12.artifact.suit.sBlank.2=Break stone faster.
-genshin12.artifact.suit.sBlank.4=Crafting torches have 12%% rate to double the result.
-genshin12.artifact.sBlank.0=Headlight
-genshin12.artifact.sBlank.1=Flower of Fossil
-genshin12.artifact.sBlank.2=Durable Container
-genshin12.artifact.sBlank.3=Cage of Canary
+genshin12.artifact.suit.sBlank.name=Blank
+genshin12.artifact.sBlank.0=Initiate's Crown
+genshin12.artifact.sBlank.1=Initiate's Flower
+genshin12.artifact.sBlank.2=Initiate's Goblet
+genshin12.artifact.sBlank.3=Initiate's Sands
 
 genshin12.artifact.upgrade=§lNew Sub Attr x%s!
 
