@@ -79,6 +79,10 @@ public class ElemTuple {
         double resultAura = aura.amount;
 
         resultAura -= reaction.factor * apply.amount;
+
+        //todo: this is different from R
+        float dmgFactor = 1f;
+
         if (resultAura <= 0)
         {
             return new ReactionResult(new ElemTuple(aura.enumElemental, 0), new ElemTuple(apply.enumElemental, 0), reaction, reaction.factor, lv1,lv2);
