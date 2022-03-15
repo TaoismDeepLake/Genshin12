@@ -18,15 +18,16 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.ILootContainer;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class EventsBoxOpen {
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerInteractBlock(PlayerInteractEvent.RightClickBlock event)
     {
         World world = event.getWorld();
-        if (world.isRemote)
+        if (world.isRemote || event.isCanceled())
         {
             return;
         }

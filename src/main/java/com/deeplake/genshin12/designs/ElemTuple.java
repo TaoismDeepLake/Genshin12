@@ -1,8 +1,12 @@
 package com.deeplake.genshin12.designs;
 
 import com.deeplake.genshin12.init.ModConfig;
+import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.EnumAmount;
 import com.deeplake.genshin12.util.EnumElemental;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 
 public class ElemTuple {
     final EnumElemental enumElemental;
@@ -18,6 +22,25 @@ public class ElemTuple {
     public ElemTuple(EnumElemental enumElemental, EnumAmount amount) {
         this.enumElemental = enumElemental;
         this.amount = amount.gauge;
+    }
+
+    public ElemTuple(EntityLivingBase livingBase) {
+        for (EnumElemental elem :
+                EnumElemental.values()) {
+            Potion potion = elem.getPotion();
+            if (potion != null && livingBase.isPotionActive(potion))
+            {
+                PotionEffect effect = livingBase.getActivePotionEffect(potion);
+                int level = effect.getAmplifier();
+                level = CommonFunctions.clamp(level, 0, EnumAmount.MAX_LEVEL);
+                this.enumElemental = elem;
+                this.amount = EnumAmount.getValue(effect.getDuration(), level);
+                return;
+            }
+        }
+
+        this.enumElemental = EnumElemental.PHYSICAL;
+        this.amount = EnumAmount.NONE.gauge;
     }
 
     enum EnumReactionRule{
@@ -51,38 +74,38 @@ public class ElemTuple {
         }
     }
 
-    public static ReactionResult normalCalculation(ElemTuple aura, ElemTuple apply, EnumReaction reaction)
+    public static ReactionResult normalCalculation(ElemTuple aura, ElemTuple apply, EnumReaction reaction, int lv1, int lv2)
     {
         double resultAura = aura.amount;
 
         resultAura -= aura.amount - reaction.factor * apply.amount;
         if (resultAura <= 0)
         {
-            return new ReactionResult(ElemTuple.ZERO, reaction, 0);
+            return new ReactionResult(ElemTuple.ZERO, reaction, 0, lv1,lv2);
             //return new ElemTuple(aura.enumElemental, resultAura);
         }
         else {
-            return new ReactionResult(new ElemTuple(aura.enumElemental, resultAura), reaction, 0);
+            return new ReactionResult(new ElemTuple(aura.enumElemental, resultAura), reaction, 0, lv1,lv2);
         }
     }
 
-    public static ReactionResult shockCalculation(ElemTuple aura, ElemTuple apply)
+    public static ReactionResult shockCalculation(ElemTuple aura, ElemTuple apply,  int lv1, int lv2)
     {
         double resultAura = aura.amount;
 
         resultAura -= aura.amount - EnumReaction.ELECTRO_CHARGED.factor * apply.amount;
         if (resultAura <= 0)
         {
-            return new ReactionResult(ElemTuple.ZERO, apply, EnumReaction.ELECTRO_CHARGED, 0);
+            return new ReactionResult(ElemTuple.ZERO, apply, EnumReaction.ELECTRO_CHARGED, 0, lv1,lv2);
         }
         else {
-            return new ReactionResult(new ElemTuple(aura.enumElemental, resultAura), apply,  EnumReaction.ELECTRO_CHARGED, 0);
+            return new ReactionResult(new ElemTuple(aura.enumElemental, resultAura), apply,  EnumReaction.ELECTRO_CHARGED, 0, lv1,lv2);
         }
     }
 
     //units until either element's gauge value reaches 0.
     //The target is inflicted by both Electro and Hydro auras at the same time for the duration of Electro-Charged thus reactions involving these elements are still possible during its duration (i.e. a Pyro attack can trigger both Vaporize and Overload simultaneously on an Electro-Charged target).
-    public static ReactionResult reactionResult(ElemTuple aura, ElemTuple apply)
+    public static ReactionResult reactionResult(ElemTuple aura, ElemTuple apply, int lv1, int lv2)
     {
         double resultAura = aura.amount;
         double reactionFactor = 1f;
@@ -103,13 +126,13 @@ public class ElemTuple {
                 {
                     return ReactionResult.NONE;
                 }
-                return normalCalculation(aura,apply,EnumReaction.SWIRL);
+                return normalCalculation(aura,apply,EnumReaction.SWIRL, lv1,lv2);
             case GEO:
                 if (aura.enumElemental == EnumElemental.ANEMO)
                 {
                     return ReactionResult.NONE;
                 }
-                return normalCalculation(aura,apply,EnumReaction.CRYSTALLIZE);
+                return normalCalculation(aura,apply,EnumReaction.CRYSTALLIZE, lv1,lv2);
             case ELECTRO:
                 switch (aura.enumElemental)
                 {
@@ -123,11 +146,11 @@ public class ElemTuple {
                         //??
                         break;
                     case HYDRO:
-                        return shockCalculation(aura, apply);
+                        return shockCalculation(aura, apply, lv1,lv2);
                     case PYRO:
-                        normalCalculation(aura, apply, EnumReaction.OVERLOAD);
+                        normalCalculation(aura, apply, EnumReaction.OVERLOAD, lv1,lv2);
                     case CYRO:
-                        normalCalculation(aura, apply, EnumReaction.SUPERCONDUCT);
+                        normalCalculation(aura, apply, EnumReaction.SUPERCONDUCT, lv1,lv2);
                 }
                 break;
             case DENDRO:
@@ -145,7 +168,7 @@ public class ElemTuple {
                     case DENDRO:
                         break;
                     case PYRO:
-                        return normalCalculation(aura,apply,EnumReaction.VAPORIZE_W);
+                        return normalCalculation(aura,apply,EnumReaction.VAPORIZE_W, lv1,lv2);
                     case CYRO:
                         break;
                 }
@@ -159,14 +182,14 @@ public class ElemTuple {
                         //todo: normally won't
                         break;
                     case ELECTRO:
-                        return normalCalculation(aura,apply,EnumReaction.OVERLOAD);
+                        return normalCalculation(aura,apply,EnumReaction.OVERLOAD, lv1,lv2);
                     case DENDRO:
                         //burn
                         break;
                     case HYDRO:
-                        return normalCalculation(aura,apply,EnumReaction.VAPORIZE_S);
+                        return normalCalculation(aura,apply,EnumReaction.VAPORIZE_S, lv1,lv2);
                     case CYRO:
-                        return normalCalculation(aura,apply,EnumReaction.MELT_S);
+                        return normalCalculation(aura,apply,EnumReaction.MELT_S, lv1,lv2);
                 }
                 break;
             case CYRO:
@@ -179,13 +202,13 @@ public class ElemTuple {
                         //todo: normally won't
                         break;
                     case ELECTRO:
-                        return normalCalculation(aura,apply,EnumReaction.SUPERCONDUCT);
+                        return normalCalculation(aura,apply,EnumReaction.SUPERCONDUCT, lv1,lv2);
                     case DENDRO:
                         break;
                     case HYDRO:
                         break;
                     case PYRO:
-                        return normalCalculation(aura,apply,EnumReaction.MELT_S);
+                        return normalCalculation(aura,apply,EnumReaction.MELT_S, lv1,lv2);
                 }
                 break;
             default:

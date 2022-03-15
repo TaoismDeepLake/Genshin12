@@ -63,15 +63,15 @@ end
 --	GenItem("artifact", "artf_xp_bottle_"..i);
 --end
 
-GenItem("artifact", "lumber_chest");
-GenItem("artifact", "lumber_foot");
-GenItem("artifact", "lumber_head");
-GenItem("artifact", "lumber_leg");
+GenItem("artifact", "gladiator_chest");
+GenItem("artifact", "gladiator_foot");
+GenItem("artifact", "gladiator_head");
+GenItem("artifact", "gladiator_leg");
 
 --GenItem("skill", "hu_tao_q");
 
 
---GenBlock("cor_lapis_block");
+--GenBlock("artifact_ore");
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");

@@ -51,8 +51,8 @@ public class ModItems {
     public static final ItemBase ARTIFACT_XP_BOTTLE = new ItemVariantBase("artf_xp_bottle", 6);
 
 //	public static final ItemDebugSword DEBUG = new ItemDebugSword("debug_item", Item.ToolMaterial.DIAMOND);
-	public static final ItemBase DEBUG = new ItemBase("debug_item");
-	public static final ItemArmorDebug DEBUG_2 = new ItemArmorDebug("debug_item_2", ItemArmor.ArmorMaterial.GOLD, 1, EntityEquipmentSlot.HEAD);
+	public static final ItemBase DEBUG = (ItemBase) new ItemBase("debug_item").setCreativeTab(null);
+	public static final ItemArmorDebug DEBUG_2 = (ItemArmorDebug) new ItemArmorDebug("debug_item_2", ItemArmor.ArmorMaterial.GOLD, 1, EntityEquipmentSlot.HEAD).setCreativeTab(null);
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),
     OVERLAY(1, 131, 4.0F, 1.0F, 5),

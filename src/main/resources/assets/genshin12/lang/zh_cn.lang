@@ -28,7 +28,7 @@ genshin12.conf.gacha.primo_per_chest=每宝箱原石
 genshin12.conf.gacha.primo_per_advancement=每普通成就原石
 genshin12.conf.gacha.primo_per_challenge=每挑战成就原石
 
-configgui.genshin12.category.Menu0.DebugConf=Debug Config, Be Careful.
+configgui.genshin12.category.Menu0.DebugConf=当心，调试选项
 genshin12.conf.worldgen.enable_xiao_jump_boost=客户端：启用魈跳跃加成
 
 # Enchantments
@@ -43,6 +43,7 @@ entity.moroon_tainter.name=摩隆 拓荒者
 tile.zl_pillar.name=岩脊
 tile.cor_lapis_ore.name=石珀矿
 tile.cor_lapis_block.name=石珀块
+tile.artifact_ore.name=圣遗物矿石
 
 item.skill_upgrade_0.name=技能强化包·物理
 item.skill_upgrade_0.desc=……
@@ -160,6 +161,18 @@ item.hu_tao_q.speech.1=§c§l吃饱喝饱，一路走好！
 item.hu_tao_q.speech.2=§c§l再会啦！
 item.hu_tao_q.speech.3=§c§l蝶火燎原！
 
+item.artf_xp_bottle_0.name=§6圣遗物经验瓶·特混
+item.artf_xp_bottle_0.desc=从强化过的圣遗物中提取，与圣遗物合成可以强化之。强化时圣遗物必须在第一格。
+item.artf_xp_bottle_1.name=圣遗物经验瓶·一
+item.artf_xp_bottle_1.desc=从1星圣遗物中提取，与圣遗物合成可以强化之。强化时圣遗物必须在第一格。
+item.artf_xp_bottle_2.name=§a圣遗物经验瓶·二
+item.artf_xp_bottle_2.desc=从2星圣遗物中提取，与圣遗物合成可以强化之。强化时圣遗物必须在第一格。
+item.artf_xp_bottle_3.name=§b圣遗物经验瓶·三
+item.artf_xp_bottle_3.desc=从3星圣遗物中提取，与圣遗物合成可以强化之。强化时圣遗物必须在第一格。
+item.artf_xp_bottle_4.name=§d圣遗物经验瓶·四
+item.artf_xp_bottle_4.desc=从4星圣遗物中提取，与圣遗物合成可以强化之。强化时圣遗物必须在第一格。
+item.artf_xp_bottle_5.name=§6圣遗物经验瓶·五
+item.artf_xp_bottle_5.desc=从5星圣遗物中提取，与圣遗物合成可以强化之。强化时圣遗物必须在第一格。
 
 genshin12.msg.xiao.plunge.speech.0=这里！
 genshin12.msg.xiao.plunge.speech.1=无能。
@@ -234,6 +247,8 @@ item.debug_item_2.desc=[不是用来玩的]
 genshin12.skill.msg.lack_mp=能量不足 (%d/%d)
 genshin12.skill.msg.charge_full=%s 能量已满！
 genshin12.msg.obtain_primo=$b$6获得 %s 原石
+genshin12.msg.artifact.miner=§b§6[矿工套装]获得额外火把。
+genshin12.msg.artifact.lumber=§b§6[伐木套装]你吃了树皮，味道不错。
 
 # attrCritical RateCrit Rate
 attribute.name.genshin12.attr.defense=防御
@@ -284,6 +299,7 @@ genshin12.artifact.slot.3=§o空之杯
 genshin12.artifact.slot.4=§o时之沙
 genshin12.artifact.slot.5=§oPlume of Death
 
+genshin12.artifact.xp=XP:(%s/%s)
 genshin12.artifact.suit.count=§o(%s/%s)
 genshin12.artifact.suit.count.single= (%s)
 genshin12.artifact.suit.sDefault.name=调试套装
@@ -309,6 +325,21 @@ genshin12.artifact.sMiner.0=头灯
 genshin12.artifact.sMiner.1=化石饰花
 genshin12.artifact.sMiner.2=坚固水壶
 genshin12.artifact.sMiner.3=金丝雀之笼
+
+genshin12.artifact.suit.sGladiator.name=角斗士的终幕礼
+genshin12.artifact.suit.sGladiator.2=攻击力提高18%%。
+genshin12.artifact.suit.sGladiator.4=暴击率提高18%%。
+# genshin12.artifact.suit.sGladiator.4=装备该圣遗物套装的角色为单手剑、双手剑、长柄武器角色时，角色普通攻击造成的伤害提高35%。
+genshin12.artifact.sGladiator.0=角斗士的凯旋
+genshin12.artifact.sGladiator.1=角斗士的留恋
+genshin12.artifact.sGladiator.2=角斗士的酣醉
+genshin12.artifact.sGladiator.3=角斗士的希冀
+
+genshin12.artifact.suit.sBlank.name=空白
+genshin12.artifact.sBlank.0=新手之冠
+genshin12.artifact.sBlank.1=新手之花
+genshin12.artifact.sBlank.2=新手之杯
+genshin12.artifact.sBlank.3=新手之沙
 
 genshin12.artifact.upgrade=§l获得副属性提升 x%s!
 

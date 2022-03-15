@@ -14,6 +14,9 @@ public class MessageDef {
     public static final String OBTAIN_PRIMO = IdlFramework.MODID + ".msg.obtain_primo";
     public static final String XIAO_PLUNGE = IdlFramework.MODID + ".msg.xiao.plunge.speech.";
 
+    public static final String ARTIFACT_TRIGGER_MINER= IdlFramework.MODID + ".msg.artifact.miner";
+    public static final String ARTIFACT_TRIGGER_LUMBER= IdlFramework.MODID + ".msg.artifact.lumber";
+
     public static String getSkillCastKey(ItemStack stack, int index)
     {
         //remove"item."

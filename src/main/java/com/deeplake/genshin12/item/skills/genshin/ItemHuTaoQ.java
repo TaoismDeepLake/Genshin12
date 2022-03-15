@@ -42,7 +42,8 @@ public class ItemHuTaoQ extends ItemGenshinBurstBase{
     public ItemHuTaoQ(String name) {
         super(name, 60, EnumElemental.PYRO);
         setMaxLevel(14);
-        setRange(10f,0f);
+        setCD(15f, 0f);
+//        setRange(10f,0f);
         initDamageRatio = new float[]{303.27f,321.43f,339.59f,363.2f,381.36f,399.52f,423.13f,446.74f,470.34f,493.95f,517.56f,541.17f,564.78f,588f};
         aoeRange = 6f;//confirmed with wiki
     }

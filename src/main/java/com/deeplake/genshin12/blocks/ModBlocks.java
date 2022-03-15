@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.blocks;
 
 import com.deeplake.genshin12.blocks.blockMisc.BlockZhongliPillar;
+import com.deeplake.genshin12.blocks.ore.BlockOreArtifact;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.util.CommonDef;
@@ -29,6 +30,8 @@ public class ModBlocks {
 
 	public static final BlockOreBase COR_LAPIS_ORE = (BlockOreBase) new BlockOreBase("cor_lapis_ore").setHardness(10f);
 	public static final Block COR_LAPIS_BLOCK =  new BlockOreBase("cor_lapis_block").setHardness(80f);
+
+	public static final BlockOreArtifact ARTIFACT_ORE = (BlockOreArtifact) new BlockOreArtifact("artifact_ore").setHardness(10f).setLightLevel(0.1f);
 
 	public static void init() {
 		COR_LAPIS_ORE.setHarvestLevel(IDLNBTDef.TOOL_PICKAXE, 2);

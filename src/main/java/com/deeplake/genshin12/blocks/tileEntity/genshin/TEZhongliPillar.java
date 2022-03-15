@@ -119,10 +119,9 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
         for (EntityLivingBase target :
                 list) {
 
-            damage = ModConfig.GeneralConf.MOVIE_MODE ? damage : damage * 100;
             if (owner != null)
             {
-                ElementalUtil.applyElementalDamage(owner, target, damage, EnumElemental.GEO, EnumAmount.SMALL);
+                ElementalUtil.applyElementalDamage(owner, target, ModConfig.GeneralConf.MOVIE_MODE ? damage * 100 : damage, EnumElemental.GEO, EnumAmount.SMALL);
             }
 
             if (needDrop && target.getRNG().nextBoolean())

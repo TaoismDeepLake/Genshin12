@@ -116,6 +116,18 @@ public class ModConfig {
         @Config.RangeInt(min = 0)
         @Config.RequiresMcRestart
         public int COR_LAPIS_DELTA = 3;
+
+        @Config.LangKey("genshin12.conf.worldgen.artifact_ore_count")
+        @Config.Comment("Min count of Artifact Ore generation per chunk.")
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int ARTIFACT_ORE_BASE = 24;
+
+        @Config.LangKey("genshin12.conf.worldgen.artifact_ore_count_delta")
+        @Config.Comment("Max extra count of Artifact Ore generation per chunk.")
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int ARTIFACT_ORE_DELTA = 48;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GuiConf")
@@ -217,7 +229,11 @@ public class ModConfig {
         @Config.RangeDouble(min=0f, max =1f)
         public float LUMBER_CHANCE = 0.05f;
 
-        public float MINER_BONUS = 0.2f;
+        @Config.RangeDouble(min=0f, max =1f)
+        public float LUMBER_SET_CHANCE = 0.05f;
+
+        @Config.RangeDouble(min=0f)
+        public float MINER_BONUS = 0.3f;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")

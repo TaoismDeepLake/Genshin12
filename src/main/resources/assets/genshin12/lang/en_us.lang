@@ -46,6 +46,7 @@ entity.moroon_tainter.name=Moroon Pathfinder
 tile.zl_pillar.name=Zhongli Pillar Block
 tile.cor_lapis_ore.name=Cor Lapis Ore
 tile.cor_lapis_block.name=Cor Lapis Block
+tile.artifact_ore.name=Artifact Ore
 
 #Items
 item.skill_upgrade_0.name=Skill Upgrade [Void]
@@ -237,6 +238,8 @@ genshin12.potion.electro=Electro
 genshin12.potion.dendro=Dendro
 genshin12.potion.pyro=Pyro
 genshin12.potion.chrono=Chrono
+genshin12.potion.hutao_buff=Paramita Papilio
+genshin12.potion.hutao_debuff=Blood Blossom
 
 item.debug_item.name=Debug Item
 item.debug_item.desc=[Not For Playing]
@@ -244,10 +247,22 @@ item.debug_item.desc=[Not For Playing]
 item.debug_item_2.name=Debug Item
 item.debug_item_2.desc=[Not For Playing]
 
+#villager
+entity.Villager.genshin12.vendor_artifacts=Artifacts Vendor
+entity.Villager.genshin12.v_ar_miner=Zhang Shun
+entity.Villager.genshin12.v_ar_lumber=Lin Lang
+entity.Villager.genshin12.quest_giver=Quest Giver
+entity.Villager.genshin12.v_qst_undead_hunter=Undead Hunter
+entity.Villager.genshin12.v_qst_miner_lord=Lao Zhang
+entity.Villager.genshin12.v_qst_brock=Brock
+entity.Villager.genshin12.v_qst_brewer=Diluc
+
 #msg
 genshin12.skill.msg.lack_mp=Insufficient Energy (%s/%s)
 genshin12.skill.msg.charge_full=%s Energy Full!
 genshin12.msg.obtain_primo=§b§6Obtained %s Primogem
+genshin12.msg.artifact.miner=§b§6[Miner Set]You get extra torches.
+genshin12.msg.artifact.lumber=§b§6[Lumber Set]You fed on wood.
 
 #attrCritical RateCrit Rate
 attribute.name.genshin12.attr.defense=Defense

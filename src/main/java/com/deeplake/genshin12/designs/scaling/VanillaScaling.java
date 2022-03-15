@@ -63,7 +63,7 @@ public class VanillaScaling {
 
     public static double getDefFromLevel(int level)
     {
-        return 1 + (float) level / 100;
+        return 5 * (1 + (float) level / 100);
     }
 
 //     new AttributeModifier(

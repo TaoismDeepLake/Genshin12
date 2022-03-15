@@ -1,5 +1,7 @@
 package com.deeplake.genshin12.util;
 
+import com.deeplake.genshin12.designs.ElemTuple;
+import com.deeplake.genshin12.designs.ReactionResult;
 import com.deeplake.genshin12.entity.creatures.attribute.HandleResistance;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -62,7 +64,7 @@ public class ElementalUtil {
 
     public static void applyElementalDamage(EntityLivingBase player, EntityLivingBase target, float damage, EnumElemental elemental, EnumAmount amount)
     {
-        applyElemental(target, damage, elemental, amount);
+        applyElemental(target, elemental, amount);
 
         DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
         if (elemental == EnumElemental.PYRO)
@@ -86,7 +88,7 @@ public class ElementalUtil {
                 damage);
     }
 
-    public static void applyElemental(EntityLivingBase target, float damage, EnumElemental elemental, EnumAmount amount)
+    public static void applyElemental(EntityLivingBase target, EnumElemental elemental, EnumAmount amount)
     {
         if (target.getEntityWorld().isRemote)
         {
@@ -109,7 +111,21 @@ public class ElementalUtil {
                 case HYDRO:
                 case PYRO:
                 case CYRO:
-                    target.addPotionEffect(amount.getPotionEffect(elemental));
+                    ReactionResult reactionResult =
+                            ElemTuple.reactionResult(new ElemTuple(target), new ElemTuple(elemental, amount)
+                                    , EnumAmount.level(target), amount.level);
+
+                    //todo: remove & apply according to result.
+                    if (reactionResult.enumElemental != EnumElemental.PHYSICAL)
+                    {
+                        PotionEffect effect = getPotionEffectByElemStatus(reactionResult);
+                        target.removePotionEffect(effect.getPotion());
+                        if (reactionResult.amount > 0)
+                        {
+                            target.addPotionEffect(effect);
+                        }
+                    }
+
                     break;
 
                 case CHRONO:
@@ -117,5 +133,9 @@ public class ElementalUtil {
                     break;
             }
         }
+    }
+
+    public static PotionEffect getPotionEffectByElemStatus(ReactionResult reactionResult) {
+        return EnumAmount.getPotionEffect(reactionResult.enumElemental, EnumAmount.getTicks(reactionResult.amount, reactionResult.level), reactionResult.level);
     }
 }

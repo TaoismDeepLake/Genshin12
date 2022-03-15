@@ -1,9 +1,9 @@
 {
   "parent": "item/generated",
   "overrides": [
-    { "predicate": { "slot": 0.000000 }, "model": "genshin12:item/symbol_head" },
-    { "predicate": { "slot": 1.000000 }, "model": "genshin12:item/symbol_chest" },
-    { "predicate": { "slot": 2.000000 }, "model": "genshin12:item/symbol_leg" },
-    { "predicate": { "slot": 3.000000 }, "model": "genshin12:item/symbol_foot" }
+    { "predicate": { "slot": 0.000000 }, "model": "genshin12:item/gladiator_head" },
+    { "predicate": { "slot": 1.000000 }, "model": "genshin12:item/gladiator_chest" },
+    { "predicate": { "slot": 2.000000 }, "model": "genshin12:item/gladiator_leg" },
+    { "predicate": { "slot": 3.000000 }, "model": "genshin12:item/gladiator_foot" }
   ]
 }

@@ -5,6 +5,7 @@ import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
 
 import com.deeplake.genshin12.util.CommonFunctions;
+import com.deeplake.genshin12.util.MessageDef;
 import com.deeplake.genshin12.util.PlayerUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -51,11 +52,11 @@ public class EventsArtifacts {
         {
             if (event.getState().getMaterial() == Material.WOOD)
             {
-                if (player.getRNG().nextFloat() <= 0.15f && player.getFoodStats().needFood())
+                if (player.getRNG().nextFloat() <= ModConfig.DEBUG_CONF.LUMBER_SET_CHANCE && player.getFoodStats().needFood())
                 {
                     player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel() + 1);
                     player.world.playSound(null, event.getPos(), SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.PLAYERS, 1f, 1f);
-                    //todo: msg
+                    CommonFunctions.SafeSendMsgToPlayer(player, MessageDef.ARTIFACT_TRIGGER_LUMBER);
                 }
             }
         }
@@ -73,7 +74,7 @@ public class EventsArtifacts {
                 {
                     PlayerUtil.giveToPlayer(player, new ItemStack(event.crafting.getItem(), event.crafting.getCount()));
                     player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 1f, 0.5f);
-                    //todo: msg
+                    CommonFunctions.SafeSendMsgToPlayer(player, MessageDef.ARTIFACT_TRIGGER_MINER);
                 }
             }
         }

@@ -22,6 +22,8 @@ public class ArtifactUtil {
     public static final int INT_SCALER = 1;
     public static HashMap<EnumRarity, EnumModRarity> QUALITY_MAP = new HashMap<>();
 
+    public static final int MAX_SLOT_INDEX = 3;
+
     public static final String KEY_LEVEL = LEVEL_TAG;
     public static final String KEY_RARITY = "rarity";
     public static final String KEY_READY_ATTR = "ready";//the random attrs that will be given soon

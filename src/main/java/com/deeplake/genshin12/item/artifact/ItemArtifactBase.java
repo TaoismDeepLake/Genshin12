@@ -309,12 +309,22 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab))
         {
+            boolean isDebug = ModConfig.DEBUG_CONF.DEBUG_MODE;
+            if (set == ArtifactSetManager.DEFAULT)
+            {
+                //hide the debug set. too annoying.
+                if (!isDebug)
+                {
+                    return;
+                }
+            }
+
             for (int slot = 0; slot <= 3; slot++) {
                 for (int rarity = set.minRarity; rarity <= set.maxRarity; rarity++) {
                     for (int level = 0; level <= ArtifactUtil.getMaxLevel(rarity); level++) {
                         if (level != 0 && level != ArtifactUtil.getMaxLevel(rarity))
                         {
-                            if (!ModConfig.DEBUG_CONF.DEBUG_MODE)
+                            if (!isDebug)
                             {
                                 continue;
                             }

@@ -33,6 +33,10 @@ public enum EnumElemental {
         }
     }
 
+    public Potion getPotion() {
+        return potion;
+    }
+
     public int getR()
     {
         return color >> 16;
