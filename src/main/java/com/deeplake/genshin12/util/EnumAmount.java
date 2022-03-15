@@ -67,6 +67,16 @@ public enum EnumAmount
         }
     }
 
+    @Nullable
+    public PotionEffect getPotionEffect(EnumElemental elemental)
+    {
+        if (elemental.potion != null)
+        {
+            return new PotionEffect(elemental.potion, defaultDuraTicks, level);
+        }
+        return null;
+    }
+
 
     @Nullable
     public static PotionEffect getPotionEffect(EnumElemental elemental, int ticks, int level)

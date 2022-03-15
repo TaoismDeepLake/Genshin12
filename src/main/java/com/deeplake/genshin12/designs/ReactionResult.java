@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.designs;
 
+import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.util.EnumElemental;
 
 public class ReactionResult {
@@ -47,4 +48,14 @@ public class ReactionResult {
         this.level = level;
         this.level2 = level2;
     }
+
+    @Override
+    public String toString() {
+        return String.format("R-Result: (%s,%s,%s), (%s,%s,%s), type=%s, fac=%s",
+                enumElemental,level,amount,
+                enumElemental2,level2,amount2,
+                reaction, factor);
+    }
+
+
 }

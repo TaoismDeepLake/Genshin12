@@ -78,14 +78,14 @@ public class ElemTuple {
     {
         double resultAura = aura.amount;
 
-        resultAura -= aura.amount - reaction.factor * apply.amount;
+        resultAura -= reaction.factor * apply.amount;
         if (resultAura <= 0)
         {
-            return new ReactionResult(ElemTuple.ZERO, reaction, 0, lv1,lv2);
+            return new ReactionResult(new ElemTuple(aura.enumElemental, 0), new ElemTuple(apply.enumElemental, 0), reaction, reaction.factor, lv1,lv2);
             //return new ElemTuple(aura.enumElemental, resultAura);
         }
         else {
-            return new ReactionResult(new ElemTuple(aura.enumElemental, resultAura), reaction, 0, lv1,lv2);
+            return new ReactionResult(new ElemTuple(aura.enumElemental, resultAura), new ElemTuple(apply.enumElemental, 0), reaction, reaction.factor, lv1,lv2);
         }
     }
 
@@ -109,7 +109,7 @@ public class ElemTuple {
     {
         double resultAura = aura.amount;
         double reactionFactor = 1f;
-        if (aura.enumElemental == apply.enumElemental)
+        if (aura.enumElemental == apply.enumElemental || aura.enumElemental == EnumElemental.PHYSICAL)
         {
             //todo: same element repeat apply
             return ReactionResult.NONE;
