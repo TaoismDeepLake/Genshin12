@@ -234,6 +234,11 @@ public class ModConfig {
 
         @Config.RangeDouble(min=0f)
         public float MINER_BONUS = 0.3f;
+
+        //https://genshin-impact.fandom.com/wiki/Shields/Enemy
+        @Config.Comment("Damage Ratio is a ratio that shows how much a shield can be affected by character damage. The Damage Ratio is usually 0.2 or 0.")
+        @Config.RangeDouble(min=0.000001f, max=10f)
+        public float ENEMY_SHIELD_DAMAGE_RATIO = 0.2f;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.SpawnConf")
@@ -274,6 +279,8 @@ public class ModConfig {
         @Config.Comment("Slows down or speeds up drop scaling of enemy")
         @Config.RangeDouble(min=0.000001f, max=10f)
         public float ENEMY_DROP_SCALE_FACTOR = 1f;
+
+
 //        @Config.LangKey("entity.moroon_tainter.name")
 //        @Config.Comment("Spawn Moroon Tainter")
 //        @Config.RequiresMcRestart
@@ -303,6 +310,19 @@ public class ModConfig {
         public double GAUGE_PER_SHOCK = 0.4;
 
         public double AURA_TAX = 0.2;//20%will be removed
+
+        public double DAMAGE_STRONG_MELT = 2;
+        public double DAMAGE_STRONG_VAPORIZE = 2;
+        public double DAMAGE_WEAK_MELT = 1.5;
+        public double DAMAGE_WEAK_VAPORIZE = 1.5;
+
+        @Config.LangKey("conf.elem.overload_explosion_grief")
+        @Config.Comment("Overload explosion destroys terrain.")
+        public boolean OVERLOAD_EXPLOSION_GRIEF = true;
+
+        @Config.Comment("In seconds.")
+        @Config.RangeDouble(min=0.01f)
+        public double SUPERCONDUCT_DURA = 12;
 
     }
 }

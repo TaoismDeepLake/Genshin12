@@ -5,8 +5,10 @@ import com.deeplake.genshin12.designs.ElemTuple;
 import com.deeplake.genshin12.designs.ReactionResult;
 import com.deeplake.genshin12.entity.creatures.attribute.HandleResistance;
 import com.deeplake.genshin12.init.ModConfig;
+import com.deeplake.genshin12.potion.ModPotions;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -101,24 +103,49 @@ public class ElementalUtil {
             case NONE:
                 break;
             case MELT_S:
+                damage *= ModConfig.ELEMCONF.DAMAGE_STRONG_MELT;
+                break;
             case MELT_W:
+                damage *= ModConfig.ELEMCONF.DAMAGE_WEAK_MELT;
+                break;
             case VAPORIZE_S:
+                damage *= ModConfig.ELEMCONF.DAMAGE_STRONG_VAPORIZE;
+                break;
             case VAPORIZE_W:
-                damage *= reactionResult.factor;
+                damage *= ModConfig.ELEMCONF.DAMAGE_WEAK_VAPORIZE;
                 break;
             case OVERLOAD:
+                target.getEntityWorld().createExplosion(player, target.posX, target.posY, target.posZ, 1f, ModConfig.ELEMCONF.OVERLOAD_EXPLOSION_GRIEF);
                 break;
             case SUPERCONDUCT:
+                //todo: AOE
+//                Superconduct is the Elemental Reaction triggered by inflicting Electro on a target that is already affected by Cryo or vice versa. This reaction deals AoE Cryo DMG and reduces the physical resistance of all enemies in the AoE by 40% for 12 seconds.
+//                    Superconduct can also occur in the environment when dealing Electro to water that was previously frozen by Cryo, shortening the frozen duration and causing the water underneath to be Electro-Charged. However, no AoE damage is dealt, nor does the defense of any nearby enemies decrease. Superconduct will not occur when dealing Cryo to Electro-Charged water. However, using Cryo on an Electro Crystal or Electro on a Mist Flower will also cause Superconduct and deal DMG to nearby enemies.
+//
+//                    Unlike Swirl, Superconduct cannot trigger further elemental reactions as it does not apply Cryo to targets hit.
+
+                EntityUtil.ApplyBuff(target, ModPotions.SUPER_CONDUCT, 0, (float) ModConfig.ELEMCONF.SUPERCONDUCT_DURA);
                 break;
             case CRYSTALLIZE:
+                //todo: temp
+                EntityUtil.ApplyBuff(target, MobEffects.RESISTANCE, 2, amount.defaultDura);
                 break;
             case SWIRL:
+//                Swirl is the Elemental Reaction triggered by inflicting Anemo on a target that is already affected by Pyro, Electro, Hydro, or Cryo. Swirl can also be triggered in the other direction by inflicting Pyro, Electro, Hydro, or Cryo to a target that is already affected by Anemo, but aside from enemies that apply long-lasting Anemo to themselves, Anemo applications do not linger, so Anemo is the only element that can trigger Swirl most of the time. This reaction deals elemental DMG of the non-Anemo element involved.
+//                Unlike other elemental reactions, Swirl can spread elements (specifically, the non-Anemo element involved in the reaction) to nearby targets, usually in the direction of the Swirl reaction.
+//
+//                    Swirl damage should not be confused with the non-Anemo damage that comes from Elemental Absorption. Swirl damage is fixed damage based only on character level and elemental mastery, while additional elemental damage from Elemental Absorption is regular damage and is thus affected by the stats that normally affect damage, including attack, critical hit rate and damage, elemental damage bonuses, and the level of the talent with the potential for Elemental Absorption.
                 break;
             case ELECTRO_CHARGED:
+                //todo: temp
+                EntityUtil.ApplyBuff(target, MobEffects.WITHER, 0, amount.defaultDura);
                 break;
             case FROZEN:
+                //todo: temporal duration
+                EntityUtil.ApplyBuff(target, ModPotions.FREEZE, 0, amount.defaultDura);
                 break;
             case SHATTER:
+                //todo: deal damage and break ice.
                 break;
         }
 
@@ -210,4 +237,16 @@ public class ElementalUtil {
     public static PotionEffect getPotionEffect1ByElemStatus(ReactionResult reactionResult) {
         return EnumAmount.getPotionEffect(reactionResult.enumElemental, EnumAmount.getTicks(reactionResult.amount, reactionResult.level), reactionResult.level);
     }
+
+    //https://genshin-impact.fandom.com/wiki/Shields/Enemy
+    public static void applyElemShieldMonster(EntityLivingBase target, EnumElemental elem, float amount)
+    {
+        float expectedAbsorption = target.getMaxHealth() * amount / ModConfig.DEBUG_CONF.ENEMY_SHIELD_DAMAGE_RATIO;
+        if (target.getAbsorptionAmount() < expectedAbsorption)
+        {
+            target.setAbsorptionAmount(expectedAbsorption);
+            //todo: elem buff that marks the shield type.
+        }
+    }
+
 }

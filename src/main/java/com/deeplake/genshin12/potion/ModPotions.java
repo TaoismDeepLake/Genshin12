@@ -29,6 +29,7 @@ public class ModPotions {
     public static UUID UUID_HUTAO_BUFF = UUID.fromString("2cf4ab68-2c9a-4738-9715-b71f95a287f5");
     public static UUID UUID_JADE_SHIELD_DEBUFF = UUID.fromString("dd40342b-5cfc-4e2a-914f-360cf3c052e1");
     public static UUID UUID_JADE_SHIELD = UUID.fromString("b5b45eb7-afec-4399-a80b-fa4318a08741");
+    public static UUID UUID_SUPER_CONDUCT = UUID.fromString("acdd0854-28b9-4595-9ea4-8bb431603e18");
 
     public static final PotionJadeShield JADE_SHIELD = new PotionJadeShield(false, 0x333333, "jade_shield", 0);
     public static final Potion JADE_SHIELD_DEBUFF = new BaseSimplePotion(true, 0xcccc00, "jade_shield_debuff", 1);
@@ -57,6 +58,8 @@ public class ModPotions {
     public static final Potion HUTAO_BUFF = new PotionHuTaoBuff(false, EnumElemental.PYRO.getColor(), "hutao_buff", 13);
 
     public static final Potion HUTAO_DEBUFF = new PotionHuTaoDebuff(true, EnumElemental.PYRO.getColor(), "hutao_debuff", 14);
+
+    public static final BasePotion SUPER_CONDUCT = (BasePotion) new BasePotion(true, EnumElemental.CYRO.getColor(), "super_conduct", 15).registerPotionAttributeModifier(ModAttributes.getElemRes(EnumElemental.PHYSICAL), UUID_SUPER_CONDUCT.toString(), ModAttributes.convert(-0.4), 0);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)
