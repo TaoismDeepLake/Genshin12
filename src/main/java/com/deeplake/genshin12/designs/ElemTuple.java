@@ -107,6 +107,8 @@ public class ElemTuple {
         }
     }
 
+    static float SHOCK_THRESHOLD = 0.4f;
+
     //units until either element's gauge value reaches 0.
     //The target is inflicted by both Electro and Hydro auras at the same time for the duration of Electro-Charged thus reactions involving these elements are still possible during its duration (i.e. a Pyro attack can trigger both Vaporize and Overload simultaneously on an Electro-Charged target).
     public static ReactionResult reactionResult(ElemTuple aura, ElemTuple apply, int lv1, int lv2)
@@ -150,6 +152,7 @@ public class ElemTuple {
                         //??
                         break;
                     case HYDRO:
+                        //todo: incorrect
                         return shockCalculation(aura, apply, lv1,lv2);
                     case PYRO:
                         normalCalculation(aura, apply, EnumReaction.OVERLOAD, lv1,lv2);
@@ -168,6 +171,10 @@ public class ElemTuple {
                         //todo: normally won't
                         break;
                     case ELECTRO:
+                        if (aura.amount >= SHOCK_THRESHOLD && apply.amount >= SHOCK_THRESHOLD)
+                        {
+                            //todo: each reduce 0.4
+                        }
                         break;
                     case DENDRO:
                         break;

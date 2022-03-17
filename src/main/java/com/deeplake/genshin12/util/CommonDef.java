@@ -23,7 +23,11 @@ public class CommonDef {
 
     public static final int DURA_PER_ENERGY = 100;
 
+    //https://genshin-impact.fandom.com/wiki/Level_Scaling/Enemy#Base_Value
+    public static final float BASE_MOB_HP = 72.917f;
+    public static final float BASE_MOB_HP_BIG = 73.420f;
 
+    public static final float BASE_MOB_ATK = 25.378f;
 
     public static final UUID UUID_DEFAULT = UUID.fromString("3ff73966-00a0-4741-bf7e-648f92cbc82f");
 
