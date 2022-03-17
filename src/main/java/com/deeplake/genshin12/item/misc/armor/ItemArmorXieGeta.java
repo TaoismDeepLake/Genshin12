@@ -93,7 +93,7 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onCreatureHurt(LivingHurtEvent evt) {
         if (evt.isCanceled() || evt.getSource() != DamageSource.FALL) {
-            //IdlFramework.Log("Xie Geta wrong type");
+            //Idealland.Log("Xie Geta wrong type");
             return;
         }
 
@@ -102,7 +102,7 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
         if (onFoot.getItem() instanceof ItemArmorXieGeta)
         {
             float reduction = ItemArmorXieGeta.GetDamageReductionFall(onFoot);
-            //IdlFramework.Log("Xie Geta dmg reduction:%s", reduction);
+            //Idealland.Log("Xie Geta dmg reduction:%s", reduction);
             if (evt.getAmount() <= reduction)
             {
                 evt.setCanceled(true);

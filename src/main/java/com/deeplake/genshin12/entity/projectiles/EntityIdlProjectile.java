@@ -47,7 +47,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
     protected EntityIdlProjectile(World worldIn, ProjectileArgs args) {
         super(worldIn);
         this.args = args;
-        //IdlFramework.Log("bullet created %s, args = %s", getUniqueID(), this.args);
+        //Idealland.Log("bullet created %s, args = %s", getUniqueID(), this.args);
     }
 
     /**
@@ -114,7 +114,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
      */
     public void onUpdate()
     {
-        //IdlFramework.Log("Bullet pos update:%s", getPositionEyes(0));
+        //Idealland.Log("Bullet pos update:%s", getPositionEyes(0));
 
         if (this.world.isRemote || (this.shootingEntity == null || !this.shootingEntity.isDead) && this.world.isBlockLoaded(new BlockPos(this)))
         {
@@ -169,7 +169,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
     {
         if (args == null)
         {
-            //IdlFramework.LogWarning("Args not found for bullet");
+            //Idealland.LogWarning("Args not found for bullet");
             return false;
         }
         return args.burning;
@@ -185,7 +185,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
      */
     protected void onImpact(RayTraceResult result)
     {
-        //IdlFramework.Log("bullet impact %s", getUniqueID());
+        //Idealland.Log("bullet impact %s", getUniqueID());
         if (!this.world.isRemote)
         {
             if (result.entityHit != null)

@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.IDLSkillNBT;
@@ -89,7 +89,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 //	public void onUsingTick(ItemStack stack, EntityLivingBase living, int count) {
 //		//Particle;
 //		super.onUsingTick(stack, living, count);
-//		//IdlFramework.LogWarning(String.format("base onUsingTick %s",count));
+//		//Idealland.LogWarning(String.format("base onUsingTick %s",count));
 //
 //		if (living.world.isRemote)
 //		{
@@ -134,7 +134,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	@Override
 	public void registerModels() 
 	{
-		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
+		Idealland.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 

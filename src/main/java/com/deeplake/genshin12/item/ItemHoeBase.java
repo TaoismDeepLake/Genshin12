@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.IDLSkillNBT;
@@ -109,7 +109,7 @@ public class ItemHoeBase extends ItemHoe implements IHasModel {
 	@Override
 	public void registerModels() 
 	{
-		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
+		Idealland.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	@SideOnly(Side.CLIENT)
 	@Override

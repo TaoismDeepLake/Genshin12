@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item.artifact;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.item.EnumModRarity;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetBase;
 import com.deeplake.genshin12.util.IDLSkillNBT;
@@ -68,7 +68,7 @@ public class ArtifactToolTip {
             }
             catch (ArrayIndexOutOfBoundsException e)
             {
-                IdlFramework.LogWarning(e.toString());
+                Idealland.LogWarning(e.toString());
             }
 
 

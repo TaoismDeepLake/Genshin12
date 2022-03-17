@@ -43,7 +43,7 @@ public class RegistryHandler {
 		event.getRegistry().registerAll(ModEnchantmentInit.ENCHANTMENT_LIST.toArray(new Enchantment[0]));
 
 //		for (Enchantment enchantment : Enchantment.REGISTRY) {
-//			IdlFramework.Log("registered enchantments: %s", enchantment.getName());
+//			Idealland.Log("registered enchantments: %s", enchantment.getName());
 //		}
 	}
 

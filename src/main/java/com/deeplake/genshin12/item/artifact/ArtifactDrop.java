@@ -1,7 +1,7 @@
 package com.deeplake.genshin12.item.artifact;
 
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.util.EntityUtil;
@@ -19,7 +19,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.List;
-import java.util.Random;
 
 @Mod.EventBusSubscriber()
 public class ArtifactDrop {
@@ -49,7 +48,7 @@ public class ArtifactDrop {
         }
         catch (NullPointerException e)
         {
-            IdlFramework.LogWarning(e.toString());
+            Idealland.LogWarning(e.toString());
         }
 
     }

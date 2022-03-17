@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.command;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.Teleport;
 import net.minecraft.command.CommandBase;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class CommandDimTeleport extends CommandBase {
 
-    private final List<String> aliases = Lists.newArrayList(IdlFramework.MODID, "tp", "tpdim", "tpdimension", "chuansong");
+    private final List<String> aliases = Lists.newArrayList(Idealland.MODID, "tp", "tpdim", "tpdimension", "chuansong");
 
     @Override
     public String getName() {

@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item.skills.arknights;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.util.*;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -125,7 +125,7 @@ public class ItemSkillTrueSL extends ItemArknightsSkillBase {
             List<EntityLivingBase> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(basePos.addVector(-base_range, -base_range, -base_range), basePos.addVector(base_range, base_range, base_range)));
             for (EntityLivingBase living: entities
             ) {
-                if (EntityUtil.getAttitude(player, living) == EntityUtil.ATTITUDE.HATE)
+                if (EntityUtil.getAttitude(player, living) == EntityUtil.EnumAttitude.HATE)
                 {
                     boolean isForwad = player.getForward().dotProduct(living.getPositionVector().subtract(player.getPositionVector())) >= 0;
                     if (isForwad)
@@ -138,7 +138,7 @@ public class ItemSkillTrueSL extends ItemArknightsSkillBase {
                         }
                     }
                     else {
-                        IdlFramework.Log("%s is not in front");
+                        Idealland.Log("%s is not in front");
                     }
                 }
             }

@@ -1,11 +1,17 @@
 package com.deeplake.genshin12.util;
 
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModConfig;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.FoodStats;
+import net.minecraft.util.ResourceLocation;
 
 import java.util.List;
 
@@ -90,6 +96,40 @@ public class PlayerUtil {
         }
         else {
             stacks.add(livingBase.entityDropItem(stack, 1f));
+        }
+    }
+
+
+    public static void TryGrantAchv(EntityPlayer player, String key)
+    {
+        if (player instanceof EntityPlayerMP)
+        {
+            EntityPlayerMP playerMP = ((EntityPlayerMP) player);
+            Advancement advancement = playerMP.getServerWorld().getAdvancementManager().getAdvancement(new ResourceLocation(Idealland.MODID, key));
+
+            //String achvName = GetAchvName(key);
+            //playerMP.getStatFile().unlockAchievement(this.gameController.player, statbase, k);
+        }
+
+        //todo
+    }
+
+    public static void setCoolDown(EntityPlayer player, EnumHand hand)
+    {
+        player.getCooldownTracker().setCooldown(player.getHeldItem(hand).getItem(), CommonDef.TICK_PER_SECOND);
+    }
+
+    //not intended to decrease
+    public static boolean addFoodLevel(EntityPlayer player, int value)
+    {
+        FoodStats stats = player.getFoodStats();
+        if (stats.needFood())
+        {
+            stats.setFoodLevel(stats.getFoodLevel() + value);
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

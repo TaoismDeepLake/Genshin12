@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.events;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.*;
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EventsPlungedAttack {
     static final float XIAO_Q_PLUNGE_RANGE = 6f;
     static final float NORMAL_PLUNGE_RANGE_GREAT = 5f;

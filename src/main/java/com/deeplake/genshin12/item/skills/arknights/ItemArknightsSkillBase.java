@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item.skills.arknights;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.CommonFunctions;
 import com.deeplake.genshin12.util.IDLSkillNBT;
@@ -10,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -118,7 +117,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
                     dura = 0;
                     IDLSkillNBT.SetCasting(stack, false);
                     activateCoolDownArknights(stack);
-                    IdlFramework.Log("%s casting complete.", entityIn);
+                    Idealland.Log("%s casting complete.", entityIn);
                 }
 
                 IDLSkillNBT.SetDura(stack, dura);

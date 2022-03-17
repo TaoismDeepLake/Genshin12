@@ -1,14 +1,11 @@
 package com.deeplake.genshin12.item.consumables;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.item.IHasVariant;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -20,7 +17,7 @@ public class ItemStellaFortuna extends ItemParcel implements IHasVariant {
         super(name);
         if (count < 1)
         {
-            IdlFramework.LogWarning("Item %s has less than 1 types.", name);
+            Idealland.LogWarning("Item %s has less than 1 types.", name);
         }
         typeCount = count;
         this.setHasSubtypes(true);
@@ -35,7 +32,7 @@ public class ItemStellaFortuna extends ItemParcel implements IHasVariant {
     {
         for (int i = 0; i < typeCount; i++)
         {
-            IdlFramework.proxy.registerItemRenderer(this, i, IDLNBTDef.NAME_INVENTORY);
+            Idealland.proxy.registerItemRenderer(this, i, IDLNBTDef.NAME_INVENTORY);
         }
     }
 
@@ -73,7 +70,7 @@ public class ItemStellaFortuna extends ItemParcel implements IHasVariant {
         }
         catch (Exception e)
         {
-            IdlFramework.LogWarning(e.toString());
+            Idealland.LogWarning(e.toString());
             return false;
         }
 

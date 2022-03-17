@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.util;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.blocks.ModBlocks;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.item.ItemBase;
@@ -335,7 +335,7 @@ public class CommonFunctions {
     }
 
     public static void LogPlayerAction(EntityLivingBase living, String action){
-        IdlFramework.Log(String.format("%s(%s): %s",living.getName(), living.getUniqueID(), action));
+        Idealland.Log(String.format("%s(%s): %s",living.getName(), living.getUniqueID(), action));
     }
 
     public static boolean repairItem(ItemStack stack, int amount)
@@ -410,20 +410,20 @@ public class CommonFunctions {
             {
                 player.experience -= costLeft;
                 costLeft = 0;
-                IdlFramework.Log("A");
+                Idealland.Log("A");
             }
             else {
                 costLeft -= player.experience;
-                IdlFramework.Log("B");
+                Idealland.Log("B");
                 if (player.experienceLevel > 0)
                 {
                     player.experienceLevel--;
                     player.experience = XPForLevel(player.experienceLevel);
-                    IdlFramework.Log(String.format("player.experience = %d", XPForLevel(player.experienceLevel)));
+                    Idealland.Log(String.format("player.experience = %d", XPForLevel(player.experienceLevel)));
                 }
             }
         }
-        IdlFramework.Log(String.format("Lv= %s, xp = %s", player.experienceLevel, player.experience));
+        Idealland.Log(String.format("Lv= %s, xp = %s", player.experienceLevel, player.experience));
         return true;
     }
 
@@ -461,7 +461,7 @@ public class CommonFunctions {
             ((TileEntitySign) tileEntity1).signText[1] = new TextComponentString("R.I.P.");
 
             Calendar calendar = world.getCurrentDate();
-            IdlFramework.Log("calendar:", calendar);
+            Idealland.Log("calendar:", calendar);
             ((TileEntitySign) tileEntity1).signText[2] = new TextComponentString(
                     CommonDef.formatDate.format(calendar.getTime())
             );
@@ -495,7 +495,7 @@ public class CommonFunctions {
 
     public static ResourceLocation getResLoc(String key)
     {
-        return new ResourceLocation(IdlFramework.MODID, key);
+        return new ResourceLocation(Idealland.MODID, key);
     }
 
     public static Vec3d getVecFromBlockPos(BlockPos pos)

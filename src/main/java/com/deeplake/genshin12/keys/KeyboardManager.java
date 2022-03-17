@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.keys;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.item.ItemBase;
 import com.deeplake.genshin12.item.skills.ICastable;
 import com.deeplake.genshin12.network.NetworkHandler;
@@ -32,7 +32,7 @@ public class KeyboardManager {
                 ClientProxy.KEY_BINDINGS) {
             ClientRegistry.registerKeyBinding(key);
         }
-        IdlFramework.Log("Registered %d keys", ClientProxy.KEY_BINDINGS.size());
+        Idealland.Log("Registered %d keys", ClientProxy.KEY_BINDINGS.size());
     }
 
     @SideOnly(Side.CLIENT)
@@ -72,12 +72,12 @@ public class KeyboardManager {
         if (cast) {
             EntityPlayerSP player = mc.player;
 
-            IdlFramework.Log("pressed key cast :" + slot);
+            Idealland.Log("pressed key cast :" + slot);
 
             ItemStack item = player.getItemStackFromSlot(slot);
             if(item.isEmpty())
             {
-                IdlFramework.LogWarning("Trying to cast an empty item");
+                Idealland.LogWarning("Trying to cast an empty item");
             }
 
             if(item.getItem() instanceof ICastable)

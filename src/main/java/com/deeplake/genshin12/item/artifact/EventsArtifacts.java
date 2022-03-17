@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item.artifact;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
 
@@ -21,7 +21,7 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EventsArtifacts {
     @SubscribeEvent
     public static void onDig(PlayerEvent.BreakSpeed event)

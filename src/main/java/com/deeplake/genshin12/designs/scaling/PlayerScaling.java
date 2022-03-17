@@ -1,10 +1,9 @@
 package com.deeplake.genshin12.designs.scaling;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.designs.level.LevelSystem;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -14,10 +13,8 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class PlayerScaling {
 
     static HashSet<DimensionType> useAutoScaling = new HashSet<>();
@@ -81,7 +78,7 @@ public class PlayerScaling {
                     def.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, defModifierFromLevel, 1));
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {
-//                            IdlFramework.Log("ATK: Lv%d, modifier = %s", level, atkMod);
+//                            Idealland.Log("ATK: Lv%d, modifier = %s", level, atkMod);
 //                        }
                 }
 
@@ -93,7 +90,7 @@ public class PlayerScaling {
                     atk.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, atkMod, 1));
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {
-//                            IdlFramework.Log("ATK: Lv%d, modifier = %s", level, atkMod);
+//                            Idealland.Log("ATK: Lv%d, modifier = %s", level, atkMod);
 //                        }
                 }
 
@@ -109,13 +106,13 @@ public class PlayerScaling {
 
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {
-//                            IdlFramework.Log("HP: Lv%d, modifier = %s", level, hpMod);
+//                            Idealland.Log("HP: Lv%d, modifier = %s", level, hpMod);
 //                        }
                 }
 
             }catch (NullPointerException e)
             {
-                IdlFramework.LogWarning("%s, scaling NPE", player.getName());
+                Idealland.LogWarning("%s, scaling NPE", player.getName());
             }
 
         }

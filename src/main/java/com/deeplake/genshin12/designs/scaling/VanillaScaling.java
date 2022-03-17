@@ -1,24 +1,17 @@
 package com.deeplake.genshin12.designs.scaling;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.designs.level.LevelSystem;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
-import com.deeplake.genshin12.init.InitDimension;
 import com.deeplake.genshin12.init.ModConfig;
-import com.deeplake.genshin12.item.artifact.ArtifactUtil;
-import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldType;
-import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
@@ -27,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.*;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class VanillaScaling {
 
     static HashSet<DimensionType> useAutoScaling = new HashSet<>();
@@ -106,7 +99,7 @@ public class VanillaScaling {
                         atk.applyModifier(new AttributeModifier(LEVEL_SCALE, LEVEL_NAME, atkMod, 1));
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {
-//                            IdlFramework.Log("ATK: Lv%d, modifier = %s", level, atkMod);
+//                            Idealland.Log("ATK: Lv%d, modifier = %s", level, atkMod);
 //                        }
                     }
 
@@ -123,13 +116,13 @@ public class VanillaScaling {
 
 //                        if (ModConfig.DEBUG_CONF.DEBUG_MODE)
 //                        {
-//                            IdlFramework.Log("HP: Lv%d, modifier = %s", level, hpMod);
+//                            Idealland.Log("HP: Lv%d, modifier = %s", level, hpMod);
 //                        }
                     }
 
                 }catch (NullPointerException e)
                 {
-                    IdlFramework.LogWarning("%s, scaling NPE", livingBase.getName());
+                    Idealland.LogWarning("%s, scaling NPE", livingBase.getName());
                 }
             }
         }

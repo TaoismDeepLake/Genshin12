@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.entity.creatures.attribute;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.util.EnumElemental;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,14 +9,13 @@ import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.*;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class ModAttributes {
     static final double MIN = -9999999;
     static final double MAX = 999999f;
@@ -104,7 +103,7 @@ public class ModAttributes {
 
     static final String MID_NAME = ".attr.";
     static String getAttrName(String name){
-        return IdlFramework.MODID + MID_NAME + name;
+        return Idealland.MODID + MID_NAME + name;
     }
 
 

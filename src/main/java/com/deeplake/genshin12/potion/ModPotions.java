@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.potion;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.potion.buff.*;
 import com.deeplake.genshin12.util.EnumElemental;
@@ -80,7 +80,7 @@ public class ModPotions {
     public static void registerPotions(RegistryEvent.Register<Potion> evt)
     {
         evt.getRegistry().registerAll(INSTANCES.toArray(new Potion[0]));
-        IdlFramework.Log("registered %d potion", INSTANCES.size());
+        Idealland.Log("registered %d potion", INSTANCES.size());
 
         for (EnumElemental elemental :
                 EnumElemental.values()) {

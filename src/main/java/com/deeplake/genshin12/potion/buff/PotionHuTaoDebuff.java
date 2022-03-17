@@ -1,22 +1,17 @@
 package com.deeplake.genshin12.potion.buff;
 
-import com.deeplake.genshin12.IdlFramework;
-import com.deeplake.genshin12.designs.ElemTuple;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.*;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 import java.util.UUID;
 
-import static com.deeplake.genshin12.potion.ModPotions.UUID_HUTAO_BUFF;
 import static com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef.HU_TAO_TICK;
 
 public class PotionHuTaoDebuff extends BaseSimplePotion {
@@ -42,7 +37,7 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
         try {
             int dura = entityLivingBaseIn.getActivePotionEffect(this).getDuration();
 
-//            IdlFramework.Log("dura = %s", dura);
+//            Idealland.Log("dura = %s", dura);
             if (dura % PERIOD == getTargetTick)
             {
                 World world = entityLivingBaseIn.getEntityWorld();
@@ -52,7 +47,7 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
                     if (strUUID.isEmpty())
                     {
                         //no caster error
-                        IdlFramework.LogWarning("Error : hu tao buff cannot find caster record");
+                        Idealland.LogWarning("Error : hu tao buff cannot find caster record");
                         return;
                     }
 
@@ -74,7 +69,7 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
                     }
                     catch (IllegalArgumentException e)
                     {
-                        IdlFramework.LogWarning(e.toString());
+                        Idealland.LogWarning(e.toString());
                     }
                 }
 
@@ -82,7 +77,7 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
         }
         catch (NullPointerException e)
         {
-            IdlFramework.LogWarning("Error : hu tao buff cannot find itself");
+            Idealland.LogWarning("Error : hu tao buff cannot find itself");
         }
     }
 

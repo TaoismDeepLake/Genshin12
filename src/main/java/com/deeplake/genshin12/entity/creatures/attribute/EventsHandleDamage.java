@@ -1,19 +1,16 @@
 package com.deeplake.genshin12.entity.creatures.attribute;
 
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.designs.level.LevelSystem;
 import com.deeplake.genshin12.init.ModConfig;
-import com.deeplake.genshin12.util.EnumElemental;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EventsHandleDamage {
     @SubscribeEvent
     public static void onHurt(LivingHurtEvent event)

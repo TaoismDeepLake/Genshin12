@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.init;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -19,7 +19,7 @@ public class InitBiome {
     {
         biome.setRegistryName(name);
         ForgeRegistries.BIOMES.register(biome);
-        IdlFramework.LogWarning("Biome registered:%s", name);
+        Idealland.LogWarning("Biome registered:%s", name);
         BiomeDictionary.addTypes(biome, type);
         BiomeManager.addBiome(biomeType, new BiomeEntry(biome, 10));
         BiomeManager.addSpawnBiome(biome);

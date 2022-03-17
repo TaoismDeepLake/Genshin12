@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -15,7 +15,7 @@ public class ItemVariantBase extends ItemBase implements IHasVariant {
         super(name);
         if (count < 1)
         {
-            IdlFramework.LogWarning("Item %s has less than 1 types.", name);
+            Idealland.LogWarning("Item %s has less than 1 types.", name);
         }
         typeCount = count;
         this.setHasSubtypes(true);
@@ -26,7 +26,7 @@ public class ItemVariantBase extends ItemBase implements IHasVariant {
     {
         for (int i = 0; i < typeCount; i++)
         {
-            IdlFramework.proxy.registerItemRenderer(this, i, IDLNBTDef.NAME_INVENTORY);
+            Idealland.proxy.registerItemRenderer(this, i, IDLNBTDef.NAME_INVENTORY);
         }
     }
 

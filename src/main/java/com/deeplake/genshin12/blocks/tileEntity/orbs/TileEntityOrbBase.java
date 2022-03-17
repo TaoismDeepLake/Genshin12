@@ -24,7 +24,7 @@ public class TileEntityOrbBase extends TileEntity implements ITickable {
 	public void SetRange(int newRange){
 		range = newRange;
 		Vec3d posInFloat = GetPosInFloat();
-		//IdlFramework.Log(String.format("SetRange:(%s,%s,%s) +- %s", posInFloat.x, posInFloat.y, posInFloat.z, newRange));
+		//Idealland.Log(String.format("SetRange:(%s,%s,%s) +- %s", posInFloat.x, posInFloat.y, posInFloat.z, newRange));
 		aabb = new AxisAlignedBB(posInFloat.x - range, posInFloat.y - range, posInFloat.z - range, posInFloat.x + range, posInFloat.y + range, posInFloat.z + range);
 
 	}

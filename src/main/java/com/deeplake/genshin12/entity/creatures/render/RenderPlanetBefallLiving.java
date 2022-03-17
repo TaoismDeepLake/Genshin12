@@ -1,21 +1,18 @@
 package com.deeplake.genshin12.entity.creatures.render;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.EntityPlanetBefall;
 import com.deeplake.genshin12.entity.creatures.model.ModelLubanLock;
 import com.deeplake.genshin12.init.ModConfig;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
 
 public class RenderPlanetBefallLiving<T extends EntityPlanetBefall> extends RenderLiving<T> {
-    private static final ResourceLocation DEFAULT_RES_LOC = new ResourceLocation(IdlFramework.MODID,"textures/entity/zhongli/luban_lock.png");
+    private static final ResourceLocation DEFAULT_RES_LOC = new ResourceLocation(Idealland.MODID,"textures/entity/zhongli/luban_lock.png");
 
     public RenderPlanetBefallLiving(RenderManager rendermanagerIn) {
         super(rendermanagerIn, new ModelLubanLock(), 3f);

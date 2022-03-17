@@ -142,7 +142,7 @@ public class EntityMoroonUnitBase extends EntityModUnit {
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
-        //IdlFramework.Log("dropLoot Called");
+        //Idealland.Log("dropLoot Called");
 //        dropItem(ModItems.MOR_FRAG, 2 + rand.nextInt(2 + lootingModifier));
 //        if (rand.nextFloat() < 0.01f * getLevel())
 //        {

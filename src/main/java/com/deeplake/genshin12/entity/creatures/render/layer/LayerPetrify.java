@@ -1,38 +1,27 @@
 package com.deeplake.genshin12.entity.creatures.render.layer;
 
-import com.deeplake.genshin12.IdlFramework;
-import com.deeplake.genshin12.init.ModConfig;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.potion.ModPotions;
-import com.deeplake.genshin12.util.EntityUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBox;
-import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Random;
 
 @SideOnly(Side.CLIENT)
 public class LayerPetrify implements LayerRenderer<EntityLivingBase> {
     private final RenderLivingBase<?> renderer;
-    public static ResourceLocation OVERLAY = new ResourceLocation(IdlFramework.MODID,  "textures/misc/test_petry.png");
-    public static ResourceLocation OVERLAY_ROCK = new ResourceLocation(IdlFramework.MODID,"textures/blocks/petrify.png");
-    public static ResourceLocation OVERLAY_LIGHT = new ResourceLocation(IdlFramework.MODID,"textures/blocks/petrify_light.png");
+    public static ResourceLocation OVERLAY = new ResourceLocation(Idealland.MODID,  "textures/misc/test_petry.png");
+    public static ResourceLocation OVERLAY_ROCK = new ResourceLocation(Idealland.MODID,"textures/blocks/petrify.png");
+    public static ResourceLocation OVERLAY_LIGHT = new ResourceLocation(Idealland.MODID,"textures/blocks/petrify_light.png");
 
     public LayerPetrify(RenderLivingBase<?> rendererIn)
     {

@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 import java.util.List;
 
 import static com.deeplake.genshin12.util.CommonDef.TICK_PER_TURN;
-import static com.deeplake.genshin12.util.IDLSkillNBT.getLevel;
 
 public class ItemSkillAttackBoost extends ItemSkillBase {
     public ItemSkillAttackBoost(String name) {
@@ -37,7 +36,7 @@ public class ItemSkillAttackBoost extends ItemSkillBase {
                 List<EntityLivingBase> entities = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(basePos.addVector(-base_range, -base_range, -base_range), basePos.addVector(base_range, base_range, base_range)));
                 for (EntityLivingBase living: entities
                 ) {
-                    if (EntityUtil.getAttitude(playerIn, living) == EntityUtil.ATTITUDE.FRIEND)
+                    if (EntityUtil.getAttitude(playerIn, living) == EntityUtil.EnumAttitude.FRIEND)
                     {
                         living.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 3*TICK_PER_TURN, getLevel(stack) - 1));
                     }

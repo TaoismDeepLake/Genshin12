@@ -1,7 +1,7 @@
 package com.deeplake.genshin12.events;
 
 import com.deeplake.genshin12.ILogNBT;
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.item.IWIP;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.IDLSkillNBT;
@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef.WIP_DESC;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EventsToolTip {
 
     @SideOnly(Side.CLIENT)

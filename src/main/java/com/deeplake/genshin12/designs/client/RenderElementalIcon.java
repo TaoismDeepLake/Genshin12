@@ -1,10 +1,9 @@
 package com.deeplake.genshin12.designs.client;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.potion.buff.BaseSimplePotion;
-import com.google.common.base.Enums;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -18,13 +17,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
-import scala.xml.dtd.impl.Base;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = Idealland.MODID, value = Side.CLIENT)
 @SideOnly(Side.CLIENT)
 public class RenderElementalIcon {
 
@@ -32,7 +29,7 @@ public class RenderElementalIcon {
 
     static ResourceLocation location(String name)
     {
-        return new ResourceLocation(IdlFramework.MODID, "textures/items/basic/" + name + ".png");
+        return new ResourceLocation(Idealland.MODID, "textures/items/basic/" + name + ".png");
     }
 
     public static void processElemental(BaseSimplePotion potion)

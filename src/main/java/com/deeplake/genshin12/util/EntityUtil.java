@@ -1,10 +1,11 @@
 package com.deeplake.genshin12.util;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.creatures.EntityModUnit;
 import com.deeplake.genshin12.meta.MetaUtil;
 import com.deeplake.genshin12.potion.buff.BaseSimplePotion;
 import com.google.common.base.Predicate;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -39,7 +40,7 @@ import static com.deeplake.genshin12.util.CommonDef.TICK_PER_SECOND;
 import static net.minecraft.entity.SharedMonsterAttributes.*;
 import static net.minecraftforge.fml.common.gameevent.TickEvent.Type.WORLD;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EntityUtil {
     public static void simpleKnockBack(float power, EntityLivingBase source, EntityLivingBase target)
     {
@@ -75,7 +76,7 @@ public class EntityUtil {
     {
         if (livingBase == null || potion == null)
         {
-            IdlFramework.LogWarning("Trying to apply illegal potion");
+            Idealland.LogWarning("Trying to apply illegal potion");
             return false;
         }
         livingBase.addPotionEffect(new PotionEffect(potion, (int) (seconds * TICK_PER_SECOND) + 1, level));
@@ -129,7 +130,7 @@ public class EntityUtil {
             return false;
         }
         String modid = er.getContainer().getModId();
-        //IdlFramework.Log("Atk ER.modid is %s, name is %s", modid, er.getRegistryName());
+        //Idealland.Log("Atk ER.modid is %s, name is %s", modid, er.getRegistryName());
 
         return !modid.equals("minecraft");
     }
@@ -264,59 +265,59 @@ public class EntityUtil {
         }
     }
 
-    public static Faction faction(EntityLivingBase creature)
+    public static EnumFaction faction(EntityLivingBase creature)
     {
         if (isMoroonTeam(creature))
         {
-            return Faction.MOROON;
+            return EnumFaction.MOROON;
         } else if (isIdeallandTeam(creature))
         {
-            return Faction.IDEALLAND;
+            return EnumFaction.IDEALLAND;
         }else if (creature instanceof EntityZombie)
         {
-            return Faction.MOB_VAN_ZOMBIE;
+            return EnumFaction.MOB_VAN_ZOMBIE;
         }
         else if (creature instanceof IMob)
         {
-            return Faction.MOB_VANILLA;
+            return EnumFaction.MOB_VANILLA;
         }else if (creature instanceof EntityPlayer)
         {
-            return Faction.PLAYER;
+            return EnumFaction.PLAYER;
         }else
         {
-            return Faction.CRITTER;
+            return EnumFaction.CRITTER;
         }
     }
 
-    public static ATTITUDE getAttitude(EntityLivingBase subject, EntityLivingBase object)
+    public static EnumAttitude getAttitude(EntityLivingBase subject, EntityLivingBase object)
     {
         if (subject == null || object == null)
         {
-            return ATTITUDE.IGNORE;
+            return EnumAttitude.IGNORE;
         }
 
         if (subject.isOnSameTeam(object))
         {
-            return ATTITUDE.FRIEND;
+            return EnumAttitude.FRIEND;
         }
         return getAttitude(faction(subject), faction(object));
     }
 
-    public static ATTITUDE getAttitude(Faction subject, EntityLivingBase object)
+    public static EnumAttitude getAttitude(EnumFaction subject, EntityLivingBase object)
     {
         return getAttitude(subject, faction(object));
     }
 
-    public static ATTITUDE getAttitude(Faction subject, Faction object)
+    public static EnumAttitude getAttitude(EnumFaction subject, EnumFaction object)
     {
         if (subject == object)
         {
-            return ATTITUDE.FRIEND;
+            return EnumAttitude.FRIEND;
         }
 
-        if (subject == Faction.CRITTER || object == Faction.CRITTER)
+        if (subject == EnumFaction.CRITTER || object == EnumFaction.CRITTER)
         {
-            return ATTITUDE.IGNORE;
+            return EnumAttitude.IGNORE;
         }
 
         switch (subject)
@@ -326,25 +327,25 @@ public class EntityUtil {
                 switch (object)
                 {
                     case IDEALLAND:
-                        return ATTITUDE.FRIEND;
+                        return EnumAttitude.FRIEND;
                     case MOB_VANILLA:
                     case MOB_VAN_ZOMBIE:
                     case MOROON:
-                        return ATTITUDE.HATE;
+                        return EnumAttitude.HATE;
                     default:
-                        return ATTITUDE.IGNORE;
+                        return EnumAttitude.IGNORE;
                 }
             case MOB_VANILLA:
                 switch (object)
                 {
                     case IDEALLAND:
                     case PLAYER:
-                        return ATTITUDE.HATE;
+                        return EnumAttitude.HATE;
                     case MOB_VAN_ZOMBIE:
-                        return ATTITUDE.FRIEND;
+                        return EnumAttitude.FRIEND;
 
                     default:
-                        return ATTITUDE.IGNORE;
+                        return EnumAttitude.IGNORE;
                 }
 
             case MOB_VAN_ZOMBIE:
@@ -352,13 +353,13 @@ public class EntityUtil {
                 {
                     case IDEALLAND:
                     case PLAYER:
-                        return ATTITUDE.HATE;
+                        return EnumAttitude.HATE;
 
                     case MOB_VANILLA:
-                        return ATTITUDE.FRIEND;
+                        return EnumAttitude.FRIEND;
 
                     default:
-                        return ATTITUDE.IGNORE;
+                        return EnumAttitude.IGNORE;
                 }
 
             case MOROON:
@@ -367,13 +368,13 @@ public class EntityUtil {
                     case IDEALLAND:
                     case MOB_VAN_ZOMBIE:
                     case PLAYER:
-                        return ATTITUDE.HATE;
+                        return EnumAttitude.HATE;
 
                     default:
-                        return ATTITUDE.IGNORE;
+                        return EnumAttitude.IGNORE;
                 }
         }
-        return ATTITUDE.IGNORE;
+        return EnumAttitude.IGNORE;
     }
 
     public static Vec3d GetRandomAround(EntityLivingBase entity, float radius)
@@ -394,7 +395,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.FRIEND);
+            return  p_apply_1_ != null && (getAttitude(EnumFaction.IDEALLAND, p_apply_1_)== EnumAttitude.FRIEND);
         }
     };
 
@@ -402,7 +403,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable();
+            return  p_apply_1_ != null && (getAttitude(EnumFaction.IDEALLAND, p_apply_1_)== EnumAttitude.HATE) && (p_apply_1_).attackable();
         }
     };
 
@@ -410,7 +411,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable() && !p_apply_1_.onGround;
+            return  p_apply_1_ != null && (getAttitude(EnumFaction.IDEALLAND, p_apply_1_)== EnumAttitude.HATE) && (p_apply_1_).attackable() && !p_apply_1_.onGround;
         }
     };
 
@@ -418,7 +419,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  p_apply_1_ != null && (getAttitude(Faction.MOROON, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable();
+            return  p_apply_1_ != null && (getAttitude(EnumFaction.MOROON, p_apply_1_)== EnumAttitude.HATE) && (p_apply_1_).attackable();
         }
     };
 
@@ -526,7 +527,7 @@ public class EntityUtil {
             modifier = attribute.getModifier(uuid);
         }
 
-        //IdlFramework.Log("Value:%s: %.2f->%.2f", modifier.getName(), valueBefore, valueAfter);
+        //Idealland.Log("Value:%s: %.2f->%.2f", modifier.getName(), valueBefore, valueAfter);
         return true;
     }
 
@@ -560,20 +561,51 @@ public class EntityUtil {
             modifier = attribute.getModifier(uuid);
         }
 
-        //IdlFramework.Log("Value:%s: %.2f->%.2f", modifier.getName(), valueBefore, valueAfter);
+        //Idealland.Log("Value:%s: %.2f->%.2f", modifier.getName(), valueBefore, valueAfter);
         return true;
     }
 
-    public enum Faction{
-        PLAYER,
-        IDEALLAND,
-        MOB_VANILLA,
-        MOB_VAN_ZOMBIE,
-        MOROON,
-        CRITTER,
+    public enum EnumFaction {
+        PLAYER((byte) 0),
+        IDEALLAND((byte) 1, 1.0f, 1.0f, 0.7f),
+        MOB_VANILLA((byte) 2, 1.0f, 0.5f, 0.5f),
+        MOB_VAN_ZOMBIE((byte) 3, 0.4f, 1f, 0.4f),
+        MOROON((byte) 4, 0.9f, 0.3f, 0.8f),
+        CRITTER((byte) 5);
+
+        public final byte index;
+        float r = 1.0f, g = 1.0f, b = 1.0f;
+
+        EnumFaction(byte index, float r, float g, float b) {
+            this.index = index;
+            this.r = r;
+            this.g = g;
+            this.b = b;
+        }
+
+        EnumFaction(byte index) {
+            this.index = index;
+        }
+
+        public static EnumFaction fromIndex(byte index) {
+            for (EnumFaction faction :
+                    EnumFaction.values()) {
+                if (faction.index == index) {
+                    return faction;
+                }
+            }
+
+            Idealland.LogWarning("Trying to parse non-existing faction : %s", index);
+            return CRITTER;
+        }
+
+        public void applyColor() {
+            GlStateManager.color(r, g, b);
+        }
     }
 
-    public enum ATTITUDE{
+
+    public enum EnumAttitude {
         HATE,
         IGNORE,
         FRIEND
@@ -617,7 +649,7 @@ public class EntityUtil {
     //Note: this returns 0 if no buff.
     public static int getBuffLevelIDL(EntityLivingBase livingBase, Potion potion) {
         if (livingBase == null || potion == null) {
-            IdlFramework.LogWarning("TRYING_TO_CHECK_ILLEGAL_POTION");
+            Idealland.LogWarning("TRYING_TO_CHECK_ILLEGAL_POTION");
             return 0;
         }
         if (livingBase.getEntityWorld().isRemote && potion instanceof BaseSimplePotion)

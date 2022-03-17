@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.blocks.builder;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.blocks.BlockBase;
 import com.deeplake.genshin12.blocks.tileEntity.builder.TileEntityBuilderBase;
 import com.deeplake.genshin12.init.ModCreativeTab;
@@ -35,7 +35,7 @@ public class BlockBuilderBase extends BlockBase implements ITileEntityProvider {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-            IdlFramework.Log("Instantiate failed");
+            Idealland.Log("Instantiate failed");
         }
         return t;
     }

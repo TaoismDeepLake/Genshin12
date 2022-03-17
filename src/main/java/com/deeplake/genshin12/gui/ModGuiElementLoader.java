@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.gui;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.gui.expOne.ContainerDemo;
 import com.deeplake.genshin12.gui.expOne.GuiContainerDemo;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +19,7 @@ public class ModGuiElementLoader implements IGuiHandler {
 
     public ModGuiElementLoader()
     {
-        NetworkRegistry.INSTANCE.registerGuiHandler(IdlFramework.instance, this);
+        NetworkRegistry.INSTANCE.registerGuiHandler(Idealland.instance, this);
     }
 
     @Nullable

@@ -1,7 +1,5 @@
 package com.deeplake.genshin12.item;
 
-import com.deeplake.genshin12.IdlFramework;
-import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.IDLSkillNBT;
 import net.minecraft.item.ItemStack;
 

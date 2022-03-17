@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item.artifact;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.EnumModRarity;
@@ -216,7 +216,7 @@ public class ArtifactUtil {
         }
         catch (ArrayIndexOutOfBoundsException e)
         {
-            IdlFramework.LogWarning(e.toString());
+            Idealland.LogWarning(e.toString());
         }
 
         ItemStack result = old.copy();

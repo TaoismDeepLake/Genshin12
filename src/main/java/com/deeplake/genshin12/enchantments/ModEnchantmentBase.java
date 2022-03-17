@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.enchantments;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -126,7 +126,7 @@ public class ModEnchantmentBase extends Enchantment {
     public ModEnchantmentBase(String name, Rarity rarityIn, EnumEnchantmentType typeIn, EntityEquipmentSlot[] slots)
     {
         super(rarityIn, typeIn, slots);
-        setRegistryName(IdlFramework.MODID, name);
+        setRegistryName(Idealland.MODID, name);
         setName(name);
         ModEnchantmentInit.ENCHANTMENT_LIST.add(this);
         applicableEquipmentTypesOpen = slots;

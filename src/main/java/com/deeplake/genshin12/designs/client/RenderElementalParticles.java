@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.designs.client;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.potion.buff.BaseSimplePotion;
 import com.deeplake.genshin12.util.EntityUtil;
@@ -12,11 +12,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.HashSet;
-
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = Idealland.MODID, value = Side.CLIENT)
 public class RenderElementalParticles {
 
     @SideOnly(Side.CLIENT)

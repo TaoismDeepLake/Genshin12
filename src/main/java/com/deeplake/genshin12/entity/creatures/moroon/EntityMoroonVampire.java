@@ -106,7 +106,7 @@ public class EntityMoroonVampire extends EntityMoroonUnitBase {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //IdlFramework.Log("Tick");
+        //Idealland.Log("Tick");
         if (!this.world.isRemote)
         {
             if (world.getWorldTime() % TICK_PER_SECOND == 0) {

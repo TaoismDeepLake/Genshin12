@@ -38,7 +38,7 @@ public class ItemSkillThunderFall extends ItemSkillBase {
         //CrowFlight.Log(String.format("DMG:%s=%f",evt.getEntityLiving(), evt.getAmount()));
         if (evt.getSource() == FALL && hurtOne instanceof EntityPlayer)
         {
-            //IdlFramework.Log("player Falling");
+            //Idealland.Log("player Falling");
             EntityPlayer player = (EntityPlayer)hurtOne;
             ItemStack stack = AttemptPlayerHand(player, EnumHand.MAIN_HAND);
             if (stack == ItemStack.EMPTY)

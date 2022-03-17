@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.network;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.network.protocols.PacketCast;
 import com.deeplake.genshin12.network.protocols.PacketMouseFire;
 import net.minecraft.util.ResourceLocation;
@@ -10,9 +10,9 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class NetworkHandler {
-    public static final ResourceLocation MSG_RESOURCE = new ResourceLocation(IdlFramework.MODID, "msg");
+    public static final ResourceLocation MSG_RESOURCE = new ResourceLocation(Idealland.MODID, "msg");
 
-    public static final SimpleNetworkWrapper channel = NetworkRegistry.INSTANCE.newSimpleChannel(IdlFramework.MODID);
+    public static final SimpleNetworkWrapper channel = NetworkRegistry.INSTANCE.newSimpleChannel(Idealland.MODID);
 
     static int id = 0;
     public static void init()

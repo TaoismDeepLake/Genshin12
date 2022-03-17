@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item.food;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.util.CommonFunctions;
@@ -72,7 +72,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
     @Override
     public void registerModels()
     {
-        IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
+        Idealland.proxy.registerItemRenderer(this, 0, "inventory");
     }
 
     public ItemFoodBase(String name, int amount, float saturation, boolean isWolfFood) {
@@ -88,7 +88,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
 
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
-        //IdlFramework.Log("%s:on Food Eaten", getUnlocalizedName());
+        //Idealland.Log("%s:on Food Eaten", getUnlocalizedName());
         super.onFoodEaten(stack, worldIn, player);
         if (addXP > 0)
         {

@@ -1,7 +1,7 @@
 package com.deeplake.genshin12.item.artifact;
 
 import com.deeplake.genshin12.ILogNBT;
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.init.ModCreativeTab;
@@ -10,7 +10,6 @@ import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetBase;
 import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.IDLSkillNBT;
-import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
@@ -20,7 +19,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.IItemPropertyGetter;
@@ -405,7 +403,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
             }
             catch (ArrayIndexOutOfBoundsException e)
             {
-                IdlFramework.LogWarning("Wrong rarity for artifact: %s", rarity);
+                Idealland.LogWarning("Wrong rarity for artifact: %s", rarity);
             }
 
             return (int) (base + getTotalXP(rarity, level) * 0.8f + IDLSkillNBT.getXP(stack));
@@ -423,7 +421,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
                 }
                 catch (ArrayIndexOutOfBoundsException e)
                 {
-                    IdlFramework.LogWarning(e.toString());
+                    Idealland.LogWarning(e.toString());
                     return -1;
                 }
             }
@@ -452,7 +450,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
             }
             catch (ArrayIndexOutOfBoundsException e)
             {
-                IdlFramework.LogWarning("Wrong level %s for rarity %s", level, rarity);
+                Idealland.LogWarning("Wrong level %s for rarity %s", level, rarity);
             }
         }
         return total;
@@ -473,7 +471,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
                 case 5:
                 return exp_artifact_5;
             default:
-                IdlFramework.LogWarning("unexpected rarity %s", rarity);
+                Idealland.LogWarning("unexpected rarity %s", rarity);
                 return exp_artifact_5;
         }
     }

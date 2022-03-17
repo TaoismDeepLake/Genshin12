@@ -1,22 +1,15 @@
 package com.deeplake.genshin12.init;
 
-import com.deeplake.genshin12.IdlFramework;
-import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.recipe.special.ArtifactEnhance;
 import com.deeplake.genshin12.recipe.special.RecycleArtifact;
-import com.deeplake.genshin12.recipe.special.SkillUpgrade;
 import com.deeplake.genshin12.util.Reference;
 import com.google.common.collect.Sets;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryModifiable;
 
 import java.util.Set;
 
@@ -47,14 +40,14 @@ public class ModRecipes {
 //					if (ItemStack.areItemsEqual(recipe.getRecipeOutput(), stack))
 //					{
 //						locationSet.add(recipe.getRegistryName());
-//						IdlFramework.LogWarning("added %s", recipe.getRegistryName());
+//						Idealland.LogWarning("added %s", recipe.getRegistryName());
 //					}
 //				}
 //		);
 //
-//		IdlFramework.LogWarning("Go remove");
+//		Idealland.LogWarning("Go remove");
 //		locationSet.forEach(rl -> {
-//		    IdlFramework.LogWarning("Removed");
+//		    Idealland.LogWarning("Removed");
 //            ((IForgeRegistryModifiable<IRecipe>)r).remove(rl);
 //        });
 	}

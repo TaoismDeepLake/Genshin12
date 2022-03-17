@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.util;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import net.minecraft.potion.Potion;
 
 public enum EnumElemental {
@@ -29,7 +29,7 @@ public enum EnumElemental {
             this.potion = potion;
         }
         else {
-            IdlFramework.LogWarning("repeatly setting elemental's potion. ignored");
+            Idealland.LogWarning("repeatly setting elemental's potion. ignored");
         }
     }
 

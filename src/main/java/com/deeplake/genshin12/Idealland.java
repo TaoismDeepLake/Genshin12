@@ -30,8 +30,8 @@ import static com.deeplake.genshin12.init.RegistryHandler.initRegistries;
 
 //To let the player be a traveling god who plays yin-yang magic.
 
-@Mod(modid = IdlFramework.MODID, name = IdlFramework.NAME, version = IdlFramework.VERSION)//dependencies = "required-after:Forge@[14.23.5.2705,)"
-public class IdlFramework {
+@Mod(modid = Idealland.MODID, name = Idealland.NAME, version = Idealland.VERSION)//dependencies = "required-after:Forge@[14.23.5.2705,)"
+public class Idealland {
     public static final String MODID = "genshin12";
     public static final String NAME = "Genshin 1.12.2";
     public static final String VERSION = "0.4.4";
@@ -41,7 +41,7 @@ public class IdlFramework {
     public static final boolean SHOW_WARN = true;
 
     @Mod.Instance
-    public static IdlFramework instance;
+    public static Idealland instance;
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static ProxyBase proxy;
@@ -108,10 +108,10 @@ public class IdlFramework {
     private void TrashTalking() {
         if (MetaUtil.isIDLLoaded)
         {
-            IdlFramework.Log("[Idealland Framework] Bow to Idealland.");
+            Idealland.Log("[Idealland Framework] Bow to Idealland.");
         }
         else {
-            IdlFramework.Log("[Idealland Framework] Made with Idealland Framework.");
+            Idealland.Log("[Idealland Framework] Made with Idealland Framework.");
         }
     }
 

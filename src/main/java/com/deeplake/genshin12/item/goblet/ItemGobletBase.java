@@ -122,7 +122,7 @@ public class ItemGobletBase extends ItemBase {
                 SetCacheEXP(stack, playerXP);
                 //stack.writeToNBT()
             }
-            //IdlFramework.Log(playerXP + " " + getUnlocalizedName(stack));
+            //Idealland.Log(playerXP + " " + getUnlocalizedName(stack));
         }
     }
 

@@ -37,7 +37,7 @@ public class ModWorldGenNew implements IWorldGenerator {
 				break;
 			case 0:
 				//overworld
-				//IdlFramework.Log("world gen running");
+				//Idealland.Log("world gen running");
 
 				//runGenOre(testGen2, world, random, chunkX, chunkZ, 32, 16, 18);
 

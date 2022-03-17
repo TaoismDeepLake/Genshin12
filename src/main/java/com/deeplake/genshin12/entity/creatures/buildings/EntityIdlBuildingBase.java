@@ -2,8 +2,8 @@ package com.deeplake.genshin12.entity.creatures.buildings;
 
 import com.deeplake.genshin12.blocks.tileEntity.builder.builderAction.BuilderActionBase;
 import com.deeplake.genshin12.entity.BuildingCore;
-import com.deeplake.genshin12.entity.creatures.EntityModUnit;
 
+import com.deeplake.genshin12.entity.creatures.EntityModUnit;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;

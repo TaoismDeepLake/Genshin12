@@ -1,8 +1,7 @@
 package com.deeplake.genshin12.entity.creatures.attribute;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModConfig;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -11,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Random;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EventsAttrCrit {
 
     @SubscribeEvent
@@ -57,7 +56,7 @@ public class EventsAttrCrit {
         event.setDamageModifier(modifier);
         if (ModConfig.DEBUG_CONF.DEBUG_MODE)
         {
-            IdlFramework.Log("Critical. %s to %s, damage = %s x 100%", event.getEntityPlayer(), event.getTarget(), modifier);
+            Idealland.Log("Critical. %s to %s, damage = %s x 100%", event.getEntityPlayer(), event.getTarget(), modifier);
         }
     }
 

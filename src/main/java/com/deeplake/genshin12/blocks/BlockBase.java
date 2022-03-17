@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.blocks;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.util.IHasModel;
@@ -45,6 +45,6 @@ public class BlockBase extends Block implements IHasModel
 	
 	@Override
 	public void registerModels() {
-		IdlFramework.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		Idealland.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 }

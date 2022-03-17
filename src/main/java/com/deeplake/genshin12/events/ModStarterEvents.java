@@ -14,7 +14,7 @@ public class ModStarterEvents {
 	  @SubscribeEvent
 	  public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		  EntityPlayer player = event.player;
-		  //IdlFramework.Log(getPlyrIdlTagSafe(player).toString());
+		  //Idealland.Log(getPlyrIdlTagSafe(player).toString());
 		  int lastStarterVer = getPlayerIdeallandIntSafe(player, STARTER_KIT_VERSION_TAG);
 		  if(lastStarterVer < CUR_STARTER_KIT_VERSION) {
 //			  IDLNBT.setPlayerIdeallandTagSafe(player, STARTER_KIT_VERSION_TAG, CUR_STARTER_KIT_VERSION);
@@ -25,7 +25,7 @@ public class ModStarterEvents {
 //			  if (player instanceof EntityPlayerMP) {
 //				  CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP)player, "genshin12.msg.starter_kit_given", TextFormatting.AQUA);
 //			  }
-//			  IdlFramework.Log(String.format("Given starter items to player %s, ver %d", player.getDisplayNameString(), CUR_STARTER_KIT_VERSION));
+//			  Idealland.Log(String.format("Given starter items to player %s, ver %d", player.getDisplayNameString(), CUR_STARTER_KIT_VERSION));
 		  }
 	  }
 	

@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.proxy;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.designs.client.RenderCreatureLevelNumber;
 import com.deeplake.genshin12.designs.client.RenderElementalIcon;
 import com.deeplake.genshin12.entity.creatures.render.layer.LayerFrozen;
@@ -20,7 +20,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.client.settings.KeyModifier;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import org.lwjgl.input.Keyboard;
 
@@ -52,7 +51,7 @@ public class ClientProxy extends ProxyBase {
 
 	public void registerItemRenderer(Item item, int meta, String fileName, String id)
 	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(IdlFramework.MODID, fileName), id));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(Idealland.MODID, fileName), id));
 	}
 
 	@Override

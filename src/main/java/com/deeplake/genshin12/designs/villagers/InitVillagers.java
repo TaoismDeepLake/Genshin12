@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.designs.villagers;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.designs.villagers.merchantTrade.VTradeArtifacts;
 import com.deeplake.genshin12.designs.villagers.merchantTrade.VTradeItemToItem;
 import com.deeplake.genshin12.item.ModItems;
@@ -8,10 +8,8 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.PotionTypes;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.event.RegistryEvent;
@@ -26,7 +24,7 @@ import java.util.List;
 import static com.deeplake.genshin12.designs.villagers.merchantTrade.VTradeItemToItem.PRICE_ONE;
 import static com.deeplake.genshin12.item.artifact.ArtifactUtil.MAX_SLOT_INDEX;
 
-@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class InitVillagers {
 
     public static final List<VillagerRegistry.VillagerProfession> PROFESSION_LIST = new ArrayList<>();
@@ -177,7 +175,7 @@ public class InitVillagers {
     {
         if (countPerGoldIngot > 7)
         {
-            IdlFramework.LogWarning("An villager trading is not satisfying: 1 ingot for %d %s, 1 block will cut down to 64", countPerGoldIngot, stack.getDisplayName());
+            Idealland.LogWarning("An villager trading is not satisfying: 1 ingot for %d %s, 1 block will cut down to 64", countPerGoldIngot, stack.getDisplayName());
         }
         career.addTrade(1, new VTradeItemToItem(VTradeItemToItem.CostType.GOLD_INGOT, stack, countPerGoldIngot));
         career.addTrade(2, new VTradeItemToItem(new ItemStack(Blocks.GOLD_BLOCK), PRICE_ONE, stack, new EntityVillager.PriceInfo(countPerGoldIngot * 9, countPerGoldIngot * 9)));
@@ -187,7 +185,7 @@ public class InitVillagers {
     {
         if (countPerGoldNugget > 7)
         {
-            IdlFramework.LogWarning("An villager trading is not satisfying: 1 nugget for %d %s, 1 ingot will cut down to 64", countPerGoldNugget, stack.getDisplayName());
+            Idealland.LogWarning("An villager trading is not satisfying: 1 nugget for %d %s, 1 ingot will cut down to 64", countPerGoldNugget, stack.getDisplayName());
         }
         career.addTrade(1, new VTradeItemToItem(VTradeItemToItem.CostType.GOLD_NUGGET, stack, countPerGoldNugget));
         career.addTrade(2, new VTradeItemToItem(VTradeItemToItem.CostType.GOLD_INGOT, PRICE_ONE, stack, new EntityVillager.PriceInfo(countPerGoldNugget * 9, countPerGoldNugget * 9)));

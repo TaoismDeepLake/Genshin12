@@ -1,6 +1,5 @@
 package com.deeplake.genshin12.item.consumables;
 
-import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinBurstBase;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinSkillBase;

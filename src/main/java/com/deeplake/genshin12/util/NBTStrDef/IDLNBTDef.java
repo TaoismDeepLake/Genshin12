@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.util.NBTStrDef;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 
 public class IDLNBTDef {
 	//GENERAL:
@@ -214,7 +214,7 @@ public class IDLNBTDef {
 	// public static final String INIT_DONE = "inited";
 
 	//prefix
-	public static final String MSG_PREFIX = IdlFramework.MODID + ".msg.";
+	public static final String MSG_PREFIX = Idealland.MODID + ".msg.";
 
 	public static final String ARTIFACT_KEY = "idealland.item.artifact.desc";
 
@@ -281,6 +281,8 @@ public class IDLNBTDef {
 
 	public static final String HU_TAO_TICK = "hutao_tick";
 	public static final String HU_TAO_CASTER = "hutao_caster";
+
+	public static final String KEY_FACTION = "faction";
 
 	public enum SPAWNER_TYPE{
 		NONE,

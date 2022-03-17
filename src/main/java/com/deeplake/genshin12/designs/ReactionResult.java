@@ -1,6 +1,5 @@
 package com.deeplake.genshin12.designs;
 
-import com.deeplake.genshin12.IdlFramework;
 import com.deeplake.genshin12.util.EnumElemental;
 
 public class ReactionResult {

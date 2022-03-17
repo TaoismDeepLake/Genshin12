@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.item.skills;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.item.ItemAdaptingBase;
 import com.deeplake.genshin12.util.CommonFunctions;
@@ -27,7 +27,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-import static com.deeplake.genshin12.util.CommonDef.G_SKY;
 import static com.deeplake.genshin12.util.CommonDef.TICK_PER_SECOND;
 import static com.deeplake.genshin12.util.CommonFunctions.*;
 import static com.deeplake.genshin12.util.EntityUtil.findSlot;
@@ -341,7 +340,7 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
                 case HEAD:
                     break;
                 default:
-                    IdlFramework.LogWarning("Cast error", new IllegalStateException("Unexpected value: " + slot)); ;
+                    Idealland.LogWarning("Cast error", new IllegalStateException("Unexpected value: " + slot)); ;
             }
             return isStackReady((EntityPlayer) livingBase, stack);
         }
@@ -381,7 +380,7 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
                             CommonFunctions.SafeSendMsgToPlayer(TextFormatting.RED, (EntityPlayer) caster, MessageDef.NOT_CASTABLE_MAINHAND);
                         }
                         else {
-                            IdlFramework.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
+                            Idealland.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
                         }
                     }
                 } else if (hand == EnumHand.OFF_HAND)
@@ -393,7 +392,7 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
                             CommonFunctions.SafeSendMsgToPlayer(TextFormatting.RED, (EntityPlayer) caster, MessageDef.NOT_CASTABLE_OFFHAND);
                         }
                         else {
-                            IdlFramework.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
+                            Idealland.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
                         }
                     }
             }

@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.util;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.designs.ElemTuple;
 import com.deeplake.genshin12.designs.ReactionResult;
 import com.deeplake.genshin12.entity.creatures.attribute.HandleResistance;
@@ -73,7 +73,7 @@ public class ElementalUtil {
 
         if (ModConfig.DEBUG_CONF.DEBUG_MODE)
         {
-            IdlFramework.Log("ElemDamage:(%s,%s), %s to %s",elemental,amount,player,target);
+            Idealland.Log("ElemDamage:(%s,%s), %s to %s",elemental,amount,player,target);
         }
 
         DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
@@ -95,7 +95,7 @@ public class ElementalUtil {
 
         if (ModConfig.DEBUG_CONF.DEBUG_MODE)
         {
-            IdlFramework.Log("Reaction: %s", reactionResult);
+            Idealland.Log("Reaction: %s", reactionResult);
         }
 
         switch (reactionResult.reaction)

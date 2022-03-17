@@ -1,11 +1,10 @@
 package com.deeplake.genshin12.entity;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -45,7 +44,7 @@ public class ModEntityInit {
                 entity,
                 name,
                 id,
-                IdlFramework.instance,
+                Idealland.instance,
                 range,
                 1,
                 true,
@@ -64,7 +63,7 @@ public class ModEntityInit {
                 entity,
                 name,
                 id,
-                IdlFramework.instance,
+                Idealland.instance,
                 range,
                 1,
                 true

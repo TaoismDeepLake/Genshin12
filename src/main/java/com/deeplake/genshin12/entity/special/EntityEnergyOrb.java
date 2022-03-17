@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.entity.special;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.skills.genshin.ItemGenshinBurstBase;
@@ -10,7 +10,6 @@ import com.deeplake.genshin12.util.EnumElemental;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -354,7 +353,7 @@ public class EntityEnergyOrb extends Entity {
         catch (Exception e)
         {
             enumElemental = EnumElemental.PHYSICAL;
-            IdlFramework.LogWarning("Invalid element");
+            Idealland.LogWarning("Invalid element");
         }
     }
 

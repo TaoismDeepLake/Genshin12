@@ -48,7 +48,7 @@ public class EntityMoroonTainter extends EntityMoroonUnitBase {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //IdlFramework.Log("Tick");
+        //Idealland.Log("Tick");
         if (!this.world.isRemote)
         {
             int i = MathHelper.floor(this.posX);

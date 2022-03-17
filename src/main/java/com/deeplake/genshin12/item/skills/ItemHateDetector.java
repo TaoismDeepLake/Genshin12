@@ -58,7 +58,7 @@ public class ItemHateDetector extends ItemSkillBase {
 //                        worldIn = entityIn.world;
 //                    }
 //                    int state = GetInt(stack, STATE);
-                    //IdlFramework.Log("State = " + state);
+                    //Idealland.Log("State = " + state);
                     return (float)GetInt(stack, STATE);
                 }
             }
@@ -81,11 +81,11 @@ public class ItemHateDetector extends ItemSkillBase {
                     IDLGeneral.ServerAABB(pos.addVector(-XZRangeRadius, -YRangeRadius, -XZRangeRadius), pos.addVector(XZRangeRadius, YRangeRadius, XZRangeRadius)));
             for (EntityLiving entity : entities)
             {
-                //IdlFramework.Log(String.format("[Active]Nearby %s -> %s" , entity.getName() ,entity.getAttackTarget()));
+                //Idealland.Log(String.format("[Active]Nearby %s -> %s" , entity.getName() ,entity.getAttackTarget()));
                 if (entity.getAttackTarget() == entityIn)
                 {
                     detection++;
-                    //IdlFramework.Log("[Active]Detected!");
+                    //Idealland.Log("[Active]Detected!");
                 }
             }
 

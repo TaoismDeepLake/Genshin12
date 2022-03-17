@@ -29,7 +29,7 @@ public class ModConfig {
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GeneralConf")
-    @Config.Comment("IdlFramework general config.")
+    @Config.Comment("Idealland general config.")
     public static final GeneralConf GeneralConf = new GeneralConf();
 
     public static class GeneralConf {
@@ -71,7 +71,7 @@ public class ModConfig {
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GachaConf")
-    @Config.Comment("IdlFramework general config.")
+    @Config.Comment("Idealland general config.")
     public static final GachaConf GACHA_CONF = new GachaConf();
 
     public static class GachaConf {
@@ -101,7 +101,7 @@ public class ModConfig {
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.WorldGenConf")
-    @Config.Comment("IdlFramework general config.")
+    @Config.Comment("Idealland general config.")
     public static final WorldGenConf WorldGenConf = new WorldGenConf();
 
     public static class WorldGenConf {

@@ -1,6 +1,6 @@
 package com.deeplake.genshin12.network.protocols;
 
-import com.deeplake.genshin12.IdlFramework;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -44,14 +44,14 @@ public class PacketCast implements IMessage {
             EntityPlayerMP player = ctx.getServerHandler().player;
 
             player.getServerWorld().addScheduledTask(() -> {
-                IdlFramework.Log("Packet:%d", msg.testVal);
+                Idealland.Log("Packet:%d", msg.testVal);
 
                 EntityEquipmentSlot slot = EntityEquipmentSlot.values()[msg.testVal];
 
                 ItemStack item = player.getItemStackFromSlot(slot);
                 if(item.isEmpty())
                 {
-                    IdlFramework.LogWarning("Trying to cast an empty item");
+                    Idealland.LogWarning("Trying to cast an empty item");
                 }
 
                 if(item.getItem() instanceof ItemSkillBase)
