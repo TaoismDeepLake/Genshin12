@@ -1,13 +1,18 @@
 package com.deeplake.genshin12.entity;
 
 import com.deeplake.genshin12.Idealland;
+import com.deeplake.genshin12.entity.creatures.mob.EntityHilichurl;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.datafix.DataFixer;
+import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+
+import static com.deeplake.genshin12.util.CommonDef.STANDARD_DUNGEON_MOB_RARITY;
 
 public class ModEntityInit {
     private static int ENTITY_NEXT_ID = 1;
@@ -21,10 +26,10 @@ public class ModEntityInit {
             registerEntity("test_boss", EntityTestBoss.class,0xff00ff, 0x000033);
         }
 
-//        registerEntity("idealland_whitetower_core", EntityIDLWhiteTowerCore.class, ENTITY_NEXT_ID, 128, 0xeeee00, 0xffffff);
+        registerEntity("hilichurl", EntityHilichurl.class);
 
         //Assign Dungeons
-        //DungeonHooks.addDungeonMob(EntityList.getKey(EntityMoroonTainter.class), STANDARD_DUNGEON_MOB_RARITY);
+        DungeonHooks.addDungeonMob(EntityList.getKey(EntityHilichurl.class), STANDARD_DUNGEON_MOB_RARITY);
 
         DataFixer datafixer = new DataFixer(1343);
     }

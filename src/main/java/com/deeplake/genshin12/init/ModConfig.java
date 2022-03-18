@@ -205,6 +205,15 @@ public class ModConfig {
         @Config.Comment("1ATK in MC = ?ATK in Genshin?")
         public float ATK_CONVERT_RATIO = 100;
 
+        @Config.Comment("1HP in MC = ?HP in Genshin?")
+        public float MOB_HP_CONVERT_RATIO = 100;
+
+        @Config.Comment("1ATK in MC = ?ATK in Genshin?")
+        public float MOB_ATK_CONVERT_RATIO = 100;
+
+        public float MOB_DEFAULT_SIGHT = 32;
+        public float MOB_DEFAULT_SPEED = 0.2f;
+
         @Config.LangKey("genshin12.conf.worldgen.enable_xiao_jump_boost")
         @Config.Comment("(Client side)Xiao's jump height alter may confict with other jump-adjusting modes. If you are not playing xiao and have compatibility issues, turn this off client side.")
         public boolean ENABLE_XIAO_JUMP_BOOST = true;
@@ -260,8 +269,8 @@ public class ModConfig {
         @Config.RangeDouble(min=1)
         public float BLOCK_PER_LEVEL = 64f;
 
-        @Config.LangKey("conf.spawn.max_auto_level, 0 = unlimited")
-        @Config.Comment("Max level")
+        @Config.LangKey("conf.spawn.max_auto_level")
+        @Config.Comment("Max level, 0 = unlimited")
         @Config.RangeInt(min=0)
         public int MAX_AUTO_LEVEL = 100;
 
@@ -280,11 +289,10 @@ public class ModConfig {
         @Config.RangeDouble(min=0.000001f, max=10f)
         public float ENEMY_DROP_SCALE_FACTOR = 1f;
 
-
-//        @Config.LangKey("entity.moroon_tainter.name")
-//        @Config.Comment("Spawn Moroon Tainter")
-//        @Config.RequiresMcRestart
-//        public int SPAWN_TAINTER = 100;
+        @Config.LangKey("entity.hilichurl.name")
+        @Config.Comment("Hilichurl weight")
+        @Config.RequiresMcRestart
+        public int SPAWN_HILICHURL = 100;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.ElemConf")

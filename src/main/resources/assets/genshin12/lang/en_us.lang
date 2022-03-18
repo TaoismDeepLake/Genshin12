@@ -32,6 +32,18 @@ genshin12.conf.gacha.primo_per_challenge=Primogem Per Challenge
 configgui.genshin12.category.Menu0.DebugConf=Debug Config, Be Careful.
 genshin12.conf.worldgen.enable_xiao_jump_boost=Enable Xiao Jump Boost[Client]
 
+configgui.genshin12.category.Menu0.SpawnConf=Spawn Config
+conf.spawn.enabled=Spawn Mod Creatures
+conf.spawn.auto_level_vanilla_dim=Vanilla Dimension Auto Level
+conf.spawn.auto_level_block=Blocks per Level
+conf.spawn.max_auto_level=Max Level
+conf.spawn.enemy_hp_scale_factor=Enemy HP factor
+conf.spawn.enemy_atk_scale_factor=Enemy ATK factor
+conf.spawn.enemy_drop_scale_factor=Enemy DROP factor
+
+configgui.genshin12.category.Menu0.ElemConf=Elemental Config
+
+
 #Enchantments
 enchantment.genshin12.test_enchantment=Early Access
 

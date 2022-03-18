@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.init;
 
+import com.deeplake.genshin12.entity.creatures.mob.EntityHilichurl;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.Biome;
@@ -56,7 +57,7 @@ public class ModSpawn {
     private static void addNormalSpawn(Map<Type, Set<Biome>> biomeMap) {
         for (Biome biome : Biome.REGISTRY) {
             //Example Spawn
-            //add(biome, ModConfig.SPAWN_CONF.SPAWN_TAINTER, EntityMoroonTainter.class, 1, 4);
+            add(biome, ModConfig.SPAWN_CONF.SPAWN_HILICHURL, EntityHilichurl.class, 1, 6);
         }
     }
 

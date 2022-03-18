@@ -4,7 +4,9 @@ import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.blocks.blockMoroon.BlockMoroonBase;
 import com.deeplake.genshin12.entity.creatures.ideallandTeam.EntityIdeallandUnitBase;
 import com.deeplake.genshin12.entity.creatures.moroon.EntityMoroonUnitBase;
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.ModItems;
+import com.deeplake.genshin12.util.CommonDef;
 import com.deeplake.genshin12.util.EntityUtil;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.genshin12.util.PlayerUtil;
@@ -435,6 +437,23 @@ public class EntityModUnit extends EntityCreature {
         if (is_pinned_on_ground) {
             this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(2.0f);
         }
+    }
+
+    public void setGenshinAttr(double attack, double hp)
+    {
+        setGenshinAttr(ModConfig.DEBUG_CONF.MOB_DEFAULT_SIGHT,
+                ModConfig.DEBUG_CONF.MOB_DEFAULT_SPEED,
+                attack, hp);
+    }
+
+    public void setGenshinAttr(double sight, double speed, double attack, double hp)
+    {
+        setAttr(sight, speed,
+                attack * CommonDef.BASE_MOB_ATK / ModConfig.DEBUG_CONF.MOB_ATK_CONVERT_RATIO,
+                0,
+                hp * CommonDef.BASE_MOB_HP / ModConfig.DEBUG_CONF.MOB_HP_CONVERT_RATIO);
+
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(0);
     }
 
     protected static final UUID LEVEL_BONUS_UUID = UUID.fromString("CEE0E5FE-3E5C-4515-AD0C-66483EAC7B9B");
