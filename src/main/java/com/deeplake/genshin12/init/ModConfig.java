@@ -206,10 +206,10 @@ public class ModConfig {
         public float ATK_CONVERT_RATIO = 100;
 
         @Config.Comment("1HP in MC = ?HP in Genshin?")
-        public float MOB_HP_CONVERT_RATIO = 100;
+        public float MOB_HP_CONVERT_RATIO = 3.5f;
 
         @Config.Comment("1ATK in MC = ?ATK in Genshin?")
-        public float MOB_ATK_CONVERT_RATIO = 100;
+        public float MOB_ATK_CONVERT_RATIO = 12f;
 
         public float MOB_DEFAULT_SIGHT = 32;
         public float MOB_DEFAULT_SPEED = 0.2f;
