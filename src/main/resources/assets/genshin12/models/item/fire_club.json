@@ -2,10 +2,10 @@
 	"credit": "Idealland",
 	"parent": "item/handheld",
 	"textures": {
-		"0": "minecraft:blocks/log_oak",
-		"1": "minecraft:blocks/log_oak_top",
-		"2": "minecraft:blocks/fire_layer_0",
-		"3": "minecraft:blocks/fire_layer_1",
+		"0": "blocks/log_oak",
+		"1": "blocks/log_oak_top",
+		"2": "blocks/fire_layer_0",
+		"3": "blocks/fire_layer_1",
 		"particle": "blocks/log_oak"
 	},
 	"elements": [
