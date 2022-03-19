@@ -45,7 +45,7 @@ public class EntityHilichurl extends EntityMobRanged {
     static List<HiliEntry> chanceSet = new ArrayList<>();
     static
     {
-        chanceSet.add(new HiliEntry(EnumHiliType.NORMAL, 100));
+        chanceSet.add(new HiliEntry(EnumHiliType.NORMAL, 50));
         chanceSet.add(new HiliEntry(EnumHiliType.FIGHTER, 100));
         chanceSet.add(new HiliEntry(EnumHiliType.BERSERKER, 100));
         chanceSet.add(new HiliEntry(EnumHiliType.SHOOTER, 100));
@@ -66,7 +66,6 @@ public class EntityHilichurl extends EntityMobRanged {
 
     static EnumHiliType getRandomClass(Random random)
     {
-        //todo
         return WeightedRandom.getRandomItem(random, chanceSet).content;
     }
 
@@ -83,9 +82,11 @@ public class EntityHilichurl extends EntityMobRanged {
                 break;
             case BERSERKER:
                 setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.FIRE_CLUB));
+                setDropChance(EntityEquipmentSlot.MAINHAND, 0.1f);
                 break;
             case SHOOTER:
                 setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
+                setDropChance(EntityEquipmentSlot.MAINHAND, 0.1f);
                 break;
             case GUARD:
                 autoArmor = true;

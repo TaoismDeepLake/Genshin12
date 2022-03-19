@@ -23,7 +23,8 @@ public class ModAttributes {
 
     public static final HashSet<IAttribute> allNewAttrs = new HashSet<>();
 
-    //Elemental Mastery
+    public static final IAttribute GEN_ATK = getNewAttrNonpercent( "genshin_atk");
+
     public static final IAttribute DEFENSE = getNewAttrNonpercent( "defense");
     //reduct = DEF / (Def + 5x Lv Atk + 500)
 

@@ -1,87 +1,92 @@
 {
-    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
-    "textures": {
-        "fire_layer_0": "minecraft:blocks/fire_layer_0",
-        "log_oak_top": "minecraft:blocks/log_oak_top",
-        "fire_layer_1": "minecraft:blocks/fire_layer_1",
-        "log_oak": "minecraft:blocks/log_oak"
-    },
-    "display": {
-        "gui": {
-            "rotation": [ 30, 45, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 0.625, 0.625, 0.625 ]
-        },
-        "ground": {
-            "rotation": [ 0, 0, 0 ],
-            "translation": [ 0, 3, 0 ],
-            "scale": [ 0.25, 0.25, 0.25 ]
-        },
-        "fixed": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "head": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ 0, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.4, 0.4, 0.4 ]
-        },
-        "thirdperson_righthand": {
-            "rotation": [ 75, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.375, 0.375, 0.375 ]
-        }
-    },
-    "elements": [
-        {
-            "name": "handle",
-            "from": [ 8, 0, 7 ], 
-            "to": [ 10, 6, 9 ], 
-            "faces": {
-                "north": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] },
-                "east": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] },
-                "south": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] },
-                "west": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] },
-                "down": { "texture": "#log_oak_top", "uv": [ 0, 0, 16, 16 ] }
-            }
-        },
-        {
-            "name": "head",
-            "from": [ 7, 6, 7 ], 
-            "to": [ 10, 12, 10 ], 
-            "faces": {
-                "north": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] },
-                "east": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] },
-                "south": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] },
-                "west": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] },
-                "up": { "texture": "#log_oak_top", "uv": [ 0, 0, 16, 16 ] },
-                "down": { "texture": "#log_oak", "uv": [ 0, 0, 16, 16 ] }
-            }
-        },
-        {
-            "name": "side1",
-            "from": [ 9, 9, 5 ], 
-            "to": [ 9, 17, 12 ], 
-            "faces": {
-                "north": { "texture": "#fire_layer_1", "uv": [ 0, 0, 16, 16 ] },
-                "east": { "texture": "#fire_layer_1", "uv": [ 0, 0, 16, 16 ] },
-                "west": { "texture": "#fire_layer_1", "uv": [ 0, 0, 16, 16 ] }
-            }
-        },
-        {
-            "name": "side2",
-            "from": [ 5, 9, 9 ], 
-            "to": [ 12, 17, 9 ], 
-            "faces": {
-                "north": { "texture": "#fire_layer_0", "uv": [ 0, 0, 16, 16 ] },
-                "south": { "texture": "#fire_layer_0", "uv": [ 0, 0, 16, 16 ] }
-            }
-        }
-    ]
+	"credit": "Idealland",
+	"textures": {
+		"fire_layer_0": "blocks/fire_layer_0",
+		"log_oak_top": "blocks/log_oak_top",
+		"fire_layer_1": "blocks/fire_layer_1",
+		"log_oak": "blocks/log_oak"
+	},
+	"elements": [
+		{
+			"name": "handle",
+			"from": [8, 0, 7],
+			"to": [10, 6, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#log_oak"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#log_oak"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#log_oak"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#log_oak"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#log_oak_top"}
+			}
+		},
+		{
+			"name": "head",
+			"from": [7, 6, 7],
+			"to": [10, 12, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#log_oak"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#log_oak"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#log_oak"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#log_oak"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#log_oak_top"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#log_oak"}
+			}
+		},
+		{
+			"name": "side1",
+			"from": [9, 9, 5],
+			"to": [9, 17, 12],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#fire_layer_1"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#fire_layer_1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#fire_layer_1"}
+			}
+		},
+		{
+			"name": "side2",
+			"from": [5, 9, 9],
+			"to": [12, 17, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#fire_layer_0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#fire_layer_0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, 5],
+			"translation": [0, 4, 0.5],
+			"scale": [0.85, 0.85, 0.85]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, -6],
+			"translation": [0, 4, 0.5],
+			"scale": [0.85, 0.85, 0.85]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, -25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [30, 45, 0]
+		},
+		"head": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 9.25, 7]
+		},
+		"fixed": {
+			"rotation": [-24, 180, 0],
+			"translation": [0, 0, -3.25]
+		}
+	}
 }

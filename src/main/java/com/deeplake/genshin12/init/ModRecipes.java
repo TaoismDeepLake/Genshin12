@@ -2,6 +2,7 @@ package com.deeplake.genshin12.init;
 
 import com.deeplake.genshin12.recipe.special.ArtifactEnhance;
 import com.deeplake.genshin12.recipe.special.RecycleArtifact;
+import com.deeplake.genshin12.recipe.special.WeaponEnhance;
 import com.deeplake.genshin12.util.Reference;
 import com.google.common.collect.Sets;
 import net.minecraft.item.crafting.IRecipe;
@@ -32,6 +33,7 @@ public class ModRecipes {
 		//Example
 		r.register(new RecycleArtifact().setRegistryName(new ResourceLocation(Reference.MOD_ID, "artifact_recycle")));
 		r.register(new ArtifactEnhance().setRegistryName(new ResourceLocation(Reference.MOD_ID, "artifact_enhance")));
+		r.register(new WeaponEnhance().setRegistryName(new ResourceLocation(Reference.MOD_ID, "weapon_enhance")));
 
 		//recipe deleting
 //		ItemStack stack = new ItemStack(Items.DIAMOND);

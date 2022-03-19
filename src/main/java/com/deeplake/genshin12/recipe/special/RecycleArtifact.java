@@ -1,17 +1,14 @@
 package com.deeplake.genshin12.recipe.special;
 
 import com.deeplake.genshin12.init.ModConfig;
-import com.deeplake.genshin12.item.IGuaEnhance;
+import com.deeplake.genshin12.item.LevelingUtil;
 import com.deeplake.genshin12.item.ModItems;
-import com.deeplake.genshin12.item.artifact.ArtifactUtil;
 import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
-import com.deeplake.genshin12.util.IDLGeneral;
 import com.deeplake.genshin12.util.IDLSkillNBT;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
@@ -58,8 +55,8 @@ public class RecycleArtifact extends IForgeRegistryEntry.Impl<IRecipe> implement
                 if(stack.getItem() instanceof ItemArtifactBase)
                 {
 //                    if (foundMainItem) {
-                        int rarity = ItemArtifactBase.getRarityArtifact(stack);
-                        int level = ItemArtifactBase.getLevelArtifact(stack);
+                        int rarity = LevelingUtil.getRarityArtifact(stack);
+                        int level = LevelingUtil.getLevelForItem(stack);
                         int xp = IDLSkillNBT.getXP(stack);
                         ItemStack result;
                         if (level == 0 && xp == 0)

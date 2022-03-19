@@ -117,8 +117,8 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
 
     public AttributeModifier getAttrMainModifier(ItemStack stack)
     {
-        int rarity = getRarityArtifact(stack);
-        int level = getLevelArtifact(stack);
+        int rarity = LevelingUtil.getRarityArtifact(stack);
+        int level = LevelingUtil.getLevelForItem(stack);
         ModAttributes.EnumAttr attr;
         try {
             attr = ModAttributes.EnumAttr.getEnum(IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_MAIN_ATTR));
@@ -164,7 +164,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
         {
             Random random = entityIn instanceof EntityLivingBase ? ((EntityLivingBase) entityIn).getRNG() : new Random();
 
-            int rarity = getRarityArtifact(stack);
+            int rarity = LevelingUtil.getRarityArtifact(stack);
 
             //init sub attr type
             initSubAttrType(stack, random);
@@ -223,25 +223,9 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
         }
     }
 
-    //returns 1,2,3,4,5,6
-    public static int getRarityArtifact(ItemStack stack)
-    {
-        int rarity = IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_RARITY);
-        if (rarity <= 0)
-        {
-            return 1;
-        }
-        else if (rarity >= ArtifactUtil.MAX_RARITY) {
-            return ArtifactUtil.MAX_RARITY;
-        }
-        else {
-            return rarity;
-        }
-    }
-
     public static AttributeModifier getAttrSubModifier(ItemStack stack, final int index)
     {
-        int rarity = getRarityArtifact(stack);
+        int rarity = LevelingUtil.getRarityArtifact(stack);
         double totalModifier = 0f;
 
         ModAttributes.EnumAttr attr;
@@ -394,9 +378,9 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
     {
         if (stack.getItem() instanceof ItemArtifactBase)
         {
-            ItemArtifactBase artifactBase = (ItemArtifactBase) stack.getItem();
-            int rarity = getRarityArtifact(stack);
-            int level = getLevelArtifact(stack);
+//            ItemArtifactBase artifactBase = (ItemArtifactBase) stack.getItem();
+            int rarity = LevelingUtil.getRarityArtifact(stack);
+            int level = LevelingUtil.getLevelForItem(stack);
             int base = 100;
             try {
                 base = xp_worth[rarity - 1];
@@ -430,10 +414,6 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
             return -1;
         }
 
-    }
-
-    public static int getLevelArtifact(ItemStack stack) {
-        return IDLNBTUtil.GetInt(stack, ArtifactUtil.KEY_LEVEL);
     }
 
     public static int[] xp_worth = {420,840,1260,2520,3780};
@@ -517,11 +497,11 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
 
     @Override
     public int[] levelupNeedXp(ItemStack stack) {
-        return getXPTable(getRarityArtifact(stack));
+        return getXPTable(LevelingUtil.getRarityArtifact(stack));
     }
 
     @Override
     public int getMaxLevel(ItemStack stack) {
-        return ArtifactUtil.getMaxLevel(getRarityArtifact(stack));
+        return ArtifactUtil.getMaxLevel(LevelingUtil.getRarityArtifact(stack));
     }
 }

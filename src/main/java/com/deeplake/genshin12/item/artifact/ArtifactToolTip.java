@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-import static com.deeplake.genshin12.item.artifact.ItemArtifactBase.getRarityArtifact;
+import static com.deeplake.genshin12.item.LevelingUtil.getRarityArtifact;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ArtifactToolTip {
@@ -29,6 +29,7 @@ public class ArtifactToolTip {
     public static final String GENSHIN_12_ARTIFACT_LEVEL = "genshin12.artifact.level";
     public static final String GENSHIN_12_ARTIFACT_SLOT = "genshin12.artifact.slot.";
     public static final String GENSHIN_12_ARTIFACT_UPGRADE = "genshin12.artifact.upgrade";
+    public static final String GENSHIN_12_ARTIFACT_XP = "genshin12.artifact.xp";
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -38,7 +39,7 @@ public class ArtifactToolTip {
 
 //            event.setBackground(0xf0330000);
             event.setBorderStart(0xf0000000 | EnumModRarity.getColor(rarity));
-//            event.setBorderEnd(0xf0cc0000);
+            event.setBorderEnd(0x00cc0000);
         }
     }
 
@@ -63,7 +64,7 @@ public class ArtifactToolTip {
             {
                 if (level != maxLevel)
                 {
-                    strings.add(1, I18n.format("genshin12.artifact.xp", IDLSkillNBT.getXP(stack), artifactBase.levelupNeedXp(stack)[level]));
+                    strings.add(1, I18n.format(GENSHIN_12_ARTIFACT_XP, IDLSkillNBT.getXP(stack), artifactBase.levelupNeedXp(stack)[level]));
                 }
             }
             catch (ArrayIndexOutOfBoundsException e)

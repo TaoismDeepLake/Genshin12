@@ -56,7 +56,7 @@ public class EventsAttrCrit {
         event.setDamageModifier(modifier);
         if (ModConfig.DEBUG_CONF.DEBUG_MODE)
         {
-            Idealland.Log("Critical. %s to %s, damage = %s x 100%", event.getEntityPlayer(), event.getTarget(), modifier);
+            Idealland.Log("Critical. %s to %s, damage = %s x 100%%", event.getEntityPlayer(), event.getTarget(), modifier);
         }
     }
 

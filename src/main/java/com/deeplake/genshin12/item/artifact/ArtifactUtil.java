@@ -34,7 +34,7 @@ public class ArtifactUtil {
     static final String FIX_NAME = "Artifact";
     static final String FIX_NAME_SUB = "Artifact Sub";
     final static int MAX_ATTR_SUB_TYPE = 4;
-    static final int MAX_RARITY = 6;
+    public static final int MAX_RARITY = 6;
     static Random rand = new Random();
 
     static ArrayList<ModAttributes.EnumAttr> listMainFlowerChest = new ArrayList<>();

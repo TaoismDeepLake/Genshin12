@@ -31,13 +31,26 @@ genshin12.conf.gacha.primo_per_challenge=每挑战成就原石
 configgui.genshin12.category.Menu0.DebugConf=当心，调试选项
 genshin12.conf.worldgen.enable_xiao_jump_boost=客户端：启用魈跳跃加成
 
+configgui.genshin12.category.Menu0.SpawnConf=生成选项
+conf.spawn.enabled=生成本mod生物
+conf.spawn.auto_level_vanilla_dim=原版维度自动等级
+conf.spawn.auto_level_block=Blocks per Level
+conf.spawn.max_auto_level=最大自动等级
+conf.spawn.enemy_hp_scale_factor=Enemy HP factor
+conf.spawn.enemy_atk_scale_factor=Enemy ATK factor
+conf.spawn.enemy_drop_scale_factor=Enemy DROP factor
+
+configgui.genshin12.category.Menu0.ElemConf=Elemental Config
+
+
 # Enchantments
 enchantment.genshin12.test_enchantment=测试期
 
 genshin12.moroon_incoming_herald=[IDL][注意] 摩隆密切关注着你的战斗。
 genshin12.msg.notice_meter_report=[IDL]摩隆注意度： %d, 入侵准备: %d/%d, 测量误差:%d
 
-entity.moroon_tainter.name=摩隆 拓荒者
+# Entities
+entity.hilichurl.name=Hilichurl
 
 # Blocks
 tile.zl_pillar.name=岩脊
@@ -97,6 +110,9 @@ item.stella_fortuna_3.desc=右键拆开可获得技能一套。（命座系统�
 
 item.weapon_pack.name=武器包
 item.weapon_pack.desc=呃，又没出货……右键拆开，万一拆出个时运镐呢？
+
+item.fire_club.name=提瓦特烧火棍
+item.fire_club.desc=提瓦特大陆的怪物所使用的武器，燃烧着永恒之火。
 
 item.zhongli_e.name=§6地心
 item.zhongli_e.desc=山脉中、大地上、磐石间，都遍布着岩之力。能自如驱动这股力量的人却少之又少。
@@ -236,12 +252,24 @@ genshin12.potion.electro=雷
 genshin12.potion.dendro=草
 genshin12.potion.pyro=火
 genshin12.potion.chrono=时
+genshin12.potion.hutao_buff=彼岸蝶舞
+genshin12.potion.hutao_debuff=血梅香
 
 item.debug_item.name=调试物品
 item.debug_item.desc=[不是用来玩的]
 
 item.debug_item_2.name=调试物品2
 item.debug_item_2.desc=[不是用来玩的]
+
+# villager
+entity.Villager.genshin12.vendor_artifacts=圣遗物商贩
+entity.Villager.genshin12.v_ar_miner=张顺
+entity.Villager.genshin12.v_ar_lumber=琳琅
+entity.Villager.genshin12.quest_giver=任务发布者
+entity.Villager.genshin12.v_qst_undead_hunter=戴因斯雷布
+entity.Villager.genshin12.v_qst_miner_lord=老章
+entity.Villager.genshin12.v_qst_brock=布鲁克
+entity.Villager.genshin12.v_qst_brewer=迪卢克
 
 # msg
 genshin12.skill.msg.lack_mp=能量不足 (%d/%d)

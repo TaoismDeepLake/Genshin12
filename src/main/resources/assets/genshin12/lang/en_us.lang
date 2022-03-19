@@ -279,7 +279,8 @@ genshin12.msg.obtain_primo=§b§6Obtained %s Primogem
 genshin12.msg.artifact.miner=§b§6[Miner Set]You get extra torches.
 genshin12.msg.artifact.lumber=§b§6[Lumber Set]You fed on wood.
 
-#attrCritical RateCrit Rate
+#attr
+attribute.name.genshin12.attr.genshin_atk=ATK-Genshin
 attribute.name.genshin12.attr.defense=Defense
 attribute.name.genshin12.attr.elem_mastery=Elemental Mastery
 attribute.name.genshin12.attr.stamina=Stamina (%)
@@ -311,6 +312,9 @@ attribute.name.genshin12.attr.hydro_res=HYDRO Resistance (%)
 attribute.name.genshin12.attr.pyro_res=PYRO Resistance (%)
 attribute.name.genshin12.attr.cyro_res=CYRO Resistance (%)
 attribute.name.genshin12.attr.chrono_res=CHRONO Resistance (%)
+
+#weapon
+genshin12.weapon.level=Lv.%s
 
 #artifact
 genshin12.artifact.rarity.1=§l§e★

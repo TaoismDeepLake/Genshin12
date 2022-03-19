@@ -4,7 +4,7 @@ import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.LevelingUtil;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.item.artifact.ArtifactUtil;
-import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
+import com.deeplake.genshin12.item.weapon.ItemPlayerWeapon;
 import com.deeplake.genshin12.util.IDLSkillNBT;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -14,7 +14,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
 
-public class ArtifactEnhance extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+public class WeaponEnhance extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
 	@Override
 	public boolean isDynamic() {
@@ -24,22 +24,22 @@ public class ArtifactEnhance extends IForgeRegistryEntry.Impl<IRecipe> implement
 	@Override
 	public boolean matches(@Nonnull InventoryCrafting var1, @Nonnull World var2) {
 		int foundXP = 0;
-		boolean mainArtifact = false;
+		boolean mainWeapon = false;
 
 		for(int i = 0; i < var1.getSizeInventory(); i++) {
 			ItemStack stack = var1.getStackInSlot(i);
 			if(!stack.isEmpty()) {
-				if(stack.getItem() instanceof ItemArtifactBase)
+				if(stack.getItem() instanceof ItemPlayerWeapon)
 				{
 					if (i != 0 && ModConfig.GeneralConf.ARTIFACT_ENHANCE_MUST_FIRST_SLOT)
 					{
 						return false;
 					}
 
-					if (mainArtifact) {
+					if (mainWeapon) {
 						return false;//only one sword at a time
 					}
-					mainArtifact = true;
+					mainWeapon = true;
 
 					//maxed-out
 					if (LevelingUtil.getLevelForItem(stack) >= ArtifactUtil.getMaxLevel(LevelingUtil.getRarityArtifact(stack)))
@@ -48,7 +48,7 @@ public class ArtifactEnhance extends IForgeRegistryEntry.Impl<IRecipe> implement
 					}
 
 				}
-				else if (stack.getItem() == ModItems.ARTIFACT_XP_BOTTLE)
+				else if (stack.getItem() == ModItems.WEAPON_XP_STONE)
 				{//found a xp item
 					foundXP++;
 				}
@@ -58,7 +58,7 @@ public class ArtifactEnhance extends IForgeRegistryEntry.Impl<IRecipe> implement
 				}
 			}
 		}
-		return foundXP > 0 && mainArtifact;
+		return foundXP > 0 && mainWeapon;
 	}
 
 	@Nonnull
@@ -70,13 +70,13 @@ public class ArtifactEnhance extends IForgeRegistryEntry.Impl<IRecipe> implement
 		for(int i = 0; i < var1.getSizeInventory(); i++) {
 			ItemStack stack = var1.getStackInSlot(i);
 			if(!stack.isEmpty()) {
-				if(stack.getItem() instanceof ItemArtifactBase)
+				if(stack.getItem() instanceof ItemPlayerWeapon)
 				{
 					main = stack;
 					payingXP = IDLSkillNBT.getXP(stack);
 				}
-				else if(stack.getItem() == ModItems.ARTIFACT_XP_BOTTLE) {
-					payingXP += ItemArtifactBase.getXPWorth(stack);
+				else if(stack.getItem() == ModItems.WEAPON_XP_STONE) {
+					payingXP += ItemPlayerWeapon.getXPWorth(stack);
 				}
 			}
 		}
@@ -85,12 +85,10 @@ public class ArtifactEnhance extends IForgeRegistryEntry.Impl<IRecipe> implement
 			return ItemStack.EMPTY;
 		}
 
-		//todo: x2 & x5
-		ItemStack artifactResult = main.copy();
-		IDLSkillNBT.setXP(artifactResult, payingXP);
-//		ArtifactUtil.getXPUpdateResult(artifactResult);
+		ItemStack weaponResult = main.copy();
+		IDLSkillNBT.setXP(weaponResult, payingXP);
 
-		return ArtifactUtil.getXPUpdateResult(artifactResult);
+		return ArtifactUtil.getXPUpdateResult(weaponResult);
 	}
 
 	@Override
