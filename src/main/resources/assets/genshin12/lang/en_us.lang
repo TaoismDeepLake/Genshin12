@@ -52,7 +52,7 @@ genshin12.moroon_incoming_herald=[IDL][Warn] The Moroon are interested in your f
 genshin12.msg.notice_meter_report=[IDL] Moroon notice value: %d, invasion: %d/%d, error:%d
 
 #Entities
-entity.moroon_tainter.name=Moroon Pathfinder
+entity.hilichurl.name=Hilichurl
 
 #Blocks
 tile.zl_pillar.name=Zhongli Pillar Block

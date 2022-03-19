@@ -68,7 +68,7 @@ public class EntityHilichurl extends EntityMobRanged {
             case GUARD:
                 autoArmor = true;
                 setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
-                setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.SHIELD));
+                setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Items.SHIELD));
                 break;
         }
 
