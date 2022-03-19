@@ -188,6 +188,35 @@ item.artf_xp_bottle_4.desc=Extracted from artifacts. Crafting this into artifact
 item.artf_xp_bottle_5.name=Artifact XP Bottle
 item.artf_xp_bottle_5.desc=Extracted from artifacts. Crafting this into artifacts uprades them.
 
+item.weapon_stone_0.name=Weapon XP Stone
+item.weapon_stone_0.desc=Craft this into weapons to upgrade them.
+item.weapon_stone_1.name=Weapon XP Stone
+item.weapon_stone_1.desc=Craft this into weapons to upgrade them.
+item.weapon_stone_2.name=Weapon XP Stone
+item.weapon_stone_2.desc=Craft this into weapons to upgrade them.
+item.weapon_stone_3.name=Weapon XP Stone
+item.weapon_stone_3.desc=Craft this into weapons to upgrade them.
+item.weapon_stone_4.name=Weapon XP Stone
+item.weapon_stone_4.desc=Craft this into weapons to upgrade them.
+item.weapon_stone_5.name=Weapon XP Stone
+item.weapon_stone_5.desc=Craft this into weapons to upgrade them.
+item.weapon_stone_6.name=Weapon XP Stone
+item.weapon_stone_6.desc=Craft this into weapons to upgrade them.
+item.weapon_stone_7.name=Weapon XP Stone
+item.weapon_stone_7.desc=Craft this into weapons to upgrade them.
+item.weapon_stone_8.name=Weapon XP Stone
+item.weapon_stone_8.desc=Craft this into weapons to upgrade them.
+
+item.attr_report_0.name=Attribute Report
+item.attr_report_1.name=Attribute Report
+item.attr_report_2.name=Attribute Report
+item.attr_report_3.name=Attribute Report
+item.attr_report_4.name=Attribute Report
+item.attr_report_5.name=Attribute Report
+item.attr_report_6.name=Attribute Report
+item.attr_report_7.name=Attribute Report
+item.attr_report_8.name=Attribute Report
+
 genshin12.msg.xiao.plunge.speech.0=Here!
 genshin12.msg.xiao.plunge.speech.1=Worthless!
 

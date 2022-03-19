@@ -52,11 +52,11 @@ public class ModItems {
     public static final ItemArtifactBase AR_BLANK = new ItemArtifactBase("artifact_blank", ArtifactSetManager.BLANK);
 
     public static final ItemBase ARTIFACT_XP_BOTTLE = new ItemVariantBase("artf_xp_bottle", 6);
-    public static final ItemBase WEAPON_XP_STONE = new ItemVariantBase("weapon_stone", 3);
+    public static final ItemBase WEAPON_XP_STONE = new ItemVariantBase("weapon_stone", 8);
 
     public static final ItemFireClub FIRE_CLUB = new ItemFireClub("fire_club", Item.ToolMaterial.WOOD, EnumElemental.PYRO, EnumAmount.SMALL);
 
-    public static final ItemBase ATTR_REPORT = (ItemBase) new ItemBase("attr_report").setCreativeTab(null);
+    public static final ItemBase ATTR_REPORT = (ItemBase) new ItemVariantBase("attr_report", 8);
 
     //	public static final ItemDebugSword DEBUG = new ItemDebugSword("debug_item", Item.ToolMaterial.DIAMOND);
     public static final ItemBase DEBUG = (ItemBase) new ItemPlayerWeapon("debug_item").setCreativeTab(null);

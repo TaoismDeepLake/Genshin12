@@ -46,9 +46,6 @@ configgui.genshin12.category.Menu0.ElemConf=Elemental Config
 # Enchantments
 enchantment.genshin12.test_enchantment=测试期
 
-genshin12.moroon_incoming_herald=[IDL][注意] 摩隆密切关注着你的战斗。
-genshin12.msg.notice_meter_report=[IDL]摩隆注意度： %d, 入侵准备: %d/%d, 测量误差:%d
-
 # Entities
 entity.hilichurl.name=Hilichurl
 
@@ -190,6 +187,25 @@ item.artf_xp_bottle_4.desc=从4星圣遗物中提取，与圣遗物合成可以�
 item.artf_xp_bottle_5.name=§6圣遗物经验瓶·五
 item.artf_xp_bottle_5.desc=从5星圣遗物中提取，与圣遗物合成可以强化之。强化时圣遗物必须在第一格。
 
+item.weapon_stone_0.name=武器强化石
+item.weapon_stone_0.desc=与武器合成可强化。武器需摆在左上角。
+item.weapon_stone_1.name=武器强化石
+item.weapon_stone_1.desc=与武器合成可强化。武器需摆在左上角。
+item.weapon_stone_2.name=武器强化石
+item.weapon_stone_2.desc=与武器合成可强化。武器需摆在左上角。
+item.weapon_stone_3.name=武器强化石
+item.weapon_stone_3.desc=与武器合成可强化。武器需摆在左上角。
+item.weapon_stone_4.name=武器强化石
+item.weapon_stone_4.desc=与武器合成可强化。武器需摆在左上角。
+item.weapon_stone_5.name=武器强化石
+item.weapon_stone_5.desc=与武器合成可强化。武器需摆在左上角。
+item.weapon_stone_6.name=武器强化石
+item.weapon_stone_6.desc=与武器合成可强化。武器需摆在左上角。
+item.weapon_stone_7.name=武器强化石
+item.weapon_stone_7.desc=与武器合成可强化。武器需摆在左上角。
+item.weapon_stone_8.name=武器强化石
+item.weapon_stone_8.desc=与武器合成可强化。武器需摆在左上角。
+
 genshin12.msg.xiao.plunge.speech.0=这里！
 genshin12.msg.xiao.plunge.speech.1=无能。
 
@@ -277,7 +293,10 @@ genshin12.skill.msg.charge_full=%s 能量已满！
 genshin12.msg.obtain_primo=$b$6获得 %s 原石
 genshin12.msg.artifact.miner=§b§6[矿工套装]获得额外火把。
 genshin12.msg.artifact.lumber=§b§6[伐木套装]你吃了树皮，味道不错。
+genshin12.msg.player.levelup=Level Up! Lv.%s
 
+# attr
+attribute.name.genshin12.attr.genshin_atk=ATK-Genshin
 # attrCritical RateCrit Rate
 attribute.name.genshin12.attr.defense=防御
 attribute.name.genshin12.attr.elem_mastery=元素精通
@@ -310,6 +329,9 @@ attribute.name.genshin12.attr.hydro_res=水元素抗性 (%)
 attribute.name.genshin12.attr.pyro_res=火元素抗性 (%)
 attribute.name.genshin12.attr.cyro_res=冰元素抗性 (%)
 attribute.name.genshin12.attr.chrono_res=时元素抗性 (%)
+
+# weapon
+genshin12.weapon.level=Lv.%s
 
 # artifact
 genshin12.artifact.rarity.1=§l§e★
@@ -373,3 +395,5 @@ genshin12.artifact.upgrade=§l获得副属性提升 x%s!
 
 # hud
 genshin12.hud.lvl=§l§7Lv. %d
+genshin12.moroon_incoming_herald=[IDL][注意] 摩隆密切关注着你的战斗。
+genshin12.msg.notice_meter_report=[IDL]摩隆注意度： %d, 入侵准备: %d/%d, 测量误差:%d
