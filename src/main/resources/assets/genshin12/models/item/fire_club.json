@@ -1,6 +1,6 @@
 {
 	"credit": "Idealland",
-	"parent": "handheld",
+	"parent": "item/handheld",
 	"textures": {
 		"0": "minecraft:blocks/log_oak",
 		"1": "minecraft:blocks/log_oak_top",

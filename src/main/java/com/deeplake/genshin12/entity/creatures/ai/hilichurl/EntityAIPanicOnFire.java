@@ -56,12 +56,7 @@ public class EntityAIPanicOnFire extends EntityAIBase
             cool_down--;
         }
 
-        if (!this.creature.isBurning() && cool_down == 0)
-        {
-            return false;
-        }
-        else
-        {
+        if (this.creature.isBurning() && panic_balances > 0 && cool_down <= 0) {
             this.creature.isBurning();
             BlockPos blockpos = this.getRandPos(this.creature.world, this.creature, 5, 4);
 
@@ -74,6 +69,8 @@ public class EntityAIPanicOnFire extends EntityAIBase
             }
 
             return this.findRandomPosition();
+        } else {
+            return false;
         }
     }
 

@@ -23,7 +23,7 @@ public class EntityHilichurl extends EntityMobRanged {
     @Override
     protected void applyEntityAI() {
         super.applyEntityAI();
-        tasks.addTask(1, new EntityAIPanicOnFire(this, 1f));
+        tasks.addTask(1, new EntityAIPanicOnFire(this, 1.5f));
     }
 
     @Nullable

@@ -450,10 +450,19 @@ public class EntityModUnit extends EntityCreature {
 
     public void setGenshinAttr(double sight, double speed, double attack, double hp)
     {
-        setAttr(sight, speed,
-                attack * CommonDef.BASE_MOB_ATK / ModConfig.DEBUG_CONF.MOB_ATK_CONVERT_RATIO,
-                0,
-                hp * CommonDef.BASE_MOB_HP / ModConfig.DEBUG_CONF.MOB_HP_CONVERT_RATIO);
+        if (ModConfig.SPAWN_CONF.AUTO_LEVEL)
+        {
+            setAttr(sight, speed,
+                    attack * CommonDef.BASE_MOB_ATK / ModConfig.DEBUG_CONF.MOB_ATK_CONVERT_RATIO,
+                    0,
+                    hp * CommonDef.BASE_MOB_HP / ModConfig.DEBUG_CONF.MOB_HP_CONVERT_RATIO);
+        }else {
+            setAttr(sight, speed,
+                    attack * CommonDef.BASE_MOB_ATK / ModConfig.DEBUG_CONF.MOB_ATK_CONVERT_RATIO,
+                    0,
+                    hp * CommonDef.BASE_MOB_HP / ModConfig.DEBUG_CONF.MOB_HP_CONVERT_RATIO);
+        }
+
 
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(0);
     }
