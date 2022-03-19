@@ -2,10 +2,7 @@ package com.deeplake.genshin12.item;
 
 import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
-import com.deeplake.genshin12.item.consumables.EnumCharacter;
-import com.deeplake.genshin12.item.consumables.ItemPackageWeapon;
-import com.deeplake.genshin12.item.consumables.ItemStellaFortuna;
-import com.deeplake.genshin12.item.consumables.ItemInterwinedFate;
+import com.deeplake.genshin12.item.consumables.*;
 import com.deeplake.genshin12.item.skills.genshin.*;
 import com.deeplake.genshin12.item.weapon.IElementalInfused;
 import com.deeplake.genshin12.item.weapon.ItemFireClub;
@@ -59,9 +56,11 @@ public class ModItems {
 
     public static final ItemFireClub FIRE_CLUB = new ItemFireClub("fire_club", Item.ToolMaterial.WOOD, EnumElemental.PYRO, EnumAmount.SMALL);
 
+    public static final ItemBase ATTR_REPORT = (ItemBase) new ItemBase("attr_report").setCreativeTab(null);
+
     //	public static final ItemDebugSword DEBUG = new ItemDebugSword("debug_item", Item.ToolMaterial.DIAMOND);
     public static final ItemBase DEBUG = (ItemBase) new ItemPlayerWeapon("debug_item").setCreativeTab(null);
-    public static final ItemArmorDebug DEBUG_2 = (ItemArmorDebug) new ItemArmorDebug("debug_item_2", ItemArmor.ArmorMaterial.GOLD, 1, EntityEquipmentSlot.HEAD).setCreativeTab(null);
+    public static final Item DEBUG_2 = new ItemLevelUp("debug_item_2").setCreativeTab(null);
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),
     OVERLAY(1, 131, 4.0F, 1.0F, 5),

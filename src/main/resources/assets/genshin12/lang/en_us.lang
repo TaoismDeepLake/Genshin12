@@ -47,10 +47,6 @@ configgui.genshin12.category.Menu0.ElemConf=Elemental Config
 #Enchantments
 enchantment.genshin12.test_enchantment=Early Access
 
-#Messages
-genshin12.moroon_incoming_herald=[IDL][Warn] The Moroon are interested in your fights.
-genshin12.msg.notice_meter_report=[IDL] Moroon notice value: %d, invasion: %d/%d, error:%d
-
 #Entities
 entity.hilichurl.name=Hilichurl
 
@@ -278,6 +274,7 @@ genshin12.skill.msg.charge_full=%s Energy Full!
 genshin12.msg.obtain_primo=§b§6Obtained %s Primogem
 genshin12.msg.artifact.miner=§b§6[Miner Set]You get extra torches.
 genshin12.msg.artifact.lumber=§b§6[Lumber Set]You fed on wood.
+genshin12.msg.player.levelup=Level Up! Lv.%s
 
 #attr
 attribute.name.genshin12.attr.genshin_atk=ATK-Genshin
