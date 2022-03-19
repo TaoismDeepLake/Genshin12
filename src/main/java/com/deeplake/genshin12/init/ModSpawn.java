@@ -63,8 +63,8 @@ public class ModSpawn {
 
     private static void addOpenGroundSpawn(Map<Type, Set<Biome>> biomeMap) {
         for (Biome biome : Biome.REGISTRY) {
-            //if (!BiomeDictionary.hasType(biome, Type.DENSE))
-            //   add(biome, ModConfig.SPAWN_CONF.SPAWN_SKELETON_TOWER, EntitySpawnTower.class, 1, 1);
+            //if (!BiomeDictionary.hasType(content, Type.DENSE))
+            //   add(content, ModConfig.SPAWN_CONF.SPAWN_SKELETON_TOWER, EntitySpawnTower.class, 1, 1);
         }
     }
 
@@ -72,7 +72,7 @@ public class ModSpawn {
         for (Biome biome : Biome.REGISTRY) {
             if (BiomeDictionary.hasType(biome, Type.WET) || (BiomeDictionary.hasType(biome, Type.WATER)))
             {
-                //add(biome, ModConfig.SPAWN_CONF.SPAWN_TIDE_MAKER, EntityMoroonTideMaker.class, 1, 1);
+                //add(content, ModConfig.SPAWN_CONF.SPAWN_TIDE_MAKER, EntityMoroonTideMaker.class, 1, 1);
             }
         }
     }
@@ -81,8 +81,8 @@ public class ModSpawn {
         /*
          * NETHER
          */
-//        for (Biome biome : biomeMap.get(Type.NETHER)) {
-//            add(10, EntityMoroonTainter.class, 1, 4, biome);
+//        for (Biome content : biomeMap.get(Type.NETHER)) {
+//            add(10, EntityMoroonTainter.class, 1, 4, content);
 //        }
     }
 

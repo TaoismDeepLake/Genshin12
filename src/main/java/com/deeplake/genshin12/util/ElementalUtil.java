@@ -62,21 +62,25 @@ public class ElementalUtil {
         return 0;
     }
 
-    public static void applyElementalDamage(EntityLivingBase player, EntityLivingBase target, double damage, EnumElemental elemental, EnumAmount amount)
+    public static boolean applyElementalDamage(EntityLivingBase attacker, EntityLivingBase target, double damage, EnumElemental elemental, EnumAmount amount)
     {
-        applyElementalDamage(player, target, (float) damage, elemental, amount);
+        return applyElementalDamage(attacker, target, (float) damage, elemental, amount);
     }
 
-    public static void applyElementalDamage(EntityLivingBase player, EntityLivingBase target, float damage, EnumElemental elemental, EnumAmount amount)
+    public static boolean applyElementalDamage(EntityLivingBase attacker, EntityLivingBase target, float damage, EnumElemental elemental, EnumAmount amount)
     {
+        boolean result = false;
+
         ReactionResult reactionResult = applyElemental(target, elemental, amount);
+
+        //todo: handle immnune
 
         if (ModConfig.DEBUG_CONF.DEBUG_MODE)
         {
-            Idealland.Log("ElemDamage:(%s,%s), %s to %s",elemental,amount,player,target);
+            Idealland.Log("ElemDamage:(%s,%s), %s to %s",elemental,amount,attacker,target);
         }
 
-        DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
+        DamageSource source = attacker instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) attacker) : DamageSource.causeMobDamage(attacker);
         if (elemental == EnumElemental.PYRO)
         {
             source.setFireDamage();
@@ -90,7 +94,7 @@ public class ElementalUtil {
         //physical damage is handled elsewhere
         if (elemental != EnumElemental.PHYSICAL)
         {
-            damage *= HandleResistance.handleResistance(player, target, elemental);
+            damage *= HandleResistance.handleResistance(attacker, target, elemental);
         }
 
         if (ModConfig.DEBUG_CONF.DEBUG_MODE)
@@ -115,7 +119,7 @@ public class ElementalUtil {
                 damage *= ModConfig.ELEMCONF.DAMAGE_WEAK_VAPORIZE;
                 break;
             case OVERLOAD:
-                target.getEntityWorld().createExplosion(player, target.posX, target.posY, target.posZ, 1f, ModConfig.ELEMCONF.OVERLOAD_EXPLOSION_GRIEF);
+                target.getEntityWorld().createExplosion(attacker, target.posX, target.posY, target.posZ, 1f, ModConfig.ELEMCONF.OVERLOAD_EXPLOSION_GRIEF);
                 break;
             case SUPERCONDUCT:
                 //todo: AOE
@@ -149,7 +153,7 @@ public class ElementalUtil {
                 break;
         }
 
-        target.attackEntityFrom(
+        return target.attackEntityFrom(
                 source,
                 damage);
     }

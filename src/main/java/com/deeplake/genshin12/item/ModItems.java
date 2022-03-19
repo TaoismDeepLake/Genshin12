@@ -7,6 +7,10 @@ import com.deeplake.genshin12.item.consumables.ItemPackageWeapon;
 import com.deeplake.genshin12.item.consumables.ItemStellaFortuna;
 import com.deeplake.genshin12.item.consumables.ItemInterwinedFate;
 import com.deeplake.genshin12.item.skills.genshin.*;
+import com.deeplake.genshin12.item.weapon.IElementalInfused;
+import com.deeplake.genshin12.item.weapon.ItemInfusedMelee;
+import com.deeplake.genshin12.util.EnumAmount;
+import com.deeplake.genshin12.util.EnumElemental;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -49,6 +53,8 @@ public class ModItems {
 	public static final ItemArtifactBase AR_BLANK = new ItemArtifactBase("artifact_blank", ArtifactSetManager.BLANK);
 
     public static final ItemBase ARTIFACT_XP_BOTTLE = new ItemVariantBase("artf_xp_bottle", 6);
+
+    public static final ItemInfusedMelee FIRE_CLUB = new ItemInfusedMelee("fire_club", Item.ToolMaterial.WOOD, EnumElemental.PYRO, EnumAmount.SMALL);
 
 //	public static final ItemDebugSword DEBUG = new ItemDebugSword("debug_item", Item.ToolMaterial.DIAMOND);
 	public static final ItemBase DEBUG = (ItemBase) new ItemBase("debug_item").setCreativeTab(null);

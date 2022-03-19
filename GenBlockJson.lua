@@ -63,12 +63,12 @@ end
 --	GenItem("artifact", "artf_xp_bottle_"..i);
 --end
 
-GenItem("artifact", "gladiator_chest");
-GenItem("artifact", "gladiator_foot");
-GenItem("artifact", "gladiator_head");
-GenItem("artifact", "gladiator_leg");
+--GenItem("artifact", "gladiator_chest");
+--GenItem("artifact", "gladiator_foot");
+--GenItem("artifact", "gladiator_head");
+--GenItem("artifact", "gladiator_leg");
 
---GenItem("skill", "hu_tao_q");
+GenItem("weapon", "fire_club");
 
 
 --GenBlock("artifact_ore");

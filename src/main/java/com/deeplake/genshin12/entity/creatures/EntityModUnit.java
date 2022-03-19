@@ -6,10 +6,9 @@ import com.deeplake.genshin12.entity.creatures.ideallandTeam.EntityIdeallandUnit
 import com.deeplake.genshin12.entity.creatures.moroon.EntityMoroonUnitBase;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.ModItems;
-import com.deeplake.genshin12.util.CommonDef;
-import com.deeplake.genshin12.util.EntityUtil;
+import com.deeplake.genshin12.item.weapon.ItemInfusedMelee;
+import com.deeplake.genshin12.util.*;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
-import com.deeplake.genshin12.util.PlayerUtil;
 import com.google.common.base.Predicate;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
@@ -24,6 +23,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -97,6 +97,8 @@ public class EntityModUnit extends EntityCreature {
     public boolean dontDrown = false;
 
     protected boolean enterDoors = false;
+
+    public boolean attack_is_elemental = false;
 
     public float MP = 0;
     public float MPMax = 0;
@@ -482,6 +484,37 @@ public class EntityModUnit extends EntityCreature {
         return (level - 1f) * 0.2f;
     }
 
+    public boolean isElementalAttack()
+    {
+        if (getHeldItemMainhand().getItem() instanceof ItemInfusedMelee)
+        {
+            return true;
+        }
+
+        return attack_is_elemental;
+    }
+
+    public EnumElemental getElemType()
+    {
+        final Item item = getHeldItemMainhand().getItem();
+        if (item instanceof ItemInfusedMelee)
+        {
+            return ((ItemInfusedMelee) item).getElemType();
+        }
+        return EnumElemental.PHYSICAL;
+    }
+
+    public EnumAmount getAttackAmount()
+    {
+        final Item item = getHeldItemMainhand().getItem();
+        if (item instanceof ItemInfusedMelee)
+        {
+            return ((ItemInfusedMelee) item).getAttackAmount();
+        }
+        return EnumAmount.SMALL;
+    }
+
+
     //Simulate EntityMob, use enchantments, knockback, etc.
     //this is attacking other, not being attacked
     public boolean attackEntityAsMob(Entity target) {
@@ -493,7 +526,16 @@ public class EntityModUnit extends EntityCreature {
             i += EnchantmentHelper.getKnockbackModifier(this);
         }
 
-        boolean flag = target.attackEntityFrom(DamageSource.causeMobDamage(this), f);
+        boolean flag;
+        if (isElementalAttack() && target instanceof EntityLivingBase)
+        {
+            flag = ElementalUtil.applyElementalDamage(this, (EntityLivingBase) target, f, getElemType(), getAttackAmount());
+        }
+        else
+        {
+            flag = target.attackEntityFrom(DamageSource.causeMobDamage(this), f);
+        }
+
 
         if (flag) {
             if (i > 0) {
