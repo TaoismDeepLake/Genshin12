@@ -96,7 +96,7 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
         ArtifactUtil.listSub.add(ModAttributes.EnumAttr.HP_P);
         ArtifactUtil.listSub.add(ModAttributes.EnumAttr.DEF_P);
 
-        //listSub.add(ModAttributes.EnumAttr.ATK);
+        ArtifactUtil.listSub.add(ModAttributes.EnumAttr.ATK);
         ArtifactUtil.listSub.add(ModAttributes.EnumAttr.HP);
         ArtifactUtil.listSub.add(ModAttributes.EnumAttr.DEF);
 

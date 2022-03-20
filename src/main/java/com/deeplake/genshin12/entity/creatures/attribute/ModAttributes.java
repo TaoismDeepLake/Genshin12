@@ -173,7 +173,9 @@ public class ModAttributes {
 
         HP(SharedMonsterAttributes.MAX_HEALTH, 1),
         DEF(ModAttributes.DEFENSE, 2),
-        ATK(SharedMonsterAttributes.ATTACK_DAMAGE, 3),
+        ATK(ModAttributes.GEN_ATK, 3),
+//        ATK(SharedMonsterAttributes.ATTACK_DAMAGE, 3),
+
 
         ELEM_MASTERY(ModAttributes.ELEM_MASTERY, 4),
         RECHARGE(ModAttributes.ENERGY_RECHARGE, 5, FAKE_PERCENT),
@@ -182,10 +184,14 @@ public class ModAttributes {
         CRIT_DMG(ModAttributes.CRIT_DMG, 7, FAKE_PERCENT),
         HEAL(ModAttributes.HEAL_BONUS, 8, FAKE_PERCENT),
 
+//        ATK_G(SharedMonsterAttributes.ATTACK_DAMAGE, 9),
 
         HP_P(SharedMonsterAttributes.MAX_HEALTH, BASE_1+HP.id, REAL_PERCENT),
         DEF_P(ModAttributes.DEFENSE, BASE_1+DEF.id, 1),
-        ATK_P(SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK.id, REAL_PERCENT),
+//        ATK_P(SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK.id, REAL_PERCENT),
+        ATK_P(ModAttributes.GEN_ATK, BASE_1+ATK.id, REAL_PERCENT),
+
+//        ATK_G_P(SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK_G.id),
 
         PHYSICAL(EnumElemental.PHYSICAL, false),
         ANEMO(EnumElemental.ANEMO, false),
@@ -297,9 +303,30 @@ public class ModAttributes {
 
             if (entity instanceof EntityPlayer)
             {
-                livingBase.getEntityAttribute(DEFENSE).setBaseValue(60);
+                livingBase.getEntityAttribute(DEFENSE).setBaseValue(225);
+                livingBase.getEntityAttribute(GEN_ATK).setBaseValue(75);
             }
         }
     }
 
+    public static float getAtkG(EntityLivingBase livingBase)
+    {
+        if (livingBase == null)
+        {
+            return 0f;
+        }
+
+        IAttributeInstance instance = livingBase.getEntityAttribute(GEN_ATK);
+        if (instance != null)
+        {
+            return (float) instance.getAttributeValue();
+        }
+        //fallback
+        instance = livingBase.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+        if (instance != null)
+        {
+            return (float) instance.getAttributeValue();
+        }
+        return 0f;
+    }
 }

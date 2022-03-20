@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.entity.EntityGlacialWaltz;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.EnumAmount;
 import com.deeplake.genshin12.util.EnumElemental;
@@ -24,7 +25,7 @@ public class ItemKaeyaQ extends ItemGenshinBurstBase {
         {
             EntityGlacialWaltz waltz = new EntityGlacialWaltz(worldIn);
             waltz.setOwner(livingBase);
-            waltz.setDamage(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC);
+            waltz.setDamage(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkG(livingBase));
             worldIn.spawnEntity(waltz);
         }
         return super.applyCast(worldIn, livingBase, stack, slot);

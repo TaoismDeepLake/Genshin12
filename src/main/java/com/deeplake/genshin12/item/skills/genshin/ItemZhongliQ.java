@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.entity.EntityPlanetBefall;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.CommonDef;
@@ -48,7 +49,7 @@ public class ItemZhongliQ extends ItemGenshinBurstBase {
             EntityPlanetBefall befall = new EntityPlanetBefall(worldIn);
             befall.setPositionAndUpdate(targetPosF.x, targetPosF.y + ModConfig.DEBUG_CONF.METEOR_HEIGHT, targetPosF.z);
             befall.setShooter(caster);
-            befall.setDamageAmount(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC);
+            befall.setDamageAmount(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkG(caster));
             worldIn.spawnEntity(befall);
         }
         return super.applyCast(worldIn, caster, stack, slot);

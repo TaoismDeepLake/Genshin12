@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.potion.buff;
 
 import com.deeplake.genshin12.Idealland;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.*;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
@@ -62,7 +63,7 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
                             //perform
                             ElementalUtil.applyElementalDamage(player,
                                     entityLivingBaseIn,
-                                    (getDamage(amplifier) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC),
+                                    (getDamage(amplifier) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC) * ModAttributes.getAtkG(player),
                                     EnumElemental.PYRO,
                                     EnumAmount.SMALL);
                         }

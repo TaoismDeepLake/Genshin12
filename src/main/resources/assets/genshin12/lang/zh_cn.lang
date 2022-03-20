@@ -47,7 +47,7 @@ configgui.genshin12.category.Menu0.ElemConf=Elemental Config
 enchantment.genshin12.test_enchantment=测试期
 
 # Entities
-entity.hilichurl.name=Hilichurl
+entity.hilichurl.name=丘丘人
 
 # Blocks
 tile.zl_pillar.name=岩脊
@@ -206,6 +206,16 @@ item.weapon_stone_7.desc=与武器合成可强化。武器需摆在左上角。
 item.weapon_stone_8.name=武器强化石
 item.weapon_stone_8.desc=与武器合成可强化。武器需摆在左上角。
 
+item.attr_report_0.name=属性报告
+item.attr_report_1.name=属性报告
+item.attr_report_2.name=属性报告
+item.attr_report_3.name=属性报告
+item.attr_report_4.name=属性报告
+item.attr_report_5.name=属性报告
+item.attr_report_6.name=属性报告
+item.attr_report_7.name=属性报告
+item.attr_report_8.name=属性报告
+
 genshin12.msg.xiao.plunge.speech.0=这里！
 genshin12.msg.xiao.plunge.speech.1=无能。
 
@@ -293,10 +303,10 @@ genshin12.skill.msg.charge_full=%s 能量已满！
 genshin12.msg.obtain_primo=$b$6获得 %s 原石
 genshin12.msg.artifact.miner=§b§6[矿工套装]获得额外火把。
 genshin12.msg.artifact.lumber=§b§6[伐木套装]你吃了树皮，味道不错。
-genshin12.msg.player.levelup=Level Up! Lv.%s
+genshin12.msg.player.levelup=等级提升! Lv.%s
 
 # attr
-attribute.name.genshin12.attr.genshin_atk=ATK-Genshin
+attribute.name.genshin12.attr.genshin_atk=攻击力·原
 # attrCritical RateCrit Rate
 attribute.name.genshin12.attr.defense=防御
 attribute.name.genshin12.attr.elem_mastery=元素精通

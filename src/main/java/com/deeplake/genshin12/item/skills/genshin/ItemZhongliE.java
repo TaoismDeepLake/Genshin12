@@ -2,6 +2,7 @@ package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.blocks.ModBlocks;
 import com.deeplake.genshin12.blocks.tileEntity.genshin.TEZhongliPillar;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
@@ -165,7 +166,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
         List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, isHold ?  (ModConfig.GeneralConf.MOVIE_MODE ? aoeRangeHold * 10 : aoeRangeHold) : aoeRange, null);
 
         float damageFactor = isHold ? getHoldDamage(getLevel(stack)) : getInitDamage(getLevel(stack));
-        float damage = damageFactor / 100f * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC;
+        float damage = damageFactor / 100f * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkG(caster);
 
         boolean needDrop = true;
         if (ModConfig.GeneralConf.MOVIE_MODE)

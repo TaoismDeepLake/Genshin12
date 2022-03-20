@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.ILogNBT;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
@@ -193,7 +194,7 @@ public class ItemGenshinSkillBase extends ItemSkillBase{
         List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos,aoeRange, null);
 
                 float damageFactor = getInitDamage(getLevel(stack), caster);
-                float damage = damageFactor * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC;
+                float damage = (float) (damageFactor * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkG(caster));
 
                 boolean needDrop = dropBalls;
                 int index = 0;

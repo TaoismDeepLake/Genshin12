@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.events;
 
 import com.deeplake.genshin12.Idealland;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.*;
@@ -8,6 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -69,7 +71,7 @@ public class EventsPlungedAttack {
         EntityLivingBase livingBase = event.getEntityLiving();
         World world = livingBase.getEntityWorld();
         final float distance = event.getDistance();
-        if (distance > ModConfig.DEBUG_CONF.PLUNGE_MIN_HEIGHT)
+        if (livingBase instanceof EntityPlayer && distance > ModConfig.DEBUG_CONF.PLUNGE_MIN_HEIGHT)
         {
             if (world.isRemote)
             {
@@ -82,7 +84,7 @@ public class EventsPlungedAttack {
                 }
 
             } else {
-                float basicDamage = ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * getDamageFactorFromHeight(distance);
+                float basicDamage = (float) (ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * getDamageFactorFromHeight(distance) * ModAttributes.getAtkG(livingBase));
                 float range = getRangeFromHeight(distance);
 
                 int maskLevel = EntityUtil.getBuffLevelIDL(livingBase, ModPotions.YAKSHA_MASK);

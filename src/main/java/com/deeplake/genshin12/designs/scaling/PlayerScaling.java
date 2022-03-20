@@ -115,7 +115,7 @@ public class PlayerScaling {
 //                        }
                 }
 
-                IAttributeInstance atk = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+                IAttributeInstance atk = player.getEntityAttribute(ModAttributes.GEN_ATK);
                 if (atk != null)
                 {
                     double atkMod = getATKModifierFromLevel(level) * ModConfig.DEBUG_CONF.PLAYER_ATK_SCALE_FACTOR;
@@ -125,6 +125,12 @@ public class PlayerScaling {
 //                        {
 //                            Idealland.Log("ATK: Lv%d, modifier = %s", level, atkMod);
 //                        }
+                }
+
+                atk = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+                if (atk != null)
+                {
+                    atk.removeModifier(LEVEL_SCALE);
                 }
 
                 float ratio = player.getHealth() / player.getMaxHealth();
