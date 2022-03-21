@@ -72,6 +72,16 @@ public class ModAttributes {
         return attribute;
     }
 
+    public static float getElemMastery(EntityLivingBase livingBase)
+    {
+        IAttributeInstance instance = livingBase.getEntityAttribute(ELEM_MASTERY);
+        if (instance != null)
+        {
+            return (float) instance.getAttributeValue();
+        }
+        return 0f;
+    }
+
 
     //Elemental
     //-Damage Bonus

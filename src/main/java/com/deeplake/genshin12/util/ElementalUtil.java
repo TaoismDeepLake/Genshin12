@@ -4,6 +4,7 @@ import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.designs.ElemTuple;
 import com.deeplake.genshin12.designs.ReactionResult;
 import com.deeplake.genshin12.entity.creatures.attribute.HandleResistance;
+import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,6 +15,22 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 
 public class ElementalUtil {
+
+    static final float elemMastAmpl(float em)
+    {
+        return 278 * em / (em + 1400);
+    }
+
+    static final float elemMastTrans(float em)
+    {
+        return 1600 * em / (em + 2000);//v1.6
+    }
+
+    //Crystallize
+    static final float elemMastCrst(float em)
+    {
+        return 444 * em / (em + 1400);
+    }
 
     public static float getAmountFromBuff(PotionEffect effect)
     {
@@ -102,21 +119,22 @@ public class ElementalUtil {
             Idealland.Log("Reaction: %s", reactionResult);
         }
 
+        float ampl = 1 + elemMastAmpl(ModAttributes.getElemMastery(attacker));
         switch (reactionResult.reaction)
         {
             case NONE:
                 break;
             case MELT_S:
-                damage *= ModConfig.ELEMCONF.DAMAGE_STRONG_MELT;
+                damage *= ModConfig.ELEMCONF.DAMAGE_STRONG_MELT * ampl;
                 break;
             case MELT_W:
-                damage *= ModConfig.ELEMCONF.DAMAGE_WEAK_MELT;
+                damage *= ModConfig.ELEMCONF.DAMAGE_WEAK_MELT * ampl;
                 break;
             case VAPORIZE_S:
-                damage *= ModConfig.ELEMCONF.DAMAGE_STRONG_VAPORIZE;
+                damage *= ModConfig.ELEMCONF.DAMAGE_STRONG_VAPORIZE * ampl;
                 break;
             case VAPORIZE_W:
-                damage *= ModConfig.ELEMCONF.DAMAGE_WEAK_VAPORIZE;
+                damage *= ModConfig.ELEMCONF.DAMAGE_WEAK_VAPORIZE * ampl;
                 break;
             case OVERLOAD:
                 target.getEntityWorld().createExplosion(attacker, target.posX, target.posY, target.posZ, 1f, ModConfig.ELEMCONF.OVERLOAD_EXPLOSION_GRIEF);

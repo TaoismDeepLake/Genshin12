@@ -179,7 +179,7 @@ public class ElemTuple {
                     case DENDRO:
                         break;
                     case PYRO:
-                        return normalCalculation(aura,apply,EnumReaction.VAPORIZE_W, lv1,lv2);
+                        return normalCalculation(aura,apply,EnumReaction.VAPORIZE_S, lv1,lv2);
                     case CYRO:
                         break;
                 }
@@ -198,7 +198,7 @@ public class ElemTuple {
                         //burn
                         break;
                     case HYDRO:
-                        return normalCalculation(aura,apply,EnumReaction.VAPORIZE_S, lv1,lv2);
+                        return normalCalculation(aura,apply,EnumReaction.VAPORIZE_W, lv1,lv2);
                     case CYRO:
                         return normalCalculation(aura,apply,EnumReaction.MELT_S, lv1,lv2);
                 }
@@ -219,7 +219,7 @@ public class ElemTuple {
                     case HYDRO:
                         break;
                     case PYRO:
-                        return normalCalculation(aura,apply,EnumReaction.MELT_S, lv1,lv2);
+                        return normalCalculation(aura,apply,EnumReaction.MELT_W, lv1,lv2);
                 }
                 break;
             default:
