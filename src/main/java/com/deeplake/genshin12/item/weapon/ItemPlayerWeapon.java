@@ -115,7 +115,7 @@ public class ItemPlayerWeapon extends ItemBase implements ILeveler, ILogNBT {
         return total;
     }
 
-    public static int[] xp_worth = {600,1200,1800,5000,300000, 400,2000,10000};
+    public static int[] xp_worth = {0,600,1200,1800,5000,300000, 400,2000,10000};
 
     public static int getXPWorth(ItemStack stack)
     {
