@@ -52,6 +52,9 @@ public class PotionEventHandler {
                     IDLNBTUtil.SetInt(livingBase, IDLNBTDef.HU_TAO_TICK, -1);
                 }
             }
+
+            //trying to set burn tick to 1, but impossible due to accessibilty.
+//            if (livingBase.isPotionActive(ModPotions.PYRO) && livingBase.isBurning())
         }
     }
 

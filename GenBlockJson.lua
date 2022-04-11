@@ -71,16 +71,16 @@ end
 --GenItem("weapon", "fire_club");
 
 
---GenBlock("artifact_ore");
+GenBlock("zl_pillar_deco");
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");
- for i = 0,8 do
- 	GenItem("misc", "attr_report_"..i);
- end
- for i = 0,8 do
- 	GenItem("misc", "weapon_stone_"..i);
- end
+-- for i = 0,8 do
+-- 	GenItem("misc", "attr_report_"..i);
+-- end
+-- for i = 0,8 do
+-- 	GenItem("misc", "weapon_stone_"..i);
+-- end
 
 -- for i = 1,4 do 
 -- 	GenItem("misc", "mor_armor_"..i);

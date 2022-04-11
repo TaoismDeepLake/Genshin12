@@ -633,6 +633,7 @@ public class EntityUtil {
         return entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + (double)entity.getEyeHeight(), entity.posZ));
     }
 
+    @Nullable
     public static EntityEquipmentSlot findSlot(ItemStack stack, EntityLivingBase livingBase)
     {
         EntityEquipmentSlot slot = null;

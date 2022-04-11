@@ -1,1 +1,1 @@
-{"parent": "item/handheld","textures": {"layer0":"minecraft:paper"}}
+{"parent": "item/handheld","textures": {"layer0":"minecraft:items/paper"}}

@@ -86,6 +86,7 @@ public class ElementalUtil {
 
     public static boolean applyElementalDamage(EntityLivingBase attacker, EntityLivingBase target, float damage, EnumElemental elemental, EnumAmount amount)
     {
+        target.hurtResistantTime = 0;
         boolean result = false;
 
         ReactionResult reactionResult = applyElemental(target, elemental, amount);

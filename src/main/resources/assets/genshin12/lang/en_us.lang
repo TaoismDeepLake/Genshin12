@@ -52,6 +52,7 @@ entity.hilichurl.name=Hilichurl
 
 #Blocks
 tile.zl_pillar.name=Zhongli Pillar Block
+tile.zl_pillar_deco.name=Zhongli Pillar Block (Deco)
 tile.cor_lapis_ore.name=Cor Lapis Ore
 tile.cor_lapis_block.name=Cor Lapis Block
 tile.artifact_ore.name=Artifact Ore
