@@ -56,11 +56,11 @@ public class EntityHilichurl extends EntityMobRanged {
     {
         public final EnumHiliType content;
 
-        public HiliEntry(EnumHiliType biome, int weight)
+        public HiliEntry(EnumHiliType hiliType, int weight)
         {
             super(weight);
 
-            this.content = biome;
+            this.content = hiliType;
         }
     }
 

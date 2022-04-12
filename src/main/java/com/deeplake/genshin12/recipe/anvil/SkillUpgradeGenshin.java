@@ -38,6 +38,12 @@ public class SkillUpgradeGenshin {
                     //type correct, now check amount
                     event.setMaterialCost(nextLevel);
                     event.setCost(nextLevel);
+                    //fk mj. This cost will go ignored if the second material isn't enough
+                    if (event.getRight().getCount() < event.getMaterialCost())
+                    {
+                        event.setOutput(ItemStack.EMPTY);
+                        return;
+                    }
 
                     ItemStack result = leftIn.copy();
                     IDLSkillNBT.setLevel(result, nextLevel);

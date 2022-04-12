@@ -21,7 +21,7 @@ public class ItemPackageWeapon extends ItemParcel {
     public boolean give(World worldIn, EntityPlayer playerIn, ItemStack parcel) {
         ItemStack stack;
         Random random = playerIn.getRNG();
-        int i = random.nextInt(5);
+        int i = random.nextInt(9);
         switch (i)
         {
             case 0:
