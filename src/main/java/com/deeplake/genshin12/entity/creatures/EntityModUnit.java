@@ -436,6 +436,7 @@ public class EntityModUnit extends EntityCreature {
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(attack * modifier);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(armor * modifier);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(hp * modifier);
+        setHealth(getMaxHealth());
         if (is_pinned_on_ground) {
             this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(2.0f);
         }

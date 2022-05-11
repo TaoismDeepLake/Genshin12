@@ -160,9 +160,12 @@ public class VanillaScaling {
         {
             for (EntityItem item :
                     oriList) {
-                EntityItem copy = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
-                item.world.spawnEntity(copy);
-                totalList.add(copy);
+                if (item.getItem().getMaxStackSize() > 1)
+                {
+                    EntityItem copy = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
+                    item.world.spawnEntity(copy);
+                    totalList.add(copy);
+                }
             }
             level -= dropFactor;
         }
