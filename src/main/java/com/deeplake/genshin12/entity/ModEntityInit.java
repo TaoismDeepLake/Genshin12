@@ -2,6 +2,7 @@ package com.deeplake.genshin12.entity;
 
 import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.creatures.mob.EntityHilichurl;
+import com.deeplake.genshin12.entity.projectiles.EntityArrowFixed;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.Reference;
@@ -21,6 +22,7 @@ public class ModEntityInit {
         registerEntityNoEgg("planet_befall", EntityPlanetBefall.class);
         registerEntityNoEgg("energy_orb", EntityEnergyOrb.class);
         registerEntityNoEgg("glacial_waltz", EntityGlacialWaltz.class);
+        registerEntityNoEgg("fixed_arrow", EntityArrowFixed.class);
         if (ModConfig.DEBUG_CONF.DEBUG_MODE)
         {
             registerEntity("test_boss", EntityTestBoss.class,0xff00ff, 0x000033);

@@ -48,6 +48,7 @@ import java.util.Random;
 
 import static com.deeplake.genshin12.util.CommonDef.TICK_PER_DAY;
 import static com.deeplake.genshin12.util.CommonDef.TICK_PER_SECOND;
+import static net.minecraft.block.BlockLiquid.LEVEL;
 
 public class CommonFunctions {
 
@@ -607,7 +608,9 @@ public class CommonFunctions {
     }
 
     public static boolean freeze(World world, BlockPos pos) {
-        Block block = world.getBlockState(pos).getBlock();
+        IBlockState state = world.getBlockState(pos);
+        Block block = state.getBlock();
+
         if (block == Blocks.WATER || block == Blocks.FLOWING_WATER) {
             if (!world.isRemote) {
                 world.setBlockState(pos, Blocks.ICE.getDefaultState());
@@ -625,7 +628,19 @@ public class CommonFunctions {
             return true;
         } else if (block == Blocks.LAVA || block == Blocks.FLOWING_LAVA) {
             if (!world.isRemote) {
-                world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
+
+                Integer integer = state.getValue(LEVEL);
+
+                if (integer == 0)
+                {
+                    world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
+                    return true;
+                }
+                else //if (integer <= 4)
+                {
+                    world.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
+                    return true;
+                }
             }
             return true;
         } else {

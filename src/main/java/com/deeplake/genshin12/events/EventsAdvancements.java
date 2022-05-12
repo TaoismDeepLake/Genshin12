@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.events;
 
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.ModItems;
 import com.deeplake.genshin12.util.CommonFunctions;
@@ -9,8 +10,10 @@ import net.minecraft.advancements.FrameType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.AdvancementEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EventsAdvancements {
     @SubscribeEvent
     public static void onAdv(AdvancementEvent event)

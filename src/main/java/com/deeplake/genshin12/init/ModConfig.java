@@ -68,6 +68,10 @@ public class ModConfig {
         @Config.LangKey("genshin12.conf.general.safe_drop")
         @Config.Comment("Loot is directly given to players.")
         public boolean SAFE_DROP = true;
+
+        @Config.LangKey("genshin12.conf.general.swim_disable_skill")
+        @Config.Comment("Skills can not be cast when submerged.")
+        public boolean SWIM_DISABLE_SKILL = false;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GachaConf")

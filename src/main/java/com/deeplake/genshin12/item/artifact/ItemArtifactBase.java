@@ -64,23 +64,23 @@ public class ItemArtifactBase extends ItemBase implements ILogNBT, ILeveler {
 
         ArtifactUtil.listMain2.add(ModAttributes.EnumAttr.ATK);
 
-        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.ELEM_MASTERY);
-        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.RECHARGE);
-        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.ATK_P);
-        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.HP_P);
-        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.DEF_P);
-
+        ArtifactUtil.listMainSandsBoot.add(ModAttributes.EnumAttr.ELEM_MASTERY);
+        ArtifactUtil.listMainSandsBoot.add(ModAttributes.EnumAttr.RECHARGE);
         ArtifactUtil.listMainSandsBoot.add(ModAttributes.EnumAttr.ATK_P);
+        ArtifactUtil.listMainSandsBoot.add(ModAttributes.EnumAttr.HP_P);
+        ArtifactUtil.listMainSandsBoot.add(ModAttributes.EnumAttr.DEF_P);
+
+        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.ATK_P);
         for (EnumElemental elemental :
                 EnumElemental.values()) {
             if (elemental != EnumElemental.CHRONO)
             {
-                ArtifactUtil.listMainSandsBoot.add(ModAttributes.getEnumDamage(elemental));
+                ArtifactUtil.listMainGobletLeg.add(ModAttributes.getEnumDamage(elemental));
             }
         }
-        ArtifactUtil.listMainSandsBoot.add(ModAttributes.EnumAttr.ATK_P);
-        ArtifactUtil.listMainSandsBoot.add(ModAttributes.EnumAttr.HP_P);
-        ArtifactUtil.listMainSandsBoot.add(ModAttributes.EnumAttr.DEF_P);
+        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.ATK_P);
+        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.HP_P);
+        ArtifactUtil.listMainGobletLeg.add(ModAttributes.EnumAttr.DEF_P);
 
         ArtifactUtil.listMainCircletHead.add(ModAttributes.EnumAttr.HEAL);
         ArtifactUtil.listMainCircletHead.add(ModAttributes.EnumAttr.CRIT);

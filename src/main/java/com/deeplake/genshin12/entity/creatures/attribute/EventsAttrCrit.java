@@ -13,6 +13,7 @@ import java.util.Random;
 @Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EventsAttrCrit {
 
+    //only used in EntityPlayer::attackTargetEntityWithCurrentItem
     @SubscribeEvent
     public static void onCritCheck(CriticalHitEvent event)
     {

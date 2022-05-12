@@ -281,7 +281,7 @@ public class EntityEnergyOrb extends Entity {
         ++this.xpColor;
         ++this.xpOrbAge;
 
-        if (this.xpOrbAge >= 6000)
+        if (this.xpOrbAge >= CommonDef.TICK_PER_SECOND * 15)
         {
             this.setDead();
         }

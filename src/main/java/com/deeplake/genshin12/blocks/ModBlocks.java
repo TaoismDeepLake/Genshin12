@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.blocks;
 
 import com.deeplake.genshin12.blocks.blockMisc.BlockZhongliPillar;
+import com.deeplake.genshin12.blocks.blockMisc.BlockZhongliPillarDeco;
 import com.deeplake.genshin12.blocks.ore.BlockOreArtifact;
 import com.deeplake.genshin12.init.ModCreativeTab;
 import com.deeplake.genshin12.item.ModItems;
@@ -27,6 +28,7 @@ public class ModBlocks {
 
 
 	public static final Block ZL_PILLAR = new BlockZhongliPillar("zl_pillar", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
+	public static final Block ZL_PILLAR_DECO = new BlockZhongliPillarDeco("zl_pillar_deco", Material.ROCK).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(20f);
 
 	public static final BlockOreBase COR_LAPIS_ORE = (BlockOreBase) new BlockOreBase("cor_lapis_ore").setHardness(10f);
 	public static final Block COR_LAPIS_BLOCK =  new BlockOreBase("cor_lapis_block").setHardness(80f);

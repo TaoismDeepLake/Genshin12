@@ -319,6 +319,10 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable{
     }
 
     public boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot, boolean hintErrorMsg) {
+        if (livingBase == null || slot == null)
+        {
+            return false;
+        }
         if (livingBase instanceof EntityPlayer)
         {
             switch (slot)

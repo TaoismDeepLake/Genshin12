@@ -53,6 +53,13 @@ public class TEZhongliPillar extends TileEntity implements ITickable {
         {
             resonate();
         }
+
+        //when under block is broken
+        IBlockState state = world.getBlockState(pos.down());
+        if (!state.getMaterial().isSolid())
+        {
+            destroy();
+        }
     }
 
     void destroy()

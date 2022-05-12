@@ -234,26 +234,51 @@ public class IDLSkillNBT {
 
     public static int getLevel(ItemStack stack)
     {
-        if (!(stack.getItem() instanceof ItemAdaptingBase)) {
+        Item item = stack.getItem();
+        if (!(item instanceof ItemSkillBase) && !(item instanceof ILeveler)) {
             return 0;
         }
-        ItemAdaptingBase skillBase = (ItemAdaptingBase) stack.getItem();
-
-        int level = GetInt(stack, LEVEL_TAG);
-
-        if (level <= 0)
+        if (item instanceof ItemSkillBase)
         {
-            return 1;
+            ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+
+            int level = GetInt(stack, LEVEL_TAG);
+
+            if (level <= 0)
+            {
+                return 1;
+            }
+
+            int lvMax = skillBase.GetLevelMax(stack);
+
+            if (level > lvMax)
+            {
+                return lvMax;
+            }
+
+            return level;
         }
-
-        int lvMax = skillBase.GetLevelMax(stack);
-
-        if (level > lvMax)
+        else if (item instanceof ILeveler)
         {
-            return lvMax;
-        }
+            ILeveler skillBase = (ILeveler) stack.getItem();
 
-        return level;
+            int level = GetInt(stack, LEVEL_TAG);
+
+            if (level <= 0)
+            {
+                return 1;
+            }
+
+            int lvMax = skillBase.getMaxLevel(stack);
+
+            if (level > lvMax)
+            {
+                return lvMax;
+            }
+
+            return level;
+        }
+        return 0;
     }
 
     public static void setLevel(ItemStack stack, int count)

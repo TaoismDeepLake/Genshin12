@@ -89,6 +89,14 @@ public class ItemGenshinSkillBase extends ItemSkillBase{
 
     @Override
     public boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
+        if (ModConfig.GeneralConf.SWIM_DISABLE_SKILL)
+        {
+            if (livingBase.isInWater())
+            {
+                return false;
+            }
+        }
+
         if (maxStack > 1)
         {
             if (isDepleted(stack))

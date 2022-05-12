@@ -73,7 +73,7 @@ public class ArtifactEnhance extends IForgeRegistryEntry.Impl<IRecipe> implement
 				if(stack.getItem() instanceof ItemArtifactBase)
 				{
 					main = stack;
-					payingXP = IDLSkillNBT.getXP(stack);
+					payingXP += IDLSkillNBT.getXP(stack);
 				}
 				else if(stack.getItem() == ModItems.ARTIFACT_XP_BOTTLE) {
 					payingXP += ItemArtifactBase.getXPWorth(stack);

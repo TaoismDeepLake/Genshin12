@@ -3,6 +3,7 @@ package com.deeplake.genshin12.entity.creatures.mob;
 import com.deeplake.genshin12.entity.creatures.EntityGeneralMob;
 import com.deeplake.genshin12.entity.creatures.ai.EntityAIStrafeRangedAttack;
 //import com.deeplake.genshin12.entity.projectiles.EntityMoroonBullet;
+import com.deeplake.genshin12.entity.projectiles.EntityArrowFixed;
 import com.deeplake.genshin12.entity.projectiles.EntityIdlProjectile;
 import com.deeplake.genshin12.entity.projectiles.ProjectileArgs;
 //import com.deeplake.genshin12.item.weapon.ItemPistolBase;
@@ -34,6 +35,7 @@ public class EntityMobRanged extends EntityGeneralMob implements IRangedAttackMo
     private float bulletAccel = 0.1f;
     private float errorModifier = 0.2f;
     public boolean useBulletForRanged = true;
+    public boolean useFixedArrow = true;//damage unrelated to speed.
 
     public EntityMobRanged(World worldIn) {
         super(worldIn);
@@ -195,7 +197,11 @@ public class EntityMobRanged extends EntityGeneralMob implements IRangedAttackMo
             entityspectralarrow.setEnchantmentEffectsFromEntity(this, p_190726_1_);
             return entityspectralarrow;
         } else {
-            EntityTippedArrow entityarrow = new EntityTippedArrow(this.world, this);
+            EntityArrowFixed entityarrow = new EntityArrowFixed(this.world, this);
+            if (useFixedArrow)
+            {
+                entityarrow.setDamage(EntityUtil.getAttack(this));
+            }
             entityarrow.setEnchantmentEffectsFromEntity(this, p_190726_1_);
 
             if (itemstack.getItem() == Items.TIPPED_ARROW) {

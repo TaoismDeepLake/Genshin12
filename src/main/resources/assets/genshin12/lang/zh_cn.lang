@@ -51,6 +51,7 @@ entity.hilichurl.name=丘丘人
 
 # Blocks
 tile.zl_pillar.name=岩脊
+tile.zl_pillar_deco.name=岩脊 (装饰)
 tile.cor_lapis_ore.name=石珀矿
 tile.cor_lapis_block.name=石珀块
 tile.artifact_ore.name=圣遗物矿石
@@ -300,7 +301,7 @@ entity.Villager.genshin12.v_qst_brewer=迪卢克
 # msg
 genshin12.skill.msg.lack_mp=能量不足 (%d/%d)
 genshin12.skill.msg.charge_full=%s 能量已满！
-genshin12.msg.obtain_primo=$b$6获得 %s 原石
+genshin12.msg.obtain_primo=§b§6获得 %s 原石
 genshin12.msg.artifact.miner=§b§6[矿工套装]获得额外火把。
 genshin12.msg.artifact.lumber=§b§6[伐木套装]你吃了树皮，味道不错。
 genshin12.msg.player.levelup=等级提升! Lv.%s

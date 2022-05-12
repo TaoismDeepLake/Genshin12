@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.item.skills.genshin;
 
 import com.deeplake.genshin12.blocks.ModBlocks;
+import com.deeplake.genshin12.blocks.blockMisc.BlockZhongliPillarDeco;
 import com.deeplake.genshin12.blocks.tileEntity.genshin.TEZhongliPillar;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
@@ -84,7 +85,8 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
         {
             if (worldIn.getBlockState(pos.offset(EnumFacing.UP, y)).getMaterial().isReplaceable())
             {
-                if (!worldIn.getBlockState(pos.offset(EnumFacing.UP, y - 1)).getMaterial().isReplaceable())
+                IBlockState state = worldIn.getBlockState(pos.offset(EnumFacing.UP, y - 1));
+                if (!state.getMaterial().isReplaceable() && !(state.getBlock() instanceof BlockZhongliPillarDeco))
                 {
                     isValid = true;
                     break;

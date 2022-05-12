@@ -15,6 +15,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ItemHuTaoE extends ItemGenshinSkillBase {
@@ -47,13 +48,14 @@ public class ItemHuTaoE extends ItemGenshinSkillBase {
     }
 
     @SubscribeEvent
-    public void onHit(LivingAttackEvent event)
+    public void onHit(LivingHurtEvent event)
     {
         EntityLivingBase hurtOne = event.getEntityLiving();
         DamageSource source = event.getSource();
         World world = hurtOne.getEntityWorld();
         if (source.getTrueSource() instanceof EntityPlayer)
         {
+            float amount = event.getAmount();
             EntityPlayer attacker = (EntityPlayer) source.getTrueSource();
             if (attacker.isPotionActive(ModPotions.HUTAO_BUFF))
 //                && attacker.getCooledAttackStrength(0f) > 0.99f)
@@ -63,17 +65,20 @@ public class ItemHuTaoE extends ItemGenshinSkillBase {
                 if (!world.isRemote)
                 {
                     //replace the damage with fire-magic
-                    if (!(source.isFireDamage() && source.isMagicDamage()))
+                    if (source.isFireDamage() && source.isMagicDamage()) {
+                        return;
+                    }
+                    if (source.isProjectile()) {
+                        return;
+                    }
+                    event.setCanceled(true);
+                    hurtOne.hurtResistantTime = 0;
+                    ElementalUtil.applyElementalDamage(attacker, hurtOne, event.getAmount(), EnumElemental.PYRO, EnumAmount.SMALL);
+                    //note that blood blossom will also trigger this, hence dura will be constantly refreshed.
+                    if (buff != null)
                     {
-                        event.setCanceled(true);
-                        hurtOne.hurtResistantTime = 0;
-                        ElementalUtil.applyElementalDamage(attacker, hurtOne, event.getAmount(), EnumElemental.PYRO, EnumAmount.SMALL);
-                        //note that blood blossom will also trigger this, hence dura will be constantly refreshed.
-                        if (buff != null)
-                        {
-                            //it's ok to repeat apply.
-                            applyBloodBlossom(hurtOne, world, attacker, buff.getAmplifier());
-                        }
+                        //it's ok to repeat apply.
+                        applyBloodBlossom(hurtOne, world, attacker, buff.getAmplifier());
                     }
                 }
             }
