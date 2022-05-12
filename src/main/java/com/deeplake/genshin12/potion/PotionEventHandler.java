@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Collection;
 
+import static com.deeplake.genshin12.util.CommonDef.TICK_PER_SECOND;
 import static net.minecraftforge.fml.common.eventhandler.Event.Result.*;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
@@ -75,7 +76,7 @@ public class PotionEventHandler {
                 //Fortified characters have 5% increased Shield Strength.
                 //Can stack up to 5 times, and lasts until the Jade Shield disappears
                 //Fortify times = 0,1,2,3,4,5
-                int dura = hurtOne.getActivePotionEffect(ModPotions.JADE_SHIELD).getDuration();
+                float dura = (float) hurtOne.getActivePotionEffect(ModPotions.JADE_SHIELD).getDuration() / TICK_PER_SECOND;
                 EntityUtil.ApplyBuff(hurtOne, ModPotions.JADE_SHIELD, buffLevel, dura);//actually +1 level
             }
         }
