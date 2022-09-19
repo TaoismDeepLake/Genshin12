@@ -179,13 +179,13 @@ item.hu_tao_q.speech.3=§c§l蝶火燎原！
 item.keqing_e.name=§5星斗归位
 item.keqing_e.desc=迅速投出雷楔，以疾雷之势歼敌。雷楔命中时会对小范围的敌人造成§5雷元素伤害§7，并在命中的位置留下雷楔标记。\n「人像是蛾子，总奔着名叫神仙的火光而去。但是我这光是自己点的。」
 
-item.keqing_e.speech.1=§5去吧！
-item.keqing_e.speech.2=§5迅影如剑！
-item.keqing_e.speech.3=§5可别眨眼！
+item.keqing_e.speech.1=去吧！
+item.keqing_e.speech.2=迅影如剑！
+item.keqing_e.speech.3=可别眨眼！
 
-item.keqing_e.speech.long.1=§5喝啊——！
-item.keqing_e.speech.long.2=§5嘿！
-item.keqing_e.speech.long.3=§5哈！
+item.keqing_e.speech.long.1=喝啊——！
+item.keqing_e.speech.long.2=嘿！
+item.keqing_e.speech.long.3=哈！
 
 item.keqing_q.name=§5天街巡游
 item.keqing_q.desc=爆发雷电的力量，造成范围雷元素伤害。\n随后隐入剑影中，对周围的敌人进行如同迅雷霆霓般疾速的连斩，造成多段§5雷元素伤害§7,并在最后一击时造成高额§5雷元素范围伤害§7。刻晴自己剑术中最为迅捷的一招，可将诸星斩落。
