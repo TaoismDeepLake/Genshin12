@@ -125,7 +125,7 @@ item.zhongli_e.speech.long.2=Stabilize.
 item.zhongli_e.speech.long.3=Solidify.
 
 item.zhongli_q.name=Planet Befall
-item.zhongli_q.desc=Brings a falling meteor down to earth, dealing massive Geo DMG to opponents caught in its AoE and applying the §6§lPetrification§r status to them.
+item.zhongli_q.desc=Brings a falling meteor down to earth, dealing massive §6Geo DMG§7 to opponents caught in its AoE and applying the §6§lPetrification§7 status to them.
 
 item.zhongli_q.speech.1=§6§lOrder guide you.
 item.zhongli_q.speech.2=§6§lThis is order.
@@ -133,14 +133,14 @@ item.zhongli_q.speech.3=§6§lI will have order!
 
 #Kaeya
 item.kaeya_e.name=Frostgnaw
-item.kaeya_e.desc=Unleashes a frigid blast, dealing §bCryo DMG§r to opponents in front of Kaeya.
+item.kaeya_e.desc=Unleashes a frigid blast, dealing §bCryo DMG§7 to opponents in front of Kaeya.
 
 item.kaeya_e.speech.1=Cool it!
 item.kaeya_e.speech.2=Freeze!
 item.kaeya_e.speech.3=Dodge this!
 
 item.kaeya_q.name=Glacial Waltz
-item.kaeya_q.desc=Coalescing the frost in the air, Kaeya summons 3 icicles that revolve around him. These icicles will follow the character around and deal §bCryo DMG§r to opponents in their path for the ability's duration.
+item.kaeya_q.desc=Coalescing the frost in the air, Kaeya summons 3 icicles that revolve around him. These icicles will follow the character around and deal §bCryo DMG§7 to opponents in their path for the ability's duration.
 
 item.kaeya_q.speech.1=§b§lDon't get frostbite.
 item.kaeya_q.speech.2=§b§lOh, so sorry!
@@ -148,7 +148,7 @@ item.kaeya_q.speech.3=§b§lThis moment will be frozen in time.
 
 #Xiao
 item.xiao_e.name=Lemniscatic Wind Cycling
-item.xiao_e.desc=Xiao lunges forward, dealing Anemo DMG to opponents in his path.
+item.xiao_e.desc=Xiao lunges forward, dealing §aAnemo DMG§7 to opponents in his path.
 
 item.xiao_e.speech.1=Hmph.
 item.xiao_e.speech.2=Boring.
@@ -157,24 +157,43 @@ item.xiao_e.speech.3=Useless.
 item.xiao_q.name=Bane of All Evil
 item.xiao_q.desc=Xiao dons the Yaksha Mask that set gods and demons trembling millennia ago. Greatly increases Xiao's jumping ability. Increases his attack AoE and attack DMG. Drains HP.
 
-item.xiao_q.speech.1=§b§lDisappear!
-item.xiao_q.speech.2=§b§lEvil conquering!
-item.xiao_q.speech.3=§b§lLament!
+item.xiao_q.speech.1=§a§lDisappear!
+item.xiao_q.speech.2=§a§lEvil conquering!
+item.xiao_q.speech.3=§a§lLament!
 
 #HuTao
 item.hu_tao_e.name=§cGuide to Afterlife
-item.hu_tao_e.desc=Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the §c§lParamita§r Papilio state.
+item.hu_tao_e.desc=Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the §c§lParamita§7 Papilio state.
 
 item.hu_tao_e.speech.1=Huh!
 item.hu_tao_e.speech.2=Chi!
 item.hu_tao_e.speech.3=Suh!
 
 item.hu_tao_q.name=§cSpirit Soother
-item.hu_tao_q.desc=Commands a blazing spirit to attack, dealing §c§lPyro DMG§r in a large AoE. Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP.
+item.hu_tao_q.desc=Commands a blazing spirit to attack, dealing §cPyro DMG§7 in a large AoE. Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP.
 
 item.hu_tao_q.speech.1=§c§lTime to go!
 item.hu_tao_q.speech.2=§c§lCross over!
 item.hu_tao_q.speech.3=§c§lPyre, pyre, pants on fire!
+
+# Keqing
+item.keqing_e.name=§5Stellar Restoration
+item.keqing_e.desc=Hurls a Lightning Stiletto that annihilates her opponents like the swift thunder.When the Stiletto hits its target, it deals §5Electro DMG§7 to opponents in a small AoE, and places a Stiletto Mark on the spot hit.
+
+item.keqing_e.speech.1=Incoming!
+item.keqing_e.speech.2=Speed of light!
+item.keqing_e.speech.3=Don't blink.
+
+item.keqing_e.speech.long.1=Hah—!
+item.keqing_e.speech.long.2=Hey!
+item.keqing_e.speech.long.3=Huh!
+
+item.keqing_q.name=§5Starward Sword
+item.keqing_q.desc=Keqing unleashes the power of lightning, dealing §5Electro DMG§7 in an AOE.She then blends into the shadow of her blade, striking a series of thunderclap-blows to nearby opponents simultaneously that deal multiple instances of §5Electro DMG§7.The final attack deals massive §5AoE Electro DMG§7.
+
+item.keqing_q.speech.1=§5§lNowhere to hide!
+item.keqing_q.speech.2=§5§lWith sword comes shadow!
+item.keqing_q.speech.3=§5§lCut to the chase!
 
 item.artf_xp_bottle_0.name=Artifact XP Bottle [SP]
 item.artf_xp_bottle_0.desc=Extracted from artifacts. Crafting this into artifacts uprades them.
