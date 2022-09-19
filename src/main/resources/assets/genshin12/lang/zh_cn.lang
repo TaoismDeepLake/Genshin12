@@ -139,7 +139,7 @@ item.kaeya_e.speech.2=冻结吧！
 item.kaeya_e.speech.3=这个如何？
 
 item.kaeya_q.name=§b凛冽轮舞
-item.kaeya_q.desc=凝聚空气中的寒霜，召唤3枚围绕自身旋转的寒冰之棱。存在期间内，对路径上的敌人造成§b冰元素伤害§r。
+item.kaeya_q.desc=凝聚空气中的寒霜，召唤3枚围绕自身旋转的寒冰之棱。存在期间内，对路径上的敌人造成§b冰元素伤害§7。
 
 item.kaeya_q.speech.1=§b§l小心着凉。
 item.kaeya_q.speech.2=§b§l抱歉哦。
@@ -147,7 +147,7 @@ item.kaeya_q.speech.3=§b§l…这刹那，将是你的永恒。
 
 # Xiao
 item.xiao_e.name=§a风轮两立
-item.xiao_e.desc=疾速突进，对路径上的敌人造成§a风元素伤害§l。可以在空中施放。
+item.xiao_e.desc=疾速突进，对路径上的敌人造成§a风元素伤害§7。可以在空中施放。
 
 item.xiao_e.speech.1=哼。
 item.xiao_e.speech.2=无用。
@@ -174,6 +174,25 @@ item.hu_tao_q.desc=对周围的目标造成伤害，每命中一个目标恢复�
 item.hu_tao_q.speech.1=§c§l吃饱喝饱，一路走好！
 item.hu_tao_q.speech.2=§c§l再会啦！
 item.hu_tao_q.speech.3=§c§l蝶火燎原！
+
+# Keqing
+item.keqing_e.name=§5星斗归位
+item.keqing_e.desc=迅速投出雷楔，以疾雷之势歼敌。雷楔命中时会对小范围的敌人造成§5雷元素伤害§7，并在命中的位置留下雷楔标记。\n「人像是蛾子，总奔着名叫神仙的火光而去。但是我这光是自己点的。」
+
+item.keqing_e.speech.1=§5去吧！
+item.keqing_e.speech.2=§5迅影如剑！
+item.keqing_e.speech.3=§5可别眨眼！
+
+item.keqing_e.speech.long.1=§5喝啊——！
+item.keqing_e.speech.long.2=§5嘿！
+item.keqing_e.speech.long.3=§5哈！
+
+item.keqing_q.name=§5天街巡游
+item.keqing_q.desc=爆发雷电的力量，造成范围雷元素伤害。\n随后隐入剑影中，对周围的敌人进行如同迅雷霆霓般疾速的连斩，造成多段§5雷元素伤害§7,并在最后一击时造成高额§5雷元素范围伤害§7。刻晴自己剑术中最为迅捷的一招，可将诸星斩落。
+
+item.keqing_q.speech.1=§5§l无处可逃！
+item.keqing_q.speech.2=§5§l剑出，影随——
+item.keqing_q.speech.3=§5§l剑光如我，斩尽芜杂！
 
 item.artf_xp_bottle_0.name=§6圣遗物经验瓶·特混
 item.artf_xp_bottle_0.desc=从强化过的圣遗物中提取，与圣遗物合成可以强化之。强化时圣遗物必须在第一格。
@@ -406,5 +425,4 @@ genshin12.artifact.upgrade=§l获得副属性提升 x%s!
 
 # hud
 genshin12.hud.lvl=§l§7Lv. %d
-genshin12.moroon_incoming_herald=[IDL][注意] 摩隆密切关注着你的战斗。
-genshin12.msg.notice_meter_report=[IDL]摩隆注意度： %d, 入侵准备: %d/%d, 测量误差:%d
+

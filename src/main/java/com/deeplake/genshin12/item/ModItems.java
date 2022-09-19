@@ -44,6 +44,11 @@ public class ModItems {
     public static final ItemHuTaoE HU_TAO_E = new ItemHuTaoE("hu_tao_e");
     public static final ItemHuTaoQ HU_TAO_Q = new ItemHuTaoQ("hu_tao_q");
 
+    public static final ItemHuTaoE BARBARA_E = new ItemHuTaoE("barbara_e");
+    public static final ItemHuTaoQ BARBARA_Q = new ItemHuTaoQ("barbara_q");
+
+    public static final ItemHuTaoE KEQING_E = new ItemHuTaoE("keqing_e");
+    public static final ItemHuTaoQ KEQING_Q = new ItemHuTaoQ("keqing_q");
     public static final ItemArtifactBase AR_DEFAULT = new ItemArtifactBase("artifact_default");
     public static final ItemArtifactBase AR_LUMBER = new ItemArtifactBase("artifact_lumber", ArtifactSetManager.LUMBER);
     public static final ItemArtifactBase AR_MINER = new ItemArtifactBase("artifact_miner", ArtifactSetManager.MINER);
