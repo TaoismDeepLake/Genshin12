@@ -25,3 +25,4 @@ runServer/*
 !runServer/eula.txt
 !runServer/server.properties
 
+lua.exe
