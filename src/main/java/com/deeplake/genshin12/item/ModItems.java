@@ -4,15 +4,11 @@ import com.deeplake.genshin12.item.artifact.ItemArtifactBase;
 import com.deeplake.genshin12.item.artifact.set.ArtifactSetManager;
 import com.deeplake.genshin12.item.consumables.*;
 import com.deeplake.genshin12.item.skills.genshin.*;
-import com.deeplake.genshin12.item.weapon.IElementalInfused;
 import com.deeplake.genshin12.item.weapon.ItemFireClub;
-import com.deeplake.genshin12.item.weapon.ItemInfusedMelee;
 import com.deeplake.genshin12.item.weapon.ItemPlayerWeapon;
 import com.deeplake.genshin12.util.EnumAmount;
 import com.deeplake.genshin12.util.EnumElemental;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +40,7 @@ public class ModItems {
     public static final ItemHuTaoE HU_TAO_E = new ItemHuTaoE("hu_tao_e");
     public static final ItemHuTaoQ HU_TAO_Q = new ItemHuTaoQ("hu_tao_q");
 
-    public static final ItemHuTaoE BARBARA_E = new ItemHuTaoE("barbara_e");
+    public static final ItemBarbaraE BARBARA_E = new ItemBarbaraE("barbara_e");
     public static final ItemHuTaoQ BARBARA_Q = new ItemHuTaoQ("barbara_q");
 
     public static final ItemHuTaoE KEQING_E = new ItemHuTaoE("keqing_e");

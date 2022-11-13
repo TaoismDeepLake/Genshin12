@@ -53,6 +53,10 @@ public class ModConfig {
         @Config.Comment("100% skill damage = ? damage in Minecraft?")
         public float DMG_ATK_PERCENT_GENSHIN_TO_MC = 2f; //100% dmg
 
+        @Config.LangKey("genshin12.conf.general.hp_genshin_to_mc")
+        @Config.Comment("1 Genshin HP = ? hp in Minecraft?")
+        public float HP_GENSHIN_TO_MC = 100f; //100% dmg
+
         @Config.LangKey("genshin12.conf.general.disable_vanilla_crit")
         @Config.Comment("Disables the vanilla critical strike system.")
         public boolean DISABLE_VANILLA_CRIT = false;

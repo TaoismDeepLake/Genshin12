@@ -3,6 +3,7 @@ package com.deeplake.genshin12.proxy;
 import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.designs.client.RenderCreatureLevelNumber;
 import com.deeplake.genshin12.designs.client.RenderElementalIcon;
+import com.deeplake.genshin12.entity.creatures.render.layer.LayerBarbara;
 import com.deeplake.genshin12.entity.creatures.render.layer.LayerFrozen;
 import com.deeplake.genshin12.entity.creatures.render.layer.LayerPetrify;
 import com.deeplake.genshin12.item.IHasVariant;
@@ -77,5 +78,6 @@ public class ClientProxy extends ProxyBase {
 	private static <T extends EntityLivingBase> void attachRenderLayers(RenderLivingBase<T> renderer) {
 		renderer.addLayer(new LayerPetrify(renderer));
 		renderer.addLayer(new LayerFrozen(renderer));
+		renderer.addLayer(new LayerBarbara(renderer));
 	}
 }

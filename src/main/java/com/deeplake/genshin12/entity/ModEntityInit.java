@@ -3,6 +3,7 @@ package com.deeplake.genshin12.entity;
 import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.creatures.mob.EntityHilichurl;
 import com.deeplake.genshin12.entity.projectiles.EntityArrowFixed;
+import com.deeplake.genshin12.entity.special.EntityBarbaraBuff;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.Reference;
@@ -29,6 +30,7 @@ public class ModEntityInit {
         }
 
         registerEntity("hilichurl", EntityHilichurl.class);
+        registerEntity("barbara_e", EntityBarbaraBuff.class);
 
         //Assign Dungeons
         DungeonHooks.addDungeonMob(EntityList.getKey(EntityHilichurl.class), STANDARD_DUNGEON_MOB_RARITY);

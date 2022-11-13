@@ -71,9 +71,10 @@ end
 --GenItem("weapon", "fire_club");
 
 
-GenBlock("zl_pillar_deco");
+-- GenBlock("zl_pillar_deco");
 
--- GenItem("misc", "nano_mender_greater");
+GenItem("skill", "barbara_e");
+GenItem("skill", "barbara_q");
 -- GenItem("misc", "package_fade_armor_diamond");
 -- for i = 0,8 do
 -- 	GenItem("misc", "attr_report_"..i);
