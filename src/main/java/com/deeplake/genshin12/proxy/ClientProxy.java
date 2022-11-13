@@ -11,6 +11,8 @@ import com.deeplake.genshin12.keys.ModKeyBinding;
 import com.deeplake.genshin12.util.CommonFunctions;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderPlayer;
@@ -27,6 +29,7 @@ import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ClientProxy extends ProxyBase {
 	public static final List<KeyBinding> KEY_BINDINGS = new ArrayList<KeyBinding>();
@@ -71,11 +74,12 @@ public class ClientProxy extends ProxyBase {
 			if (r instanceof RenderLivingBase) {
 				attachRenderLayers((RenderLivingBase<?>) r);
 			}
-
-			if (r instanceof RenderPlayer) {
-				attachRenderLayers((RenderLivingBase<?>) r);
-			}
 		});
+
+		Map<String, RenderPlayer> skinMap = Minecraft.getMinecraft().getRenderManager().getSkinMap();
+		attachRenderLayers((RenderLivingBase<?>) skinMap.get("default"));
+		attachRenderLayers((RenderLivingBase<?>) skinMap.get("slim"));
+
 		CommonFunctions.addToEventBus(new RenderCreatureLevelNumber());
 		RenderElementalIcon.init();
 	}

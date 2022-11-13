@@ -172,6 +172,7 @@ public class ModConfig {
     public static class DebugConf {
 
         public boolean TEST_1 = false;
+        public float FLOAT_1 = 1f;
 
         public int PARTICLE_COUNT = 40;
         public float PARTICLE_SPEED = 1f/TICK_PER_SECOND;

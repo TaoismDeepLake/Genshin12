@@ -1,23 +1,19 @@
 package com.deeplake.genshin12.entity.creatures.render.layer;
 
-import com.deeplake.genshin12.entity.creatures.render.RenderBarbaraE;
 import com.deeplake.genshin12.entity.special.EntityBarbaraBuff;
+import com.deeplake.genshin12.entity.special.EntityBarbaraBuffClientVer;
 import com.deeplake.genshin12.potion.ModPotions;
-import net.minecraft.client.model.ModelBox;
-import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Random;
 
 //discarded.
 @SideOnly(Side.CLIENT)
@@ -32,28 +28,62 @@ public class LayerBarbara implements LayerRenderer<EntityLivingBase> {
 
     @Override
     public void doRenderLayer(EntityLivingBase player, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-//        if (!ModPotions.BUFF_BARBARA.hasPotion(player))
-//        {
-//            return;
-//        }
-
-        if (!(player instanceof EntityPlayer))
+        if (!ModPotions.BUFF_BARBARA.hasPotion(player))
         {
             return;
         }
 
+//        if (!(player instanceof EntityPlayer))
+//        {
+//            return;
+//        }
+
         if (entityBarbaraBuff == null)
         {
-            entityBarbaraBuff = new EntityBarbaraBuff(player.world);
+            entityBarbaraBuff = new EntityBarbaraBuffClientVer(player.world, player);
         }
-//        entityBarbaraBuff.setPosition(player.posX, player.posY, player.posZ);
 
         GlStateManager.pushMatrix();
-//        Random random = new Random(player.getEntityId());
-//        ModelRenderer modelrenderer = this.renderer.getMainModel().getRandomModelBox(random);
-//        modelrenderer.postRender(0.0625F);
+        GlStateManager.enableBlend();
+        GlStateManager.disableAlpha();
+        GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+        GlStateManager.disableLighting();
+        GlStateManager.depthMask(!player.isInvisible());
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 61680.0F, 0.0F);
+        GlStateManager.enableLighting();
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
 
-        this.renderer.getRenderManager().renderEntity(entityBarbaraBuff, 0.0D, 0, 0.0D, player.rotationYaw, partialTicks, false);
+        World world = player.world;
+        long ticks = world.getTotalWorldTime();
+        if (ticks % 8 == 0)
+        {
+            double omega = 0.1f;
+            double cycle = 2 * Math.PI;
+            double delta = (omega * ticks) % cycle;
+            int MAX_NOTE = 6;
+
+            for (int i = 0; i < MAX_NOTE; i++) {
+                double phase = i / (double)MAX_NOTE;
+                double theta = cycle * phase + delta;
+                world.spawnParticle(EnumParticleTypes.NOTE,
+                        player.posX + Math.cos(theta),
+                        player.posY + 0.7f,
+                        player.posZ + Math.sin(theta),
+                        phase,0,0);
+            }
+        }
+
+        entityBarbaraBuff.setPosition(player.posX, player.posY, player.posZ);
+        //will crash should I use this ver! careful.
+        //entityBarbaraBuff.setPositionAndUpdate(player.posX, player.posY, player.posZ);
+
+        this.renderer.getRenderManager().renderEntity(entityBarbaraBuff, 0.0D, 0.5, 0.0D, player.rotationYaw, partialTicks, false);
+        Minecraft.getMinecraft().entityRenderer.setupFogColor(false);
+        GlStateManager.depthMask(true);
+        GlStateManager.disableBlend();
+        GlStateManager.enableAlpha();
+
         GlStateManager.popMatrix();
     }
 

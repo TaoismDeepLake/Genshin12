@@ -4,6 +4,7 @@ import com.deeplake.genshin12.entity.creatures.mob.EntityHilichurl;
 import com.deeplake.genshin12.entity.creatures.model.ModelBarbara;
 import com.deeplake.genshin12.entity.creatures.render.*;
 import com.deeplake.genshin12.entity.special.EntityBarbaraBuff;
+import com.deeplake.genshin12.entity.special.EntityBarbaraBuffClientVer;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
@@ -16,6 +17,7 @@ public class RenderHandler {
 
         RenderingRegistry.registerEntityRenderingHandler(EntityHilichurl.class, renderManager -> new RenderHumanoid(renderManager, "mobs/hilichurl"));
         RenderingRegistry.registerEntityRenderingHandler(EntityBarbaraBuff.class, RenderBarbaraE::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityBarbaraBuffClientVer.class, RenderBarbaraEClient::new);
 
 //        RenderingRegistry.registerEntityRenderingHandler(EntityPlanetBefall.class, renderManager -> new RenderPlanetBefall<>(renderManager));
     }

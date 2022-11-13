@@ -33,19 +33,20 @@ public class EntityBarbaraBuff extends Entity {
         posY = center.posY;
         posZ = center.posZ;
         map.put(center, this);
+//        startRiding(center, true);
+//        center.startRiding(this,true);
     }
 
 
     @SubscribeEvent
     public static void onTick(LivingEvent.LivingUpdateEvent event)
     {
-        EntityLivingBase livingBase = event.getEntityLiving();
-        if (ModPotions.BUFF_BARBARA.hasPotion(livingBase) && !map.containsKey(livingBase))
-        {
-            EntityBarbaraBuff barbaraBuff = new EntityBarbaraBuff(livingBase.getEntityWorld(), livingBase);
-            livingBase.getEntityWorld().spawnEntity(barbaraBuff);
-
-        }
+//        EntityLivingBase livingBase = event.getEntityLiving();
+//        if (!livingBase.getEntityWorld().isRemote && ModPotions.BUFF_BARBARA.hasPotion(livingBase) && !map.containsKey(livingBase))
+//        {
+//            EntityBarbaraBuff barbaraBuff = new EntityBarbaraBuff(livingBase.getEntityWorld(), livingBase);
+//            livingBase.getEntityWorld().spawnEntity(barbaraBuff);
+//        }
     }
 
     @Override
@@ -55,7 +56,7 @@ public class EntityBarbaraBuff extends Entity {
         {
             if (center != null && !center.isDead && center.getActivePotionEffect(ModPotions.BUFF_BARBARA) != null)
             {
-                setPositionAndUpdate(center.posX, center.posY, center.posZ);
+//                setPositionAndUpdate(center.posX, center.posY, center.posZ);
 
             } else {
                 setDead();

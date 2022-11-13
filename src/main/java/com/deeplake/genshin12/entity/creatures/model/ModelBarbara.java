@@ -113,13 +113,13 @@ public class ModelBarbara extends ModelBase {
 	public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
 		super.setLivingAnimations(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTickTime);
 
-//		float f = CommonFunctions.interpolateRotation(entitylivingbaseIn.prevRenderYawOffset,
-//				entitylivingbaseIn.renderYawOffset,
-//				partialTickTime);
+		float f = CommonFunctions.interpolateRotation(entitylivingbaseIn.prevRenderYawOffset,
+				entitylivingbaseIn.renderYawOffset,
+				partialTickTime);
 
-		//The GLState will be transformed by (180 - f) in RenderLivingBase, which means the rotationY of root is untouched.
-		//This f is not passed as an argument, so I need to get partialTickTime to calculate it myself.
-//		base.rotateAngleY = -f * CommonDef.DEG_TO_RAD;
+//		The GLState will be transformed by (180 - f) in RenderLivingBase, which means the rotationY of root is untouched.
+//		This f is not passed as an argument, so I need to get partialTickTime to calculate it myself.
+		base.rotateAngleY = -f * CommonDef.DEG_TO_RAD;
 	}
 
 	@Override

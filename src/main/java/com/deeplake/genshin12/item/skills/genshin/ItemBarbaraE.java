@@ -21,8 +21,6 @@ public class ItemBarbaraE extends ItemGenshinSkillBase{
     public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
         int level = getLevel(stack);
         EntityUtil.ApplyBuff(livingBase, ModPotions.BUFF_BARBARA, level-1, 15f);
-        return true;
+        return super.applyCast(worldIn, livingBase, stack, slot);
     }
-
-
 }

@@ -41,7 +41,7 @@ public class ModItems {
     public static final ItemHuTaoQ HU_TAO_Q = new ItemHuTaoQ("hu_tao_q");
 
     public static final ItemBarbaraE BARBARA_E = new ItemBarbaraE("barbara_e");
-    public static final ItemHuTaoQ BARBARA_Q = new ItemHuTaoQ("barbara_q");
+    public static final ItemBarbaraQ BARBARA_Q = new ItemBarbaraQ("barbara_q");
 
     public static final ItemHuTaoE KEQING_E = new ItemHuTaoE("keqing_e");
     public static final ItemHuTaoQ KEQING_Q = new ItemHuTaoQ("keqing_q");

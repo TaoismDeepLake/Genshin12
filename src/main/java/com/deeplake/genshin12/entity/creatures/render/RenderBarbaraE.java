@@ -53,8 +53,8 @@ public class RenderBarbaraE extends Render<EntityBarbaraBuff> {
 
         GlStateManager.pushMatrix();
 //        GlStateManager.translate(-x, -y, -z);
-//        GlStateManager.translate(x, y, z);
-        GlStateManager.translate(pos.x,pos.y,pos.z);
+        GlStateManager.translate(x, y, z);
+//        GlStateManager.translate(pos.x,pos.y,pos.z);
         GlStateManager.scale(0.1, 0.1, 0.1);
         GlStateManager.rotate(2f * entity.world.getTotalWorldTime(), 0f, 1f, 0f);
         GlStateManager.enableLighting();
