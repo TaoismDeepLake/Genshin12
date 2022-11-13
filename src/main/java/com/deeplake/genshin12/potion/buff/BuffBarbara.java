@@ -87,6 +87,7 @@ public class BuffBarbara extends BaseSimplePotion{
         {
             float amount = event.getAmount();
             EntityPlayer attacker = (EntityPlayer) source.getTrueSource();
+
             if (attacker.isPotionActive(ModPotions.BUFF_BARBARA))
 //                && attacker.getCooledAttackStrength(0f) > 0.99f)
             {

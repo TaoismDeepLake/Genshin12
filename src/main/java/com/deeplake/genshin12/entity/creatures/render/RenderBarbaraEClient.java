@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.entity.creatures.render;
 
 import com.deeplake.genshin12.entity.creatures.model.ModelBarbara;
+import com.deeplake.genshin12.entity.creatures.model.ModelBarbara2;
 import com.deeplake.genshin12.entity.special.EntityBarbaraBuffClientVer;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.client.model.IMultipassModel;
@@ -10,7 +11,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderBarbaraEClient extends Render<EntityBarbaraBuffClientVer> {
-    ModelBarbara modelBarbara = new ModelBarbara();
+    ModelBarbara2 modelBarbara = new ModelBarbara2();
     public static final ResourceLocation RES_LOC = new ResourceLocation(Reference.MOD_ID + ":textures/entity/barbara_e_1.png");
 
     public RenderBarbaraEClient(RenderManager renderManagerIn)

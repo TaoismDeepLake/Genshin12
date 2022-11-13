@@ -20,8 +20,8 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class ItemBarbaraQ extends ItemGenshinBurstBase{
-    public static double[] regen_ratio = new double[]{0.75, 0.81, 0.86, 0.94, 0.99, 1.05, 1.13, 1.2, 1.27, 1.35, 1.43, 1.5, 1.59};
-    public static double[] regen_fixed = new double[]{72.2, 79.44, 97.27, 95.69, 104.72, 124.59, 135.42, 146.86, 158.9, 171.54, 184.78, 198.63};
+    public static double[] regen_ratio = new double[]{17.6,18.92,20.24,22,23.32,24.64,26.4,28.16,29.92,31.68,33.44,35.2,37.4,39.6};
+    public static double[] regen_fixed = new double[]{1694,1863,2047,2245,2456,2682,2922,3176,3445,3727,4024,4334,4659,4999};
 
 
     public ItemBarbaraQ(String name) {

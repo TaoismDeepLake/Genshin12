@@ -175,6 +175,21 @@ item.hu_tao_q.speech.1=§c§l吃饱喝饱，一路走好！
 item.hu_tao_q.speech.2=§c§l再会啦！
 item.hu_tao_q.speech.3=§c§l蝶火燎原！
 
+# Barbara
+item.barbara_e.name=§9演唱，开始♪
+item.barbara_e.desc=Summons water droplets resembling musical notes that form a Melody Loop, dealing Hydro DMG to surrounding opponents and applying the Wet status to them.
+
+item.barbara_e.speech.1=我会保护大家！
+item.barbara_e.speech.2=打起精神来哟！
+item.barbara_e.speech.3=演唱，开始！
+
+item.barbara_q.name=§9闪耀奇迹♪
+item.barbara_q.desc=Heals your own party members and nearby teammates for a large amount of HP that scales with Barbara's Max HP.
+
+item.barbara_q.speech.1=§9§l♪哼哼哼~哼哼~
+item.barbara_q.speech.2=§9§l准备好了吗~
+item.barbara_q.speech.3=§9§l大家加油喔！
+
 # Keqing
 item.keqing_e.name=§5星斗归位
 item.keqing_e.desc=迅速投出雷楔，以疾雷之势歼敌。雷楔命中时会对小范围的敌人造成§5雷元素伤害§7，并在命中的位置留下雷楔标记。\n「人像是蛾子，总奔着名叫神仙的火光而去。但是我这光是自己点的。」

@@ -62,14 +62,15 @@ public class LayerBarbara implements LayerRenderer<EntityLivingBase> {
             double cycle = 2 * Math.PI;
             double delta = (omega * ticks) % cycle;
             int MAX_NOTE = 6;
+            double radius = 1.5f;
 
             for (int i = 0; i < MAX_NOTE; i++) {
                 double phase = i / (double)MAX_NOTE;
                 double theta = cycle * phase + delta;
                 world.spawnParticle(EnumParticleTypes.NOTE,
-                        player.posX + Math.cos(theta),
+                        player.posX + Math.cos(theta) * radius,
                         player.posY + 0.7f,
-                        player.posZ + Math.sin(theta),
+                        player.posZ + Math.sin(theta) * radius,
                         phase,0,0);
             }
         }

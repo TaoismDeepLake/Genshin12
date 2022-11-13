@@ -31,7 +31,7 @@ public class PotionPetrification extends BaseSimplePotion
                 }
             }
 
-            ((EntityLiving) entityLivingBaseIn).tasks.addTask(0, new EntityAIPerification((EntityLiving) entityLivingBaseIn));
+//            ((EntityLiving) entityLivingBaseIn).tasks.addTask(0, new EntityAIPerification((EntityLiving) entityLivingBaseIn));
         }
     }
 
