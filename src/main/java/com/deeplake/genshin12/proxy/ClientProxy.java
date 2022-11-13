@@ -13,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
+import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
@@ -68,6 +69,10 @@ public class ClientProxy extends ProxyBase {
 	public void loadComplete(FMLPostInitializationEvent evt) {
 		Minecraft.getMinecraft().getRenderManager().entityRenderMap.values().forEach(r -> {
 			if (r instanceof RenderLivingBase) {
+				attachRenderLayers((RenderLivingBase<?>) r);
+			}
+
+			if (r instanceof RenderPlayer) {
 				attachRenderLayers((RenderLivingBase<?>) r);
 			}
 		});

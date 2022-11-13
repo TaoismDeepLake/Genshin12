@@ -55,7 +55,7 @@ public class EntityBarbaraBuff extends Entity {
         {
             if (center != null && !center.isDead && center.getActivePotionEffect(ModPotions.BUFF_BARBARA) != null)
             {
-                setPosition(center.posX, center.posY, center.posZ);
+                setPositionAndUpdate(center.posX, center.posY, center.posZ);
 
             } else {
                 setDead();

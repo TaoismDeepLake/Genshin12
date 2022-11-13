@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -35,6 +36,11 @@ public class LayerBarbara implements LayerRenderer<EntityLivingBase> {
 //        {
 //            return;
 //        }
+
+        if (!(player instanceof EntityPlayer))
+        {
+            return;
+        }
 
         if (entityBarbaraBuff == null)
         {
