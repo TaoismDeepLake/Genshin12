@@ -62,6 +62,7 @@ public class ModPotions {
     public static final BaseSimplePotion BUFF_BARBARA = new BuffBarbara(false, EnumElemental.HYDRO.getColor(), "barbara_e", 4).setUUID_CLIENT(UUID_BARBARA_E.toString());
 
     public static final BasePotion SUPER_CONDUCT = (BasePotion) new BasePotion(true, EnumElemental.CYRO.getColor(), "super_conduct", 15).registerPotionAttributeModifier(ModAttributes.getElemRes(EnumElemental.PHYSICAL), UUID_SUPER_CONDUCT.toString(), ModAttributes.convert(-0.4), 0);
+    public static final BaseSimplePotion KEQING_ENCHANT = (BaseSimplePotion) new BasePotion(false, EnumElemental.ELECTRO.getColor(), "keqing_enchant", 16);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)

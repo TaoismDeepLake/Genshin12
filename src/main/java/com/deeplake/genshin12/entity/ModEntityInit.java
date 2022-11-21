@@ -7,6 +7,7 @@ import com.deeplake.genshin12.entity.projectiles.EntityArrowFixed;
 import com.deeplake.genshin12.entity.special.EntityBarbaraBuff;
 import com.deeplake.genshin12.entity.special.EntityBarbaraBuffClientVer;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
+import com.deeplake.genshin12.entity.special.EntityKeqingMark;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.entity.Entity;
@@ -32,8 +33,9 @@ public class ModEntityInit {
         }
 
         registerEntity("hilichurl", EntityHilichurl.class);
-        registerEntity("barbara_e", EntityBarbaraBuff.class);
-        registerEntity("barbara_e_c", EntityBarbaraBuffClientVer.class);
+        registerEntityNoEgg("barbara_e", EntityBarbaraBuff.class);
+        registerEntityNoEgg("barbara_e_c", EntityBarbaraBuffClientVer.class);
+        registerEntityNoEgg("keqing_e", EntityKeqingMark.class);
 
         //Assign Dungeons
         DungeonHooks.addDungeonMob(EntityList.getKey(EntityHilichurl.class), STANDARD_DUNGEON_MOB_RARITY);

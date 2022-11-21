@@ -73,8 +73,8 @@ end
 
 -- GenBlock("zl_pillar_deco");
 
-GenItem("skill", "barbara_e");
-GenItem("skill", "barbara_q");
+GenItem("skill", "keqing_e_1");
+GenItem("skill", "keqing_e_2");
 -- GenItem("misc", "package_fade_armor_diamond");
 -- for i = 0,8 do
 -- 	GenItem("misc", "attr_report_"..i);
