@@ -9,7 +9,8 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelRaidenRingVer2 extends ModelBase {
-	
+	ModelRenderer[] nodeListLit;
+	ModelRenderer[] nodeListUnlit;
 	private final ModelRenderer ringCenter;
 	private final ModelRenderer part1;
 	private final ModelRenderer hex_main_1;
@@ -702,6 +703,86 @@ public class ModelRaidenRingVer2 extends ModelBase {
 		bb_main = new ModelRenderer(this);
 		bb_main.setRotationPoint(0.0F, 24.0F, 0.0F);
 		bb_main.cubeList.add(new ModelBox(bb_main, 0, 0, -3.0F, -28.0F, -4.0F, 6, 28, 7, 0.0F, false));
+
+		nodeListLit = new ModelRenderer[]
+				{
+						enable1,
+						enable2,
+						enable3,
+						enable4,
+						enable5,
+						enable6,
+						enable7,
+						enable8,
+						enable9,
+						enable10,
+						enable11,
+						enable12,
+						enable13,
+						enable14,
+						enable15,
+						enable16,
+						enable17,
+						enable18,
+						enable19,
+						enable20,
+						enable21,
+						enable22,
+						enable23,
+						enable24,
+						enable25,
+						enable26,
+						enable27,
+						enable28,
+						enable29,
+						enable30,
+						enable31,
+						enable32,
+						enable33,
+						enable34,
+						enable35,
+						enable36,
+
+				};
+
+		nodeListUnlit = new ModelRenderer[] {
+				disable1,
+				disable2,
+				disable3,
+				disable4,
+				disable5,
+				disable6,
+				disable7,
+				disable8,
+				disable9,
+				disable10,
+				disable11,
+				disable12,
+				disable13,
+				disable14,
+				disable15,
+				disable16,
+				disable17,
+				disable18,
+				disable19,
+				disable20,
+				disable21,
+				disable22,
+				disable23,
+				disable24,
+				disable25,
+				disable26,
+				disable27,
+				disable28,
+				disable29,
+				disable30,
+				disable31,
+				disable32,
+				disable33,
+				disable34,
+				disable35,
+				disable36,
+		};
 	}
 
 	@Override
@@ -716,5 +797,15 @@ public class ModelRaidenRingVer2 extends ModelBase {
 		modelRenderer.rotateAngleZ = z;
 	}
 
+	public void setRatio(float ratio)
+	{
+		int length = nodeListLit.length;
+		for (int i = 0; i < length; i++) {
+			float cur = (float) i / length;
+			boolean isReached = cur <= ratio;
+			nodeListLit[i].isHidden = !isReached;
+			nodeListUnlit[i].isHidden = isReached;
+		}
+	}
 
 }
