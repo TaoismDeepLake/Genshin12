@@ -17,7 +17,7 @@ public class RenderHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityBarbaraBuff.class, RenderBarbaraE::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityBarbaraBuffClientVer.class, RenderBarbaraEClient::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityKeqingMark.class, RenderKeqingMark::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRaidenRing.class, RenderRaidenRing::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRaidenRing.class, RenderRaidenRingVer2::new);
 
 //        RenderingRegistry.registerEntityRenderingHandler(EntityPlanetBefall.class, renderManager -> new RenderPlanetBefall<>(renderManager));
     }
