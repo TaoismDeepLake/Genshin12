@@ -90,6 +90,8 @@ public class ItemKeqingE extends ItemGenshinSkillBase{
                     mark.setPosition(targetPosF.x, targetPosF.y, targetPosF.z);
                     worldIn.spawnEntity(mark);
 
+                            worldIn.playSound(null, mark.getPosition(), SoundEvents.BLOCK_PISTON_EXTEND, SoundCategory.PLAYERS, 1f, 2f);
+
 //                    mark.setPositionAndUpdate(targetPosF.x, targetPosF.y, targetPosF.z);
 //                mark.attemptTeleport(targetPosF.x, targetPosF.y, targetPosF.z);
                     IDLNBTUtil.SetState(stack, 1);
@@ -111,16 +113,18 @@ public class ItemKeqingE extends ItemGenshinSkillBase{
                         worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE,
                                 entityKeqingMark.posX, entityKeqingMark.posY, entityKeqingMark.posZ,
                                 0,0,0);
+                        entityKeqingMark.init(caster);
                     }
                     else {
                         worldIn.playSound(null, entityKeqingMark.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER,
                                 SoundCategory.PLAYERS, 1f, 1f);
+                        entityKeqingMark.init(caster);
                         //todo: damage
                         //todo: teleportation has limited range
-                        caster.setPositionAndUpdate(entityKeqingMark.posX, entityKeqingMark.posY, entityKeqingMark.posZ);
+//                        caster.setPositionAndUpdate(entityKeqingMark.posX, entityKeqingMark.posY, entityKeqingMark.posZ);
 //                        caster.attemptTeleport(entityKeqingMark.posX, entityKeqingMark.posY, entityKeqingMark.posZ);
 
-                        entityKeqingMark.setDead();
+                        //entityKeqingMark.setDead();
                     }
                 }
                 IDLNBTUtil.SetState(stack, 0);

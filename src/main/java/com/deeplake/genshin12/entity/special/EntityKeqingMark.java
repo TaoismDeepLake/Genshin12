@@ -4,23 +4,33 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
 public class EntityKeqingMark extends Entity {
     EntityLivingBase caster;
+    Vec3d fromPos;
+    Vec3d deltaPos;
+    float totalTime = 0.5f;
+    float curTime = 0;
+
     public EntityKeqingMark(World worldIn) {
         super(worldIn);
+        totalTime = 0.1f;
     }
 
-    public EntityKeqingMark(World worldIn, EntityLivingBase livingBase)
+    public void init(EntityLivingBase caster)
     {
-        super(worldIn);
-        caster = livingBase;
+        this.caster = caster;
+        fromPos = caster.getPositionVector();
+        deltaPos = getPositionVector().subtract(fromPos);
     }
 
     @Override
@@ -29,6 +39,25 @@ public class EntityKeqingMark extends Entity {
         if (world.isRemote)
         {
             world.spawnParticle(EnumParticleTypes.PORTAL, posX, posY, posZ,0,0,0);
+
+        }
+        else
+        {
+            //server side
+            if (caster != null)
+            {
+                curTime += 0.02f;
+                if (curTime >= totalTime)
+                {
+                    //self destruct
+                    caster.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 30));
+                    setDead();
+                }
+                else {
+                    Vec3d tempPos = fromPos.add(deltaPos.scale(curTime / totalTime));
+                    caster.setPositionAndUpdate(tempPos.x, tempPos.y, tempPos.z);
+                }
+            }
         }
     }
 
