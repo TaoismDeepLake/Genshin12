@@ -179,40 +179,40 @@ public class ModelRaidenRingVer2 extends ModelBase {
 		eyeLineOutUp_r2.cubeList.add(new ModelBox(eyeLineOutUp_r2, 0, 0, -1.6F, -0.4F, -5.5F, 3, 1, 0, 0.0F, false));
 
 		enable1 = new ModelRenderer(this);
-		enable1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable1.setRotationPoint(-3.7082F, -11.4127F, -6.0F);
 		hex_main_1.addChild(enable1);
 		setRotationAngle(enable1, 0.0F, 0.0F, -0.1571F);
-		enable1.cubeList.add(new ModelBox(enable1, 60, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable1.cubeList.add(new ModelBox(enable1, 60, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable2 = new ModelRenderer(this);
-		enable2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable2.setRotationPoint(-3.7082F, -11.4127F, -6.0F);
 		hex_main_1.addChild(enable2);
 		setRotationAngle(enable2, 0.0F, 0.0F, -0.3142F);
-		enable2.cubeList.add(new ModelBox(enable2, 56, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable2.cubeList.add(new ModelBox(enable2, 56, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable3 = new ModelRenderer(this);
-		enable3.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable3.setRotationPoint(-5.4479F, -10.6921F, -6.0F);
 		hex_main_1.addChild(enable3);
 		setRotationAngle(enable3, 0.0F, 0.0F, -0.4712F);
-		enable3.cubeList.add(new ModelBox(enable3, 52, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable3.cubeList.add(new ModelBox(enable3, 52, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable4 = new ModelRenderer(this);
-		enable4.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable4.setRotationPoint(-7.0534F, -9.7082F, -6.0F);
 		hex_main_1.addChild(enable4);
 		setRotationAngle(enable4, 0.0F, 0.0F, -0.6283F);
-		enable4.cubeList.add(new ModelBox(enable4, 60, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable4.cubeList.add(new ModelBox(enable4, 60, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable5 = new ModelRenderer(this);
-		enable5.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable5.setRotationPoint(-8.4853F, -8.4853F, -6.0F);
 		hex_main_1.addChild(enable5);
 		setRotationAngle(enable5, 0.0F, 0.0F, -0.7854F);
-		enable5.cubeList.add(new ModelBox(enable5, 56, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable5.cubeList.add(new ModelBox(enable5, 56, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable6 = new ModelRenderer(this);
-		enable6.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable6.setRotationPoint(-9.7082F, -7.0534F, -6.0F);
 		hex_main_1.addChild(enable6);
 		setRotationAngle(enable6, 0.0F, 0.0F, -0.9425F);
-		enable6.cubeList.add(new ModelBox(enable6, 52, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable6.cubeList.add(new ModelBox(enable6, 52, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		disable1 = new ModelRenderer(this);
 		disable1.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -267,40 +267,40 @@ public class ModelRaidenRingVer2 extends ModelBase {
 		ball3.cubeList.add(new ModelBox(ball3, 19, 0, -1.0F, -0.9995F, -6.5F, 2, 2, 2, 0.0F, false));
 
 		enable7 = new ModelRenderer(this);
-		enable7.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable7.setRotationPoint(-1.8772F, -11.8523F, -6.0F);
 		hex_main_2.addChild(enable7);
 		setRotationAngle(enable7, 0.0F, 0.0F, -0.1571F);
-		enable7.cubeList.add(new ModelBox(enable7, 52, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable7.cubeList.add(new ModelBox(enable7, 52, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable8 = new ModelRenderer(this);
-		enable8.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable8.setRotationPoint(-3.7082F, -11.4127F, -6.0F);
 		hex_main_2.addChild(enable8);
 		setRotationAngle(enable8, 0.0F, 0.0F, -0.3142F);
-		enable8.cubeList.add(new ModelBox(enable8, 56, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable8.cubeList.add(new ModelBox(enable8, 56, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable9 = new ModelRenderer(this);
-		enable9.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable9.setRotationPoint(-5.4479F, -10.6921F, -6.0F);
 		hex_main_2.addChild(enable9);
 		setRotationAngle(enable9, 0.0F, 0.0F, -0.4712F);
-		enable9.cubeList.add(new ModelBox(enable9, 60, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable9.cubeList.add(new ModelBox(enable9, 60, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable10 = new ModelRenderer(this);
-		enable10.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable10.setRotationPoint(-7.0534F, -9.7082F, -6.0F);
 		hex_main_2.addChild(enable10);
 		setRotationAngle(enable10, 0.0F, 0.0F, -0.6283F);
-		enable10.cubeList.add(new ModelBox(enable10, 52, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable10.cubeList.add(new ModelBox(enable10, 52, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable11 = new ModelRenderer(this);
-		enable11.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable11.setRotationPoint(-8.4853F, -8.4853F, -6.0F);
 		hex_main_2.addChild(enable11);
 		setRotationAngle(enable11, 0.0F, 0.0F, -0.7854F);
-		enable11.cubeList.add(new ModelBox(enable11, 56, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable11.cubeList.add(new ModelBox(enable11, 56, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable12 = new ModelRenderer(this);
-		enable12.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable12.setRotationPoint(-9.7082F, -7.0534F, -6.0F);
 		hex_main_2.addChild(enable12);
 		setRotationAngle(enable12, 0.0F, 0.0F, -0.9425F);
-		enable12.cubeList.add(new ModelBox(enable12, 60, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable12.cubeList.add(new ModelBox(enable12, 60, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		disable7 = new ModelRenderer(this);
 		disable7.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -360,40 +360,40 @@ public class ModelRaidenRingVer2 extends ModelBase {
 		ball4.cubeList.add(new ModelBox(ball4, 19, 0, -1.0F, -0.9995F, -6.5F, 2, 2, 2, 0.0F, false));
 
 		enable13 = new ModelRenderer(this);
-		enable13.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable13.setRotationPoint(-1.8772F, -11.8523F, -6.0F);
 		hex_main_3.addChild(enable13);
 		setRotationAngle(enable13, 0.0F, 0.0F, -0.1571F);
-		enable13.cubeList.add(new ModelBox(enable13, 60, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable13.cubeList.add(new ModelBox(enable13, 60, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable14 = new ModelRenderer(this);
-		enable14.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable14.setRotationPoint(-3.7082F, -11.4127F, -6.0F);
 		hex_main_3.addChild(enable14);
 		setRotationAngle(enable14, 0.0F, 0.0F, -0.3142F);
-		enable14.cubeList.add(new ModelBox(enable14, 56, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable14.cubeList.add(new ModelBox(enable14, 56, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable15 = new ModelRenderer(this);
-		enable15.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable15.setRotationPoint(-5.4479F, -10.6921F, -6.0F);
 		hex_main_3.addChild(enable15);
 		setRotationAngle(enable15, 0.0F, 0.0F, -0.4712F);
-		enable15.cubeList.add(new ModelBox(enable15, 52, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable15.cubeList.add(new ModelBox(enable15, 52, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable16 = new ModelRenderer(this);
-		enable16.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable16.setRotationPoint(-7.0534F, -9.7082F, -6.0F);
 		hex_main_3.addChild(enable16);
 		setRotationAngle(enable16, 0.0F, 0.0F, -0.6283F);
-		enable16.cubeList.add(new ModelBox(enable16, 60, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable16.cubeList.add(new ModelBox(enable16, 60, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable17 = new ModelRenderer(this);
-		enable17.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable17.setRotationPoint(-8.4853F, -8.4853F, -6.0F);
 		hex_main_3.addChild(enable17);
 		setRotationAngle(enable17, 0.0F, 0.0F, -0.7854F);
-		enable17.cubeList.add(new ModelBox(enable17, 56, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable17.cubeList.add(new ModelBox(enable17, 56, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable18 = new ModelRenderer(this);
-		enable18.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable18.setRotationPoint(-9.7082F, -7.0534F, -6.0F);
 		hex_main_3.addChild(enable18);
 		setRotationAngle(enable18, 0.0F, 0.0F, -0.9425F);
-		enable18.cubeList.add(new ModelBox(enable18, 52, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable18.cubeList.add(new ModelBox(enable18, 52, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		disable13 = new ModelRenderer(this);
 		disable13.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -448,58 +448,58 @@ public class ModelRaidenRingVer2 extends ModelBase {
 		ball5.cubeList.add(new ModelBox(ball5, 19, 0, -1.0F, -0.9995F, -6.5F, 2, 2, 2, 0.0F, false));
 
 		enable19 = new ModelRenderer(this);
-		enable19.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable19.setRotationPoint(-1.8772F, -11.8523F, -6.0F);
 		hex_main_4.addChild(enable19);
 		setRotationAngle(enable19, 0.0F, 0.0F, -0.1571F);
-		enable19.cubeList.add(new ModelBox(enable19, 52, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable19.cubeList.add(new ModelBox(enable19, 52, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable20 = new ModelRenderer(this);
-		enable20.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable20.setRotationPoint(-3.7082F, -11.4127F, -6.0F);
 		hex_main_4.addChild(enable20);
 		setRotationAngle(enable20, 0.0F, 0.0F, -0.3142F);
-		enable20.cubeList.add(new ModelBox(enable20, 56, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable20.cubeList.add(new ModelBox(enable20, 56, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable21 = new ModelRenderer(this);
-		enable21.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable21.setRotationPoint(-5.4479F, -10.6921F, -6.0F);
 		hex_main_4.addChild(enable21);
 		setRotationAngle(enable21, 0.0F, 0.0F, -0.4712F);
-		enable21.cubeList.add(new ModelBox(enable21, 60, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable21.cubeList.add(new ModelBox(enable21, 60, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable22 = new ModelRenderer(this);
-		enable22.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable22.setRotationPoint(-7.0534F, -9.7082F, -6.0F);
 		hex_main_4.addChild(enable22);
 		setRotationAngle(enable22, 0.0F, 0.0F, -0.6283F);
-		enable22.cubeList.add(new ModelBox(enable22, 52, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable22.cubeList.add(new ModelBox(enable22, 52, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable23 = new ModelRenderer(this);
-		enable23.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable23.setRotationPoint(-8.4853F, -8.4853F, -6.0F);
 		hex_main_4.addChild(enable23);
 		setRotationAngle(enable23, 0.0F, 0.0F, -0.7854F);
-		enable23.cubeList.add(new ModelBox(enable23, 56, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable23.cubeList.add(new ModelBox(enable23, 56, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable24 = new ModelRenderer(this);
-		enable24.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable24.setRotationPoint(-9.7082F, -7.0534F, -6.0F);
 		hex_main_4.addChild(enable24);
 		setRotationAngle(enable24, 0.0F, 0.0F, -0.9425F);
-		enable24.cubeList.add(new ModelBox(enable24, 60, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable24.cubeList.add(new ModelBox(enable24, 60, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		disable19 = new ModelRenderer(this);
 		disable19.setRotationPoint(0.0F, 0.0F, 0.0F);
 		hex_main_4.addChild(disable19);
 		setRotationAngle(disable19, 0.0F, 0.0F, -0.1571F);
-		disable19.cubeList.add(new ModelBox(disable19, 62, 2, -0.5F, -12.5F, -6.0F, 1, 1, 0, 0.0F, false));
+		disable19.cubeList.add(new ModelBox(disable19, 62, 2, -2.3772F, -12.3523F, -6.0F, 1, 1, 0, 0.0F, false));
 
 		disable20 = new ModelRenderer(this);
 		disable20.setRotationPoint(0.0F, 0.0F, 0.0F);
 		hex_main_4.addChild(disable20);
 		setRotationAngle(disable20, 0.0F, 0.0F, -0.3142F);
-		disable20.cubeList.add(new ModelBox(disable20, 62, 2, -0.5F, -12.5F, -6.0F, 1, 1, 0, 0.0F, false));
+		disable20.cubeList.add(new ModelBox(disable20, 62, 2, -4.2082F, -11.9127F, -6.0F, 1, 1, 0, 0.0F, false));
 
 		disable21 = new ModelRenderer(this);
 		disable21.setRotationPoint(0.0F, 0.0F, 0.0F);
 		hex_main_4.addChild(disable21);
 		setRotationAngle(disable21, 0.0F, 0.0F, -0.4712F);
-		disable21.cubeList.add(new ModelBox(disable21, 62, 2, -0.5F, -12.5F, -6.0F, 1, 1, 0, 0.0F, false));
+		disable21.cubeList.add(new ModelBox(disable21, 62, 2, -5.9479F, -11.1921F, -6.0F, 1, 1, 0, 0.0F, false));
 
 		disable22 = new ModelRenderer(this);
 		disable22.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -541,40 +541,40 @@ public class ModelRaidenRingVer2 extends ModelBase {
 		ball6.cubeList.add(new ModelBox(ball6, 19, 0, -1.0F, -0.9995F, -6.5F, 2, 2, 2, 0.0F, false));
 
 		enable25 = new ModelRenderer(this);
-		enable25.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable25.setRotationPoint(-1.8772F, -11.8523F, -6.0F);
 		hex_main_5.addChild(enable25);
 		setRotationAngle(enable25, 0.0F, 0.0F, -0.1571F);
-		enable25.cubeList.add(new ModelBox(enable25, 60, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable25.cubeList.add(new ModelBox(enable25, 60, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable26 = new ModelRenderer(this);
-		enable26.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable26.setRotationPoint(-3.7082F, -11.4127F, -6.0F);
 		hex_main_5.addChild(enable26);
 		setRotationAngle(enable26, 0.0F, 0.0F, -0.3142F);
-		enable26.cubeList.add(new ModelBox(enable26, 56, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable26.cubeList.add(new ModelBox(enable26, 56, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable27 = new ModelRenderer(this);
-		enable27.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable27.setRotationPoint(-5.4479F, -10.6921F, -6.0F);
 		hex_main_5.addChild(enable27);
 		setRotationAngle(enable27, 0.0F, 0.0F, -0.4712F);
-		enable27.cubeList.add(new ModelBox(enable27, 52, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable27.cubeList.add(new ModelBox(enable27, 52, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable28 = new ModelRenderer(this);
-		enable28.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable28.setRotationPoint(-7.0534F, -9.7082F, -6.0F);
 		hex_main_5.addChild(enable28);
 		setRotationAngle(enable28, 0.0F, 0.0F, -0.6283F);
-		enable28.cubeList.add(new ModelBox(enable28, 60, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable28.cubeList.add(new ModelBox(enable28, 60, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable29 = new ModelRenderer(this);
-		enable29.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable29.setRotationPoint(-8.4853F, -8.4853F, -6.0F);
 		hex_main_5.addChild(enable29);
 		setRotationAngle(enable29, 0.0F, 0.0F, -0.7854F);
-		enable29.cubeList.add(new ModelBox(enable29, 56, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable29.cubeList.add(new ModelBox(enable29, 56, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable30 = new ModelRenderer(this);
-		enable30.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable30.setRotationPoint(-9.7082F, -7.0534F, -6.0F);
 		hex_main_5.addChild(enable30);
 		setRotationAngle(enable30, 0.0F, 0.0F, -0.9425F);
-		enable30.cubeList.add(new ModelBox(enable30, 52, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable30.cubeList.add(new ModelBox(enable30, 52, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		disable25 = new ModelRenderer(this);
 		disable25.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -629,40 +629,40 @@ public class ModelRaidenRingVer2 extends ModelBase {
 		ball7.cubeList.add(new ModelBox(ball7, 19, 0, -1.0F, -0.9995F, -6.5F, 2, 2, 2, 0.0F, false));
 
 		enable31 = new ModelRenderer(this);
-		enable31.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable31.setRotationPoint(-1.8772F, -11.8523F, -6.0F);
 		hex_main_6.addChild(enable31);
 		setRotationAngle(enable31, 0.0F, 0.0F, -0.1571F);
-		enable31.cubeList.add(new ModelBox(enable31, 52, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable31.cubeList.add(new ModelBox(enable31, 52, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable32 = new ModelRenderer(this);
-		enable32.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable32.setRotationPoint(-3.7082F, -11.4127F, -6.0F);
 		hex_main_6.addChild(enable32);
 		setRotationAngle(enable32, 0.0F, 0.0F, -0.3142F);
-		enable32.cubeList.add(new ModelBox(enable32, 56, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable32.cubeList.add(new ModelBox(enable32, 56, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable33 = new ModelRenderer(this);
-		enable33.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable33.setRotationPoint(-5.4479F, -10.6921F, -6.0F);
 		hex_main_6.addChild(enable33);
 		setRotationAngle(enable33, 0.0F, 0.0F, -0.4712F);
-		enable33.cubeList.add(new ModelBox(enable33, 60, 3, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable33.cubeList.add(new ModelBox(enable33, 60, 3, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable34 = new ModelRenderer(this);
-		enable34.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable34.setRotationPoint(-7.0534F, -9.7082F, -6.0F);
 		hex_main_6.addChild(enable34);
 		setRotationAngle(enable34, 0.0F, 0.0F, -0.6283F);
-		enable34.cubeList.add(new ModelBox(enable34, 52, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable34.cubeList.add(new ModelBox(enable34, 52, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable35 = new ModelRenderer(this);
-		enable35.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable35.setRotationPoint(-8.4853F, -8.4853F, -6.0F);
 		hex_main_6.addChild(enable35);
 		setRotationAngle(enable35, 0.0F, 0.0F, -0.7854F);
-		enable35.cubeList.add(new ModelBox(enable35, 56, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable35.cubeList.add(new ModelBox(enable35, 56, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		enable36 = new ModelRenderer(this);
-		enable36.setRotationPoint(0.0F, 0.0F, 0.0F);
+		enable36.setRotationPoint(-9.7082F, -7.0534F, -6.0F);
 		hex_main_6.addChild(enable36);
 		setRotationAngle(enable36, 0.0F, 0.0F, -0.9425F);
-		enable36.cubeList.add(new ModelBox(enable36, 60, 0, -0.5F, -12.5F, -6.5F, 1, 1, 1, 0.0F, false));
+		enable36.cubeList.add(new ModelBox(enable36, 60, 0, -0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false));
 
 		disable31 = new ModelRenderer(this);
 		disable31.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -789,6 +789,11 @@ public class ModelRaidenRingVer2 extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		ringCenter.render(f5);
 		bb_main.render(f5);
+
+		int length = nodeListLit.length;
+		for (int i = 0; i < length; i++) {
+			nodeListLit[i].rotateAngleZ = f2;
+		}
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
@@ -807,5 +812,4 @@ public class ModelRaidenRingVer2 extends ModelBase {
 			nodeListUnlit[i].isHidden = isReached;
 		}
 	}
-
 }
