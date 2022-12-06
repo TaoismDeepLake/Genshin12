@@ -174,6 +174,7 @@ public class ModConfig {
         public boolean TEST_1 = false;
         public float FLOAT_1 = 1f;
 
+        public float RAIDEN_ROTATION_SPEED = 3f;
         public int PARTICLE_COUNT = 40;
         public float PARTICLE_SPEED = 1f/TICK_PER_SECOND;
         public float PILLAR_LIFE = 30f;

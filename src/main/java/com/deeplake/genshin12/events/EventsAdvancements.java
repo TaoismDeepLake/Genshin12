@@ -25,7 +25,7 @@ public class EventsAdvancements {
         }
 
         //prevent errors
-        if (event.getAdvancement().getDisplay() == null || !event.getAdvancement().getDisplay().shouldShowToast())
+        if (event.getAdvancement().getDisplay() == null)
         {
             return;
         }

@@ -3,6 +3,7 @@ package com.deeplake.genshin12.entity.creatures.model;// Made with Blockbench 4.
 // Paste this class into your mod and generate all required imports
 
 
+import com.deeplake.genshin12.init.ModConfig;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
@@ -11,6 +12,7 @@ import net.minecraft.entity.Entity;
 public class ModelRaidenRingVer2 extends ModelBase {
 	ModelRenderer[] nodeListLit;
 	ModelRenderer[] nodeListUnlit;
+	ModelRenderer[] eyeList;
 	private final ModelRenderer ringCenter;
 	private final ModelRenderer part1;
 	private final ModelRenderer hex_main_1;
@@ -783,6 +785,11 @@ public class ModelRaidenRingVer2 extends ModelBase {
 				disable35,
 				disable36,
 		};
+
+		eyeList = new ModelRenderer[]
+				{
+						ball2,eye2,eye3,eye4,eye5,eye6,
+				};
 	}
 
 	@Override
@@ -792,7 +799,14 @@ public class ModelRaidenRingVer2 extends ModelBase {
 
 		int length = nodeListLit.length;
 		for (int i = 0; i < length; i++) {
-			nodeListLit[i].rotateAngleZ = f2;
+			nodeListLit[i].rotateAngleY = entity.ticksExisted * ModConfig.DEBUG_CONF.RAIDEN_ROTATION_SPEED;
+			nodeListLit[i].rotateAngleX = entity.ticksExisted * ModConfig.DEBUG_CONF.RAIDEN_ROTATION_SPEED;
+		}
+
+		length = eyeList.length;
+		for (int i = 0; i < length; i++) {
+			float cur = (float) i / length;
+			eyeList[i].rotateAngleZ = entity.ticksExisted * ModConfig.DEBUG_CONF.RAIDEN_ROTATION_SPEED;
 		}
 	}
 
@@ -810,6 +824,13 @@ public class ModelRaidenRingVer2 extends ModelBase {
 			boolean isReached = cur <= ratio;
 			nodeListLit[i].isHidden = !isReached;
 			nodeListUnlit[i].isHidden = isReached;
+		}
+
+		length = eyeList.length;
+		for (int i = 0; i < length; i++) {
+			float cur = (float) i / length;
+			boolean isReached = cur <= ratio;
+			eyeList[i].isHidden = !isReached;
 		}
 	}
 }
