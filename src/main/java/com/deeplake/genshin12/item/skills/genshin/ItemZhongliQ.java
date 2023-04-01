@@ -3,25 +3,13 @@ package com.deeplake.genshin12.item.skills.genshin;
 import com.deeplake.genshin12.entity.EntityPlanetBefall;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
-import com.deeplake.genshin12.potion.ModPotions;
-import com.deeplake.genshin12.util.CommonDef;
-import com.deeplake.genshin12.util.EntityUtil;
 import com.deeplake.genshin12.util.EnumElemental;
-import com.deeplake.genshin12.util.ModSoundHandler;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.ConcurrentModificationException;
-import java.util.List;
 
 public class ItemZhongliQ extends ItemGenshinBurstBase {
 
@@ -49,7 +37,7 @@ public class ItemZhongliQ extends ItemGenshinBurstBase {
             EntityPlanetBefall befall = new EntityPlanetBefall(worldIn);
             befall.setPositionAndUpdate(targetPosF.x, targetPosF.y + ModConfig.DEBUG_CONF.METEOR_HEIGHT, targetPosF.z);
             befall.setShooter(caster);
-            befall.setDamageAmount(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkG(caster));
+            befall.setDamageAmount(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkConverted(caster));
             worldIn.spawnEntity(befall);
         }
         return super.applyCast(worldIn, caster, stack, slot);

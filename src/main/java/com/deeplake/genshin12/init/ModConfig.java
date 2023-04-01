@@ -76,6 +76,10 @@ public class ModConfig {
         @Config.LangKey("genshin12.conf.general.swim_disable_skill")
         @Config.Comment("Skills can not be cast when submerged.")
         public boolean SWIM_DISABLE_SKILL = false;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Use G-Atk instead of original attack.")
+        public boolean ENABLE_G_ATK = false;
     }
 
     @Config.LangKey("configgui.genshin12.category.Menu0.GachaConf")

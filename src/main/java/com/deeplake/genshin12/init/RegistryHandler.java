@@ -1,5 +1,6 @@
 package com.deeplake.genshin12.init;
 
+import com.deeplake.genshin12.command.CommandSwitchPlunge;
 import com.deeplake.genshin12.enchantments.ModEnchantmentInit;
 import com.deeplake.genshin12.entity.RenderHandler;
 import com.deeplake.genshin12.blocks.ModBlocks;
@@ -92,6 +93,6 @@ public class RegistryHandler {
 
 	public static void serverRegistries(FMLServerStartingEvent event)
     {
-        //event.registerServerCommand(new CommandDimTeleport());
+        event.registerServerCommand(new CommandSwitchPlunge());
     }
 }

@@ -63,7 +63,7 @@ public class PotionHuTaoDebuff extends BaseSimplePotion {
                             //perform
                             ElementalUtil.applyElementalDamage(player,
                                     entityLivingBaseIn,
-                                    (getDamage(amplifier) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC) * ModAttributes.getAtkG(player),
+                                    (getDamage(amplifier) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC) * ModAttributes.getAtkConverted(player),
                                     EnumElemental.PYRO,
                                     EnumAmount.SMALL);
                         }

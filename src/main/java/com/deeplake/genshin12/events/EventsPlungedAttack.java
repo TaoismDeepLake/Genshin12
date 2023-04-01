@@ -1,10 +1,14 @@
 package com.deeplake.genshin12.events;
 
 import com.deeplake.genshin12.Idealland;
+import com.deeplake.genshin12.advancements.AdvancementKeys;
+import com.deeplake.genshin12.advancements.ModAdvancementsInit;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.potion.ModPotions;
 import com.deeplake.genshin12.util.*;
+import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
+import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -84,24 +88,36 @@ public class EventsPlungedAttack {
                 }
 
             } else {
-                float basicDamage = (float) (ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * getDamageFactorFromHeight(distance) * ModAttributes.getAtkG(livingBase));
+                if (IDLNBTUtil.getPlayerIdeallandBoolSafe((EntityPlayer) livingBase, IDLNBTDef.KEY_PLUNGE_BAN))
+                {
+                    return;
+                }
+
+                float basicDamage = (float) (ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * getDamageFactorFromHeight(distance) * ModAttributes.getAtkConverted(livingBase));
                 float range = getRangeFromHeight(distance);
+
+                boolean onhit = false;
 
                 int maskLevel = EntityUtil.getBuffLevelIDL(livingBase, ModPotions.YAKSHA_MASK);
                 if (maskLevel > 0)
                 {
                     //xiao mask plunge, 1U element attaching
-                    GenshinUtil.dealAoEDamage(livingBase.getPositionVector(), livingBase, (float) (basicDamage * (1f + ModPotions.YAKSHA_MASK.getAtkBonus(maskLevel) / 100f)), XIAO_Q_PLUNGE_RANGE, EnumElemental.ANEMO, EnumAmount.SMALL);
+                    onhit = GenshinUtil.dealAoEDamage(livingBase.getPositionVector(), livingBase, (float) (basicDamage * (1f + ModPotions.YAKSHA_MASK.getAtkBonus(maskLevel) / 100f)), XIAO_Q_PLUNGE_RANGE, EnumElemental.ANEMO, EnumAmount.SMALL);
                     CommonFunctions.SafeSendMsgToPlayer(TextFormatting.GREEN, livingBase, MessageDef.getXiaoPlungeKey(livingBase.getRNG().nextInt(2)));
                 }
                 else {
                     //normal plunge
-                    GenshinUtil.dealAoEDamagePhysical(livingBase.getPositionVector(), livingBase, basicDamage, range);
+                    onhit = GenshinUtil.dealAoEDamagePhysical(livingBase.getPositionVector(), livingBase, basicDamage, range);
                 }
 
                 if (GenshinUtil.isXiao(livingBase))
                 {
                     event.setDamageMultiplier(0f);
+                }
+
+                if (onhit)
+                {
+                    ModAdvancementsInit.giveAdvancement((EntityPlayer) livingBase, AdvancementKeys.PLUNGE_ATTACK);
                 }
             }
         }

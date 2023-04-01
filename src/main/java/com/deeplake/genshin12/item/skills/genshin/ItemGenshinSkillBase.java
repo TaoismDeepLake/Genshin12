@@ -1,22 +1,19 @@
 package com.deeplake.genshin12.item.skills.genshin;
 
-import com.deeplake.genshin12.ILogNBT;
+import com.deeplake.genshin12.Idealland;
 import com.deeplake.genshin12.entity.creatures.attribute.ModAttributes;
 import com.deeplake.genshin12.entity.special.EntityEnergyOrb;
 import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.item.skills.ItemSkillBase;
 import com.deeplake.genshin12.util.*;
 
-import com.deeplake.genshin12.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.genshin12.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -202,27 +199,28 @@ public class ItemGenshinSkillBase extends ItemSkillBase{
     {
         List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos,aoeRange, null);
 
-                float damageFactor = getInitDamage(getLevel(stack), caster);
-                float damage = (float) (damageFactor * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkG(caster));
+        float damageFactor = getInitDamage(getLevel(stack), caster);
+        float damage = (float) (damageFactor * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkConverted(caster));
 
-                boolean needDrop = dropBalls;
-                int index = 0;
-                if (caster instanceof EntityPlayer)
+        boolean needDrop = dropBalls;
+        int index = 0;
+        if (caster instanceof EntityPlayer)
+        {
+            int status = calcStatus(world, pos, caster, stack);
+            for (EntityLivingBase target :
+                    list) {
+                if (target.getIsInvulnerable())
                 {
-                    int status = calcStatus(world, pos, caster, stack);
-                    for (EntityLivingBase target :
-                            list) {
-                        if (target.getIsInvulnerable())
-                        {
-                            continue;
-                        }
-                        onHit(world, pos, caster, stack, index, status);
-                        index++;
-                        if (target.hurtResistantTime > 0)
-                        {
-                            continue;
-                        }
+                    continue;
+                }
+                onHit(world, pos, caster, stack, index, status);
+                index++;
+                if (target.hurtResistantTime > 0)
+                {
+                    continue;
+                }
 
+                Idealland.Log("Attacking:damage%s,%s->%s",damage,caster,target);
                 ElementalUtil.applyElementalDamage(caster, target, damage, elemental, amount);
 
                 if (needDrop)
@@ -243,4 +241,9 @@ public class ItemGenshinSkillBase extends ItemSkillBase{
     {
         EntityEnergyOrb.drop(caster, getDropAmount(world, pos, caster, stack), elemental);
     }
+
+//    @Override
+//    public float getVal(int level) {
+//        return getInitDamage(level);
+//    }
 }

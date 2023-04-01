@@ -283,6 +283,7 @@ public class IDLNBTDef {
 	public static final String HU_TAO_CASTER = "hutao_caster";
 
 	public static final String KEY_FACTION = "faction";
+	public static final String KEY_PLUNGE_BAN = "ban_plunge";
 
 	public enum SPAWNER_TYPE{
 		NONE,

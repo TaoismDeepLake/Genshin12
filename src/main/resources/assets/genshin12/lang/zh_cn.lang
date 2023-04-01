@@ -440,4 +440,10 @@ genshin12.artifact.upgrade=§l获得副属性提升 x%s!
 
 # hud
 genshin12.hud.lvl=§l§7Lv. %d
-
+genshin12.msg.plunge_server_ban=服务端禁用下落攻击，无法改变
+genshin12.msg.plunge_turn_off=已关闭下落攻击
+genshin12.msg.plunge_turn_on=已打开下落攻击
+genshin12.advancements.root.title=提瓦特，但是1.12.2
+genshin12.advancements.root.description=做成就，开宝箱，得原石，没毛病
+genshin12.advancements.plunge_attack.title=试试 \\swpl 指令
+genshin12.advancements.plunge_attack.description=用以开启、关闭下落攻击，免得误伤村民和猪。

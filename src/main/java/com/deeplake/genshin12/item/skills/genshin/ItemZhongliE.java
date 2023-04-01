@@ -12,7 +12,6 @@ import net.minecraft.block.BlockOre;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -168,7 +167,7 @@ public class ItemZhongliE extends ItemGenshinSkillBase {
         List<EntityLivingBase> list = EntityUtil.getEntitiesWithinAABB(world, EntityLiving.class, pos, isHold ?  (ModConfig.GeneralConf.MOVIE_MODE ? aoeRangeHold * 10 : aoeRangeHold) : aoeRange, null);
 
         float damageFactor = isHold ? getHoldDamage(getLevel(stack)) : getInitDamage(getLevel(stack));
-        float damage = damageFactor / 100f * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkG(caster);
+        float damage = damageFactor / 100f * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkConverted(caster);
 
         boolean needDrop = true;
         if (ModConfig.GeneralConf.MOVIE_MODE)

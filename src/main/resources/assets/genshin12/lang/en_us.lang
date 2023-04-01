@@ -439,6 +439,10 @@ genshin12.artifact.upgrade=§lNew Sub Attr x%s!
 
 #hud
 genshin12.hud.lvl=§l§7Lv. %d
+
+genshin12.msg.plunge_server_ban=Server banned plunge attacks. No changing.
+genshin12.msg.plunge_turn_off=Turned off plunge attacks.
+genshin12.msg.plunge_turn_on=Turned on plunge attacks.
 #Death
 #examples
 #death.fell.accident.ladder=%1$s fell off a ladder
@@ -450,3 +454,9 @@ genshin12.hud.lvl=§l§7Lv. %d
 #death.fell.assist.item=%1$s was doomed to fall by %2$s using %3$s
 #death.fell.finish=%1$s fell too far and was finished by %2$s
 #death.fell.finish.item=%1$s fell too far and was finished by %2$s using %3$s
+#Advance
+genshin12.advancements.root.title=Genshin 12
+genshin12.advancements.root.description=Make advancements and open chests to find primogems!
+
+genshin12.advancements.plunge_attack.title=Try \\swpl
+genshin12.advancements.plunge_attack.description=use this command to turn on/off plunged attacks.

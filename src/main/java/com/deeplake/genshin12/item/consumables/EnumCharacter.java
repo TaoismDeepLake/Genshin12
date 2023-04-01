@@ -31,6 +31,8 @@ public enum EnumCharacter {
         KAEYA.initSkill(ModItems.KAEYA_E, ModItems.KAEYA_Q);
         XIAO.initSkill(ModItems.XIAO_E, ModItems.XIAO_Q);
         HU_TAO.initSkill(ModItems.HU_TAO_E, ModItems.HU_TAO_Q);
+        BARBARA.initSkill(ModItems.BARBARA_E, ModItems.BARBARA_Q);
+        KEQING.initSkill(ModItems.KEQING_E, ModItems.KEQING_Q);
     }
 
     public void initSkill(ItemGenshinSkillBase elemSkill, ItemGenshinBurstBase burstBase){

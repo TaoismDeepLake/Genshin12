@@ -1,5 +1,7 @@
 package com.deeplake.genshin12.events;
 
+import com.deeplake.genshin12.advancements.AdvancementKeys;
+import com.deeplake.genshin12.advancements.ModAdvancementsInit;
 import com.deeplake.genshin12.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.Mod;
@@ -15,6 +17,12 @@ public class ModStarterEvents {
 	  public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		  EntityPlayer player = event.player;
 		  //Idealland.Log(getPlyrIdlTagSafe(player).toString());
+
+		  if (!player.world.isRemote)
+		  {
+			  ModAdvancementsInit.giveAdvancement(player, AdvancementKeys.ROOT);
+		  }
+
 		  int lastStarterVer = getPlayerIdeallandIntSafe(player, STARTER_KIT_VERSION_TAG);
 		  if(lastStarterVer < CUR_STARTER_KIT_VERSION) {
 //			  IDLNBT.setPlayerIdeallandTagSafe(player, STARTER_KIT_VERSION_TAG, CUR_STARTER_KIT_VERSION);

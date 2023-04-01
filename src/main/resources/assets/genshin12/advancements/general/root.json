@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "genshin12:primogem"
+        },
+        "title": {
+            "translate": "genshin12.advancements.root.title"
+        },
+        "description": {
+            "translate": "genshin12.advancements.root.description"
+        },
+        "background": "genshin12:textures/blocks/artifact_ore.png",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "criteria": {
+        "impossible": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

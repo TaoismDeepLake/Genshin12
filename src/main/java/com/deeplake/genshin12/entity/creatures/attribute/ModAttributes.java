@@ -1,6 +1,7 @@
 package com.deeplake.genshin12.entity.creatures.attribute;
 
 import com.deeplake.genshin12.Idealland;
+import com.deeplake.genshin12.init.ModConfig;
 import com.deeplake.genshin12.util.EnumElemental;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -183,9 +184,7 @@ public class ModAttributes {
 
         HP(SharedMonsterAttributes.MAX_HEALTH, 1),
         DEF(ModAttributes.DEFENSE, 2),
-        ATK(ModAttributes.GEN_ATK, 3),
-//        ATK(SharedMonsterAttributes.ATTACK_DAMAGE, 3),
-
+        ATK(useGenshinAttack() ? ModAttributes.GEN_ATK : SharedMonsterAttributes.ATTACK_DAMAGE, 3),
 
         ELEM_MASTERY(ModAttributes.ELEM_MASTERY, 4),
         RECHARGE(ModAttributes.ENERGY_RECHARGE, 5, FAKE_PERCENT),
@@ -198,10 +197,9 @@ public class ModAttributes {
 
         HP_P(SharedMonsterAttributes.MAX_HEALTH, BASE_1+HP.id, REAL_PERCENT),
         DEF_P(ModAttributes.DEFENSE, BASE_1+DEF.id, 1),
-//        ATK_P(SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK.id, REAL_PERCENT),
-        ATK_P(ModAttributes.GEN_ATK, BASE_1+ATK.id, REAL_PERCENT),
 
-//        ATK_G_P(SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK_G.id),
+        ATK_P(useGenshinAttack() ? ModAttributes.GEN_ATK : SharedMonsterAttributes.ATTACK_DAMAGE, BASE_1+ATK.id, REAL_PERCENT),
+
 
         PHYSICAL(EnumElemental.PHYSICAL, false),
         ANEMO(EnumElemental.ANEMO, false),
@@ -319,18 +317,26 @@ public class ModAttributes {
         }
     }
 
-    public static float getAtkG(EntityLivingBase livingBase)
+    //automatically loads the current attack,
+    // if using Genshin Attack value, returns the value divided by ratio to a Minecraft scale.
+    public static float getAtkConverted(EntityLivingBase livingBase)
     {
         if (livingBase == null)
         {
             return 0f;
         }
 
-        IAttributeInstance instance = livingBase.getEntityAttribute(GEN_ATK);
-        if (instance != null)
+        IAttributeInstance instance;
+
+        if (useGenshinAttack())
         {
-            return (float) instance.getAttributeValue();
+            instance = livingBase.getEntityAttribute(GEN_ATK);
+            if (instance != null)
+            {
+                return (float) instance.getAttributeValue() / ModConfig.DEBUG_CONF.ATK_CONVERT_RATIO;
+            }
         }
+
         //fallback
         instance = livingBase.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
         if (instance != null)
@@ -338,5 +344,10 @@ public class ModAttributes {
             return (float) instance.getAttributeValue();
         }
         return 0f;
+    }
+
+    public static boolean useGenshinAttack()
+    {
+        return ModConfig.GeneralConf.ENABLE_G_ATK;
     }
 }

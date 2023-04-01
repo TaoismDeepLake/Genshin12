@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:anvil"
+        },
+        "title": {
+            "translate": "genshin12.advancements.plunge_attack.title"
+        },
+        "description": {
+            "translate": "genshin12.advancements.plunge_attack.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "genshin12:general/root",
+    "criteria": {
+        "impossible": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

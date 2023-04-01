@@ -25,7 +25,7 @@ public class ItemKaeyaQ extends ItemGenshinBurstBase {
         {
             EntityGlacialWaltz waltz = new EntityGlacialWaltz(worldIn);
             waltz.setOwner(livingBase);
-            waltz.setDamage(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkG(livingBase));
+            waltz.setDamage(getInitDamage(getLevel(stack)) * ModConfig.GeneralConf.DMG_ATK_PERCENT_GENSHIN_TO_MC * ModAttributes.getAtkConverted(livingBase));
             worldIn.spawnEntity(waltz);
         }
         return super.applyCast(worldIn, livingBase, stack, slot);
